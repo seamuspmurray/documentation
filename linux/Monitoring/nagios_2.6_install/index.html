@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nagios 2.6 install - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Nagios 2.6 install";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../map/">Map</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>C programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Puppet</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scripting</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Column_tally/">Column tally</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/IP_survey/">IP survey</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_arguments/">Bash arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_case/">Bash case</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_trap/">Bash fail trap</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_function/">Bash function</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_functions/">Bash functions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_nested_if_else/">Bash nested if else</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_read_input/">Bash read input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_scripting/">Bash scripting</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_select/">Bash select</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_sort/">Bash sort</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_string_comparison/">Bash string comparison</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_tips/">Bash tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/diff/">Diff</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/expect/">Expect</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/script_to_markdown/">Script to markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/check_dns_records/">Check dns records</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/linux_networking/">Linux networking</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/local_IP_address_survey/">local IP address survey</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Firewalls and Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/iptables_notes/">Iptables notes</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Software Packaging</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Software_Packaging/apt_get/">Apt get</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core Utils</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/awk/">Awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/rename/">Rename</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/user_creation/">User creation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Clustering</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/cluster_website/">Cluster website</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/homemade_cluster/">Homemade cluster</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Time</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Adventures_in_the_land_of_symmetric_ntp_authentication/">Adventures in the land of symmetric ntp authentication</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Setting_time/">Setting time</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>RedHat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/kickstart/">Kickstart</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Satellite spacewalk</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Yum rpm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Commands</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/email_on_linux/">Email on linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/hot_add_memory/">Hot add memory</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Monitoring</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Nagios 2.6 install</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#nagios-is-a-scheduling-engine-and-nothing-more">Nagios is a scheduling Engine and nothing more!</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#ok-nagios-has-now-been-installed">OK Nagios has now been installed.</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#install-mysql-from-yast">Install mysql from YAST</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#hp-ux">HP-UX</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#solaris-9">Solaris 9</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#neither-sun-or-the-nagios-team-provide-runtime-binarys">Neither SUN or the Nagios team provide runtime binary's.</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Disks and File Systems</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/rsync/">Rsync</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Monitoring &raquo;</li>
+        
+      
+    
+    <li>Nagios 2.6 install</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Seamus's notes on an Install Nagios 2.6 for Suse 10 Solaris 9 and HPUX</p>
+<h6 id="nagios-is-a-scheduling-engine-and-nothing-more">Nagios is a scheduling Engine and nothing more!</h6>
+<p>1)  Description of Nagios </p>
+<p>This is the way it was designed from the out set. The idea is to keep the core of Nagios as simple as possible, and therefore as flexible as possible. Nagios it self cannot probe, test, email or SMS by itself it relies on other programs/plugins for all of its functions. The 3 main category's of plugins are listed below.</p>
+<p><em>NRPE allows you to remotely execute Nagios plugins on other Linux/Unix machines. 
+</em>NSCA allows you to integrate passive alerts and checks from remote machines and applications with Nagios. 
+*Nagios plugins, there are literally thousands of 3rd party Nagios plugins that cover everything from simple ping's to logging into oracle and performing database queries. The Nagios install usually comes with a default set of plugins. </p>
+<p>2)  Overview  of  Nagios' configuration</p>
+<p>Nagios's keeps its configuration in flat text files. It is left up to you (the Admin)  to manage these file's by hand. You can have all the config data in a single file or you can split it up with files per host, per service etc..</p>
+<p>After you have a few hosts configured. It becomes tedious and time consuming to manually manage all the interdependencies of the various configuration values.  eg if you remove a host from one file you then must go through all the service and alert config files and remove it from there.</p>
+<p>To see how complicated the configuration interdependencies are click the following link.</p>
+<p>http://nagios.sourceforge.net/download/contrib/documentation/misc/config_diagrams/nagios-config.png</p>
+<p>3)  Overview of NagiosQL</p>
+<p>Due to the complexity of the config files. I chose to use a php/MySQL frontend called NagiosQL to manage all the config files on my behalf. There are a number of current and orphaned Nagios front end projects I chose NagiosQL because it seemed to concentrate on just getting the job done.</p>
+<p>With NagiosQL all the configuration information is stored in a MySQL database. All updates are performed via web forms. Java scripting is used to perform some form validation. Once you have made all your changes you click the write config files link and all the local config files are over written with the new config from the database. You will have to restart Nagios for the new config to take effect. You can use either of the 3 following methods....</p>
+<p>command line..... /etc/init.d/nagios reload</p>
+<p>nagios CGI.....  lefthand panel --&gt; process info --&gt; Restart the Nagios process ++</p>
+<p>nagiosQL.....   lefthand panel --&gt;  Tools --&gt; Nagios control --&gt; Restart Nagios ++</p>
+<p>END of Nagios and NagiosQL Intro</p>
+<p>Installation of Nagios and Nagios QL </p>
+<p>List of packages I installed on the nagios server example.com.</p>
+<ul>
+<li>nagios-nsca-2.6-7.6</li>
+<li>nagios-plugins-1.4.5-16.6</li>
+<li>nagios-2.6-13.7</li>
+<li>nagios-nsca-client-2.6-7.6</li>
+<li>nagios-plugins-extras-1.4.5-16.6</li>
+<li>nagios-www-2.6-13.7</li>
+<li>nagios-nrpe-2.12-1</li>
+<li>nagiosQL-2.0.2-1.1</li>
+</ul>
+<p>N.B. the reason why i chose nagios 2.x over nagios 3.x is because there are no Mysql frontends for 3.x yet.</p>
+<p>Steps I took to install Nagios server on SUSE 10..........</p>
+<p>Install Nagios and associated dependencies via YAST 
+Install nrpe daemon </p>
+<p>SUSE doesn't come with the nrpe daemon. So you can either compile it yourself or find a package provided by a a 3rd party. I chose to use an rpm provided by.....</p>
+<p>http://blog.barfoo.org/2008/07/14/latest-sles10-rpm-additions</p>
+<pre><code>  rpm -ivh nagios-nrpe-2.12-1.i586.rpm
+</code></pre>
+<p>Once nagios nrpe and all the plugins have been installed you have to setup the permissions for the web interface.</p>
+<p>create the /usr/lib/nagios/cgi/.htaccess file with the following </p>
+<pre><code>AuthName "Nagios Access"
+AuthType Basic
+AuthUserFile /etc/nagios/.htpasswd.users
+require valid-user
+</code></pre>
+<p>create the password file with </p>
+<pre><code>/usr/sbin/htpasswd2 -c /etc/nagios/.htpasswd.users {user name}
+</code></pre>
+<p>restart Apache and login to the web page to test 
+http://hostname/nagios</p>
+<h4 id="ok-nagios-has-now-been-installed">OK Nagios has now been installed.</h4>
+<hr />
+<h3 id="install-mysql-from-yast">Install mysql from YAST</h3>
+<p>start mysql and setup a password for the root account...</p>
+<pre><code>/usr/bin/mysqladmin -u root password 'new-password'
+/usr/bin/mysqladmin -u root -h example.com password 'new-password'
+</code></pre>
+<p>Before you install NagiosQL, make you you have meet the following  requirements.....</p>
+<ul>
+<li>
+<p>Webserver (Apache 1.3.x/2.0.x)</p>
+</li>
+<li>
+<p>PHP Version 4.1 or higher / 5.0 or higher</p>
+</li>
+<li>
+<p>MySQL Version 4.1 or higher / 5.0 or higher</p>
+</li>
+<li>
+<p>Pear Module HTML_Template_IT Version 1.1 (http://pear.php.net)</p>
+</li>
+<li>
+<p>Nagios Version 2.x (1.x is not supported)</p>
+</li>
+<li>
+<p>Javascript supported by your browser</p>
+</li>
+<li>
+<p>Cookies accepted by your browser </p>
+</li>
+</ul>
+<p>download the nagiosql front end and php-pear-HTML_Template_IT from </p>
+<pre><code>wget http://download.opensuse.org/repositories/home:/rhomann/SLE_10/noarch/nagiosQL-2.0.2-1.1.noarch.rpm
+wget http://download.opensuse.org/repositories/home:/rhomann/SLE_10/noarch/php5-pear-HTML_Template_IT-1.2.1-4.1.noarch.rpm
+</code></pre>
+<p>Install the rpms</p>
+<pre><code>rpm -ivh  php5-pear-HTML_Template_IT-1.2.1-4.1.noarch.rpm
+rpm -ivh  nagiosQL-2.0.2-1.1.noarch.rpm
+</code></pre>
+<p>Start the mysql database engine.</p>
+<pre><code>/etc/init.d/mysqld start
+</code></pre>
+<p>populate MySQL with data for nagiosQL : </p>
+<pre><code> mysql -u root -p &lt; /usr/share/nagiosQL/config/nagiosQL_v2_db_mysql.sql
+</code></pre>
+<p>For some reason the SQL script above didn't create the user account so I had to perform this step manually...</p>
+<pre><code>mysql -u root -p
+mysql&gt; use mysql
+Database changed
+mysql&gt; GRANT USAGE ON *.* TO 'nagiosQLusr'@'localhost' IDENTIFIED BY 'nagiosQLpwd';
+Query OK, 0 rows affected (0.01 sec)
+mysql&gt; GRANT SELECT,INSERT,UPDATE,DELETE ON `nagiosQL`.* TO'nagiosQLusr'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+<p>By default Nagios stores all its configuration information is just 2 files, NagiosQL prefers that you spread the configuration info across multiple files..</p>
+<p>You have to manually create directories so that NagiosQL can create the config files in the specified directories.</p>
+<p>You will also have to make changes to the /etc/nagios/nagios.cfg file to reflect these changes.</p>
+<p>~ In my case apache ran as user wwwrun and group daemon ~</p>
+<pre><code>mkdir /etc/nagios/hosts
+mkdir /etc/nagios/services
+mkdir /etc/nagios/backup
+mkdir /etc/nagios/backup/hosts
+mkdir /etc/nagios/backup/services 
+chmod 6755 /etc/nagios
+chown wwwrun.daemon /etc/nagios
+chmod 6755 /etc/nagios/hosts
+chown wwwrun.daemon /etc/nagios/hosts
+chmod 6755 /etc/nagios/services
+chown wwwrun.daemon /etc/nagios/services
+chmod 6755 /etc/nagios/backup
+chown wwwrun.daemon /etc/nagios/backup
+chmod 6755 /etc/nagios/backup/hosts
+chown wwwrun.daemon /etc/nagios/backup/hosts
+chmod 6755 /etc/nagios/backup/services
+chown wwwrun.daemon /etc/nagios/backup/services
+chmod 644 /etc/nagios/*.cfg
+chown wwwrun.daemon /etc/nagios/*.cfg
+</code></pre>
+<p>communication from the web interface to the nagios daemon is performed via a named pipe</p>
+<p>this allows to to trigger nagios to reread its config files or disable alerts etc..</p>
+<p>create command file and set permissions, note the location of this file is specified in the /etc/nagios.cfg</p>
+<pre><code>touch /var/spool/nagios/nagios.cmd 
+chown nagios.www /var/spool/nagios/nagios.cmd
+chmod 660  /var/spool/nagios/nagios.cmd
+</code></pre>
+<p>edit the /etc/php5/apache2/php.ini config file to allow magicquotes</p>
+<pre><code>magic_quotes_gpc = On
+</code></pre>
+<p>set language to english ....</p>
+<pre><code>lang  = lang_en
+</code></pre>
+<p>run http://example.com/nagiosQL/testQL.php to test the configuration</p>
+<p>Once you have all this working nagios will be able to perform external probes of its clients</p>
+<p>check_alive # ping</p>
+<p>check_http # check if a web server is up</p>
+<p>If you only wish to perform external probes there is no need to install any extra software on the (monitored hosts) .</p>
+<p>If you wish to check things such as disk usage number of processes users etc you will need to install an agent on the  (monitored hosts) below details the steps i took to get nrpe working on the (monitored hosts).</p>
+<p>End of Installation of Nagios and Nagios QL</p>
+<p>Start of Client Installation section </p>
+<p>CLIENTS</p>
+<p>SUSE RPM dependency order for the nrpe daemon and plugins.</p>
+<pre><code>rpm -ivh perl-Crypt-DES-2.05-3.2.el4.rf.i386.rpm
+rpm -ivh perl-Socket6-0.20-1.el4.rf.i386.rpm
+rpm -ivh perl-Net-SNMP-5.2.0-1.2.el4.rf.noarch.rpm
+rpm -ivh fping-2.4-1.b2.2.el4.rf.i386.rpm
+rpm -ivh nagios-plugins-1.4.9-1.el4.rf.i386.rpm
+rpm -ivh nagios-nrpe-2.5.2-1.el4.rf.i386.rpm
+</code></pre>
+<h2 id="hp-ux">HP-UX</h2>
+<p>Neither HP or the Nagios team provide  runtime binary's.</p>
+<p>Getting the nrpe agent to work on HPUX  requires you to either compile from source or use 3rd party binaries. </p>
+<p>Unfortunately I never managed to get ssl to work under HPUX so from the nagios server I have to use the -n (noSSL) option with nrpe. eg</p>
+<pre><code>nrpe_check -n -H mailhost.example.com -c check_load
+</code></pre>
+<p>We had the nrpe daemon for hpux-Itanium on a cd, i don't know where it came from i think it was part of "HP's Internet Express repository" it may have come from here http://mayoxide.com/naghpux/</p>
+<p>The PA_RISC nrep daemon can be downloaded from here</p>
+<p>http://www.bennyvision.com/projects/nagios/index.php</p>
+<h2 id="solaris-9">Solaris 9</h2>
+<h1 id="neither-sun-or-the-nagios-team-provide-runtime-binarys">Neither SUN or the Nagios team provide runtime binary's.</h1>
+<p>Instead of compiling from source I chose to go the lazy route of using binary packages provided by www.blastwave.org/packages.php/nrpe . To install this package required a vast number of dependant packages.</p>
+<p>I used the automated dependency system to do the hard work for me. Fist this required the installation of.. pkg-get</p>
+<p>I first downloaded a self contained binary of wget</p>
+<p>http://blastwave.network.com/csw/wget-sparc.bin</p>
+<p>I then used this binary to (w)get the pkg-get</p>
+<pre><code>wget http://blastwave.network.com/csw/pkg_get.pkg
+pkgadd -d pkg_get.pkg  #install the package
+vi /opt/csw/etc/pkg-get.conf  #edit the http proxy value and enable the export proxy directive
+pkg-get -U #download the latest list of packages and their interdependencies
+pkg-get -i wget #install the full version of wget
+</code></pre>
+<p>Now for the big install...</p>
+<pre><code>pkg-get -i nrpe # this will require many dependant packages, just say yes to all .
+</code></pre>
+<p>once this a has finished you will have an installation of nrpe and all the plugins.</p>
+<p>you can test the plugins by running them directly</p>
+<pre><code>/opt/csw/libexec/nagios-plugins/check_load -w 15,10,5 -c 30,25,20
+/opt/csw/libexec/nagios-plugins/check_dummy 0
+</code></pre>
+<p>If this works fine, you can then configure the nrpe daemon</p>
+<p>about the only changes you will have to /opt/csw/etc/nrpe.cfg are to allow the nrpe daemon to accept connections from the nagios server</p>
+<pre><code>allowed_hosts=127.0.0.1,192.168.125.42
+</code></pre>
+<p>and to allow command argument processing</p>
+<pre><code>dont_blame_nrpe=0 # set to 1 if you want to enable
+</code></pre>
+<p>you can now start the daemon manually by running</p>
+<pre><code>/opt/csw/bin/nrpe -d -c /opt/csw/etc/nrpe.cfg
+</code></pre>
+<p>then from a remote host check the daemon by running one of the command that is enabled in the target hosts nrpe.cfg file eg....</p>
+<pre><code>/usr/lib/nagios/plugins/check_nrpe -H {target host}  -c check_load -a -w  1,1,1,2,2,2
+</code></pre>
+<p>Once this is working kill the daemon and set it up via inet.d </p>
+<p>add the following line to /etc/inetd.conf</p>
+<pre><code>nrpe    stream  tcp     nowait  nagios  /opt/csw/bin/nrpe       /opt/csw/bin/nrpe -i -c /opt/csw/etc/nrpe.cfg
+</code></pre>
+<p>add the following line to /etc/services</p>
+<pre><code>nrpe    5666/tcp
+</code></pre>
+<p>force the inet daemon to reread the config files</p>
+<pre><code>pkill -HUP inetd
+</code></pre>
+<p>run the remote check again</p>
+<p>End of Client install section</p>
+              
+            </div>
+          </div>
+          
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      <!--  <a href="../../Disks_and_File_Systems/Extend_lvm_filesystem/" class="btn btn-neutral float-right" title="Extend lvm filesystem"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
+        <a href="../../Disks_and_File_Systems/Extend_lvm_filesystem/index.html" class="btn btn-neutral float-right" title="Extend lvm filesystem">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+      <!-- <a href="../../Commands/hot_add_memory/" class="btn btn-neutral" title="Hot add memory"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
+        <a href="../../Commands/hot_add_memory/index.html" class="btn btn-neutral" title="Hot add memory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Commands/hot_add_memory/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../Disks_and_File_Systems/Extend_lvm_filesystem/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

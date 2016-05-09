@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+# Copyright (c) 2008-11 Qtrac Ltd. All rights reserved.
+# This program or module is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version. It is provided for educational
+# purposes and is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+
+import collections
+import string
+import sys
+import pprint
+
+def mysort(words):
+    return words[1], words[0]   
+  
+words = collections.defaultdict(int)
+strip = string.whitespace + string.punctuation + string.digits + "\"'"
+for filename in sys.argv[1:]:
+    with open(filename) as file:
+        for line in file:
+            for word in line.lower().split():
+                word = word.strip(strip)
+                if len(word) > 2:
+                    words[word] += 1
+for word in sorted(words.items(), key=mysort, reverse = True ):
+    print("'{0}' occurs {1} times".format(word[0], word[1]))
+
+pprint.pprint(words)
+#print(type(words))
+#print(sorted(words, key=mysort))

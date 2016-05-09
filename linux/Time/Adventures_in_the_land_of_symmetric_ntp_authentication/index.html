@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adventures in the land of symmetric ntp authentication - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Adventures in the land of symmetric ntp authentication";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../map/">Map</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>C programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Puppet</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scripting</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Column_tally/">Column tally</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/IP_survey/">IP survey</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_arguments/">Bash arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_case/">Bash case</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_trap/">Bash fail trap</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_function/">Bash function</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_functions/">Bash functions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_nested_if_else/">Bash nested if else</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_read_input/">Bash read input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_scripting/">Bash scripting</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_select/">Bash select</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_sort/">Bash sort</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_string_comparison/">Bash string comparison</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_tips/">Bash tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/diff/">Diff</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/expect/">Expect</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/script_to_markdown/">Script to markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/check_dns_records/">Check dns records</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/linux_networking/">Linux networking</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/local_IP_address_survey/">local IP address survey</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Firewalls and Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/iptables_notes/">Iptables notes</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Software Packaging</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Software_Packaging/apt_get/">Apt get</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core Utils</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/awk/">Awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/rename/">Rename</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/user_creation/">User creation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Clustering</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/cluster_website/">Cluster website</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/homemade_cluster/">Homemade cluster</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Time</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Adventures in the land of symmetric ntp authentication</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#etcntpconf">/etc/ntp.conf</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#etcntpkeys">/etc/ntp/keys</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-of-outputs-when-everything-is-working">Example of outputs when everything is working</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#when-using-the-correct-key-after-starting-the-ntpd-you-should-immediately-see-the-output-for">When using the correct key, after starting the ntpd you should immediately see the output for</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#the-ntp-q-wont-show-an-asterix-syspeer-until-the-client-has-had-enough-time-to-validate-the-stability-of-the-ntp-server-and-sync-its-clock">The ntp -q wont show an asterix (sys.peer) until the client has had enough time to validate the stability of the ntp server and sync its clock</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#after-a-few-minutes-depending-on-the-time-disparity-the-clocks-should-sync-and-the-outputs-should-be">After a few minutes (depending on the time disparity) the clocks should sync and the outputs should be...</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#when-the-client-has-been-synchronized-you-should-see-a-message-similar-to-the-following">When the client has been synchronized you should see a message similar to the following</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#possible-error-scenarios">Possible error scenarios</a></li>
+                
+                    <li><a class="toctree-l4" href="#1-specifying-a-key-number-that-doesnt-match-on-the-ntp-server">1. Specifying a key number that doesn't match on the ntp server,</a></li>
+                
+                    <li><a class="toctree-l4" href="#2-when-using-an-incorrect-or-corrupted-key-egif-using-a-script-to-deploy-the-key-have-you-escaped-the-extended-ascii-values-in-the-key">2. When using an incorrect or corrupted key (eg...if using a script to deploy the key have you escaped the extended ascii values in the key)</a></li>
+                
+                    <li><a class="toctree-l4" href="#3-specifying-an-ntp-server-device-ip-when-that-device-dose-not-have-symmetric-authentication-turned-on">3. Specifying an NTP server device IP when that device dose not have symmetric authentication turned on</a></li>
+                
+                    <li><a class="toctree-l4" href="#4-when-specifying-a-windows-domain-controller-that-does-not-support-symmetric-key-authentication">4. When specifying a windows domain controller that does not support symmetric key authentication</a></li>
+                
+                    <li><a class="toctree-l4" href="#5-specifying-the-incorrect-ip-or-the-ip-of-a-non-reachable-ntp-device">5. Specifying the incorrect IP or the IP of a non reachable NTP device</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Setting_time/">Setting time</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>RedHat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/kickstart/">Kickstart</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Satellite spacewalk</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Yum rpm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Commands</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/email_on_linux/">Email on linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/hot_add_memory/">Hot add memory</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Monitoring</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Disks and File Systems</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/rsync/">Rsync</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Time &raquo;</li>
+        
+      
+    
+    <li>Adventures in the land of symmetric ntp authentication</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>To configure symmetric key NTP authentication for the RedHat NTP client, the following 2 files need to be configured.</p>
+<h3 id="etcntpconf">/etc/ntp.conf</h3>
+<pre><code>#symmetric key authentication
+restrict -6 default kod nomodify nopeer notrap noquery
+restrict 127.0.0.1
+restrict -6 ::1
+tinker panic 0
+driftfile /var/lib/ntp/drift
+keys /etc/ntp/keys
+server 10.10.10.1 version 2 key 2
+server 10.0.10.1 version 2 key 2
+trustedkey 2
+requestkey 2
+controlkey 2
+</code></pre>
+<h3 id="etcntpkeys">/etc/ntp/keys</h3>
+<pre><code>#key_number key_type Key
+2           M        !@#$%^&amp;*()
+</code></pre>
+<p>Unfortunately the default logging level and debug mode of the redhat ntp client does not output any useful messages to syslog regarding symmetric key authentication.
+Therefore to fault find you will have to use a combination of... </p>
+<ol>
+<li>ntpq -p  ## print list of peers and their state</li>
+<li>ntpq -c as ## print a list of association identifiers and peer statuses</li>
+<li>ntpd in debug mode  ## probably best to just ignore this option or anything else in syslog besides the message indicating a successful sync</li>
+</ol>
+<h3 id="example-of-outputs-when-everything-is-working">Example of outputs when everything is working</h3>
+<h3 id="when-using-the-correct-key-after-starting-the-ntpd-you-should-immediately-see-the-output-for">When using the correct key, after starting the ntpd you should immediately see the output for</h3>
+<pre><code>[root@linuxserver1 ~]# ntpq -c as
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 16777  f014   yes   yes   ok     reject   reachable  1
+  2 16778  f014   yes   yes   ok     reject   reachable  1
+</code></pre>
+<ol>
+<li>reach = yes</li>
+<li>auth = ok</li>
+<li>condition = reject  </li>
+<li>last_event = reachable </li>
+</ol>
+<h3 id="the-ntp-q-wont-show-an-asterix-syspeer-until-the-client-has-had-enough-time-to-validate-the-stability-of-the-ntp-server-and-sync-its-clock">The ntp -q wont show an asterix (sys.peer) until the client has had enough time to validate the stability of the ntp server and sync its clock</h3>
+<pre><code>[root@linuxserver1 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ router1. 10.10.0.1     2 u   17   64    1    0.622    0.502   0.001
+ router2. 10.11.0.1     2 u   16   64    1   16.264   -0.395   0.001
+</code></pre>
+<h3 id="after-a-few-minutes-depending-on-the-time-disparity-the-clocks-should-sync-and-the-outputs-should-be">After a few minutes (depending on the time disparity) the clocks should sync and the outputs should be...</h3>
+<pre><code>[root@linuxserver1 ~]# ntpq -c as
+
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 16777  f414   yes   yes   ok   candidat   reachable  1
+  2 16778  f614   yes   yes   ok   sys.peer   reachable  1
+
+  [root@linuxserver1 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
++router1. 10.10.0.1     2 u   56   64  377    0.615    0.767   0.127
+*router2. 10.11.0.1     2 u   59   64  377   15.865   -0.095   0.134
+</code></pre>
+<h3 id="when-the-client-has-been-synchronized-you-should-see-a-message-similar-to-the-following">When the client has been synchronized you should see a message similar to the following</h3>
+<pre><code>syslog message
+Aug  5 12:22:53 linuxserver1 ntpd[32065]: synchronized to 10.10.10.1, stratum 2
+</code></pre>
+<hr />
+<h2 id="possible-error-scenarios">Possible error scenarios</h2>
+<h3 id="1-specifying-a-key-number-that-doesnt-match-on-the-ntp-server">1. Specifying a key number that doesn't match on the ntp server,</h3>
+<h4 id="eg-client-specifies-key-number-1-server-has-key-number-2">eg... client specifies key number 1  server has key number 2</h4>
+<pre><code>[root@linuxserver1 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ router1. .AUTH.          16 u    -   64    0    0.000    0.000   0.000
+ router2. .AUTH.          16 u    -   64    0    0.000    0.000   0.000
+
+ [root@linuxserver1 ~]# ntpq -c as
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 62393  c000   yes   yes   bad    reject
+  2 62394  c000   yes   yes   bad    reject
+
+syslog message
+Aug  8 11:30:30 linuxserver1 ntpd[20387]: transmit: 10.10.0.1  key 1 not found
+</code></pre>
+<h3 id="2-when-using-an-incorrect-or-corrupted-key-egif-using-a-script-to-deploy-the-key-have-you-escaped-the-extended-ascii-values-in-the-key">2. When using an incorrect or corrupted key (eg...if using a script to deploy the key have you escaped the extended ascii values in the key)</h3>
+<pre><code>[root@linuxserver1 ~]# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ router1. .AUTH.          16 u    -   64    0    0.000    0.000   0.001
+ router2. .AUTH.          16 u    -   64    0    0.000    0.000   0.001
+
+ [root@linuxserver1 ~]# ntpq -c as
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 62393  c000   yes   yes   bad    reject
+  2 62394  c000   yes   yes   bad    reject
+
+~~Note there is no indication in /var/log/messages that the key is bad~~
+</code></pre>
+<h3 id="3-specifying-an-ntp-server-device-ip-when-that-device-dose-not-have-symmetric-authentication-turned-on">3. Specifying an NTP server device IP when that device dose not have symmetric authentication turned on</h3>
+<pre><code>~~ the client authenticates even though it should not ~~
+
+Aug  9 13:55:17 linuxserver1 ntpd[4101]: synchronized to router3, stratum 2
+
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
++router3. 10.10.0.1     2 u    2   64  377    0.566   -1.045   1.085
+*router4. 10.11.0.1     2 u    6   64  377   15.751    1.584   1.122
+
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 61738  f414   yes   yes   ok   candidat   reachable  1
+  2 61739  f614   yes   yes   ok   sys.peer   reachable  1
+~~ it appears that the device may authenticate to the local router that is using symmetric authentication to its upstream device
+</code></pre>
+<h3 id="4-when-specifying-a-windows-domain-controller-that-does-not-support-symmetric-key-authentication">4. When specifying a windows domain controller that does not support symmetric key authentication</h3>
+<pre><code>     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ router1. .INIT.          16 u    -   64    0    0.000    0.000   0.000
+ router2. .INIT.          16 u    -   64    0    0.000    0.000   0.000
+
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 30681  c000   yes   yes   bad    reject
+  2 30682  c000   yes   yes   bad    reject
+</code></pre>
+<h3 id="5-specifying-the-incorrect-ip-or-the-ip-of-a-non-reachable-ntp-device">5. Specifying the incorrect IP or the IP of a non reachable NTP device</h3>
+<pre><code>     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ 100.80.88.255   .INIT.          16 u    -   64    0    0.000    0.000   0.000
+ 100.80.88.254   .INIT.          16 u    -   64    0    0.000    0.000   0.000
+
+ind assID status  conf reach auth condition  last_event cnt
+===========================================================
+  1 47581  c000   yes   yes   bad    reject
+  2 47582  c000   yes   yes   bad    reject
+</code></pre>
+              
+            </div>
+          </div>
+          
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      <!--  <a href="../Setting_time/" class="btn btn-neutral float-right" title="Setting time"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
+        <a href="../Setting_time/index.html" class="btn btn-neutral float-right" title="Setting time">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+      <!-- <a href="../../Clustering/simple.cluster.conf/" class="btn btn-neutral" title="Simple.cluster.conf"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
+        <a href="../../Clustering/simple.cluster.conf/index.html" class="btn btn-neutral" title="Simple.cluster.conf"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Clustering/simple.cluster.conf/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Setting_time/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

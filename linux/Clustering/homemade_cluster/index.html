@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Homemade cluster - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Homemade cluster";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../map/">Map</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>C programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Puppet</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scripting</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Column_tally/">Column tally</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/IP_survey/">IP survey</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_arguments/">Bash arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_case/">Bash case</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_trap/">Bash fail trap</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_function/">Bash function</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_functions/">Bash functions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_nested_if_else/">Bash nested if else</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_read_input/">Bash read input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_scripting/">Bash scripting</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_select/">Bash select</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_sort/">Bash sort</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_string_comparison/">Bash string comparison</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_tips/">Bash tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/diff/">Diff</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/expect/">Expect</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/script_to_markdown/">Script to markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/check_dns_records/">Check dns records</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/linux_networking/">Linux networking</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/local_IP_address_survey/">local IP address survey</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Firewalls and Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/iptables_notes/">Iptables notes</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Software Packaging</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Software_Packaging/apt_get/">Apt get</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core Utils</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/awk/">Awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/rename/">Rename</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/user_creation/">User creation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Clustering</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_cluster_build/">HA LVM cluster build</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cluster_website/">Cluster website</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Homemade cluster</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#operating-systems">Operating Systems</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#the-tie-breaker-server-requires">The tie-breaker server requires...</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#files">Files</a></li>
+                
+                    <li><a class="toctree-l4" href="#windows-steward-server">Windows Steward server</a></li>
+                
+                    <li><a class="toctree-l4" href="#application-primary-server">Application Primary Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#application-dr-server">Application DR Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#netapp-controller">NetApp controller</a></li>
+                
+                    <li><a class="toctree-l4" href="#diagrams">Diagrams</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#script-contents">Script contents.................</a></li>
+                
+                    <li><a class="toctree-l4" href="#ssh-failps1">ssh-fail.ps1</a></li>
+                
+                    <li><a class="toctree-l4" href="#schedulexml">schedule.xml</a></li>
+                
+                    <li><a class="toctree-l4" href="#primarytestshbash-script-locally-executed-on-the-application-primary-servers">PrimaryTest.sh...bash script locally executed on the Application Primary servers</a></li>
+                
+                    <li><a class="toctree-l4" href="#confirmpridownshbash-script-remotely-connects-to-application-primary-server-and-runs-primarytestsh">ConfirmPriDown.sh....bash script remotely connects to Application Primary Server and runs PrimaryTest.sh</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../simple.cluster.conf/">Simple.cluster.conf</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Time</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Adventures_in_the_land_of_symmetric_ntp_authentication/">Adventures in the land of symmetric ntp authentication</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Setting_time/">Setting time</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>RedHat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/kickstart/">Kickstart</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Satellite spacewalk</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Yum rpm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Commands</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/email_on_linux/">Email on linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/hot_add_memory/">Hot add memory</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Monitoring</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Disks and File Systems</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/rsync/">Rsync</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Clustering &raquo;</li>
+        
+      
+    
+    <li>Homemade cluster</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>To mitigate a site failure at the primary site the 4 custom_application applications are failed over to the secondary site.</p>
+<p>A windows 2008 tie-breaker server located at a third site  monitors the primary cluster via SSH every 5 seconds. </p>
+<p>If it detects a failure it asks the DR custom_application server to confirm that the primary site has failed.</p>
+<p>If both the tie-breaker and the DR server agree that the primary site is down. Then the tie-breaker server executes the failover scripts located on the DR servers which perform the failover.</p>
+<h2 id="operating-systems">Operating Systems</h2>
+<ul>
+<li>Application servers are RHEL 5.9</li>
+<li>Steward server is windows 2008</li>
+</ul>
+<h2 id="the-tie-breaker-server-requires">The tie-breaker server requires...</h2>
+<ul>
+<li>powershell </li>
+<li>dotnet </li>
+<li>user account </li>
+<li>scheduled task for each monitored cluster</li>
+<li>powershell script</li>
+<li>ssh wrapper script (powershell to dotnet) ssh.net library</li>
+<li>log directory</li>
+<li>public ssh key of the primary and the DR servers (to enable paswordlSERVER login)</li>
+</ul>
+<h2 id="files">Files</h2>
+<h4 id="windows-steward-server">Windows Steward server</h4>
+<pre><code>id_rsa              ## ssh private key to allow loginto linux servers
+id_rsa.pub          ## ssh public key to allow loginto linux servers
+Renci.SshNet.dll    ## SSH.net library from http://sshnet.codeplex.com/ 
+SSH-SSERVERions.psd1   ## powershell wrapper for SSH.net from http://www.powershelladmin.com/wiki/SSH_from_PowerShell_using_the_SSH.NET_library
+SSH-SSERVERions.psm1   ## licence file
+ssh-fail.ps1        ## powershell script to login and checl custom_application servers from Seamus Murray
+schedule.xml        ## exported windows shedual task to run the script
+</code></pre>
+<h4 id="application-primary-server">Application Primary Server</h4>
+<pre><code>PrimaryTest.sh      ## bash script locally execute on the Application Primary servers from Seamus Murray
+</code></pre>
+<h4 id="application-dr-server">Application DR Server</h4>
+<pre><code>ConfirmPriDown.sh   ## remotely connects to Application Primary Server and runs PrimaryTest.sh from Seamus Murray
+MountStart.sh       ## Starts the Application application
+Break-n-Mount.sh    ## only on the index servers remotely connects to netapp controller, breaks the mirror, maps the lun and mounts it
+</code></pre>
+<h4 id="netapp-controller">NetApp controller</h4>
+<pre><code>id_rsa.pub          ## ssh public key of SnapMirror-user on the 2 custom_application index DR servers
+</code></pre>
+<hr />
+<h3 id="diagrams">Diagrams</h3>
+<hr />
+<h1 id="script-contents">Script contents.................</h1>
+<h3 id="ssh-failps1">ssh-fail.ps1</h3>
+<pre><code>#ssh-fail.ps1        
+#powershell script to login and check custom_application servers from Seamus Murray
+
+Param(
+  [string]$cluster  
+)
+Import-Module  SSH-SSERVERions
+
+
+#Start-Transcript -path C:\ssh-fail2\logs\transcript.txt -append
+
+
+##set dubug level
+
+#$debug=1
+#if ( $debug -eq 1 ) {
+#               # Debug log file
+#               $deboutfile=$scriptdir+"\outputlog."+$siteid+".log"
+#               start-transcript -path $deboutfile -force
+#               # Shows a trace of each line being run with variables as variables
+#               set-psdebug -trace 1
+#
+#}
+
+if ( $cluster -eq 'Indexer' -Or  $cluster -eq 'DataBase' -Or $cluster -eq 'FrontEndA' -Or $cluster -eq 'FrontEndB')
+{
+
+}
+else{
+Write-Host "you must specify the cluster to test using an argument"
+break
+}
+
+##           IP                    Function             Hostname          Role    
+Switch ($cluster)
+{
+FrontEndA {
+$server_P1='10.10.10.51' #a    Application FrontEnd     SERVERFW1TS    QLD-APP-5
+$server_P2='10.10.10.52' #a    Application FrontEnd     SERVERFW2TS    QLD-APP-6
+$server_VIP='10.10.10.53'#a    Application FrontEnd     VIPA
+$server_DR='10.10.11.32' #a    Application FrontEnd     SERVERFW3TS    SYD-APP-3
+}
+FrontEndB{
+$server_P1='10.10.10.55' #b    Application FrontEnd     SERVERFW3TS    QLD-APP-7
+$server_P2='10.10.10.56' #b    Application FrontEnd     SERVERFW4TS    QLD-APP-8
+$server_VIP='10.10.10.57'#b    Application FrontEnd     VIPB 
+$server_DR='10.10.11.33' #b    Application FrontEnd     SERVERFW2TS    SYD-APP-4
+}
+Indexer{
+$server_P1='10.10.10.77' #c    Application Indexer      SERVERIX1TS    QLD-APP-1
+$server_P2='10.10.10.78' #c    Application Indexer      SERVERIX2TS    QLD-APP-2
+$server_VIP='10.10.10.76'#c    Application Indexer      VIPI
+$server_DR='10.10.11.17' #c    Application Indexer      SERVERIX3TS    SYD-APP-1
+}
+DataBase{
+$server_P1='10.10.10.85' #d    Application DataBase     SERVERHD1TS    QLD-APP-3
+$server_P2='10.10.10.86' #d    Application DataBase     SERVERHD2TS    QLD-APP-4
+$server_VIP='10.10.10.84'#d    Application DataBase     VIPD
+$server_DR='10.10.11.18' #d    Application DataBase     SERVERHD3TS    SYD-APP-2
+}
+}
+
+##set log file to local directory  eg..2012-01-1_0000_10.10.10.51_custom_applicationfail
+$Logfile = "c:\ssh-fail2\logs\$(get-date -uformat %Y-%m-%d_%H%M)"+"_$server_P1"+"_custom_applicationfail.log"
+
+#Write_Host $Logfile
+#LogWrite  $env:PSModulePath
+Function LogWrite
+{
+   Param ([string]$logstring)
+
+   Add-content $Logfile -value $logstring
+}
+
+$stamped  = "$(Get-Date)" + " starting script "
+LogWrite $stamped
+
+
+
+
+
+#Remote Scripts executed on the linux servers but called from this script
+#You must specify the argument "Up" case sensitive for this test to succeed 
+#If you want to simulate this test failing just change the argument
+$ApplicationPrimaryTest='/home/failover-user/custom_applicationfailover0.1/primary-test.sh Up'
+
+#Specifiy which server the DR should test by assigning a single argument....P1 P2 or VIP
+#the Various IPs are stored both locally in this file and in   ApplicationConfirmPriDown.sh on the respective DR servers
+#If you want to simulate this test failing just change the argument to something else
+$ApplicationConfirmPriDown='/home/failover-user/custom_applicationfailover0.1/primary-confirm-fail.sh VIP'
+
+#this command needs to execute the start up script via sudo this either requires a tty which "SSH-SSERVERions" doesn't provide or..editing sudo to disable the requiretty in /etc/sudoers
+#This script varies slightly between the Application FrontEnds and the Application Indexers
+#On the Application indexers the NetApp mirrored lun's need to be broken and mounted this is handled by the..
+#Break-n-Mount.sh script called from within the ApplicationMountStart.sh executed from the DR servers
+$ApplicationMountStart='/home/failover-user/custom_applicationfailover0.1/initiate-dr.sh Start'
+
+#called from within $ApplicationMountStart on the Indexer DR servers
+#$Break-n-Mount='/home/failover-user/custom_applicationfailover0.1/break-snap-mirror.sh RESYNC'
+
+
+
+
+
+while("forever")
+{
+    New-SshSSERVERion -ComputerName $server_P1 -Username 'failover-user'  -KeyFile 'C:\ssh-fail2\id_rsa' # | out-null 
+    New-SshSSERVERion -ComputerName $server_DR -Username 'failover-user'  -KeyFile 'C:\ssh-fail2\id_rsa' # | out-null
+
+
+try
+{
+ #Write_Host "Testing ApplicationPrimaryTest on $server_P1 1st loop"
+ $stamped = "$(Get-Date)" + " Testing ApplicationPrimaryTest on $server_P1 1st loop"
+ LogWrite  $stamped
+ $CmdOutput1 = Invoke-SshCommand -ComputerName $server_P1 -Command $ApplicationPrimaryTest -Quiet
+}
+catch [Exception]
+{ 
+  $CmdOutput1 = "SSH_SSERVERION_FAILED" 
+  #Write_Host"ERROR: $CmdOutput1 during 1st loop" -foregroundcolor white -backgroundcolor red
+  $stamped  = "$(Get-Date)" + " ERROR: $CmdOutput1 during 1st loop"
+  LogWrite $stamped
+}
+
+
+    #Check Primary Server for status
+    if ( $CmdOutput1 -ne 'Primary_App_Is_Up' ) { 
+        #Write_Host "ERROR: Primary Failure Detected"
+        #Write_Host "Waiting 10 seconds before retrying"
+        $stamped =  "$(Get-Date)" + " ERROR: Check Primary did not return Primary_App_Is_Up   Waiting 10 seconds before retrying"        
+        LogWrite $stamped
+        sleep 10
+
+
+        try
+       {
+           #Write_Host "Testing ApplicationPrimaryTest on $server_P1 2nd loop"
+           $CmdOutput1 = Invoke-SshCommand -ComputerName $server_P1 -Command $ApplicationPrimaryTest -Quiet
+       }
+       catch [Exception]
+           {
+             $CmdOutput1 = "SSH_SSERVERION_FAILED"
+             #Write_Host"$CmdOutput1 during 2nd loop" -foregroundcolor white -backgroundcolor red
+             $stamped =  "$(Get-Date)" + " $CmdOutput1 during 2nd loop"
+             LogWrite $stamped
+       }
+
+                  #Check Primary Server for status after a previous failure
+                  if ( $CmdOutput1 -ne 'Primary_App_Is_Up' ) { 
+                  #Write_Host "ERROR: Primary Failure Detected 2 times"
+                $stamped =  "$(Get-Date)" + " ERROR: Check Primary did not return Primary_App_Is_Up after 2 tries"
+                LogWrite $stamped
+
+           try
+              {
+                  $CmdOutput2 = Invoke-SshCommand -ComputerName $server3 -Command $ApplicationPrimaryTest -Quiet
+              }
+              catch [Exception]
+                  {
+                  #Write_Host "ERROR:ssh sSERVERion to $server_P1 has failed. Unable to execute ApplicationPrimaryTest"
+               $stamped =  "$(Get-Date)" + " ERROR:ssh sSERVERion to $server_P1 has failed. Unable to execute ApplicationPrimaryTest"
+               LogWrite $stamped
+              }
+
+                    #If this host fails 2 time to determine if Primary_App_Is_Up, then ask DR server to also run the check          
+                    if ( $CmdOutput2 -ne 'Primary_App_Is_Up' ) {     
+                    #Write_Host "ERROR: DR Server $server3 is also reporting Primary Failure....... Need to Initiate DR"
+                    $stamped =  "$(Get-Date)" + " ERROR: DR Server is also reporting Primary Failure....... Need to Initiate DR"
+                    LogWrite $stamped
+
+
+                try
+            {
+             $CmdOutput3 = Invoke-SshCommand -ComputerName $server_DR -Command $ApplicationMountStart  -Quiet
+            }
+            catch [Exception]
+            {
+            $CmdOutput3 = "SSH_SSERVERION_FAILED"
+              #Write_Host "ERROR:ssh sSERVERion to $server_DR has failed. Unable to execute ApplicationMountStart"
+            $stamped =  "$(Get-Date)" + " ERROR:ssh sSERVERion to $server_DR has failed. Unable to execute ApplicationMountStart"
+            LogWrite $stamped
+
+                        }
+
+
+                if ( $CmdOutput3 -ne 'App_Started' ) {     
+                #Write_Host "ERROR: DR server $server_DR Failed to start the App"
+                $stamped =  "$(Get-Date)" + " ERROR: DR server $server_DR Failed to start the App"
+                LogWrite $stamped
+
+
+                }
+                else {
+                   #Write_Host "DR server $server_DR has started the App"
+                   $stamped =  "$(Get-Date)" + " DR server $server_DR has started the App"
+                   LogWrite $stamped
+                   $stamped =  "$(Get-Date)" + " Nothing else to do...Failover script self terminating"
+                   LogWrite $stamped
+                   break
+                }
+
+        }
+        else {
+            #Write_Host "DR server $server_DR is reporting Primary $server_P1 is OK: Nothing To Do"
+            #Write_Host "Assuming the link between me and the Primary server has failed"
+            $stamped =  "$(Get-Date)" + " Assuming the link between me and the Primary server has failed"
+            LogWrite $stamped
+        } 
+    }
+              else {
+                #Write_Host "Primary server $server_P1 is OK: Nothing To Do             2nd test"   
+                $stamped =  "$(Get-Date)" + " Primary server $server_P1 is OK: Nothing To Do             2nd test" 
+                LogWrite $stamped
+                   } 
+    }
+    else {
+        #Write_Host "Primary server $server_P1 is OK: Nothing To Do             1st test"   
+        $stamped =  "$(Get-Date)" + " Primary server $server_P1 is OK: Nothing To Do             1st test" 
+        LogWrite $stamped
+    }
+
+    sleep 5
+
+}
+
+Remove-SshSSERVERion -RemoveAll
+
+#Stop-Transcript
+</code></pre>
+<h3 id="schedulexml">schedule.xml</h3>
+<pre><code>#schedule.xml
+#exported windows shedual task to run the script
+&lt;?xml version="1.0" encoding="UTF-16"?&gt;
+&lt;Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"&gt;
+  &lt;RegistrationInfo&gt;
+    &lt;Date&gt;2012-01-1T12:30:10&lt;/Date&gt;
+    &lt;Author&gt;ABCDEFG123\seamus&lt;/Author&gt;
+  &lt;/RegistrationInfo&gt;
+  &lt;Triggers&gt;
+    &lt;RegistrationTrigger&gt;
+      &lt;Repetition&gt;
+        &lt;Interval&gt;PT15M&lt;/Interval&gt;
+        &lt;StopAtDurationEnd&gt;false&lt;/StopAtDurationEnd&gt;
+      &lt;/Repetition&gt;
+      &lt;ExecutionTimeLimit&gt;PT1H&lt;/ExecutionTimeLimit&gt;
+      &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;/RegistrationTrigger&gt;
+  &lt;/Triggers&gt;
+  &lt;Principals&gt;
+    &lt;Principal id="Author"&gt;
+      &lt;UserId&gt;ABCDEFG123\Administrator&lt;/UserId&gt;
+      &lt;LogonType&gt;Password&lt;/LogonType&gt;
+      &lt;RunLevel&gt;HighestAvailable&lt;/RunLevel&gt;
+    &lt;/Principal&gt;
+  &lt;/Principals&gt;
+  &lt;Settings&gt;
+    &lt;MultipleInstancesPolicy&gt;StopExisting&lt;/MultipleInstancesPolicy&gt;
+    &lt;DisallowStartIfOnBatteries&gt;false&lt;/DisallowStartIfOnBatteries&gt;
+    &lt;StopIfGoingOnBatteries&gt;true&lt;/StopIfGoingOnBatteries&gt;
+    &lt;AllowHardTerminate&gt;true&lt;/AllowHardTerminate&gt;
+    &lt;StartWhenAvailable&gt;true&lt;/StartWhenAvailable&gt;
+    &lt;RunOnlyIfNetworkAvailable&gt;false&lt;/RunOnlyIfNetworkAvailable&gt;
+    &lt;IdleSettings&gt;
+      &lt;StopOnIdleEnd&gt;true&lt;/StopOnIdleEnd&gt;
+      &lt;RestartOnIdle&gt;false&lt;/RestartOnIdle&gt;
+    &lt;/IdleSettings&gt;
+    &lt;AllowStartOnDemand&gt;true&lt;/AllowStartOnDemand&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Hidden&gt;false&lt;/Hidden&gt;
+    &lt;RunOnlyIfIdle&gt;false&lt;/RunOnlyIfIdle&gt;
+    &lt;WakeToRun&gt;false&lt;/WakeToRun&gt;
+    &lt;ExecutionTimeLimit&gt;PT1H&lt;/ExecutionTimeLimit&gt;
+    &lt;Priority&gt;7&lt;/Priority&gt;
+  &lt;/Settings&gt;
+  &lt;Actions Context="Author"&gt;
+    &lt;Exec&gt;
+      &lt;Command&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&lt;/Command&gt;
+      &lt;Arguments&gt;-File "C:\ssh-fail2\slc-tie-breaker.ps1" FrontEndA -ExecutionPolicy RemoteSigned -noprofile -noninteractive&lt;/Arguments&gt;
+      &lt;WorkingDirectory&gt;C:\ssh-fail2\&lt;/WorkingDirectory&gt;
+    &lt;/Exec&gt;
+  &lt;/Actions&gt;
+&lt;/Task&gt;
+</code></pre>
+<h3 id="primarytestshbash-script-locally-executed-on-the-application-primary-servers">PrimaryTest.sh...bash script locally executed on the Application Primary servers</h3>
+<pre><code>#!/bin/bash
+
+    if [ "$1" = "Up" ]; then
+                Is_App_Up="Primary_App_Is_Up"
+    else
+                Is_App_Up="Primary_App_Is_Down"
+    fi
+echo $Is_App_Up
+echo `date` &gt;&gt; /tmp/log
+</code></pre>
+<h3 id="confirmpridownshbash-script-remotely-connects-to-application-primary-server-and-runs-primarytestsh">ConfirmPriDown.sh....bash script remotely connects to Application Primary Server and runs PrimaryTest.sh</h3>
+<pre><code>#!/bin/bash
+
+VIP=10.10.10.53
+P1=10.10.10.51
+P2=10.10.10.52
+
+if [[ "$1" = "VIP" ]]; then TEST="$VIP"
+   elif [[ "$1" = "P1" ]]; then TEST="$P1"
+   elif [[ "$1" = "P2" ]]; then TEST="$P2"
+else
+echo "Usage: you much define which node to test {VIP,P1,P2}"
+exit 0
+fi
+
+if [[ `ssh $TEST -q -C /home/failover-user/custom_applicationfailover0.1/primary-test.sh Up` = "Primary_App_Is_Up"  ]]  ; then
+  echo Primary_App_Is_Up
+else
+   echo test-failed
+fi
+
+
+#!/bin/bash
+
+echo  &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+echo `date`  start &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+
+if [ "$1" = "Start" ] ;
+   then
+  # Start_App="App_Started"
+
+       echo `date` " " $0" " $1 &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+        /usr/bin/sudo /etc/init.d/custom_application-heavy restart &amp;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+        echo "sudo /etc/init.d/custom_application-heavy restart" &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+
+        if  [[ $? = "0"  ]]
+                then
+                 Start_App="App_Started"
+                 echo $Start_App
+                else
+                 echo $0 Failed to restart app
+                 echo $Start_App
+
+        fi
+   else
+   echo `date` Usage $0 Start &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+fi
+
+echo `date`  finsihed &gt;&gt; /home/failover-user/custom_applicationfailover0.1/startlog
+
+#/usr/bin/sudo /etc/init.d/custom_application-heavy restart
+</code></pre>
+              
+            </div>
+          </div>
+          
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      <!--  <a href="../simple.cluster.conf/" class="btn btn-neutral float-right" title="Simple.cluster.conf"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
+        <a href="../simple.cluster.conf/index.html" class="btn btn-neutral float-right" title="Simple.cluster.conf">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+      <!-- <a href="../cluster_website/" class="btn btn-neutral" title="Cluster website"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
+        <a href="../cluster_website/index.html" class="btn btn-neutral" title="Cluster website"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../cluster_website/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../simple.cluster.conf/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

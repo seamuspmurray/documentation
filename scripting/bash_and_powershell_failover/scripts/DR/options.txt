@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $1 = "VIP" ] || [ $1 = "P1" ] || [ $1 = "P2" ]; then
+TEST="$1"
+echo $TEST
+else
+echo "Usage: you much define which node to test {VIP,P1,P2}"
+fi
+

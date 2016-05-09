@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HA LVM automatic failover - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "HA LVM automatic failover";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../map/">Map</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>C programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Puppet</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scripting</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Column_tally/">Column tally</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/IP_survey/">IP survey</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_arguments/">Bash arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_case/">Bash case</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_trap/">Bash fail trap</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_function/">Bash function</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_functions/">Bash functions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_nested_if_else/">Bash nested if else</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_read_input/">Bash read input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_scripting/">Bash scripting</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_select/">Bash select</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_sort/">Bash sort</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_string_comparison/">Bash string comparison</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_tips/">Bash tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/diff/">Diff</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/expect/">Expect</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/script_to_markdown/">Script to markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/check_dns_records/">Check dns records</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/linux_networking/">Linux networking</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/local_IP_address_survey/">local IP address survey</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Firewalls and Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/iptables_notes/">Iptables notes</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Software Packaging</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Software_Packaging/apt_get/">Apt get</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core Utils</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/awk/">Awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/rename/">Rename</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/user_creation/">User creation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Clustering</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">HA LVM automatic failover</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#below-is-a-test-of-the-automatic-failover-of-a-2-node-rhel-57-cluster">below is a test of the automatic failover of a 2 node RHEL 5.7 cluster</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#the-kernel-crash-will-be-triggered-by-executing">the kernel crash will be triggered by executing</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#status-of-cluster-before-triggering-kernel-panic-on-primary-node-hostname1">status of cluster before triggering kernel panic on primary node hostname1</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#status-of-cluster-after-triggering-kernel-panic-on-primary-node-hostname1">status of cluster after triggering kernel panic on primary node hostname1</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#status-of-cluster-during-fencing-and-service-migration">status of cluster during fencing and service migration</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#status-of-cluster-after-fencing-and-service-migration">status of cluster after fencing and service migration</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_cluster_build/">HA LVM cluster build</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cluster_website/">Cluster website</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../homemade_cluster/">Homemade cluster</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../simple.cluster.conf/">Simple.cluster.conf</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Time</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Adventures_in_the_land_of_symmetric_ntp_authentication/">Adventures in the land of symmetric ntp authentication</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Setting_time/">Setting time</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>RedHat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/kickstart/">Kickstart</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Satellite spacewalk</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Yum rpm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Commands</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/email_on_linux/">Email on linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/hot_add_memory/">Hot add memory</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Monitoring</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Disks and File Systems</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/rsync/">Rsync</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Clustering &raquo;</li>
+        
+      
+    
+    <li>HA LVM automatic failover</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="below-is-a-test-of-the-automatic-failover-of-a-2-node-rhel-57-cluster">below is a test of the automatic failover of a 2 node RHEL 5.7 cluster</h3>
+<ul>
+<li>There is 1 service called ServiceName</li>
+<li>There is a single shared VG/LV  called /dev/shared_vg1/shared_lv1</li>
+</ul>
+<hr />
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;cluster alias="round-and-round" config_version="40" name="round-and-round"&gt;
+        &lt;fence_daemon clean_start="0" post_fail_delay="0" post_join_delay="3"/&gt;
+        &lt;clusternodes&gt;
+                &lt;clusternode name="hostname1.domain.private" nodeid="1" votes="1"&gt;
+                        &lt;fence&gt;
+                                &lt;method name="1"&gt;
+                                        &lt;device name="ipmi-hostname1"/&gt;
+                                &lt;/method&gt;
+                        &lt;/fence&gt;
+                &lt;/clusternode&gt;
+                &lt;clusternode name="hostname2.domain.private" nodeid="2" votes="1"&gt;
+                        &lt;fence&gt;
+                                &lt;method name="1"&gt;
+                                        &lt;device name="ipmi-hostname2"/&gt;
+                                &lt;/method&gt;
+                        &lt;/fence&gt;
+                &lt;/clusternode&gt;
+        &lt;/clusternodes&gt;
+        &lt;cman expected_votes="1" two_node="1"&gt;
+                &lt;multicast addr="224.0.0.001"/&gt;
+        &lt;/cman&gt;
+        &lt;fencedevices&gt;
+                &lt;fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.1" login="test-user" name="ipmi-hostname1" passwd="test-password" delay="30"/&gt;
+                &lt;fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.2" login="test-user" name="ipmi-hostname2" passwd="test-password"/&gt;=
+        &lt;/fencedevices&gt;
+        &lt;rm&gt;
+                &lt;failoverdomains&gt;
+                        &lt;failoverdomain name="FailDomain" ordered="1" restricted="1"&gt;
+                                &lt;failoverdomainnode name="hostname1.domain.private" priority="1"/&gt;
+                                &lt;failoverdomainnode name="hostname2.domain.private" priority="2"/&gt;
+                        &lt;/failoverdomain&gt;
+                &lt;/failoverdomains&gt;
+                &lt;resources&gt;
+                        &lt;lvm lv_name="shared_lv1" name="shared_lv1_name" self_fence="1" vg_name="shared_vg1"/&gt;
+                        &lt;fs device="/dev/shared_vg1/shared_lv1" force_fsck="0" force_unmount="1" fsid="6742" fstype="ext3" mountpoint="/mnt/shared" name="shared-fs" self_fence="1"/&gt;
+                        &lt;ip address="192.168.1.3" monitor_link="1"/&gt;
+                        &lt;script file="/usr/local/bin/pc.sh" name="start.sh"/&gt;
+                &lt;/resources&gt;
+                &lt;service autostart="1" domain="FailDomain" exclusive="0" name="ServiceName"&gt;
+                        &lt;lvm ref="shared_lv1_name"&gt;
+                                &lt;fs ref="shared-fs"/&gt;
+                        &lt;ip ref="192.168.1.3"&gt;
+                        &lt;script ref="start.sh"/&gt;
+                        &lt;/ip&gt;
+                        &lt;/lvm&gt;
+                &lt;/service&gt;
+        &lt;/rm&gt;
+&lt;/cluster&gt;
+</code></pre>
+<hr />
+<h2 id="the-kernel-crash-will-be-triggered-by-executing">the kernel crash will be triggered by executing</h2>
+<pre><code> echo c &gt; /proc/sysrq-trigger
+</code></pre>
+<h2 id="status-of-cluster-before-triggering-kernel-panic-on-primary-node-hostname1">status of cluster <strong>before</strong> triggering kernel panic on primary node hostname1</h2>
+<pre><code>[root@hostname2 ~]# clustat
+Cluster Status for round-and-round @ Fri July 1 16:31:00 2013
+Member Status: Quorate
+
+ Member Name                             ID   Status
+ ------ ----                             ---- ------
+ hostname2.domain.private                   1 Online, Local, rgmanager
+ hostname1.domain.private                   2 Online
+
+ Service Name                   Owner (Last)                   State
+ ------- ----                   ----- ------                   -----
+ service:ServiceName                  hostname1.domain.private      started
+</code></pre>
+<h2 id="status-of-cluster-after-triggering-kernel-panic-on-primary-node-hostname1">status of cluster <strong>after</strong> triggering kernel panic on primary node hostname1</h2>
+<pre><code>[root@hostname2 ~]# clustat
+Cluster Status for round-and-round @ Fri July 1 16:31:40 2013
+Member Status: Quorate
+
+ Member Name                             ID   Status
+ ------ ----                             ---- ------
+ hostname2.domain.private                   1 Online, Local, rgmanager
+ hostname1.domain.private                   2 Offline
+
+ Service Name                   Owner (Last)                   State
+ ------- ----                   ----- ------                   -----
+ service:ServiceName                  hostname1.domain.private      started
+</code></pre>
+<h2 id="status-of-cluster-during-fencing-and-service-migration">status of cluster <strong>during</strong> fencing and service migration</h2>
+<pre><code>[root@hostname2 ~]# clustat
+Cluster Status for round-and-round @ Fri July 1 16:32:02 2013
+Member Status: Quorate
+
+ Member Name                             ID   Status
+ ------ ----                             ---- ------
+ hostname2.domain.private                   1 Online, Local, rgmanager
+ hostname1.domain.private                   2 Offline
+
+ Service Name                   Owner (Last)                   State
+ ------- ----                   ----- ------                   -----
+ service:ServiceName                  hostname2.domain.private      starting
+</code></pre>
+<h2 id="status-of-cluster-after-fencing-and-service-migration">status of cluster <strong>after</strong> fencing and service migration</h2>
+<pre><code>[root@hostname2 ~]# clustat
+Cluster Status for round-and-round @ Fri July 1 16:39:13 2013
+Member Status: Quorate
+
+ Member Name                             ID   Status
+ ------ ----                             ---- ------
+ hostname2.domain.private                   1 Online, Local, rgmanager
+ hostname1.domain.private                   2 Offline
+
+ Service Name                   Owner (Last)                   State
+ ------- ----                   ----- ------                   -----
+ service:ServiceName                  hostname2.domain.private      started
+
+
+
+July 1 16:31:16 hostname2 root: seamus simulating kernel panic echo c on primary node
+July 1 16:31:31 hostname2 openais[5968]: [TOTEM] The token was lost in the OPERATIONAL state.
+July 1 16:31:31 hostname2 openais[5968]: [TOTEM] Receive multicast socket recv buffer size (320000 bytes).
+July 1 16:31:31 hostname2 openais[5968]: [TOTEM] Transmit multicast socket send buffer size (320000 bytes).
+July 1 16:31:31 hostname2 openais[5968]: [TOTEM] entering GATHER state from 2.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] entering GATHER state from 0.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] Creating commit token because I am the rep.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] Storing new sequence id for ring 1530
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] entering COMMIT state.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] entering RECOVERY state.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] position [0] member 10.10.90.1:
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] previous ring seq 5420 rep 10.10.90.1
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] aru 5c high delivered 5c received flag 1
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] Did not need to originate any messages in recovery.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] Sending initial ORF token
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] CLM CONFIGURATION CHANGE
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] New Configuration:
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ]      r(0) ip(10.10.90.1)
+July 1 16:31:33 hostname2 kernel: dlm: closing connection to node 2
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] Members Left:
+July 1 16:31:33 hostname2 fenced[5990]: hostname1.domain.private not a cluster member after 0 sec post_fail_delay
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ]      r(0) ip(10.10.90.2)
+July 1 16:31:33 hostname2 fenced[5990]: fencing node "hostname1.domain.private"
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] Members Joined:
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] CLM CONFIGURATION CHANGE
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] New Configuration:
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ]      r(0) ip(10.10.90.1)
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] Members Left:
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] Members Joined:
+July 1 16:31:33 hostname2 openais[5968]: [SYNC ] This node is within the primary component and will provide service.
+July 1 16:31:33 hostname2 openais[5968]: [TOTEM] entering OPERATIONAL state.
+July 1 16:31:33 hostname2 openais[5968]: [CLM  ] got nodejoin message 10.10.90.1
+July 1 16:31:33 hostname2 openais[5968]: [CPG  ] got joinlist message from node 1
+July 1 16:31:50 hostname2 fenced[5990]: fence "hostname1.domain.private" success
+July 1 16:31:50 hostname2 clurgmgrd[6229]: &lt;notice&gt; Taking over service service:ServiceName from down member hostname1.domain.private
+July 1 16:31:51 hostname2 clurgmgrd: [6229]: &lt;notice&gt; Owner of shared_vg1/shared_lv1 is not in the cluster
+July 1 16:31:51 hostname2 clurgmgrd: [6229]: &lt;notice&gt; Stealing shared_vg1/shared_lv1
+July 1 16:31:51 hostname2 clurgmgrd: [6229]: &lt;notice&gt; Activating shared_vg1/shared_lv1
+July 1 16:31:51 hostname2 clurgmgrd: [6229]: &lt;notice&gt; Making resilient : lvchange -ay shared_vg1/shared_lv1
+July 1 16:31:51 hostname2 clurgmgrd: [6229]: &lt;notice&gt; Resilient command: lvchange -ay shared_vg1/shared_lv1
+{wrapped} --config devices{filter=["a|/dev/mpath/mpshared|","a|/dev/mpath/mpsysp2|","r|.*|"]}
+July 1 16:31:51 hostname2 multipathd: dm-12: devmap not registered, can't remove
+July 1 16:31:51 hostname2 multipathd: dm-12: add map (uevent)
+July 1 16:31:52 hostname2 kernel: kjournald starting.  Commit interval 5 seconds
+July 1 16:31:52 hostname2 kernel: EXT3-fs warning: maximal mount count reached, running e2fsck is recommended
+July 1 16:31:52 hostname2 kernel: EXT3 FS on dm-12, internal journal
+July 1 16:31:52 hostname2 kernel: EXT3-fs: dm-12: 1 orphan inode deleted
+July 1 16:31:52 hostname2 kernel: EXT3-fs: recovery complete.
+July 1 16:31:52 hostname2 kernel: EXT3-fs: mounted filesystem with ordered data mode.
+July 1 16:31:54 hostname2 avahi-daemon[5564]: Registering new address record for 192.168.1.3 on eth0.
+July 1 16:33:30 hostname2 clurgmgrd[6229]: &lt;notice&gt; Service service:ServiceName started
+</code></pre>
+              
+            </div>
+          </div>
+          
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      <!--  <a href="../HA_LVM_automatic_failover_manual_fence_override/" class="btn btn-neutral float-right" title="HA LVM automatic failover manual fence override"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
+        <a href="../HA_LVM_automatic_failover_manual_fence_override/index.html" class="btn btn-neutral float-right" title="HA LVM automatic failover manual fence override">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+      <!-- <a href="../../Core_Utils/watch_and_timeout/" class="btn btn-neutral" title="Watch and timeout"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
+        <a href="../../Core_Utils/watch_and_timeout/index.html" class="btn btn-neutral" title="Watch and timeout"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Core_Utils/watch_and_timeout/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../HA_LVM_automatic_failover_manual_fence_override/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

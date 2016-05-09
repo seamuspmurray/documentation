@@ -1,0 +1,137 @@
+#!/bin/bash
+
+LUN_MAP="lun map -f"
+LUN_UNMAP="lun unmap"
+
+
+
+ case "$1" in
+    central )
+exit 1
+                Igroup_share=EPCNT2032001TS_EPCNT2031001TS
+                Igroup_P1=EPCNT2031001TS
+                Igroup_P2=EPCNT2032001TS
+                LUN_[1]="/vol/EPCNT2032001TS_data_1/EPCNT2032001TS_data_1.lun"
+                LUN_[2]="/vol/EPCNT2032001TS_data_2/EPCNT2032001TS_data_2.lun"
+                LUN_[3]="/vol/EPCNT2032001TS_data_3/EPCNT2032001TS_data_3.lun"
+                LUN_[4]="/vol/EPCNT2032001TS_data_4/EPCNT2032001TS_data_4.lun"
+                ;;
+    network )               #EPNTG2032001TS_EPNTG2031001TS
+exit 1
+                Igroup_share=EPNTG2032001TS_EPNTG2031001TS
+                Igroup_P1=EPNTG2031001TS
+                Igroup_P2=EPNTG2032001TS
+                LUN_[1]="/vol/EPNTG2032001TS_data_1/EPNTG2032001TS_data_1.lun"
+                LUN_[2]="/vol/EPNTG2032001TS_data_2/EPNTG2032001TS_data_2.lun"
+                LUN_[3]="/vol/EPNTG2032001TS_data_3/EPNTG2032001TS_data_3.lun"
+                LUN_[4]="/vol/EPNTG2032001TS_data_4/EPNTG2032001TS_data_4.lun"
+                ;;
+    performance )
+exit 1
+                Igroup_share=EPPMG2032001TS_EPPMG2031001TS
+                Igroup_P1=EPPMG2031001TS
+                Igroup_P2=EPPMG2032001TS
+                LUN_[1]="/vol/EPPMG2032001TS_data_1/EPPMG2032001TS_data_1.lun"
+                LUN_[2]="/vol/EPPMG2032001TS_data_2/EPPMG2032001TS_data_2.lun"
+                LUN_[3]="/vol/EPPMG2032001TS_data_3/EPPMG2032001TS_data_3.lun"
+                ;;
+    test )
+                Igroup_share=A_B
+                Igroup_P1=singleA
+                Igroup_P2=singleB
+                LUN_[1]="/vol/seamus_test_vol/lun1.lun"
+                LUN_[2]="/vol/seamus_test_vol/lun2.lun"
+                LUN_[3]="/vol/seamus_test_vol/lun3.lun"
+                LUN_[4]="/vol/seamus_test_vol/lun4.lun"
+                ;;
+    *)
+        echo "Usage: you must specify either {central/network/performance}"
+        exit 1
+esac
+
+
+ function Is_Igroup_Empty {
+
+ if [ `ssh -l netapp 192.168.213.74 'lun show -g '$Igroup_share'' | grep "\/vol" | wc -l` -eq "0" ]
+   then
+    # echo "IGroup $Igroup_share is empty"
+     echo "Is_Empty"
+ else
+    #echo "IGroup $Igroup_share is NOT empty"
+    echo "Not_Empty"
+
+ fi
+
+}
+
+
+ function Igroup_show {
+
+ ssh -l netapp 192.168.213.74 'lun show -g '$Igroup_share''
+}
+
+
+Igroup_show
+
+echo
+echo
+
+Is_Igroup_Empty
+
+
+
+
+
+
+
+
+for lun in ${LUN_[@]} ;do
+
+        ssh -l netapp 192.168.213.74 ''$LUN_UNMAP' '$lun' '$Igroup_share''; echo ;
+        sleep 0.1
+done
+
+#
+Is_Igroup_Empty
+
+sleep 0.1
+
+for lun in ${LUN_[@]} ;do
+        #ugly way of extracting the lun id number `echo $lun | rev | cut -c 5`
+        ssh -l netapp 192.168.213.74 ''$LUN_MAP' '$lun' '$Igroup_P1' '`echo $lun | rev | cut -c 5`''; echo ;
+        sleep 0.1
+done
+ssh -l netapp 192.168.213.74 'lun show -g '$Igroup_P1''
+
+
+
+#### compare the lun count with the number of luns in the array
+if [ `ssh -l netapp 192.168.213.74 'lun show -g '$Igroup_P1'' | wc -l` -eq "${#LUN_[@]}" ] ; then echo yes ; else echo no ; fi
+
+
+
+
+
+
+#####  put the lun back into the shared group
+if [ "$2" = "back" ]
+        then
+echo send me back
+for lun in ${LUN_[@]} ;do
+
+        ssh -l netapp 192.168.213.74 ''$LUN_UNMAP' '$lun' '$Igroup_P1''; echo ;
+        sleep 0.1
+done
+
+for lun in ${LUN_[@]} ;do
+        #ugly way of extracting the lun id number `echo $lun | rev | cut -c 5`
+        ssh -l netapp 192.168.213.74 ''$LUN_MAP' '$lun' '$Igroup_share' '`echo $lun | rev | cut -c 5`''; echo ;
+        sleep 0.1
+done
+
+
+
+
+else
+echo forward
+fi

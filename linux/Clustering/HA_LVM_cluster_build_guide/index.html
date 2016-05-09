@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HA LVM cluster build guide - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "HA LVM cluster build guide";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../map/">Map</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>C programming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Puppet</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Scripting</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Column_tally/">Column tally</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/IP_survey/">IP survey</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_arguments/">Bash arguments</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_case/">Bash case</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_fail_trap/">Bash fail trap</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_function/">Bash function</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_functions/">Bash functions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_nested_if_else/">Bash nested if else</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_read_input/">Bash read input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_scripting/">Bash scripting</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_select/">Bash select</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_sort/">Bash sort</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_string_comparison/">Bash string comparison</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_tips/">Bash tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/diff/">Diff</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/expect/">Expect</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/map/">Map</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/script_to_markdown/">Script to markdown</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../map/">Map</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Networking</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/check_dns_records/">Check dns records</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/linux_networking/">Linux networking</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Networking/local_IP_address_survey/">local IP address survey</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Firewalls and Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Firewalls_and_Security/iptables_notes/">Iptables notes</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Software Packaging</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Software_Packaging/apt_get/">Apt get</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core Utils</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/awk/">Awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/rename/">Rename</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/user_creation/">User creation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Clustering</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_cluster_build/">HA LVM cluster build</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">HA LVM cluster build guide</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#rhel-59-ha-lvm-cluster-install-and-setup-guide">RHEL 5.9 HA-LVM cluster install and setup guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#disable-the-cluster-from-starting-up-until-you-have-finished-the-config">Disable the cluster from starting up... until you have finished the config</a></li>
+                
+                    <li><a class="toctree-l4" href="#setup-ssh-keys-between-the-nodes-to-make-things-easier">Setup ssh keys between the nodes to make things easier</a></li>
+                
+                    <li><a class="toctree-l4" href="#ensure-the-time-on-all-cluster-nodes-are-in-sync">Ensure the time on all cluster nodes are in sync</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-iptables-to-allow-the-cluster-traffic-through">Configure iptables to allow the cluster traffic through##</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-etcclusterclusterconf-file">Create a /etc/cluster/cluster.conf file</a></li>
+                
+                    <li><a class="toctree-l4" href="#start-the-cluster-to-see-if-everything-works">Start the cluster to see if everything works</a></li>
+                
+                    <li><a class="toctree-l4" href="#add-your-fencing-device">Add your fencing device</a></li>
+                
+                    <li><a class="toctree-l4" href="#sync-the-clusterconf-file-using-sthe-ccs_tool">sync the cluster.conf file using sthe ccs_tool</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-the-privateheartbeat-nic">Configure the private/heartbeat nic</a></li>
+                
+                    <li><a class="toctree-l4" href="#ensure-the-that-the-redhat-certificate-is-installed-not-installed-by-default">Ensure the that the RedHat certificate is installed # not installed by default</a></li>
+                
+                    <li><a class="toctree-l4" href="#if-not-you-may-get-errors-like">if not you may get errors like...</a></li>
+                
+                    <li><a class="toctree-l4" href="#check-if-the-repo-access-is-working">Check if the repo access is working</a></li>
+                
+                    <li><a class="toctree-l4" href="#edit-firewall-rules-to-allow-cluster-traffic">Edit firewall rules to allow cluster traffic</a></li>
+                
+                    <li><a class="toctree-l4" href="#simple-clusterconf-file-to-get-you-started">Simple cluster.conf file to get you started</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#configure-fencing">Configure fencing</a></li>
+                
+                    <li><a class="toctree-l4" href="#setup-ha-lvm">setup HA-LVM</a></li>
+                
+                    <li><a class="toctree-l4" href="#edit-etclvmlvmconf">edit /etc/lvm/lvm.conf</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cluster_website/">Cluster website</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../homemade_cluster/">Homemade cluster</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../simple.cluster.conf/">Simple.cluster.conf</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Time</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Adventures_in_the_land_of_symmetric_ntp_authentication/">Adventures in the land of symmetric ntp authentication</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Time/Setting_time/">Setting time</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>RedHat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/kickstart/">Kickstart</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Satellite spacewalk</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Yum rpm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Commands</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/email_on_linux/">Email on linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Commands/hot_add_memory/">Hot add memory</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Monitoring</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Disks and File Systems</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/rsync/">Rsync</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Clustering &raquo;</li>
+        
+      
+    
+    <li>HA LVM cluster build guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="rhel-59-ha-lvm-cluster-install-and-setup-guide">RHEL 5.9 HA-LVM cluster install and setup guide</h2>
+<p><strong>version 201600508</strong>
+<strong>created by Seamus Murray</strong></p>
+<p>Prerequisites
+2 machines either physical or virtual</p>
+<p>RHEL OS packages
+RHEL Cluster packages</p>
+<p><strong>these can be sourced from</strong>  Note write guides for each of these methods
+ * RedHat directly RHN
+ * Local YUM Repository
+ * Local Satellite/Spacewalk server
+ * Local media cdrom/dvdrom/usb drive/iso image etc.</p>
+<p><strong>In this guide I will be using the ISO of the RHEL 5.9 install</strong>
+This ISO was downloaded from RHN and contains the following Repositories </p>
+<ul>
+<li>Server</li>
+<li>Cluster</li>
+<li>ClusterStorage</li>
+<li>VT</li>
+</ul>
+<p>for the initial OS install we are just going to use the Server repo</p>
+<p>Boot from the DVD/ISO 
+Step though the installer
+<strong>note the package choice is dependant on what you want to do with the servers later</strong>
+Eg if you want to run a GUI and web browser you will have to install those Groups
+personally i always try to install the minimum number of packages to get the specific job done.</p>
+<pre><code>@base
+@core
+@editors
+@text-internet
+</code></pre>
+<p>Once you install has completed and you have booted into your new OS.</p>
+<p>setup the hosts to connect to a </p>
+<p>RHEL OS packages
+RHEL Cluster packages</p>
+<p><strong>these can be sourced from</strong> 
+ * RedHat directy RHN
+ * Local YUM Repository
+ * Local Satellite/Spacewalk server
+ * Local media cdrom/dvdrom/usb drive/iso image etc.</p>
+<p>Install the required cluster utils for this example it is just 
+ * cman 
+ * rgamanger
+ * openais</p>
+<p>Note: for a HA-LVM cluster these is no need for any distributed lockmanager GFS etc...
+    if these are installed its best to remove them now</p>
+<h3 id="disable-the-cluster-from-starting-up-until-you-have-finished-the-config">Disable the cluster from starting up... until you have finished the config</h3>
+<pre><code>chkconfig --levels 2345 cman off
+chkconfig --levels 2345 rgmanager off
+chkconfig --levels 2345 ricci off
+chkconfig --levels 2345 luci off
+</code></pre>
+<p>Before we setup the cluster..
+ * ensure your hostnames IP addresses and interfaces are in order.
+__in this exaple each node has 2 physical interfaces
+ 1. eth0 the public side, this is where the service that will be clusterd will run from https,nfs,ftp etc
+ 2. eth1 the private interface that is just used for cluster communication broadcast,multicast or unicast
+ * ensure the host name is correct and a FQDN in /etc/sysconfig/network
+ * ensure hostname is not in any of the ifcfg-ethx files 
+ * ensure hostname is not listed against loopback address in /etc/hosts #RedHat installer put this in by default
+ * restart network services, run hostname command manually or reboot if necessary*
+ * ensure the hostnames for all IPs on all the cluster nodes are listed in the /etc/hosts file</p>
+<p><strong>sample /etc/hosts file</strong></p>
+<pre><code>192.168.56.101  rhel59halvmn1.local     rhel59halvmn1
+10.10.100.101   rhel59halvmn1.private   rhel59halvmn1-priv
+192.168.56.102  rhel59halvmn2.local     rhel59halvmn2
+10.10.100.102   rhel59halvmn2.private   rhel59halvmn2-priv
+192.168.56.103  rhel59halvm-vip.local   rhel59halvm-vip
+</code></pre>
+<h3 id="setup-ssh-keys-between-the-nodes-to-make-things-easier">Setup ssh keys between the nodes to make things easier</h3>
+<pre><code># ssh-copy-id -i /root/.ssh/id_rsa.pub rhel59halvmn2
+</code></pre>
+<h3 id="ensure-the-time-on-all-cluster-nodes-are-in-sync">Ensure the time on all cluster nodes are in sync</h3>
+<p><strong>you may need to manually sync the time</strong></p>
+<pre><code>alias REMOTETIME='ssh rhel59halvmn1 -C date'
+date -s "`REMOTETIME`"
+
+service ntp stop
+ntpdate 192.168.1.1 
+ntpdate 192.168.1.1 
+service ntp start
+</code></pre>
+<h3 id="configure-iptables-to-allow-the-cluster-traffic-through">Configure iptables to allow the cluster traffic through##</h3>
+<pre><code>iptables -I INPUT -p udp -m state --state NEW -m multiport --dports 5404,5405 -j ACCEPT
+iptables -I INPUT -p tcp -m state --state NEW -m multiport --dports 16851 -j ACCEPT
+iptables -I INPUT -p tcp -m state --state NEW -m multiport --dports 21064 -j ACCEPT
+</code></pre>
+<h3 id="create-a-etcclusterclusterconf-file">Create a /etc/cluster/cluster.conf file</h3>
+<p><strong>note personaly I start with an existing complete cluste.conf file, edit it to match the desired config then start the cluster
+</strong>if you want a better understanding of the config follow the steps below</p>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;cluster name="rhel59halvm" config_version="1"&gt;
+    &lt;clusternodes&gt;
+        &lt;clusternode name="rhel59halvmn1.private" nodeid="1" /&gt;
+        &lt;clusternode name="rhel59halvmn2.private" nodeid="2" /&gt;
+    &lt;/clusternodes&gt;
+    &lt;fencedevices /&gt;
+    &lt;rm&gt;
+        &lt;failoverdomains /&gt;
+        &lt;resources /&gt;
+    &lt;/rm&gt;
+&lt;/cluster&gt;
+</code></pre>
+<p><strong>Note: this is a very simple cluster.conf file there is no fencing resources services etc..</strong></p>
+<h3 id="start-the-cluster-to-see-if-everything-works">Start the cluster to see if everything works</h3>
+<pre><code>[root@rhel59halvmn1 cluster]# service cman start
+Starting cluster:
+   Loading modules... done
+   Mounting configfs... done
+   Starting ccsd... done
+   Starting cman... done
+   Starting daemons... done
+   Starting fencing... done
+   Tuning DLM... done
+                                                           [  OK  ]
+[root@rhel59halvmn1 cluster]# clustat
+Cluster Status for rhel59halvm @ Wed Jun 26 17:59:12 2013
+Member Status: Quorate
+
+ Member Name                                       ID   Status
+ ------ ----                                       ---- ------
+ rhel59halvmn1.private                                 1 Online, Local
+ rhel59halvmn2.private                                 2 Online
+</code></pre>
+<h3 id="add-your-fencing-device">Add your fencing device</h3>
+<p><strong>Note: because we didnt specify a fence method with the original cluster/conf version 1</strong>
+<strong>we will now have to add the fence device and a fence method for each node. Personally I'd rather do it by hand using a text editor but...</strong> 
+<strong>in this example im using the fence_manual device</strong>
+<strong>note this is not a real fence device do not usse this in production see</strong> man fence_manual for more info<strong>
+</strong>If you want you can use the ccs_tool to delete the individual node's config then re-add the node's config with the fence method__</p>
+<pre><code>ccs_tool addfence manual fake-parameter
+</code></pre>
+<p><strong>Note: because the fence_manual is a fake agent it doesnt require any parameters but the ccs_tool requires atleast 1</strong>
+    ccs_tool addnode rhel59halvmn1 -n1 -f manual
+    ccs_tool delnode rhel59halvmn2.private
+    ccs_tool addnode rhel59halvmn2 -n2 -f manual
+    cat /etc/cluster/cluster.conf</p>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;cluster alias="rhel59halvm" config_version="7" name="rhel59halvm"&gt;
+  &lt;fence_daemon clean_start="0" post_fail_delay="0" post_join_delay="3"/&gt;
+  &lt;clusternodes&gt;
+    &lt;clusternode name="rhel59halvmn1" votes="1" nodeid="1"&gt;
+      &lt;fence&gt;
+        &lt;method name="single"&gt;
+          &lt;device name="manual"/&gt;
+        &lt;/method&gt;
+      &lt;/fence&gt;
+    &lt;/clusternode&gt;
+    &lt;clusternode name="rhel59halvmn2" votes="1" nodeid="2"&gt;
+      &lt;fence&gt;
+        &lt;method name="single"&gt;
+          &lt;device name="manual"/&gt;
+        &lt;/method&gt;
+      &lt;/fence&gt;
+    &lt;/clusternode&gt;
+  &lt;/clusternodes&gt;
+  &lt;fencedevices&gt;
+    &lt;fencedevice name="manual" agent="fake-parameter"/&gt;
+  &lt;/fencedevices&gt;
+  &lt;rm&gt;
+    &lt;failoverdomains/&gt;
+    &lt;resources/&gt;
+  &lt;/rm&gt;
+&lt;/cluster&gt;
+</code></pre>
+<h3 id="sync-the-clusterconf-file-using-sthe-ccs_tool">sync the cluster.conf file using sthe ccs_tool</h3>
+<pre><code>ccs_tool update  /etc/cluster/cluster.conf
+</code></pre>
+<h3 id="configure-the-privateheartbeat-nic">Configure the private/heartbeat nic</h3>
+<p>*add multicast route for private/heartbeat</p>
+<pre><code>/etc/sysconfig/network-scripts/route-eth1
+239.0.0.0/4 dev eth1
+</code></pre>
+<h3 id="ensure-the-that-the-redhat-certificate-is-installed-not-installed-by-default">Ensure the that the RedHat certificate is installed # not installed by default</h3>
+<pre><code>rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+</code></pre>
+<h3 id="if-not-you-may-get-errors-like"><strong>if not you may get errors like...</strong></h3>
+<pre><code>Public key for mkinitrd-5.1.19.6-79.el5.i386.rpm is not installed
+</code></pre>
+<h3 id="check-if-the-repo-access-is-working">Check if the repo access is working</h3>
+<pre><code>yum clean all
+yum list
+</code></pre>
+<h3 id="edit-firewall-rules-to-allow-cluster-traffic">Edit firewall rules to allow cluster traffic</h3>
+<pre><code>#/opt/firewall-rules
+iptables -I INPUT --protocol tcp --dport 22 -j ACCEPT
+# Cluster
+iptables -I INPUT -p udp -m state --state NEW -m multiport --dports 5404,5405 -j ACCEPT
+iptables -I INPUT -p tcp -m state --state NEW -m multiport --dports 11111 -j ACCEPT
+iptables -I INPUT -p udp -m state --state NEW -m multiport --dports 50007 -j ACCEPT
+iptables -I INPUT -p tcp -m state --state NEW -m multiport --dports 50008 -j ACCEPT
+# turn off firewall for private nic
+iptables -I INPUT -i eth1 -j ACCEPT
+</code></pre>
+<p><strong>if you want to use luci</strong>
+<strong>warning</strong> due to the way the RedHat Satellite server is configured you cannot perform rpm or yum group installs
+you have to specify the packages individually, because of this you can not use ricci/luci to create a cluster config
+You can use ricci/luci to import an existing cluster
+Therefore if you really need the GUI create a simple cluster with no resources or services first then import it into lucci</p>
+<h4 id="starting-ricciluci">Starting ricci/luci</h4>
+<p>if you have not previously configured a luci account run " /usr/sbin/luci_admin init" and set a password
+start up ricci on both servers and luci on one server 
+setup putty forwarding from the rdp jump host local port 80 to 127.0.0.1:8084 on the host you will run luci</p>
+<p>start browser window https://127.0.0.1:80</p>
+<h3 id="simple-clusterconf-file-to-get-you-started">Simple cluster.conf file to get you started</h3>
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;cluster alias="cluster1" config_version="1" name="cluster1"&gt;
+        &lt;fence_daemon clean_start="0" post_fail_delay="0" post_join_delay="3"/&gt;
+        &lt;clusternodes&gt;
+                &lt;clusternode name="hostname1.private" nodeid="1" votes="1"&gt;
+                        &lt;fence&gt;
+                                &lt;method name="1"&gt;
+                                        &lt;device name="ipmi-hostname1"/&gt;
+                                &lt;/method&gt;
+                        &lt;/fence&gt;
+                &lt;/clusternode&gt;
+                &lt;clusternode name="hostname2.private" nodeid="2" votes="1"&gt;
+                        &lt;fence&gt;
+                                &lt;method name="1"&gt;
+                                        &lt;device name="ipmi-hostname2"/&gt;
+                                &lt;/method&gt;
+                        &lt;/fence&gt;
+                &lt;/clusternode&gt;
+        &lt;/clusternodes&gt;
+        &lt;cman expected_votes="1" two_node="1"&gt;
+                &lt;multicast addr="239.192.0.1"/&gt;
+        &lt;/cman&gt;
+        &lt;fencedevices&gt;
+                &lt;fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.1" login="test-user" name="ipmi-hostname1" passwd="test-password" delay="30"/&gt;
+                &lt;fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.2" login="test-user" name="ipmi-hostname2" passwd="test-password"/&gt;=
+        &lt;/fencedevices&gt;
+        &lt;rm&gt;
+                &lt;failoverdomains&gt;
+                        &lt;failoverdomain name="FailDomain" ordered="1" restricted="1"&gt;
+                                &lt;failoverdomainnode name="hostname1.private" priority="1"/&gt;
+                                &lt;failoverdomainnode name="hostname2.private" priority="2"/&gt;
+                        &lt;/failoverdomain&gt;
+                &lt;/failoverdomains&gt;
+                &lt;resources&gt;
+                &lt;/resources&gt;
+                &lt;service autostart="1" domain="FailDomain" exclusive="0" name="servicel"&gt;
+                &lt;/service&gt;
+        &lt;/rm&gt;
+&lt;/cluster&gt;
+
+scp cluster.conf hostname1:/etc/cluster/cluster.conf
+
+ccs_tool update cluster.conf
+</code></pre>
+<h1 id="configure-fencing">Configure fencing</h1>
+<ul>
+<li>Setup ipmi profile on the hardware </li>
+<li>
+<p>Test to see if fencing works</p>
+<p>echo -e "ipaddr=192.168.1.1 \nlogin=<username> \npasswd=<password> \naction=status" | fence_ipmilan</p>
+</li>
+<li>
+<p>Add the fencing details to the cluster.conf file
+    <fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.1" login="test-user" name="ipmi-hostname1" passwd="test-password" delay="30"/>
+    <fencedevice agent="fence_ipmilan" auth="password" ipaddr="192.168.1.2" login="test-user" name="ipmi-hostname2" passwd="test-password"/></p>
+<p>service rgmanager start</p>
+<p>service cman start</p>
+<p>clustat
+cman_tool status
+tail -f /var/log/messages</p>
+</li>
+<li>
+<p>manual fence override
+    fence_ack_manual -e -n hostname1.private</p>
+</li>
+<li>manaul service relocation
+    clusvcadm -r ServiceName</li>
+<li>ifconfig will not display a VIP you have to run <br />
+    ip address show</li>
+</ul>
+<p>you may want to disable the acpi daemon otherwise your server may not switch off fast enough</p>
+<pre><code>chkconfig --level 234 5 acpid off
+chkconfig --levels 2345 cman off
+chkconfig --levels 2345 rgmanager off
+chkconfig --levels 2345 ricci off
+chkconfig --levels 2345 luci off
+</code></pre>
+<h3 id="setup-ha-lvm">setup HA-LVM</h3>
+<p><strong>...refer to section F.2. Configuring HA-LVM Failover with Tagging from RHEL 5 Cluster admin guide</strong></p>
+<h3 id="edit-etclvmlvmconf">edit /etc/lvm/lvm.conf</h3>
+<ol>
+<li>
+<p>Ensure that the locking_type parameter in the global section of the /etc/lvm/lvm.conf file is set to the value '1'.</p>
+</li>
+<li>
+<p>Edit the volume_list field in the /etc/lvm/lvm.conf file. Include the name of your root volume group and your hostname as listed in the /etc/cluster/cluster.conf file preceded by @. The hostname to include here is the machine on which you are editing the lvm.conf file, not any remote hostname. Note that this string MUST match the node name given in the cluster.conf file. Below is a sample entry from the /etc/lvm/lvm.conf file:</p>
+</li>
+</ol>
+<p>volume_list = [ "vgsys", "@rhel59halvm1.private" ]</p>
+<h4 id="create-the-pv-vg-lv-and-filesystems-on-one-of-the-nodes">Create the PV VG LV and filesystems    <strong>on one of the nodes</strong></h4>
+<pre><code>pvcreate /dev/mapper/mpath1
+vgcreate vg_shared_pc /dev/mapper/mpath1
+lvcreate -l 100%FREE -n lv_shared_pc vg_shared_pc
+mkfs.ext3 /dev/vg_shared_pc/lv_shared_pc
+mkdir /mnt/pc
+</code></pre>
+              
+            </div>
+          </div>
+          
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      <!--  <a href="../HA_LVM_manual_failover.txt/" class="btn btn-neutral float-right" title="HA LVM manual failover.txt"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
+        <a href="../HA_LVM_manual_failover.txt/index.html" class="btn btn-neutral float-right" title="HA LVM manual failover.txt">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+      <!-- <a href="../HA_LVM_cluster_build/" class="btn btn-neutral" title="HA LVM cluster build"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
+        <a href="../HA_LVM_cluster_build/index.html" class="btn btn-neutral" title="HA LVM cluster build"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../HA_LVM_cluster_build/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../HA_LVM_manual_failover.txt/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
