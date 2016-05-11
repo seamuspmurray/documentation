@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/map/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,7 +21,7 @@
         
     <url>
      <loc>None/programming/map/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -37,7 +37,7 @@
         
     <url>
      <loc>None/puppet/puppet_study_notes/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -47,193 +47,215 @@
         
     <url>
      <loc>None/scripting/Column_tally/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/Convert_kilobytes_to_MB_GB_TB_PB/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/DNS_validate_entries/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/IP_survey/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/Shuffle_deck_of_cards/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_and_grep_script_to_compare_2_lists/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_argument_shift_until_loop/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_argument_shift_while_loop/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_arguments/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_capture_keyboard_entry/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_case/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_fail_and_exit/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_fail_trap/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_function/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_functions/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_local_vs_global_variables/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_nested_if_else/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_read_input/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_scripting/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_select/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_sort/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_string_comparison/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_test_to_only_run_as_root/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_tips/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_trap_user_ctrl-c/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/bash_wait_for_user_input/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/diff/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/expect/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/map/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/script_to_markdown/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/simulate_site_failure/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/scripting/use_a_file_to_control_bash_script_operation/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/networking/traceroute_animation_1_and_2_routers/</loc>
+     <lastmod>2016-05-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/networking/traceroute_animation_1_router/</loc>
+     <lastmod>2016-05-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/networking/traceroute_animation_2_routers/</loc>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -243,19 +265,19 @@
         
     <url>
      <loc>None/linux/hot_add_memory_and_cpus/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/linux/linux_proccess_signaling/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/linux/map/</loc>
-     <lastmod>2016-05-09</lastmod>
+     <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
