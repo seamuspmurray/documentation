@@ -242,19 +242,7 @@
     
         
     <url>
-     <loc>None/networking/traceroute_animation_1_and_2_routers/</loc>
-     <lastmod>2016-05-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/networking/traceroute_animation_1_router/</loc>
-     <lastmod>2016-05-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/networking/traceroute_animation_2_routers/</loc>
+     <loc>None/networking/traceroute-animations/</loc>
      <lastmod>2016-05-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
