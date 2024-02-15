@@ -1,1096 +1,312 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Puppet study notes - My Docs</title>
-  
-
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/highlight.css">
-
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Puppet study notes";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
-  <script src="../../js/theme.js"></script> 
-
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Puppet study notes - Seamus Murray's Notes about Linux and System Engineering</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Puppet study notes";
+        var mkdocs_page_input_path = "puppet/puppet_study_notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> My Docs</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Seamus Murray's Notes about Linux and System Engineering
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../..">Home</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../../map/">Map</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Programming</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../programming/map/">Map</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>C programming</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
-        
-    </li>
-
-        
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/linux_proccess_signaling/">Linux proccess signaling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/cluster_website/">Cluster website</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/homemade_cluster/">Homemade cluster</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+                </li>
     </ul>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/email_on_linux/">change mail relay for postfix</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/hot_add_memory/">Hot add memory</a>
+                </li>
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Puppet</span></li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Puppet study notes</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#puppetlabs-own-documentation-httpspuppetlabscomlearn">puppetlabs own documentation https://puppetlabs.com/learn</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-installation">Puppet installation</a></li>
-                
-                    <li><a class="toctree-l4" href="#system-requirements">System requirements</a></li>
-                
-                    <li><a class="toctree-l4" href="#firewall-configuration">Firewall Configuration</a></li>
-                
-                    <li><a class="toctree-l4" href="#hardware-requirements-for-the-various-puppet-rolescomponents">Hardware requirements for the various puppet roles/components</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#install-script">Install script</a></li>
-                
-                    <li><a class="toctree-l4" href="#install-the-pe-agent">Install the pe-agent</a></li>
-                
-                    <li><a class="toctree-l4" href="#puppetconf">puppet.conf</a></li>
-                
-                    <li><a class="toctree-l4" href="#ssl-certificates-and-accurate-time">SSL certificates and accurate time</a></li>
-                
-                    <li><a class="toctree-l4" href="#resetting-a-nodes-certificate">Resetting a nodes certificate</a></li>
-                
-                    <li><a class="toctree-l4" href="#puppet-cert-command-line-options">Puppet Cert command line options</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#node-classification-sitepp-enc">Node Classification  site.pp ENC</a></li>
-                
-                    <li><a class="toctree-l4" href="#certname">Certname</a></li>
-                
-                    <li><a class="toctree-l4" href="#classification-of-nodes">Classification of nodes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#sitepp-syntax">site.pp syntax</a></li>
-                
-                    <li><a class="toctree-l4" href="#the-default-node">The Default Node</a></li>
-                
-                    <li><a class="toctree-l4" href="#merging-sitepp-with-enc-data">Merging site.pp With ENC Data</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#node-classification-in-puppet-enterprise-console">node classification in puppet enterprise console</a></li>
-                
-                    <li><a class="toctree-l4" href="#default-node-group">default node group</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#deleting-nodes-from-puppet-enterprise-console">Deleting Nodes from puppet enterprise console</a></li>
-                
-                    <li><a class="toctree-l4" href="#hide-node">Hide Node</a></li>
-                
-                    <li><a class="toctree-l4" href="#delete-node">Delete Node</a></li>
-                
-                    <li><a class="toctree-l4" href="#deactivate-node">Deactivate Node</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#regex-in-puppet">Regex in puppet</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-run-overview">Puppet run overview</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#resources-classes-manifest">Resources ---}  Classes   ---}  Manifest</a></li>
-                
-                    <li><a class="toctree-l4" href="#manifests">Manifests</a></li>
-                
-                    <li><a class="toctree-l4" href="#catalog">Catalog</a></li>
-                
-                    <li><a class="toctree-l4" href="#modules">Modules</a></li>
-                
-                    <li><a class="toctree-l4" href="#example-modules">Example module's</a></li>
-                
-                    <li><a class="toctree-l4" href="#puppet-module-command-line">puppet module command line</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#resources">Resources</a></li>
-                
-                    <li><a class="toctree-l4" href="#resource-abstraction-layer">Resource Abstraction Layer</a></li>
-                
-                    <li><a class="toctree-l4" href="#query-a-resource-using-the-puppet-command-line-tool">Query a resource using the puppet command line tool</a></li>
-                
-                    <li><a class="toctree-l4" href="#puppet-apply">Puppet Apply</a></li>
-                
-                    <li><a class="toctree-l4" href="#defined-resource-type-aka-defined-types-or-defines">Defined Resource Type (aka defined types or defines)</a></li>
-                
-                    <li><a class="toctree-l4" href="#resource-duplicates">Resource duplicates</a></li>
-                
-                    <li><a class="toctree-l4" href="#resource-refresh">Resource refresh</a></li>
-                
-                    <li><a class="toctree-l4" href="#resource-ordering-and-relationships-with-metaparameters">Resource ordering and relationships with metaparameters</a></li>
-                
-                    <li><a class="toctree-l4" href="#extra-metaparameters">extra metaparameters..</a></li>
-                
-                    <li><a class="toctree-l4" href="#virtual-resources">Virtual resources</a></li>
-                
-                    <li><a class="toctree-l4" href="#exported-resources">Exported resources</a></li>
-                
-                    <li><a class="toctree-l4" href="#exec-resource">Exec Resource</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#classes">Classes</a></li>
-                
-                    <li><a class="toctree-l4" href="#parameterised-classes">Parameterised Classes</a></li>
-                
-                    <li><a class="toctree-l4" href="#class-inheritance-derived-classes">Class Inheritance / Derived Classes</a></li>
-                
-                    <li><a class="toctree-l4" href="#variables-and-class-parameters">Variables and Class  Parameters</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-lint">puppet-lint</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#idempotency">Idempotency</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-console">Puppet Console</a></li>
-                
-                    <li><a class="toctree-l4" href="#event-inspector">Event Inspector</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#resetting-the-admin-user-password">Resetting the admin user password</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#environments">Environments</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#scope">Scope</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#types-and-providers">Types and Providers</a></li>
-                
-                    <li><a class="toctree-l4" href="#core-types">Core Types</a></li>
-                
-                    <li><a class="toctree-l4" href="#resource-abstraction-layer_1">Resource Abstraction Layer</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#conditional-statements">Conditional Statements</a></li>
-                
-                    <li><a class="toctree-l4" href="#if-optional-elseif-and-else">if   (optional elseif and else)</a></li>
-                
-                    <li><a class="toctree-l4" href="#unless">unless</a></li>
-                
-                    <li><a class="toctree-l4" href="#case">case</a></li>
-                
-                    <li><a class="toctree-l4" href="#selector">selector</a></li>
-                
-                    <li><a class="toctree-l4" href="#my-sample-class-with-all-the-selectors">my sample class with all the selectors</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppetdb">PuppetDB</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#hiera">Hiera</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#facter">Facter</a></li>
-                
-                    <li><a class="toctree-l4" href="#facter-command-line-options">Facter command line options</a></li>
-                
-                    <li><a class="toctree-l4" href="#pluginsync">Pluginsync</a></li>
-                
-                    <li><a class="toctree-l4" href="#custom-facts">Custom facts</a></li>
-                
-                    <li><a class="toctree-l4" href="#external-facts">External facts</a></li>
-                
-                    <li><a class="toctree-l4" href="#distributing-the-external-facts-to-the-puppet-client-nodes">Distributing the external facts to the puppet client nodes</a></li>
-                
-                    <li><a class="toctree-l4" href="#structured-facts">Structured facts</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#roles-and-profiles">Roles and Profiles</a></li>
-                
-                    <li><a class="toctree-l4" href="#example-role">example role</a></li>
-                
-                    <li><a class="toctree-l4" href="#example-profile">example profile</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-templates">Puppet Templates</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#puppet-parser">Puppet parser</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#functions">Functions</a></li>
-                
-                    <li><a class="toctree-l4" href="#there-are-two-types-of-functions-statements-and-rvalues">There are two types of functions: statements and rvalues.</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#rbac-role-based-access-control">RBAC  Role Based Access Control</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Core Utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/awk/">Awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/rename/">Rename</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/user_creation/">User creation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/watch_and_timeout/">Watch and timeout</a>
+                </li>
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Scripting</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/Column_tally/">Column tally</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/DNS_validate_entries/">DNS validate entries</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/IP_survey/">IP survey</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/Shuffle_deck_of_cards/">Shuffle deck of cards</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_arguments/">Bash arguments</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_case/">Bash case</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_fail_trap/">Bash fail trap</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_function/">Bash function</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_functions/">Bash functions</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_nested_if_else/">Bash nested if else</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_read_input/">Bash read input</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_scripting/">Bash scripting</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_select/">Bash select</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_sort/">Bash sort</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_string_comparison/">Bash string comparison</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_tips/">Bash tips</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/diff/">Diff</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/expect/">Expect</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/map/">Map</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/script_to_markdown/">Script to markdown</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/simulate_site_failure/">Simulate site failure</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Disks and File Systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/rsync/">Rsync</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/shrink_lvm_filesystem/">Shrinking a Linux filesystem on LVM</a>
+                </li>
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Networking</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../networking/traceroute-animations/">Traceroute animations</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Firewalls and Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/iptables_notes/">My notes on IPtables</a>
+                </li>
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Linux</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/hot_add_memory_and_cpus/">Hot add memory and cpus</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/linux_proccess_signaling/">Linux proccess signaling</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/map/">Map</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Networking</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Networking/check_dns_records/">Check dns records</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Networking/linux_networking/">Linux networking</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Networking/local_IP_address_survey/">local IP address survey</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Firewalls and Security</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Firewalls_and_Security/auditd_rules/">Auditd rules</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Firewalls_and_Security/iptables_notes/">Iptables notes</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Networking</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/check_dns_records/">Check dns records</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/linux_networking/">Linux networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/local_IP_address_survey/">local IP address survey</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Software Packaging</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Software_Packaging/apt_get/">Apt get</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RedHat</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/RedHat/kickstart/">Kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Satellite spacewalk</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Core Utils</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/awk/">Awk</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/bash_shortcuts/">Bash shortcuts</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/rename/">Rename</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/user_creation/">User creation</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Core_Utils/watch_and_timeout/">Watch and timeout</a>
-        
-    </li>
-
-        
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Yum rpm</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Clustering</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/cluster_website/">Cluster website</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/homemade_cluster/">Homemade cluster</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
-        
-    </li>
-
-        
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Time</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Time/Adventures_in_the_land_of_symmetric_ntp_authentication/">Adventures in the land of symmetric ntp authentication</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Time/Setting_time/">Setting time</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Time/linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
-        
-    </li>
-
-        
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Software Packaging</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Software_Packaging/apt_get/">Apt get</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>RedHat</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/kickstart/">Kickstart</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Satellite spacewalk</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
-        
-    </li>
-
-        
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">C programming</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+                </li>
     </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Yum rpm</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
-        
-    </li>
-
-        
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Puppet</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Puppet study notes</a>
+    <ul class="current">
     </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Commands</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Commands/email_on_linux/">Email on linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Commands/hot_add_memory/">Hot add memory</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Monitoring</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Disks and File Systems</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/rsync/">Rsync</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/Disks_and_File_Systems/shrink_lvm_filesystem/">Shrink lvm filesystem</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-<li>
-          
-        </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Column_tally/">Column tally</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/DNS_validate_entries/">DNS validate entries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/IP_survey/">IP survey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_arguments/">Bash arguments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_array/">Bash array</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_case/">Bash case</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_trap/">Bash fail trap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_function/">Bash function</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_functions/">Bash functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_nested_if_else/">Bash nested if else</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_read_input/">Bash read input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_select/">Bash select</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_string_comparison/">Bash string comparison</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_tips/">Bash tips</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/diff/">Diff</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/expect/">Expect</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/script_to_markdown/">Script to markdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/simulate_site_failure/">Simulate site failure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Time</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../time/NTP_Authentication/">NTP Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../time/Setting_time/">Setting time</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../time/System_timing_and_NTP/">System timing and NTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../time/linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
+                  </li>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">My Docs</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Seamus Murray's Notes about Linux and System Engineering</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Puppet &raquo;</li>
-        
-      
-    
-    <li>Puppet study notes</li>
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Puppet</li>
+      <li class="breadcrumb-item active">Puppet study notes</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
-                <p>Puppet study notes January 2015
-Seamus Murray</p>
-<p>Todo.................................</p>
-<p>Seamus learn the +&gt; operator</p>
-<p>does site.pp override the values in an enc
-does the values in an enc override the values in a class</p>
-<p>Yumrepo['custom_packages'] -&gt; Package &lt;| tag == 'custom' |&gt;
-Will create an order relationship with several package resources
- using puppet node to set password when the nodes cant contact the password server, do you use an exec resource ?</p>
-<p>do you have to configure the agents to use heira or just the master</p>
-<p>what is a node_terminus where is it set and what overrides it
-  https://docs.puppetlabs.com/guides/external_nodes.html</p>
-<p>Seamus learn the spaceship operator</p>
-<p>The puppet db has multiple terminus's where data is stored</p>
-<ul>
-<li>Facts</li>
-<li>Catalogs</li>
-<li>Resources</li>
-</ul>
-<p>watch the puppetdb talk by james sweanie puppetny
-https://www.youtube.com/watch?v=HTr4b02aU7A  at 14 mins</p>
-<p>does the values set in the console override enc or site.pp  (where are the values stored)
-what is the effect of node default {} in site.pp can this be overridden by ENC or by a specific node hostname {} in site.pp</p>
-<p>https://docs.puppetlabs.com/guides/external_nodes.html</p>
-<p>workout resource interdependency loops</p>
-<p>............</p>
-<p>sources of information I used to study</p>
-<p>1) {book} pro puppet second edition </p>
-<p>Many of the chapters seem to have been cut and pasted together in a rush. Don't bother trying to replicate the examples as many of them just don't work. Ignore the sections on version control and don't try to follow the examples in chapter 2. </p>
-<p>you can get 10days access to the html version of the book for free from safaribooksonline
-https://www.safaribooksonline.com/library/view/pro-puppet-second/9781430260400/</p>
-<h3 id="puppetlabs-own-documentation-httpspuppetlabscomlearn">puppetlabs own documentation https://puppetlabs.com/learn</h3>
-<p>sign up to the puppetlabs learning portal https://puppetlabs.com/learn</p>
+                <p>Seamus Murray's Puppet study notes as of January 2015 </p>
+<h3 id="puppetlabs-own-documentation-httpspuppetlabscomlearn">PuppetLabs own documentation https://puppetlabs.com/learn</h3>
+<p>Sign up to the PuppetLabs learning portal https://puppetlabs.com/learn</p>
 <p>2) go through the puppetlabs videos and questionnaires, it will give you an idea of the language used in the tests
    https://puppetlabs.com/learn/library</p>
 <p>some of the videos seem to be based on lessons that can be found elsewhere of the puppet website (sorry I cant find them now )</p>
@@ -1102,8 +318,6 @@ https://www.safaribooksonline.com/library/view/pro-puppet-second/9781430260400/<
 <p>6) glossary of the key puppet terminology</p>
 <p>https://puppetlabs.com/services/certification/puppet-professional-practice-exam</p>
 <p></br></br></br></br></br></br>
-</br></br></br></br></br></br>
-</br></br></br></br></br></br>
 </br></br></br></br></br></br></p>
 <hr />
 <h2 id="puppet-installation">Puppet installation</h2>
@@ -1341,7 +555,7 @@ Exiting; no certificate found and waitforcert is disabled
 When the puppet agent on the nodes request at catalogue from the puppet master it does so using its current FQDN {even if they had already generated a certificate and had it signed by the master}. Therefore if the nodes host or domain name changes it will make a request based on the new name and you will have to sign a new cert on the master.</p>
 <h3 id="classification-of-nodes">Classification of nodes</h3>
 <p>In puppet the term classification  refers to the linking/assigning of classes to nodes. This can be achieved in many ways</p>
-<p><strong> Using site.pp </strong></p>
+<p>** Using site.pp **</p>
 <pre><code>node '&lt;group name&gt;' {
   include &lt;class&gt;
 }
@@ -1350,7 +564,7 @@ node '&lt;node name&gt;' {
   include &lt;class&gt;
 }
 </code></pre>
-<p><strong> Using the puppet enterprise console</strong></p>
+<p>** Using the puppet enterprise console**</p>
 <ol>
 <li>Click on Classification in the console navigation bar.
     ( Optional steps to create a new group )<ol>
@@ -1362,7 +576,7 @@ node '&lt;node name&gt;' {
 <li>Click commit change</li>
 </ol>
 <p>If your changes to the site.pp manifest are'nt reflected in a puppet run triggered by the puppet agent -t command, try running the command again.</p>
-<p><strong> Using an ENC External node Classifier </strong>
+<p>** Using an ENC External node Classifier **
 An executable that can be called by puppet master; it doesn’t have to be written in Ruby. Its only argument is the name of the node to be classified, and it returns a YAML document describing the node.</p>
 <p>Node statements are an <strong>optional feature</strong> of Puppet. They can be replaced by or combined with an external node classifier. You can also use conditional statements upon facts to classify nodes.</p>
 <hr />
@@ -1712,7 +926,7 @@ The following commands will display the module path.</p>
 <li><strong>uninstall</strong> -   Uninstall a puppet module.</li>
 <li><strong>upgrade</strong> -    Upgrade a puppet module.</li>
 </ul>
-<p>When uploading a module to the forge your must include a <strong> modulefile </strong> containing the modules  metadata (name, version, source, author, description, etc.) </p>
+<p>When uploading a module to the forge your must include a ** modulefile ** containing the modules  metadata (name, version, source, author, description, etc.) </p>
 <hr />
 <p></br></br></br></br></br></br></p>
 <h2 id="resources">Resources</h2>
@@ -2082,9 +1296,9 @@ service  /
 <p>Defining a class specifies the contents and behaviour but does not automatically include (apply) it in a configuration</p>
 <p>Declaring a class, includes the class in the catalogue which will then be applied upon next agent run.</p>
 <p>To declare a class use either of the following syntaxes in site.pp.. or in <modulename>/tests/init.pp</p>
-<p><strong>   include my_calss </strong>
+<p>**   include my_calss **
 or
- <strong>   class { 'my_class': } </strong></p>
+ **   class { 'my_class': } **</p>
 <ul>
 <li>classes are reusable</li>
 <li>classes are singleton</li>
@@ -2414,7 +1628,7 @@ They are a key component of the Resource Abstraction Layer (RAL), translating th
 <hr />
 <p></br></br></br></br></br></br></p>
 <h2 id="conditional-statements">Conditional Statements</h2>
-<p><strong>Note: </strong> string matches are not case sensitive</p>
+<p>**Note: ** string matches are not case sensitive</p>
 <h3 id="if-optional-elseif-and-else">if   (optional elseif and else)</h3>
 <pre><code>class accounts ($name) {
 
@@ -2823,12 +2037,12 @@ Note that the template function simply returns a string, which can be used as a 
 <p>ags</p>
 <p>The tags available in an ERB file depend on the way the ERB processor is configured. Puppet always uses the same configuration for its templates (see “trim mode” below), which makes the following tags available:</p>
 <ul>
-<li><strong> &lt;%= Ruby expression %&gt; </strong> — This tag will be replaced with the value of the expression it contains.</li>
-<li><strong> &lt;% Ruby code %&gt; </strong> — This tag will execute the code it contains, but will not be replaced by a value. Useful for conditional or looping logic, setting variables, and manipulating data before printing it.</li>
-<li><strong> &lt;%# comment %&gt;  </strong> — Anything in this tag will be suppressed in the final output.</li>
-<li><strong> &lt;%% or %%&gt;  </strong> — A literal &lt;% or %&gt;, respectively.</li>
-<li><strong> &lt;%- — Same as &lt;% </strong> , but suppresses any leading whitespace in the final output. Useful when indenting blocks of code for readability.</li>
-<li><strong> -%&gt; </strong> — Same as <strong> %&gt; </strong> , but suppresses the subsequent line break in the final output. Useful with many lines of non-printing code in a row, which would otherwise appear as a long stretch of blank lines.</li>
+<li>** &lt;%= Ruby expression %&gt; ** — This tag will be replaced with the value of the expression it contains.</li>
+<li>** &lt;% Ruby code %&gt; ** — This tag will execute the code it contains, but will not be replaced by a value. Useful for conditional or looping logic, setting variables, and manipulating data before printing it.</li>
+<li>** &lt;%# comment %&gt;  ** — Anything in this tag will be suppressed in the final output.</li>
+<li>** &lt;%% or %%&gt;  ** — A literal &lt;% or %&gt;, respectively.</li>
+<li>** &lt;%- — Same as &lt;% ** , but suppresses any leading whitespace in the final output. Useful when indenting blocks of code for readability.</li>
+<li>** -%&gt; ** — Same as ** %&gt; ** , but suppresses the subsequent line break in the final output. Useful with many lines of non-printing code in a row, which would otherwise appear as a long stretch of blank lines.</li>
 </ul>
 <h2 id="puppet-parser">Puppet parser</h2>
 <p>Is the part of puppet that pareses the puppet DSL code in manifests files.
@@ -2864,35 +2078,51 @@ During the parsing of the manifest's any function code is executed and the subse
 <li>Operators</li>
 <li>Viewers</li>
 </ul>
+<p>Todo.................................</p>
+<p>Seamus learn the +&gt; operator</p>
+<p>Does site.pp override the values in an enc?</p>
+<p>Does the values in an enc override the values in a class?</p>
+<p>Yumrepo['custom_packages'] -&gt; Package &lt;| tag == 'custom' |&gt;</p>
+<p>Will create an order relationship with several package resources?</p>
+<p>Using puppet node to set password when the nodes cant contact the password server, do you use an exec resource ?</p>
+<p>Do you have to configure the agents to use heira or just the master?</p>
+<p>What is a node_terminus where is it set and what overrides it</p>
+<p>https://docs.puppetlabs.com/guides/external_nodes.html</p>
+<p>Learn the spaceship operator</p>
+<p>The puppet db has multiple terminus's where data is stored</p>
+<ul>
+<li>Facts</li>
+<li>Catalogs</li>
+<li>Resources</li>
+</ul>
+<p>Watch the puppetdb talk by james sweanie puppetny
+https://www.youtube.com/watch?v=HTr4b02aU7A  at 14 mins</p>
+<p>Do the values set in the console override enc or site.pp  (where are the values stored)
+What is the effect of node default {} in site.pp can this be overridden by ENC or by a specific node hostname {} in site.pp</p>
+<p>https://docs.puppetlabs.com/guides/external_nodes.html</p>
+<p>Workout resource interdependency loops</p>
+<p>............</p>
+<p>sources of information I used to study</p>
+<p>1) {book} pro puppet second edition </p>
+<p>Last update:
+(made some formatting changes on 13 Feb 2024)</p>
               
             </div>
-          </div>
-          
-
-<footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      <!--  <a href="../../scripting/Column_tally/" class="btn btn-neutral float-right" title="Column tally"/>Next <span class="icon icon-circle-arrow-right"></span></a> -->
-        <a href="../../scripting/Column_tally/index.html" class="btn btn-neutral float-right" title="Column tally">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-      <!-- <a href="../../programming/c_programming/programmable_keyboard/" class="btn btn-neutral" title="Programmable keyboard"><span class="icon icon-circle-arrow-left"></span> Previous</a> -->
-        <a href="../../programming/c_programming/programmable_keyboard/index.html" class="btn btn-neutral" title="Programmable keyboard"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../programming/c_programming/programmable_keyboard/" class="btn btn-neutral float-left" title="Programmable keyboard"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../scripting/Column_tally/" class="btn btn-neutral float-right" title="Column tally">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  <!-- Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. -->
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+          
         </div>
       </div>
 
@@ -2900,19 +2130,27 @@ During the parsing of the manifest's any function code is executed and the subse
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../../programming/c_programming/programmable_keyboard/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../../scripting/Column_tally/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../programming/c_programming/programmable_keyboard/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../scripting/Column_tally/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
 
 </body>
 </html>
-
-	
