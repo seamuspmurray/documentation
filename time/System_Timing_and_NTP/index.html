@@ -305,10 +305,6 @@
             <div class="section" itemprop="articleBody">
               
                 <p>Last updated by Seamus Murray on 20240214</p>
-<pre style="font-size: 5px">
-    ...
-</pre>
-
 <h4 id="purpose-of-this-document">Purpose of this Document:</h4>
 <p>Act as a repository for separate but related system timing information. </p>
 <h4 id="index">Index:</h4>
@@ -830,7 +826,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 </li>
 <li>
 <p>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:</p>
-</li>
+<ul>
 <li>
 <p>0 - reserved</p>
 </li>
@@ -854,6 +850,8 @@ You could make a phone call to the friend and ask what the time is.</p>
 </li>
 <li>
 <p>7 - reserved for private use.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</p>
@@ -922,61 +920,80 @@ You could make a phone call to the friend and ask what the time is.</p>
 </PRE>
 
 <h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet.</h5>
-<pre><code>    NTP Client - NTP Server Round Trip Delay = (T4 - T1) - (T3 - T2)
+<PRE style="font-size:75%">
 
-    NTP Client - NTP Server Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
-</code></pre>
+        NTP Client - NTP Server Round Trip Delay = (T4 - T1) - (T3 - T2)
+
+        NTP Client - NTP Server Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
+
+</PRE>
 <h4 id="3-examples-of-running-through-the-calculations-for-rtt-and-offset">3 examples of running through the calculations for RTT and OffSet.</h4>
-<pre><code>     +---------------+----------------+----------------+
-     |               |                |                |
-     |   T1 0        |   T1 0         |  T1 10         |
-     |   T2 2        |   T2 4         |  T2 2          |
-     |   T3 12       |   T3 6         |  T3 12         |
-     |   T4 14       |   T4 10        |  T4 24         |
-     |               |                |                |
-     |   RTD = 4     |   RTD = 8      |  RTD = 4       |
-     |   OffSet = 0  |   OffSet = 0   |  OffSet = -10  |
-     +---------------+----------------+----------------+
+<PRE style="font-size:75%">
 
 
 
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 0  |                            ( 14 - 0  ) - ( 12 -  2 )
-    | T2  = 2  |                            (    14   ) - (    10   )
-    | T3  = 12 |                                        4
-    | T4  = 14 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  2 - 0  ) + ( 12 - 14 )] /2
-                                           [(    2    ) + (    -2   )] /2
-                                           [            0            ] /2
-                                                        0
+        +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+        | T1  = 0  |                            ( 14 - 0  ) - ( 12 -  2 )
+        | T2  = 2  |                            (    14   ) - (    10   )
+        | T3  = 12 |                                        4
+        | T4  = 14 |
+        +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                               [(  2 - 0  ) + ( 12 - 14 )] /2
+                                               [(    2    ) + (    -2   )] /2
+                                               [            0            ] /2
+                                                            0
 
 
 
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 0  |                            ( 10 - 0  ) - (  6 -  4 )
-    | T2  = 4  |                            (   10    ) - (    2    )
-    | T3  = 6  |                                        8
-    | T4  = 10 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  4 - 0  ) + (  6 - 10 )] /2
-                                           [(    4    ) + (    +4   )] /2
-                                           [            0            ] /2
-                                                        0
 
 
 
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 10 |                            ( 24 - 10 ) - ( 12 -  2 )
-    | T2  = 2  |                            (   14    ) - (   10    )
-    | T3  = 12 |                                        4
-    | T4  = 24 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  2 - 10 ) + ( 12 - 24 )] /2
-                                           [(    -8   ) + (    -12  )] /2
-                                           [            -20          ] /2
-                                                        -10
-</code></pre>
+        +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+        | T1  = 0  |                            ( 10 - 0  ) - (  6 -  4 )
+        | T2  = 4  |                            (   10    ) - (    2    )
+        | T3  = 6  |                                        8
+        | T4  = 10 |
+        +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                               [(  4 - 0  ) + (  6 - 10 )] /2
+                                               [(    4    ) + (    +4   )] /2
+                                               [            0            ] /2
+                                                            0
+
+
+
+
+
+
+        +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+        | T1  = 10 |                            ( 24 - 10 ) - ( 12 -  2 )
+        | T2  = 2  |                            (   14    ) - (   10    )
+        | T3  = 12 |                                        4
+        | T4  = 24 |
+        +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                               [(  2 - 10 ) + ( 12 - 24 )] /2
+                                               [(    -8   ) + (    -12  )] /2
+                                               [            -20          ] /2
+                                                            -10
+
+
+
+
+
+
+
+
+         +---------------+----------------+----------------+
+         |               |                |                |
+         |   T1 0        |   T1 0         |  T1 10         |
+         |   T2 2        |   T2 4         |  T2 2          |
+         |   T3 12       |   T3 6         |  T3 12         |
+         |   T4 14       |   T4 10        |  T4 24         |
+         |               |                |                |
+         |   RTD = 4     |   RTD = 8      |  RTD = 4       |
+         |   OffSet = 0  |   OffSet = 0   |  OffSet = -10  |
+         +---------------+----------------+----------------+
+</PRE>
+
 <hr />
 <h3 id="networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy. <a name="NTP_precision"></a></h3>
 <p>The precision and accuracy of system time achievable and maintainable by an NTP (Network Time Protocol) client depend significantly on the network infrastructure between the NTP client and the NTP servers.
