@@ -273,9 +273,11 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Setting time</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#set-the-cmosbiostrc-clock">set the CMOS/BIOS/TRC clock</a>
+    </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../System_timing_and_NTP/">System timing and NTP</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../System_Timing_and_NTP/">System Timing and NTP</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
                   </li>
@@ -304,10 +306,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <pre><code>ntpdate time.nist.gov
-hwclock -w
+                <h3 id="if-you-need-to-quickly-jump-the-system-time-to-the-correct-time-before-you-do-this-you-should-shut-down-any-databases-etc-running-on-the-server">If you need to quickly jump the system time to the correct time. Before you do this, you should shut down any databases, etc... running on the server.</h3>
+<pre><code>ntpdate time.nist.gov
 </code></pre>
-<h3 id="if-you-dont-have-an-ntp-service-available-you-can-set-the-clock-based-on-the-current-time-on-another-server">If you dont have an NTP service available you can set  the clock based on the current time on another server</h3>
+<h4 id="set-the-cmosbiostrc-clock">set the CMOS/BIOS/TRC clock</h4>
+<pre><code>hwclock -w
+</code></pre>
+<h3 id="if-you-dont-have-an-ntp-service-available-you-can-set-the-clock-based-on-the-current-time-on-another-server">If you don't have an NTP service available, you can set  the clock based on the current time on another server</h3>
 <pre><code>date +%Y%m%d%T -s "`ssh user@remoteserver 'date "+%Y%m%d%T"'`"
 </code></pre>
               
@@ -315,7 +320,7 @@ hwclock -w
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../NTP_Authentication/" class="btn btn-neutral float-left" title="NTP Authentication"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../System_timing_and_NTP/" class="btn btn-neutral float-right" title="System timing and NTP">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../System_Timing_and_NTP/" class="btn btn-neutral float-right" title="System Timing and NTP">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -341,7 +346,7 @@ hwclock -w
       <span><a href="../NTP_Authentication/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../System_timing_and_NTP/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../System_Timing_and_NTP/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
