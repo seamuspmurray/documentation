@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Cluster website - Seamus Murray's Notes about Linux and System Engineering</title>
+    <title>Vim sudo - Seamus Murray's Notes about Linux and System Engineering</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cluster website";
-        var mkdocs_page_input_path = "linux/Clustering/cluster_website.md";
+        var mkdocs_page_name = "Vim sudo";
+        var mkdocs_page_input_path = "linux/Core_Utils/vim_sudo.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -49,25 +49,23 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Clustering</a>
-    <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../HA_LVM_cluster_build/">HA LVM cluster build</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Cluster website</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/homemade_cluster/">Homemade cluster</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../homemade_cluster/">Homemade cluster</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../simple.cluster.conf/">Simple.cluster.conf</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
                 </li>
     </ul>
                   </li>
@@ -79,19 +77,21 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Core Utils</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/awk/">Awk</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Core Utils</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../awk/">Awk</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+                <li class="toctree-l2"><a class="reference internal" href="../bash_shortcuts/">Bash shortcuts</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/rename/">Rename</a>
+                <li class="toctree-l2"><a class="reference internal" href="../rename/">Rename</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+                <li class="toctree-l2"><a class="reference internal" href="../spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/user_creation/">User creation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../user_creation/">User creation</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Core_Utils/watch_and_timeout/">Watch and timeout</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Vim sudo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../watch_and_timeout/">Watch and timeout</a>
                 </li>
     </ul>
                   </li>
@@ -293,8 +293,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Linux</li>
-          <li class="breadcrumb-item">Clustering</li>
-      <li class="breadcrumb-item active">Cluster website</li>
+          <li class="breadcrumb-item">Core Utils</li>
+      <li class="breadcrumb-item active">Vim sudo</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -303,14 +303,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <pre><code>https://alteeve.ca/w/Cluster.conf
+                <p>Handy trick for when you open a file in vim and do not have the permissions to save the file</p>
+<pre><code>:w !sudo tee %
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../RHEL4_cluster_installation/" class="btn btn-neutral float-left" title="RHEL4 cluster installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../homemade_cluster/" class="btn btn-neutral float-right" title="Homemade cluster">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../user_creation/" class="btn btn-neutral float-left" title="User creation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../watch_and_timeout/" class="btn btn-neutral float-right" title="Watch and timeout">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -333,10 +334,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../RHEL4_cluster_installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../user_creation/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../homemade_cluster/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../watch_and_timeout/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
