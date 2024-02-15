@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>System timing and NTP - Seamus Murray's Notes about Linux and System Engineering</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "System timing and NTP";
+        var mkdocs_page_input_path = "time/System_timing_and_NTP.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Seamus Murray's Notes about Linux and System Engineering
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../map/">Map</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/linux_proccess_signaling/">Linux proccess signaling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/cluster_website/">Cluster website</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/homemade_cluster/">Homemade cluster</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/email_on_linux/">change mail relay for postfix</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/hot_add_memory/">Hot add memory</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Core Utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/awk/">Awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/rename/">Rename</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/user_creation/">User creation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/watch_and_timeout/">Watch and timeout</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Disks and File Systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/rsync/">Rsync</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/shrink_lvm_filesystem/">Shrinking a Linux filesystem on LVM</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Firewalls and Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/iptables_notes/">My notes on IPtables</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Networking</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/check_dns_records/">Check dns records</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/linux_networking/">Linux networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/local_IP_address_survey/">local IP address survey</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RedHat</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/RedHat/kickstart/">Kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Satellite spacewalk</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Yum rpm</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Software Packaging</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Software_Packaging/apt_get/">Apt get</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">C programming</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Puppet</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../puppet/puppet_study_notes/">Puppet study notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Column_tally/">Column tally</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/DNS_validate_entries/">DNS validate entries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/IP_survey/">IP survey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_arguments/">Bash arguments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_array/">Bash array</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_case/">Bash case</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_trap/">Bash fail trap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_function/">Bash function</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_functions/">Bash functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_nested_if_else/">Bash nested if else</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_read_input/">Bash read input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_select/">Bash select</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_string_comparison/">Bash string comparison</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_tips/">Bash tips</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/diff/">Diff</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/expect/">Expect</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/script_to_markdown/">Script to markdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/simulate_site_failure/">Simulate site failure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Time</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Setting_time/">Setting time</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">System timing and NTP</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Seamus Murray's Notes about Linux and System Engineering</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Time</li>
+      <li class="breadcrumb-item active">System timing and NTP</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Last updated by Seamus Murray on 20240214</p>
+<pre style="font-size: 5px">
+    ...
+</pre>
+
+<h4 id="purpose-of-this-document">Purpose of this Document:</h4>
+<p>Act as a repository for separate but related system timing information. </p>
+<h4 id="index">Index:</h4>
+<ul>
+<li><a href="#Definitions"> Definitions of the terms used in this document.</a></li>
+<li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document.</a></li>
+<li><a href="#Fixed_Frequency"> Simplified scenario of how Linux maintains System Time on a single core fixed frequency x86 system.</a></li>
+<li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC.</a></li>
+<li><a href="#CPU_Bug"> CPU Bugs and Clock Sources.</a></li>
+<li><a href="#Segals_Law"> TimeLines, OffSets and Segal's Law.</a></li>
+<li><a href="#Clock_drift"> Examples of Clock Drift.</a></li>
+<li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources.</a></li>
+<li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
+<li><a href="#NTP_Precision"> NTP Precision and Accuracy.</a></li>
+<li><a href="#Sources"> Sources for this document. </a></li>
+</ul>
+<hr />
+<hr />
+<h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
+<pre><code>+-------------------+-------------------------------------------------------------------------------------------------------------------+
+| Wall Clock Time   | Time displayed in a format understandable to humans, such as "12:00 am, Jan 1st, 1970."                           |
+| Real-Time Clock   | A hardware-based clock typically found on system motherboards, functions independent of a computer's power state. |
+| System Time       | A software-based clock or time line initialized during system boot from the real-time clock                       |
+| Reference Clock   | A highly precise and stable time source used to synchronize and calibrate other clocks.                           |
+| Clock Cycles      | A measure of the transitions in an electronic circuit, akin to the movement of a production line.                 |
+| Counter           | A device that increments based on specific events or time periods, operating independently of CPU-executed code.  |
+| Timer             | A device that tracks the number of increments occurring between two points in time, similar to a stopwatch.       |
+| Clock Source      | A device queried by CPU-executed code to obtain the current value of a counter.                                   |
+| Monotonic Counter | A counter that increments at regular intervals, such as once per second or minute, analogous to a metronome.      |
+| System            | A self-contained computing entity, such as a Linux server, Windows desktop, or Mac laptop.                        |
+| Time Line         | A graphical or numerical depiction of the passage of time.                                                        |
+| Time Scale        | A representation of time, either graphical or numerical, adjusted by a scaling factor to illustrate drift or skew |
++-------------------+-------------------------------------------------------------------------------------------------------------------+
+</code></pre>
+<hr />
+<h3 id="description-of-the-4-main-clock-sources-referred-to-in-this-document">Description of the 4 main clock sources referred to in this document. <a name="Clock_Sources"></a></h3>
+<h4 id="rtc-real-time-clock">RTC (Real Time Clock)</h4>
+<ul>
+<li>A hardware device used to keep track of time even when a system is powered off.</li>
+<li>Similar to a battery-operated digital Wrist Watch.</li>
+<li>A quartz crystal is used as a stable oscillator (32Khz).</li>
+<li>When an x86 computer is powered off, the Real Time Clock on the x86 computer's motherboard is powered by a battery and is able to maintain an approximation of WallClock time.</li>
+<li>These RTCs tend to be fairly inaccurate, the amount by which they drift from the true WallClock time can depend on several factors such as the quality of the electronic components and temperature variations.</li>
+<li>When an x86 computer is powered off there is no System Time, Clock Cycles, Interrupts, Counters, or Timers.</li>
+</ul>
+<h5 id="problems-with-rtc">Problems with RTC</h5>
+<ul>
+<li>Subject to temperature changes.</li>
+<li>Subject to manufacturing tolerances.</li>
+<li>Modern CPU clock rates are much higher than the 32khz (clock) rate of RTC, therefor the resolution that they provide is not sufficiently high enough for modern CPUs.</li>
+<li>It is very computationally expensive and slow for the OS to poll the RTC.</li>
+</ul>
+<h4 id="tsc-time-stamp-counter">TSC (Time Stamp Counter)</h4>
+<p>The TSC was introduced by Intel with the original Pentium CPU in 1993.
+The original TSC was very simple to use, it provided a counter that could be read by code being executed on the CPU.</p>
+<ol>
+<li>Located within the CPU.</li>
+<li>When an Intel Pentium computer is powered up the TSC register is set to zero.</li>
+<li>The value in the TSC register was incremented by 1 for every CPU ClockCycle.<ul>
+<li>If the CPU ClockCycle was 60MHz then the TSC would also be incremented at a rate of 60MHz.</li>
+</ul>
+</li>
+<li>Any code running on the system could read this register to determine what the current value was.</li>
+<li>Because both the CPU frequency and the TSC frequency were fixed this type of counter was known as a Monotonic Counter.</li>
+</ol>
+<p>The TSC is often preferred over many of the modern alternative Clock Sources because it is the least computationally expensive to use.
+For a running process (application) to query the current value of the TSC, it only requires a single X86 instruction call.
+Retrieving the TSC counter value in this this CPU register can be achieved by calling either of the following nonprivileged x86 instructions rdtsc/rdtscp.
+Interestingly; these two x86 instructions rdtsc/rdtscp can be called from any privilege level and they do not require a CPU ring transition.</p>
+<p>Over time, the reliability of the Time Stamp Counter (TSC) has been compromised on numerous occasions, necessitating the implementation of various hardware, firmware, and software solutions to ensure its dependability.
+Other clocksources with more advanced features have become available, but the TSC has remained as the ubiquitous clocksource.</p>
+<h4 id="reference-time-wall-clock-time-definition-needs-refinement">Reference time / Wall Clock time (definition needs refinement)</h4>
+<p>A high precision Reference clock is used to keep track of the agreed-upon time standard (such as UTC)
+Used to synchronise and calibrate other clocks.
+Measured in the time units that us humans use Hours, Minutes seconds Micro seconds, etc...for example  12:00 am, Jan 1st, 1970</p>
+<h4 id="system-time-definition-needs-refinement">System Time (definition needs refinement)</h4>
+<p>A clock / Time Line maintained in software.
+System time is initialised and set during system boot up from the Real Time Clock.
+System time is often kept in sync with the WallClockTime /reference time by using an NTP client to poll a reference NTP time source.
+When a System is powered off, the OS is not running therefore there is no SystemTime.</p>
+<hr />
+<h3 id="simplified-scenario-of-how-linux-maintains-system-time-on-a-single-core-fixed-frequency-x86-system">Simplified scenario of how Linux maintains System Time on a single core fixed frequency x86 system  <a name="Fixed_Frequency"></a></h3>
+<h4 id="below-is-a-simplified-timeline-of-what-happens-when-an-intel-pentium-i-single-core-fixed-clock-frequency-x86-computer-is-powered-up-and-running-a-standard-linux-kernel-26">Below is a simplified timeline of what happens when an Intel Pentium I single-core fixed Clock Frequency x86 computer is powered up and running a standard Linux Kernel 2.6.</h4>
+<ol>
+<li>RTC continues working independently of the state of the computer. (Battery backed)</li>
+<li>CPU is powered on and initialised.</li>
+<li>The ClockSource Counters built into the CPU are initialized to Zero.</li>
+<li>The OS is booted.</li>
+<li>The OS System Time is set to the WallClock time based on the value in the RTC. (Generally, the RealTime clock is not read again until the next boot)</li>
+<li>The OS queries to see what ClockSources are available.</li>
+<li>The OS determines which ClockSource to use, based on manual configuration overrides and or the calculated stability of the available ClockSources.<ul>
+<li>For simplicity's sake let's say that the OS has decided to use the TSC (Time Stamp Counter) as the ClockSource.</li>
+</ul>
+</li>
+<li>The OS determines the ratio of the ClockSource frequency vs the frequency of the CPU Clock Cycles. ( on this computer is 1:1 )<ul>
+<li>For simplicity's sake let's assume that the CPU Clock Frequency is 10Hz and the ClockSource Counter frequency is also 10Hz.</li>
+</ul>
+</li>
+<li>The OS takes note of the value of the ClockSource counter and the System WallClock time.<ul>
+<li>The Computer has been powered on for 10 seconds, the ClouckSource counter = 10 (seconds) x 10hz = 100</li>
+<li>The SystemTime &amp; WallClock time is 12:00:10 Jan 1 2016</li>
+</ul>
+</li>
+<li>The OS runs the various process and applications.</li>
+<li>The OS-maintained SystemTime can now be kept in sync with the estimated WallClock time by moving it forward by an offset of the value maintained by the ClockSource Counter.<ul>
+<li>For simplicity's sake let's say that the OS has been busy running processes and applications and the SystemTime has not been updated for 10 seconds in WallClock time.</li>
+<li>The OS queries the ClockSource Counter (which continues independently of CPU load) and notices that the counter has increased from 100 to 200.</li>
+<li>The OS calculates the current SystemTime by...<ul>
+<li>TSC Counter difference (current) 200 - (previous) 100 = 100</li>
+<li>The OS knows that the TSC frequency is 10Hz</li>
+<li>100 / 10Hz = 10 seconds</li>
+<li>(previous) SystemTime + 10 seconds = 12:00:10 Jan 1 2016</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>There are 2 major problems with this method of maintaining system time.</p>
+<ol>
+<li>There is no way to determine the initial accuracy of the RTC's approximation of the True Wall Clock time..<ul>
+<li>You cannot determine what time zone it is set to.</li>
+<li>You cannot determine if it is even set to the correct year.</li>
+</ul>
+</li>
+<li>There is no way to validate the accuracy or the stability of the ClockSource..<ul>
+<li>Is it exactly 10hz or is it 10.01hz ?</li>
+<li>Is it varying between 9hz and 11hz ?</li>
+</ul>
+</li>
+</ol>
+<p>NTP solves problem [1] by polling a remote time source across the network to get an accurate reading for the True WallClock time in reference to the prime epoch.</p>
+<p>NTP goes a great way to mitigate problem [2] by comparing the apparent time drift between the multiple values returned by the local ClockSource with multiple values returned by the more accurate remote NTP time source.</p>
+<p>If it is determined that the local ClockSource is drifting from its stated speed of 10Hz, then the local NTP daemon calculates the drift offset and adjusts the system clock.</p>
+<hr />
+<h3 id="advancements-of-x86-cpus-and-the-effects-upon-the-monotonic-tsc">Advancements of x86 CPU's and the effects upon the MonoTonic TSC  <a name="CPU_Advancements"></a></h3>
+<h4 id="brief-overview-of-the-advances-in-x86-system-architecture-that-affected-the-previously-used-method-of-using-a-simple-monotonic-counter-tsc-to-maintain-time">Brief overview of the advances in X86 system architecture that affected the previously used method of using a simple monotonic counter (TSC) to maintain time.</h4>
+<p>For most purposes, the methodology for maintaining system time described above (Intel Pentium I - III) worked fairly well.
+However times have changed and as x86 systems have evolved they have become far more complicated, as a result, the old method of determining the WallClock time needed to be changed to work on modern CPUs.</p>
+<p>The following 3 advances in X86 CPUs nullified the previously used method of using a simple monotonic counter (TSC) to maintain time.</p>
+<ul>
+<li>x86 systems evolved from having a single CPU core to multiple CPU cores.</li>
+<li>x86 CPUs could change Clock frequency whilst a system was running,  to both save power and turbo boost.</li>
+<li>x86 CPU cores could change power states whilst a system was running, Individual CPU cores could be turned off and then be turned back on.</li>
+</ul>
+<hr />
+<h4 id="a-more-detailed-overview-of-the-advances-in-x86-system-architecture-that-affected-the-previously-used-method-of-using-a-simple-monotonic-counter-tsc-to-maintain-time">A more detailed overview of the advances in X86 system architecture that affected the previously used method of using a simple monotonic counter (TSC) to maintain time.</h4>
+<p>Below I have detailed 5 points in the evolution of X86 CPUs that I believe had the most effect on system timekeeping.</p>
+<ol>
+<li>
+<p>Single CPU fixed clock frequency. (tsc)</p>
+<ul>
+<li>Historically back when x86 CPU frequencies were fixed, the TSC incremented in synchronization with the CPU cycles and everything was fine.</li>
+</ul>
+</li>
+<li>
+<p>SMP (symmetric multi-processing) fixed clock frequency. (tsc)</p>
+<ul>
+<li>When SMP (symmetric multi-processing) x86-based systems were released, each CPU had its own TSC and there was no mechanism to keep them in sync.</li>
+<li>Having separate TSC's on the same x86 system that could be out of sync with each other sometimes caused issues when applications/processes were moved between CPUs + TSC's, as the time could appear to jump either forwards or backward.</li>
+<li>As a fix for the out-of-sync TSCs on SMP systems, the TSCs were kept in sync by the BIOS/firmware during CPU resets and the situation was better again.</li>
+</ul>
+</li>
+<li>
+<p>SMP (symmetric multi-processing) variable clock frequency (SpeedStep). (constant_tsc)</p>
+<ul>
+<li>When x86 CPUs were released with new features such as variable clock speed once again the multiple TSC's within a single x86 system were out of sync.</li>
+<li>To solve this issue the variable clock/tick/rate/frequency of the CPU, the TSC frequency was Decoupled from the CPU clock frequencies. </li>
+<li>The TSCs would be incremented at a constant rate regardless of the variable CPU frequency. </li>
+<li>To communicate to the OS that the TSCs are in sync the CPU cpuid bit (flag) constant_tsc is presented to the OS.</li>
+</ul>
+</li>
+<li>
+<p>SMP (symmetric multi-processing), variable clock frequency, and Power States  (ACPI P-, C-. and T-states, etc..) (nonstop_tsc)</p>
+<ul>
+<li>Now individual CPU cores can change their clock frequency independently of the other cores and even the uncore can be shutdown.</li>
+<li>When the uncore is shutdown the associated TSC is frozen and is now out of sync with the other TSC's</li>
+<li>To solve the issue of the TSC being shutdown with the CPUs and then started again, Intel introduced the "nonstop_tsc"</li>
+</ul>
+</li>
+<li>
+<p>Sleep x86 (nonstop_tsc_s3)</p>
+<ul>
+<li>x86 systems can be put to sleep where all system context is lost except system memory.</li>
+</ul>
+</li>
+</ol>
+<h4 id="so-we-now-have-4-tsc-related-cpuid-flags-for-the-different-tsc-feature-sets">So we now have 4 TSC-related CPUID flags for the different TSC feature sets.</h4>
+<ul>
+<li>tsc : TSC is present</li>
+<li>constant_tsc: TSC ticks at a constant rate</li>
+<li>nonstop_tsc: TSC does not stop in C states</li>
+<li>nonstop_tsc_s3: TSC doesn't stop in S3 state</li>
+</ul>
+<p>Plus 1 more TSC CPUID flag that is only set if the kernel determines that the TSC is reliable.</p>
+<ul>
+<li>tsc_reliable: TSC is known to be reliable</li>
+</ul>
+<hr />
+<h3 id="cpu-bugs-and-clock-sources">CPU Bugs and Clock Sources  <a name="CPU_Bug"></a></h3>
+<p>There have been a few different CPU, Firmware, and Operating System bugs related to CPU clock sources.</p>
+<p>One example is an issue with the Intel Xeon E5 v2 CPUs which results in the TSC not being cleared upon a CPU warm reset.</p>
+<p>This can result in the various TSC's on a system getting out of sync with each other.</p>
+<p>The bug is referenced in the following Intel Xeon E5 v2 spec update as "CA105 TSC is Not Affected by warm reset"</p>
+<p><a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf">http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf</a></p>
+<p>If a CPUs with this bug are warm reset or the uncores are powered down, the multiple TSC's within a system can get out of sync with each other.</p>
+<p>This problem can be mitigated by motherboard firmware/BIOS keeping the various TSC's in sync.</p>
+<p>If the firmware does not reset/sync the TSCs, then they may stay out of sync until a cold reset (power off/power on)is performed.</p>
+<p>The Linux Operating system running detect if the TSC's are out of sync and flag the TSC clocksource/s as being unstable.
+If this occurs, the Linux Operating system should then failover and utilise one of the alternative clock sources and continue functioning normally.
+Unfortunately, certain kernel builds in certain Linux distributions do not successfully fail over to alternate clock sources.</p>
+<p>For example, kernel-2.6.32-504.30.3.el6.x86_64, continues to use the unstable TSC as a clock source, doesnt fail over to a stable source, and can result in timewarping of the Syste, Time so severere that it may drift too much to be corrected by NTP.</p>
+<hr />
+<h3 id="clock-synchronization-timelines-offsets-and">Clock Synchronization, TimeLines, OffSets and <a name="Segals_Law"></a></h3>
+<blockquote>
+<p>"A man with a watch knows what time it is. A man with two watches is never sure."
+                                                                           Segal's Law </p>
+</blockquote>
+<p>If we have a Wrist Watch, we can be reasonably sure of what the time is.</p>
+<PRE style="font-size: 75%">
+           ,--.-----.--.
+           |-----------|
+           +--+     +--+
+           |  +-----+  |
+         __+--+     +--+__
+        /  |  +-----+  |  \
+       /   \__|-----|__/   \
+      /   _______________   \/\
+     /   /               \   \/
+    {   /    _     _   _  \   }
+    |  {    | | . | | | |  }  |-,
+    |  |    |_| . |_| |_|  |  | |
+    |  {                   }  |-'
+    {   \                 /   }
+     \   `---------------'   /\
+      \     __|-----|__     /\/
+       \   /  +-----+  \   /
+        \  |--+     +--|  /
+         --+  +-----+  +--
+           +--+     +--+
+           |-----------|
+           `--'-----`--'
+
+           Wrist Watch 1
+
+
+    Wrist Watch Time Line     0    5    10   15   20   25   30
+                              |----|----|----|----|----|----|
+
+</PRE>
+
+<p>Problems with using 1 Wrist Watch to determine the time.</p>
+<ol>
+<li>There is no way that we can confirm that the Wrist Watch is currently displaying the correct time. <ul>
+<li>It could be correct, it could be 1 second behind, it could be 1 hour behind.</li>
+</ul>
+</li>
+<li>There is no way that we can determine if the Wrist Watch is drifting too fast or too slow.</li>
+<li>There is no way that we can determine if the Wrist Watch is wandering between being too fast and too slow.</li>
+</ol>
+<p>Problem (1) Solution (a)...</p>
+<ul>
+<li>We can purchase a 2nd Wrist Watch.</li>
+<li>
+<p>We can now compare the time on Wrist Watch 1 and Wrist Watch 2.
+If they are different, we can approximate the time by averaging the times on both of the watches.</p>
+</li>
+<li>
+<p>If the time between the 2 watches differs, there is no way to determine if there is a problem with either watch or both watches.</p>
+</li>
+</ul>
+<p>If you have 2 Wrist Watches and they both display the same time you can you be even more sure of what the time is ?</p>
+<PRE style="font-size: 75%">
+
+           ,--.-----.--.                                ,--.-----.--.
+           |-----------|                                |-----------|
+           +--+     +--+                                +--+     +--+
+           |  +-----+  |                                |  +-----+  |
+         __+--+     +--+__                            __+--+     +--+__
+        /  |  +-----+  |  \                          /  |  +-----+  |  \
+       /   \__|-----|__/   \                        /   \__|-----|__/   \
+      /   _______________   \/\                    /   _______________   \/\
+     /   /               \   \/                   /   /               \   \/
+    {   /    _     _   _  \   }                  {   /    _     _   _  \   }
+    |  {    | | . | | | |  }  |-,                |  {    | | . | | | |  }  |-,
+    |  |    |_| . |_| |_|  |  | |                |  |    |_| . |_| |_|  |  | |
+    |  {                   }  |-'                |  {                   }  |-'
+    {   \                 /   }                  {   \                 /   }
+     \   `---------------'   /\                   \   `---------------'   /\
+      \     __|-----|__     /\/                    \     __|-----|__     /\/
+       \   /  +-----+  \   /                        \   /  +-----+  \   /
+        \  |--+     +--|  /                          \  |--+     +--|  /
+         --+  +-----+  +--                            --+  +-----+  +--
+           +--+     +--+                                +--+     +--+
+           |-----------|                                |-----------|
+           `--'-----`--'                                `--'-----`--'
+
+           Wrist Watch 1                                Wrist Watch 2
+
+    Wrist Watch 1 Time Line          0    5    10   15   20   25   30
+                                     |----|----|----|----|----|----|
+
+
+    Wrist Watch 2 Time Line          0    5    10   15   20   25   30
+                                     |----|----|----|----|----|----|
+
+
+</PRE>
+
+<p>If you have 2 Wrist Watches and they both display different times you can never be sure of what the time is.</p>
+<p>In the example below the time on Wrist Watch 2 is 5 minutes ahead of Wrist Watch 1...</p>
+<PRE style="font-size: 75%">
+           ,--.-----.--.                                ,--.-----.--.
+           |-----------|                                |-----------|
+           +--+     +--+                                +--+     +--+
+           |  +-----+  |                                |  +-----+  |
+         __+--+     +--+__                            __+--+     +--+__
+        /  |  +-----+  |  \                          /  |  +-----+  |  \
+       /   \__|-----|__/   \                        /   \__|-----|__/   \
+      /   _______________   \/\                    /   _______________   \/\
+     /   /               \   \/                   /   /               \   \/
+    {   /    _     _   _  \   }                  {   /    _     _   _  \   }
+    |  {    | | . | | | |  }  |-,                |  {    | | . | | |_   }  |-,
+    |  |    |_| . |_| |_|  |  | |                |  |    |_| . |_|  _|  |  | |
+    |  {                   }  |-'                |  {                   }  |-'
+    {   \                 /   }                  {   \                 /   }
+     \   `---------------'   /\                   \   `---------------'   /\
+      \     __|-----|__     /\/                    \     __|-----|__     /\/
+       \   /  +-----+  \   /                        \   /  +-----+  \   /
+        \  |--+     +--|  /                          \  |--+     +--|  /
+         --+  +-----+  +--                            --+  +-----+  +--
+           +--+     +--+                                +--+     +--+
+           |-----------|                                |-----------|
+           `--'-----`--'                                `--'-----`--'
+
+           Wrist Watch 1                                Wrist Watch 2
+
+
+
+    Wrist Watch 1 Time Line         0    5    10   15   20   25   30
+                                    |----|----|----|----|----|----|
+                                   .
+                                 .
+                               .
+    Wrist Watch 2 Time Line    0    5    10   15   20   25   30
+                               |----|----|----|----|----|----|
+</PRE>
+
+<p>With just 2 Wrist Watches it is impossible to determine if the time is correct on either of the Wrist Watches.</p>
+<p>Side Note...
+     Describe atomic visibility, you can only view one of the timelines in a single action,
+     Therefore to view both time lines you need to perform 2 actions.</p>
+<hr />
+<h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift. <a name="Clock_drift"></a></h3>
+<h4 id="watch-2-is-running-too-fast">Watch 2 is running too fast</h4>
+<p>Wrist Watch 2 FASTER than Wrist Watch 1</p>
+<PRE style="font-size: 75%">
+                                  0    5    10   15   20   25   30
+    Wrist Watch 1 Time Line       |----|----|----|----|----|----|
+                                  .              .              .
+                                  .            .             .
+                                  .           .           .
+                                  0   5   10  15  20  25  30
+    Wrist Watch 2 Time Line       |---|---|---|---|---|---|
+</PRE>
+
+<h4 id="watch-2-is-running-too-slow">Watch 2 is running too slow</h4>
+<p>Wrist Watch 2 SLOWER than Wrist Watch 1</p>
+<PRE style="font-size: 75%">
+
+                                  0    5    10   15   20   25   30
+    Wrist Watch 1 Time Line       |----|----|----|----|----|----|
+                                  .              .              .
+                                  .                 .                .
+                                  .                    .                   .
+                                  .                       .                       .
+    Wrist Watch 2 Time Line       |-------|-------|-------|-------|-------|-------|
+
+                                  0       5       10      15      20      25      30
+
+</PRE>
+
+<h4 id="watch-2-is-unstable-sometimes-running-too-fast-and-sometimes-running-too-slow">Watch 2 is unstable, sometimes running too fast and sometimes running too slow</h4>
+<p>Wrist Watch 2 initially in sync with Wrist Watch 1
+Wrist Watch 2 SLOWER than Wrist Watch 1 (out of sync)
+Wrist Watch 2 FASTER than Wrist Watch 1 (out of sync)
+Wrist Watch 2 in sync with Wrist Watch 1</p>
+<PRE style="font-size: 75%">
+                                  0    5    10   15   20   25   30
+    Wrist Watch 1 Time Line       |----|----|----|----|----|----|
+                                  .               .             .
+                                  .                  .          .
+                                  .                    .        .
+                                  0      5       10    15 20 25 30
+    Wrist Watch 2 Time Line       |------|-------|-----|--|--|--|
+
+</PRE>
+
+<p>Problem (1) (2) and (3) Solution (b)...</p>
+<ul>
+<li>We can gain access to an accurate time source.</li>
+<li>We can synchronise the Wrist Watch 1 to the accurate time source.</li>
+<li>We can repeatedly compare the time displayed by the Wrist Watch 1 with the accurate time source.</li>
+<li>If the Wrist Watch 1 repeatedly shows the same time as the accurate time source, then the accuracy and reliability of the Wrist Watch can be confirmed.</li>
+<li>If the Wrist Watch 1 is seen to consistently drift either faster or slower than the accurate time source.</li>
+<li>Then we can compensate for the drift by regularly adjusting the time on the Wrist Watch 1.</li>
+<li>e.g. every minute we could move the time on the Wrist Watch 1 second forward or 1 second backward.</li>
+</ul>
+<p>Problem 3 Solution (b+)...</p>
+<p>We can detect if the Wrist Watch 1 is wandering between too fast and too slow, by repeatedly comparing the Wrist Watch time to the accurate time source.</p>
+<hr />
+<h3 id="calculating-the-roundtrip-delay-and-clock-offset-between-2-remote-clock-sources">Calculating the RoundTrip Delay and Clock OffSet between 2 remote Clock Sources. <a name="RoundTrip_Delay"></a></h3>
+<p>Definitions of terms..</p>
+<p>Reference Time (WallClockTime), is the term used to describe the universally agreed upon time.</p>
+<p>System Time (Linux Computer) same units in Wall Clock time, maintained in software, initialised during boot up from the Real Time Clock.</p>
+<h4 id="scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime.</h4>
+<p>Definition of SystemTime:</p>
+<ul>
+<li>Similar to Wall Clock time.</li>
+<li>It is maintained in software.</li>
+<li>Initialised during boot up from the Real Time Clock.</li>
+<li>Often kept in sync with WallClockTime with the aid of NTP.</li>
+</ul>
+<p>Let's say that we manually set the Linux system time using a value read from our Wrist Watch time.</p>
+<p>The steps would be:</p>
+<ol>
+<li>Read time from Wrist Watch.</li>
+<li>Type the "date" command and the "Wrist Watch time" on the command prompt, and press enter.</li>
+<li>Code is executed.</li>
+<li>System Time is set.</li>
+</ol>
+<p>The problem, there is a delay between step 1 and step 4.
+Therefore both time lines (Wrist Watch and SystemTime will never be exactly in Sync.</p>
+<p>WristWatch time  = 10
+SystemTime       = 15</p>
+<p>OffSet           = 05</p>
+<p>Problem 1,  Offset between the time taken to read the Wrist Watch Time and set the SystemTime.
+Problem 2,  No way to determine the accuracy of the Wrist Watch time, maybe the SystemTime was closer to the real time?</p>
+<h4 id="scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference.</h4>
+<p>Problem 1,  Offset between the time taken to read the Accurate clock Time and set the SystemTime.
+Problem 2,  Expensive, an accurate clock costs money.</p>
+<h4 id="scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference.</h4>
+<p>Problem 1,  Delay between the time taken to read the shared Accurate clock Time and set the SystemTime.</p>
+<h4 id="description-of-problem-1">Description of Problem 1...</h4>
+<p>Let's say that you have a friend working at a science laboratory who has access to a very accurate clock.
+You could make a phone call to the friend and ask what the time is.</p>
+<PRE style="font-size: 60%">
+                                        /+------------------------+/
+                  ,'"".                /                          /            ,'"".
+                  )  ,|    +~~~~~~~~~~/                          /             )  ,|
+                 /  /,'-. /          /|                         /|\           /  /,'-.
+                /  //  /.`.         /+------------------------+/ | \         /  //  /.`.
+              ,'  //  /  `.`.         |                          |  \      ,'  //  /  `.`.        ______
+    ____     (    )--.`.   //|        |                          |   \    (    )--.`.   //|      /  12  \
+   / 12 \    |`--'|   `.`.// |        |                          |    \__ |`--'|   `.`.// |     /        \
+  /      \    `--'      `./  /        |                          |         `--'      `./  /~~~~~|9  -->3 |
+  |9  -->3|~~~~~|         | /         |                          |           |         | /      \   |    /
+  \   \  /      |_________|/          |                          |           |_________|/        \___6__/
+   \__6_/
+
+
+</PRE>
+
+<p>There are many problems with this solution including the following...</p>
+<ol>
+<li>The delay for the person on the other end to read the clock and to say the time.</li>
+<li>The delay for the electrical signal to travel through the long distance phone line.</li>
+<li>The delay between when you have heard the complete time and the time taken to set the time.</li>
+</ol>
+<p>Assuming that the current time is read out when we press a button on the phone.</p>
+<ul>
+<li>
+<p>How can we determine the Round Trip Delay between when we press the button on the phone and when we receive the voice recording of the time?</p>
+</li>
+<li>
+<p>How can we determine the delay between when the remote system receives our query and when it sends the response?</p>
+</li>
+</ul>
+<hr />
+<h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server polling mechanism. <a name="NTP_Polling"></a></h3>
+<h4 id="ntp-packet-format">NTP Packet Format</h4>
+<PRE style="font-size: 75%">
+        +--------------------------------------------+
+        | LI | VN | Mode | Stratum | Poll |Precision |
+        +--------------------------------------------+
+        |                 Root Delay                 |
+        +--------------------------------------------+
+        |              Root Dispersion               |
+        +--------------------------------------------+
+        |            Reference Identifier            |
+        +--------------------------------------------+
+        |                                            |
+        |            Reference TimeStamp             |
+        |                                            |
+        +--------------------------------------------+
+        |                                            |
+        |             Origin TimeStamp               |
+        |                                            |
+        +--------------------------------------------+
+        |                                            |
+        |            Recieve TimeStamp               |
+        |                                            |
+        +--------------------------------------------+
+        |                                            |
+        |            Transmit TimeStamp              |
+        |                                            |
+        +--------------------------------------------+
+        |                                            |
+        |         Optional Fields / Digest           |
+        |                                            |
+        +--------------------------------------------+
+</PRE>
+
+<ul>
+<li>
+<p>LI (Leap Indicator) 2-bits</p>
+</li>
+<li>
+<p>VN (NTP Version Number) 3-bits</p>
+</li>
+<li>
+<p>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:</p>
+</li>
+<li>
+<p>0 - reserved</p>
+</li>
+<li>
+<p>1 - symmetric active</p>
+</li>
+<li>
+<p>2 - symmetric passive</p>
+</li>
+<li>
+<p>3 - client</p>
+</li>
+<li>
+<p>4 - server</p>
+</li>
+<li>
+<p>5 - broadcast or multicast</p>
+</li>
+<li>
+<p>6 - NTP control message</p>
+</li>
+<li>
+<p>7 - reserved for private use.</p>
+</li>
+<li>
+<p>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</p>
+</li>
+<li>
+<p>Poll ( Poll Interval ) - 8-bits maximum interval between successive messages.</p>
+</li>
+<li>
+<p>Precision (precision of the local clock) - 8-bit signed integer.</p>
+</li>
+<li>
+<p>Root Delay - Roundtrip delay to the primary reference source.</p>
+</li>
+<li>
+<p>Root Dispersion - The maximum error of the local clock relative to the primary reference source.</p>
+</li>
+<li>
+<p>Reference Identifier - Identifier of the particular reference source.</p>
+</li>
+<li>
+<p>Reference Timestamp - Local time at which the local clock was last set or corrected.</p>
+</li>
+<li>
+<p>Originate Timestamp - Local time at which the request departed from the client for the service host.</p>
+</li>
+<li>
+<p>Receive Timestamp - Local time at which the request arrived at the service host.</p>
+</li>
+<li>
+<p>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</p>
+</li>
+<li>
+<p>Authenticator - Authentication information.</p>
+</li>
+</ul>
+<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server.</h4>
+<p>Various delays and offsets need to be taken into consideration when an NTP client is determining the correct time.</p>
+<ul>
+<li>T1 the client timestamp on the request packet</li>
+<li>T2 the server timestamp upon arrival</li>
+<li>T3 the server timestamp on the departure of the reply packet</li>
+<li>T4 the client timestamp upon arrival</li>
+</ul>
+<PRE style="font-size: 75%">
+
+  NTP CLIENT                                             NTP SERVER
+ +---------------------+                                +----------------------+
+ |                  T1 |                                | T2                   |
+ |       +------+      |                                |      +-----+         |
+ |       |T1    |      |                                |      |T1   |         |
+ |       |      |  +----->------->------->------>------>---->  |T2   | +----+  |
+ |       |      |      |                                |      |     |      |  |
+ |       |      |      |                                |      |     |      |  |
+ |       +------+      |                                |      +-----+      |  |
+ |                     |                                |                   |  |
+ |                     |                                |                   |  |
+ |       +------+      |                                |      +-----+      |  |
+ |       |T1    |      |                                |      |T1   |      |  |
+ |       |T2    |  <----<------<-------<-------<-------<----+  |T2   | <----+  |
+ |       |T3    |      |                                |      |T3   |         |
+ |       |T4    |   T4 |                                | T3   |     |         |
+ |       +------+      |                                |      +-----+         |
+ |                     |                                |                      |
+ +---------------------+                                +----------------------+
+
+</PRE>
+
+<h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet.</h5>
+<pre><code>    NTP Client - NTP Server Round Trip Delay = (T4 - T1) - (T3 - T2)
+
+    NTP Client - NTP Server Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
+</code></pre>
+<h4 id="3-examples-of-running-through-the-calculations-for-rtt-and-offset">3 examples of running through the calculations for RTT and OffSet.</h4>
+<pre><code>     +---------------+----------------+----------------+
+     |               |                |                |
+     |   T1 0        |   T1 0         |  T1 10         |
+     |   T2 2        |   T2 4         |  T2 2          |
+     |   T3 12       |   T3 6         |  T3 12         |
+     |   T4 14       |   T4 10        |  T4 24         |
+     |               |                |                |
+     |   RTD = 4     |   RTD = 8      |  RTD = 4       |
+     |   OffSet = 0  |   OffSet = 0   |  OffSet = -10  |
+     +---------------+----------------+----------------+
+
+
+
+    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+    | T1  = 0  |                            ( 14 - 0  ) - ( 12 -  2 )
+    | T2  = 2  |                            (    14   ) - (    10   )
+    | T3  = 12 |                                        4
+    | T4  = 14 |
+    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                           [(  2 - 0  ) + ( 12 - 14 )] /2
+                                           [(    2    ) + (    -2   )] /2
+                                           [            0            ] /2
+                                                        0
+
+
+
+    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+    | T1  = 0  |                            ( 10 - 0  ) - (  6 -  4 )
+    | T2  = 4  |                            (   10    ) - (    2    )
+    | T3  = 6  |                                        8
+    | T4  = 10 |
+    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                           [(  4 - 0  ) + (  6 - 10 )] /2
+                                           [(    4    ) + (    +4   )] /2
+                                           [            0            ] /2
+                                                        0
+
+
+
+    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
+    | T1  = 10 |                            ( 24 - 10 ) - ( 12 -  2 )
+    | T2  = 2  |                            (   14    ) - (   10    )
+    | T3  = 12 |                                        4
+    | T4  = 24 |
+    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
+                                           [(  2 - 10 ) + ( 12 - 24 )] /2
+                                           [(    -8   ) + (    -12  )] /2
+                                           [            -20          ] /2
+                                                        -10
+</code></pre>
+<hr />
+<h3 id="networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy. <a name="NTP_precision"></a></h3>
+<p>The precision and accuracy of system time achievable and maintainable by an NTP (Network Time Protocol) client depend significantly on the network infrastructure between the NTP client and the NTP servers.
+*  In a Local Area Network (LAN), the accuracy of NTP synchronization can typically reach the order of 100 microseconds (us).</p>
+<ul>
+<li>
+<p>Within a Wide Area Network (WAN), the accuracy may decrease slightly, with synchronization achievable in the order of several tens of milliseconds.</p>
+</li>
+<li>
+<p>Over the Internet, the accuracy of NTP synchronization depends heavily on many different factors. Typically, selecting NTP servers closer to the client location rather than those farther away results in more precise time synchronization.</p>
+</li>
+</ul>
+<p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
+<hr />
+<h3 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+
+int main() {
+    unsigned int tsc_val_lo, tsc_val_hi;
+    uint64_t timestamp;
+
+    // Execute the rdtsc instruction
+    __asm__ __volatile__ ("rdtsc" : "=a"(tsc_val_lo), "=d"(tsc_val_hi));
+
+    // Combine the low and high parts to form the full 64bit timestamp
+    timestamp = ((uint64_t)tsc_val_lo) | (((uint64_t)tsc_val_hi) &lt;&lt; 32);
+
+    printf("TSC value: %lu\n", timestamp);
+
+    return 0;
+}
+</code></pre>
+<h3 id="example-c-program-to-read-the-hpet">Example C program to read the HPET</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;unistd.h&gt;
+
+#define HPET_BASE_ADDRESS 0xFED00000 // Base address of HPET on most x86 machine
+#define HPET_SIZE 0x400              // HPET size in bytes
+
+int main() {
+    int hpet_fd;
+    volatile void *hpet_base;
+    uint64_t hpet_counter;
+
+    // Open the /dev/mem device to access physical memory
+    hpet_fd = open("/dev/mem", O_RDONLY);
+    if (hpet_fd &lt; 0) {
+        perror("Error opening /dev/mem");
+        return 1;
+    }
+
+    // Memory-map the HPET region
+    hpet_base = mmap(NULL, HPET_SIZE, PROT_READ, MAP_SHARED, hpet_fd, HPET_BASE_ADDRESS);
+    if (hpet_base == MAP_FAILED) {
+        perror("Error mapping HPET region");
+        close(hpet_fd);
+        return 1;
+    }
+
+    // Read the HPET counter value
+    hpet_counter = *((volatile uint64_t *)(hpet_base + 0xFEE));
+
+    // Unmap the HPET region and close /dev/mem
+    munmap((void *)hpet_base, HPET_SIZE);
+    close(hpet_fd);
+
+    printf("HPET Counter: %lu\n", hpet_counter);
+
+    return 0;
+}
+</code></pre>
+<h3 id="example-c-program-to-read-the-acpi_pm">Example C program to read the ACPI_PM</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/io.h&gt;
+#include &lt;unistd.h&gt;
+
+#define PM_BASE_ADDRESS 0x40 // Base address of ACPI PM timer on most x86 machine
+
+int main() {
+    int pm_fd;
+    uint32_t pm_counter;
+
+    // Open /dev/port to access I/O ports
+    pm_fd = open("/dev/port", O_RDONLY);
+    if (pm_fd &lt; 0) {
+        perror("Error opening /dev/port");
+        return 1;
+    }
+
+    // Enable I/O port access
+    if (iopl(3) &lt; 0) {
+        perror("Error enabling I/O port access");
+        close(pm_fd);
+        return 1;
+    }
+
+    // Read the ACPI PM timer counter value
+    outl(PM_BASE_ADDRESS, 0x43); // Select counter 0 and latch its value
+    pm_counter = inl(PM_BASE_ADDRESS); // Read the latched value
+
+    // Close /dev/port
+    close(pm_fd);
+
+    printf("ACPI PM Timer Counter: %u\n", pm_counter);
+
+    return 0;
+}
+</code></pre>
+<h3 id="sources-for-this-document">Sources for this document: <a name="Sources"></a></h3>
+<p>Intel CPU specifications and developer guides</p>
+<ul>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf">Intel 64-ia-32-architectures-software-developer-vol-2a-manual.pdf</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf">Intel 64-ia-32-architectures-software-developer-manual-325462.pdf</a></li>
+<li><a href="http://www.intel.com.au/content/www/au/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html">Intel 64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/timestamp-counter-scaling-virtualization-white-paper.pdf">Intel timestamp-counter-scaling-virtualization-white-paper.pdf</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf">Intel xeon-e5-v2-spec-update.pdf</a></li>
+</ul>
+<p>Linux Kernel and Linux Distribution documentation</p>
+<ul>
+<li><a href="https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt">https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt</a></li>
+<li><a href="h.ttps://access.redhat.com/solutions/18627">https://access.redhat.com/solutions/18627</a></li>
+<li><a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1006427">kb.vmware.com</a></li>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Virtualization/chap-Virtualization-KVM_guest_timing_management.html">RedHat - Virtualization-KVM_guest_timing_management</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=698842">https://bugzilla.redhat.com/show_bug.cgi?id=698842</a></li>
+<li><a href="http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html">http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html</a></li>
+<li><a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">http://www.cs.virginia.edu/~evans/cs216/guides/x86.html</a></li>
+<li><a href="http://man7.org/linux/man-pages/man2/prctl.2.html">http://man7.org/linux/man-pages/man2/prctl.2.html</a></li>
+<li><a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization">https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling">https://wiki.archlinux.org/index.php/CPU_frequency_scaling</a></li>
+<li><a href="http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/">http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/</a></li>
+<li><a href="https://lkml.org/lkml/2005/11/4/173">https://lkml.org/lkml/2005/11/4/173</a></li>
+<li>[Manual page clock_gettime]</li>
+</ul>
+<p>NTP (Official Documentation)</p>
+<ul>
+<li><a href="https://www.eecis.udel.edu/~mills/ntp/html/index.html">https://www.eecis.udel.edu/~mills/ntp/html/index.html</a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/</a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/</a></li>
+<li><a href="http://what-if.xkcd.com/26/">http://what-if.xkcd.com/26/ Leap second (XKCD always counts as official)</a></li>
+</ul>
+<p>Wikipedia links</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Segal%27s_law">Segals Law</a></li>
+<li><a href="https://en.wikipedia.org/wiki/List_of_Intel_microprocessors">List_of_Intel_microprocessors</a></li>
+<li><a href="https://en.wikipedia.org/wiki/P5_%28microarchitecture%29#P5">P5 microarchitecture</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SpeedStep">Intel SpeedStep</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Wall-clock_time">Wall-clock_time</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Time_Stamp_Counter">Time_Stamp_Counter</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux_kernel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Allan_variance">Allan_variance</a></li>
+</ul>
+<p>ASCII Art</p>
+<ul>
+<li><a href="http://www.ascii-code.com/ascii-art/electronics/clocks.php">http://www.ascii-code.com/ascii-art/electronics/clocks.php</a>
+  <a href="https://www.asciiart.eu/electronics/phones">https://www.asciiart.eu/electronics/phones</a></li>
+</ul>
+<p>Extra Info</p>
+<ul>
+<li><a href="http://cp.literature.agilent.com/litweb/pdf/5988-6254EN.pdf">Measuring Wander and Jitter</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Setting_time/" class="btn btn-neutral float-left" title="Setting time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../linux_clocksource_benchmark-2.c/" class="btn btn-neutral float-right" title="Linux clocksource benchmark 2.c">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Setting_time/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../linux_clocksource_benchmark-2.c/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

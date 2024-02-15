@@ -1,0 +1,3601 @@
+<!-- yui_html-header -->
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+
+
+
+
+<script id="before-content" type="text/javascript">
+(function () {
+    if (typeof window.sdmedia !== 'object') window.sdmedia = {};
+    if (typeof window.sdmedia.site !== 'object') window.sdmedia.site = {};
+
+    var site = window.sdmedia.site;
+    site.rootdir = "//slashdot.org";
+}());
+
+var pageload = {
+	pagemark: '905718587698163011',
+	before_content: (new Date).getTime()
+};
+function pageload_done( $, console, maybe ){
+	pageload.after_readycode	= (new Date).getTime();
+	pageload.content_ready_time	= pageload.content_ready - pageload.before_content;
+	pageload.script_ready_time	= pageload.after_readycode - pageload.content_ready;
+	pageload.ready_time		= pageload.after_readycode - pageload.before_content;
+	// Only report 1% of cases.
+	maybe || (Math.random()>0.01) || $.ajax({ data: {
+		op: 'page_profile',
+		pagemark: pageload.pagemark,
+		dom: pageload.content_ready_time,
+		js: pageload.script_ready_time
+	} });
+}
+</script>
+
+
+	<title>Slashdot: News for nerds, stuff that matters</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+	<meta property="fb:admins" content="100000696822412">
+	<meta property="fb:page_id" content="267995220856">
+
+	<meta name="viewport" content="width=1000, user-scalable=yes, minimum-scale=0, maximum-scale=10.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+
+<link rel="stylesheet" type="text/css" media="screen, projection" href="//a.fsdn.com/sd/classic.css?release_20150527" >
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen, projection" href="//a.fsdn.com/sd/ie8-classic.css?release_20150527" ><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen, projection" href="//a.fsdn.com/sd/ie7-classic.css?release_20150527" ><![endif]-->
+
+
+
+
+
+
+
+<!--  -->
+
+
+
+
+
+<!-- SMACKS: NEW CSS -->
+<link rel="stylesheet" href="//a.fsdn.com/sd/css/app.css?release_20150527">
+
+	<!-- <meta http-equiv="refresh" content="1200000"> -->
+	<script src="//a.fsdn.com/sd/autorefresh-query.js?release_20150527"></script>
+	<script>
+		// Set Timeout to reload the page and trigger the manageQueryStringParam function
+		setTimeout(function(){
+			window.location = manageQueryStringParam('source', 'autorefresh');
+		}, 1200000);
+	</script>
+
+
+
+<script src="//a.fsdn.com/sd/all-minified.js?release_20150527" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+(function(){
+var regexp=/\s*(?:\d+|many)\s+more\s*/i;
+
+	
+	var auto_more_count = 1;
+
+	function auto_more(){
+		var $more_link = $('#more-experiment a');
+		$more_link.each(function(){
+			var $lastitem = $('#firehoselist>article.fhitem:visible:last');
+			if ( Bounds.intersect(window, $lastitem) ) {
+			
+			
+				!--auto_more_count && (auto_more=undefined);
+				// don't allow a call till the next paginate gets built and |more_possible|
+				$(document).unbind('scroll', call_auto_more);
+			}
+		});
+	};
+
+	function call_auto_more(){ auto_more && auto_more(); }
+	
+
+$('#more-experiment a').
+	live('more-possible', function( event ){
+		var $more_link=$(this);
+		if ( regexp.test($more_link.text()) ) {
+		
+			$(document).bind('scroll', call_auto_more);
+		} else {
+			$(document).unbind('scroll', call_auto_more);
+		
+		}
+	});
+})();
+</script>
+<!--[if lt IE 9]><script src="//a.fsdn.com/sd/html5.js"></script><![endif]-->
+
+
+<script type="text/javascript">
+(function() {
+	if (typeof window.janrain !== 'object') window.janrain = {};
+	if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+
+	/* _______________ can edit below this line _______________ */
+
+	janrain.settings.tokenUrl = 'https://slashdot.org/token_callback.pl';
+	janrain.settings.type = 'embed';
+	janrain.settings.appId = 'ggidemlconlmjciiohla';
+	janrain.settings.appUrl = 'https://login.slashdot.org';
+	janrain.settings.providers = [
+	'googleplus',
+	'facebook',
+	'twitter',
+	'linkedin'];
+	janrain.settings.providersPerPage = '5';
+	janrain.settings.format = 'one column';
+	janrain.settings.actionText = 'Sign in with';
+	janrain.settings.showAttribution = false;
+	janrain.settings.fontColor = '#666666';
+	janrain.settings.fontFamily = 'lucida grande, Helvetica, Verdana, sans-serif';
+	janrain.settings.backgroundColor = '#ffffff';
+	janrain.settings.width = '300';
+	janrain.settings.borderColor = '#cccccc';
+	janrain.settings.borderRadius = '5';    janrain.settings.buttonBorderColor = '#CCCCCC';
+	janrain.settings.buttonBorderRadius = '0';
+	janrain.settings.buttonBackgroundStyle = 'gray';
+	janrain.settings.language = '';
+	janrain.settings.linkClass = 'janrainEngage';
+
+	/* _______________ can edit above this line _______________ */
+
+	function isReady() { janrain.ready = true; };
+	if (document.addEventListener) {
+	  document.addEventListener("DOMContentLoaded", isReady, false);
+	} else {
+	  window.attachEvent('onload', isReady);
+	}
+
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.id = 'janrainAuthWidget';
+
+	if (document.location.protocol === 'https:') {
+	  e.src = 'https://rpxnow.com/js/lib/login.slashdot.org/engage.js';
+	} else {
+	  e.src = 'http://widget-cdn.rpxnow.com/js/lib/login.slashdot.org/engage.js';
+	}
+
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(e, s);
+})();
+</script>
+
+<script type="text/javascript">
+(function() {
+	if (typeof window.janrain !== 'object') window.janrain = {};
+	if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+	if (typeof window.janrain.settings.share !== 'object') window.janrain.settings.share = {};
+	if (typeof window.janrain.settings.packages !== 'object') janrain.settings.packages = [];
+	janrain.settings.packages.push('share');
+
+	/* _______________ can edit below this line _______________ */
+
+	janrain.settings.share.providers = ["facebook","twitter","linkedin"];
+	janrain.settings.share.providersEmail = [];
+	janrain.settings.share.modes = ["broadcast","contact"];
+	janrain.settings.share.attributionDisplay = false;
+	janrain.settings.share.message = "";
+	janrain.settings.share.title = "";
+	janrain.settings.share.url = "";
+	janrain.settings.share.description = "";
+
+	// Modal Styles
+	janrain.settings.share.modalBackgroundColor = "#000000";
+	janrain.settings.share.modalBorderRadius = "5";
+	janrain.settings.share.modalOpacity = "0.5";
+	janrain.settings.share.modalWidth = "5";
+
+	// Body Styles
+	janrain.settings.share.bodyBackgroundColor = "#009DDC";
+	janrain.settings.share.bodyBackgroundColorOverride = false;
+	janrain.settings.share.bodyColor = "#333333";
+	janrain.settings.share.bodyContentBackgroundColor = "#ffffff";
+	janrain.settings.share.bodyFontFamily = "Helvetica";
+	janrain.settings.share.bodyTabBackgroundColor = "#f8f8f8";
+	janrain.settings.share.bodyTabColor = "#000000";
+
+	// Element Styles
+	janrain.settings.share.elementBackgroundColor = "#f6f6f6";
+	janrain.settings.share.elementBorderColor = "#cccccc";
+	janrain.settings.share.elementBorderRadius = "3";
+	janrain.settings.share.elementButtonBorderRadius = "6";
+	janrain.settings.share.elementButtonBoxShadow = "3";
+	janrain.settings.share.elementColor = "#333333";
+	janrain.settings.share.elementHoverBackgroundColor = "#eeeeee";
+	janrain.settings.share.elementLinkColor = "#009DDC";
+
+	/* _______________ can edit above this line _______________ */
+
+	function isReady() { janrain.ready = true; };
+	if (document.addEventListener) {
+		document.addEventListener("DOMContentLoaded", isReady, false);
+	} else {
+		window.attachEvent('onload', isReady);
+	}
+
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.id = 'janrainWidgets';
+
+	if (document.location.protocol === 'https:') {
+	  e.src = 'https://rpxnow.com/js/lib/login.slashdot.org/widget.js';
+	} else {
+	  e.src = 'http://widget-cdn.rpxnow.com/js/lib/login.slashdot.org/widget.js';
+	}
+
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(e, s);
+})();
+
+$(document).ready(function(){
+	if(janrain) {
+		$("a.janrain").live('click', function () {
+
+			var $anchor = $(this);
+			var provider = $anchor.attr("data-provider");
+			var url = $anchor.attr("data-url");
+			var message = $anchor.attr("data-message");
+			var title = $anchor.attr("data-title");
+
+			janrain.engage.share.reset();
+			janrain.engage.share.showProvider(provider);
+			janrain.engage.share.setTitle(title);
+			janrain.engage.share.setMessage(message);
+			janrain.engage.share.setUrl(url);
+			janrain.engage.share.show();
+			return false;
+		 });
+	}
+});
+
+
+</script>
+<!-- index2_variant |A|-->
+
+<!-- TABOOLA -->
+<script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({home:'auto'});
+  !function (e, f, u) {
+    e.async = 1;
+    e.src = u;
+    f.parentNode.insertBefore(e, f);
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/slashdot/loader.js');
+</script>
+<meta http-equiv="X-XRDS-Location" content="http://slashdot.org/slashdot.xrds"><!-- yui_header -->
+
+
+
+<link rel="top"       title="News for nerds, stuff that matters" href="//slashdot.org/" >
+<link rel="search"    title="Search Slashdot" href="//slashdot.org/search.pl">
+<link rel="alternate" title="Slashdot RSS" href="http://rss.slashdot.org/Slashdot/slashdotMain" type="application/rss+xml">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<!-- ooyala setup -->
+<script type='text/javascript' src='//player.ooyala.com/v3/85d52cbb9c924733934b1880e9cde580'></script>
+<!-- Nativo ads -->
+<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
+
+
+
+<!-- load GPT library: asynchronous -->
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+	var gads = document.createElement('script');
+	gads.async = true;
+	gads.type = 'text/javascript';
+	var useSSL = 'https:' == document.location.protocol;
+	gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+	var node = document.getElementsByTagName('script')[0];
+	node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+
+
+<!-- prep GPT ads -->
+<script type='text/javascript'>
+(function() {
+	function page_type (loc) {
+		/*
+		only four page types:
+		- Story
+		- Poll
+		- Homepage (/ only)
+		- Other (but AdOps wants 'Homepage' again)
+		*/
+		var path = loc.pathname;
+		var just_the_root = /^\/?$/.test(path);
+		var story_or_poll = /^\/(story|submission|poll)\//i.exec(path);
+
+		var page_type = just_the_root ? 'homepage'
+		              : story_or_poll ? story_or_poll[1]
+		              :                 'other'
+
+		// exceptions
+		page_type = page_type.toLowerCase() === 'submission'
+		          ? 'story'  // submissions are like stories, right?
+		          : page_type
+		page_type = page_type.toLowerCase() === 'other'
+		          ? 'homepage'  // this one might move out of here
+		          : page_type;
+       
+		return page_type;
+	}
+	function page_section (loc) {
+		var greek = ['alpha', 'beta', 'gamma', 'delta'].join('|');
+		var hostwise = '^([a-z]+)(?:-(?:'+greek+'))?\\.(?:slashdot\\.org|[a-z]+-[0-9]+\\.sb\\.sf\\.net)$';
+		var pathwise = '^/(?:(recent|popular|blog)|stories/([^/]+))';
+		var rootwise = '^\/?$';
+
+		var hostwisely = new RegExp(hostwise,'i').exec(loc.hostname);
+		var pathwisely = new RegExp(pathwise,'i').exec(loc.pathname);
+		var rootwisely = new RegExp(rootwise,'i').exec(loc.pathname);
+
+		var all_greek_to_me = new RegExp( '^(' + greek + ')$' ,'i');
+
+		function no_greek_for_me (barbarian) {
+			return all_greek_to_me.test(barbarian)
+			     ? false
+			     : barbarian
+			     ;
+		}
+
+		var section = (hostwisely && no_greek_for_me(hostwisely[1]))
+		           || (rootwisely && 'homepage')
+		           || (pathwisely && (pathwisely[1] || pathwisely[2]))
+		           || ''
+		            ;
+
+                section.replace(/[^_a-z]/ig, '');
+
+		return section;
+	}
+	function single_size (size) {
+		return '' + size[0] + 'x' + size[1];
+	}
+	function sz_sz (sz) {
+		var str = '';
+		var sizes = [];
+		if (sz[0] instanceof Array) {
+			for (size in sz) {
+				sizes.push(single_size(sz[size]));
+			}
+			return sizes.join(',');
+		} else {
+			return single_size(sz);
+		}
+	}
+
+	function merge_tpc_array_to_str(array1,array2) {
+		var tpc_final = array1.concat(array2);
+		var uniq = tpc_final.reduce(function(a,b){
+		if (a.indexOf(b) < 0 ) a.push(b);
+			return a;
+		},[]);
+
+		var tpc_str = uniq.join(',');
+		tpc_str = tpc_str.replace(/[^_a-z,]/ig, '');
+		tpc_str = tpc_str.replace(/^,/ig, '');
+		return tpc_str;
+	}
+
+	/* LEGEND:
+		- 'sz' = "size"
+		- 'npt' = "no page type" in ad unit name
+		- 'oops' = "out-of-page slot" for great justice
+	*/
+	var tags = {
+
+		               '728x90_A': { 'sz': [[728, 90], [970, 90], [970, 250], [980, 66]] }
+
+		,              '728x90_B': { 'sz': [728, 90] }
+		,      'HubIcon_200x90_A': { 'sz': [[200, 90], [220, 90]]}
+		,  'PowerSwitch_980x66_A': { 'sz': [980, 66] }
+		,              'PollPeel': { 'sz': [200, 90] }
+		,   'VideoWidget_300x250': { 'sz': [300, 250], 'npt': 1 }
+		,             '300x250_A': { 'sz': [[300, 250], [300, 600], [300, 1050]] }
+		,             '300x250_B': { 'sz': [[300, 250], [300, 600]] }
+		,             '300x250_C': { 'sz': [[300, 250], [300, 600]] }
+		,             '300x250_D': { 'sz': [[300, 250], [300, 600]] }
+		,       'Pulse_300x600_A': { 'sz': [300, 600] }
+		,       'Polls_Detail_300x250_A': { 'sz': [[300, 250], [300, 600]], 'npt': 1 }
+		,										'1x1': { 'sz': [1, 1] }
+		//,					 'SD_Story_1x1': { 'sz': [1, 1] }
+	};
+
+	var network_path = '/4140/ostg.slashdot/';
+	var tag_name_prefix = 'SD';
+	var tag_name_linkage = '_';
+	var tag_name_pagetype = page_type(location);
+	var tag_topic = page_section(location);
+
+	var before_tag_pagetyped    = network_path
+	                            + tag_name_prefix
+	                            + tag_name_linkage
+	                            + tag_name_pagetype
+	                            + tag_name_linkage
+	                            ;
+	var before_tag_pagetypeless = network_path
+	                            + tag_name_prefix
+	                            + tag_name_linkage
+	                         /* + tag_name_pagetype */
+	                         /* + tag_name_linkage */
+	                            ;
+
+
+	googletag.cmd.push(function() {
+		function define_me_a_slot (tag, oops) {
+			var sandbox_regex = /[a-z]+-[0-9]+\.sb\.sf\.net$/i;
+			var beta_regex = /\b(alpha|beta|gamma|delta)\b/i;
+			var full_name = tags[tag].npt  // "no page type"
+			              ? before_tag_pagetypeless + tag
+			              : before_tag_pagetyped    + tag
+			              ;
+			var div_id = 'div-gpt-ad-' + tag.toLowerCase();
+
+			var service;
+			if (oops) {  // out-of-page slot
+				service = googletag.defineOutOfPageSlot(
+					  full_name
+					, div_id + '-oops'
+				).addService(googletag.pubads());
+			} else {
+				service = googletag.defineSlot(
+					  full_name
+					, tags[tag].sz
+					, div_id
+				).addService(googletag.pubads());
+			}
+			if (!oops) {  // no sizes for out-of-page slots
+				service.setTargeting('sz', tags[tag].sz);
+			}
+
+			
+			var frontend_tpc = tag_topic.split(",");
+			var backend_tpc = [  ];
+
+			var tpc_final = merge_tpc_array_to_str(frontend_tpc,backend_tpc);
+
+			service.setTargeting('tpc', tpc_final);
+			if (location.hostname.match(sandbox_regex)) {
+				service.setTargeting('test', 'adops');
+			}
+			if (location.hostname.match(beta_regex)) {
+				service.setTargeting('site', 'beta');
+			}
+
+			// this is a little hackish: if slot has oops:1
+			//  then do the same slot one more time,
+			//  but set it up as out-of-page
+			if (tags[tag].oops) {  // "out-of-page slot"
+				tags[tag].oops = 0;  // infinite recursion!
+				define_me_a_slot(tag, true);
+			}
+		}
+
+		for (tag in tags) {
+			define_me_a_slot(tag, false);
+		}
+
+		googletag.pubads().enableAsyncRendering();
+
+		//googletag.pubads().enableSingleRequest();
+		googletag.pubads().collapseEmptyDivs();
+		googletag.enableServices();
+	});
+})();
+</script>
+
+<script type="text/javascript">
+window.google_analytics_uacct = "UA-32013-5";
+
+var _gaq = _gaq || [];
+
+
+
+
+
+  _gaq.push(['_setAccount', 'UA-36136016-1']);
+  _gaq.push(['b._setAccount', 'UA-32013-5']);
+  _gaq.push(['_setDomainName', '.slashdot.org']);
+  _gaq.push(['b._setDomainName', '.slashdot.org']);
+
+	
+		_gaq.push(['_addIgnoredRef', 'slashdot.org']);
+		_gaq.push(['b._addIgnoredRef', 'slashdot.org']);
+	
+
+
+  _gaq.push(['_setCustomVar', 1, 'User Type',  'Anon', 3]);
+  _gaq.push(['b._setCustomVar', 1, 'User Type',  'Anon', 3]);
+	
+	_gaq.push(['_setCustomVar', 2, 'Page','index2', 3]);
+	_gaq.push(['b._setCustomVar', 2, 'Page','index2', 3]);
+
+	
+
+
+
+// track beta behavior for user
+var betamatches = document.cookie.match(/betagroup=(-?\d+)/);
+
+if(betamatches && betamatches[1]) {
+  if(betamatches[1] == -1) {
+    _gaq.push(['_setCustomVar', 3, 'Beta-Usage','opt-out', 3]);
+  } else {
+    _gaq.push(['_setCustomVar', 3, 'Beta-Usage','unredirected', 3]);
+  }
+}
+
+
+
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['b._trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+  _gaq.push(['b._trackPageLoadTime']);
+
+
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body class="anon index2 ">
+
+
+	<div id="top_parent"></div>
+	<a name="topothepage"></a>
+	
+	<div class="container">
+		<div class="nav-wrap">
+			<nav class="nav-primary" role="navigation" aria-label="Global Navigation">
+				<h1 class="logo">
+	<a href="//slashdot.org"><span>Slashdot</span></a>
+</h1>
+
+<ul class="nav-site">
+	<li><a href="//slashdot.org"><i class="icon-book" title="Stories"></i><span>Stories</span></a></li>
+	<li>
+		<ul class="filter-firehose">
+			<li class="nav-label">Firehose <i class="icon-angle-right"></i></li>
+			<li><a href="//slashdot.org/recent">All</a></li>
+			<li><a href="//slashdot.org/popular">Popular</a></li>
+		</ul>
+	</li>
+	<li><a href="//slashdot.org/polls"><i class="icon-chart-bar" title="Polls"></i><span>Polls</span> <span class="badge new">new</span></a></li>
+	<li><a href="//slashdot.org/videos"><i class="icon-videocam" title="Video"></i><span>Video</span> </a></li>
+
+	<!--
+	<li><a href="//ask.slashdot.org"><i class="icon-question-circle"></i><span>Ask</span></a></li>
+	
+	<li><a href="//events.slashdot.org"><i class="icon-calendar"></i><span>Events</span></a></li>
+	-->
+	<li><a href="//slashdot.org/job_board.pl"><i class="icon-briefcase" title="Jobs"></i><span>Jobs</span></a></li>
+	<li><a href="http://deals.slashdot.org/?utm_source=slashdot&amp;utm_medium=navbar&amp;utm_campaign=dealshp_1" target="_blank"><i class="sd-mini" title="Deals"></i> <span>Deals</span></a></li>
+</ul>
+<a href="//slashdot.org/submission" class="btn btn-success">Submit</a>
+			</nav>
+			<nav class="nav-user" role="navigation" aria-label="user access and account controls">
+				<form id="search" class="form-inline nav-search-form" method="get" action="">
+<!-- //slashdot.org/index2.pl" -->
+	<div class="form-group">
+		<label class="sr-only" for="sitesearch">Search Slashdot</label>
+		<div class="input-group">
+			<input type="text" id="" class="" name="fhfilter" value="" placeholder="Search">
+		</div>
+	</div>
+	<button type="submit" class="btn icon-search"></button>
+</form>
+<ul class="user-access">
+	
+		
+			<li >
+				<a href="//slashdot.org/my/login"  onclick="show_login_box(); return false;"><i class="icon-login"></i><span> Login</span></a>
+				
+			</li>
+		
+	
+		
+			<li class="nav-label">or</li>
+		
+	
+		
+			<li >
+				<a href="//slashdot.org/my/newuser"  onclick="getModalPrefs('newUserModal', 'Create Account', 1); $('#modal_box').addClass('join'); return false;"><i class="icon-user-add"></i><span> Sign up</span></a>
+				
+			</li>
+		
+	
+</ul>
+			</nav>
+		</div>
+		<div class="nav-secondary-wrap">
+			<nav class="nav-secondary" role="secondary-navigation">
+	<ul>
+		<li class="nav-label">Topics: </li>
+		<li><a href="//devices.slashdot.org">Devices</a></li>
+		<li><a href="//build.slashdot.org">Build</a></li>
+		<li><a href="//entertainment.slashdot.org">Entertainment</a></li>
+		<li><a href="//technology.slashdot.org">Technology</a></li>
+		<li><a href="//slashdot.org/?fhfilter=opensource">Open Source</a></li>
+		<li><a href="//science.slashdot.org">Science</a></li>
+		<li><a href="//yro.slashdot.org">YRO</a></li>
+		<!-- <li><a href="//slashdot.org/topics.pl">more...</a></li> -->
+	</ul>
+</nav>
+<nav class="nav-social" role="social navigation">
+	<ul>
+		<li class="nav-label">Follow us:</li>
+		<li><a href="http://rss.slashdot.org/Slashdot/slashdotMain" target="_blank"><i class="icon-rss-squared"></i><span class="sr-only">RSS</span></a></li>
+		<li><a href="http://www.facebook.com/slashdot" target="_blank"><i class="icon-facebook-squared"></i><span class="sr-only">Facebook</span></a></li>
+		<li><a href="https://plus.google.com/113450234747488780301" target="_blank"><i class="icon-gplus-squared"></i><span class="sr-only">Google+</span></a></li>
+		<li><a href="http://twitter.com/slashdot" target="_blank"><i class="icon-twitter-squared"></i><span class="sr-only">Twitter</span></a></li>
+		<li><a href="//slashdot.org/newsletter" target="_blank"><i class="icon-mail-squared"></i><span class="sr-only">Newsletter</span></a></li>
+	</ul>
+</nav>
+		</div>
+	</div>
+
+	<section>
+	
+		<div class="message-bar" id="firehose-message-tray">
+			<span class="icon-quote-left"></span>
+			<p>
+				
+					
+					Follow <a href="//slashdot.org/blog">Slashdot blog</a> updates by <a href="http://feeds.feedburner.com/SlashdotSitenews">subscribing to our blog RSS feed</a>
+				
+			</p>
+		</div>
+	
+	
+		<div id='embbeded_login_modal' class="hide">
+<form action="https://slashdot.org/my/login" method="post" onsubmit="if (global_returnto) { this.returnto.value = global_returnto }" class="embedded"><fieldset style="-webkit-border-radius:10px 10px 0 0;border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0 0">
+<div style='height:25px;'>&nbsp;</div>
+    <input type="hidden" name="returnto" value="">
+    <input type="hidden" name="op" value="userlogin">
+    <p>
+        <label class="fleft" for="unickname">Nickname:</label>
+        <input type="text" name="unickname" value="">
+    </p>
+    <p>
+        <label class="fleft" for="upasswd">Password:</label>
+        <input type="password" name="upasswd" placeholder="6-20 characters long">
+    </p>
+    <label class="checkbox"><input type="checkbox" name="login_temp" value="yes"> Public Terminal</label>
+    <br>
+    <hr>
+    <input type="submit" name="userlogin" value="Log In" class="fno"> <a href="//slashdot.org/my/mailpassword" class="btn link" onclick="getModalPrefs('sendPasswdModal', 'Retrieve Password', 1); return false;">Forgot your password?</a>
+</fieldset></form>
+
+<div id="janrainEngageEmbed"></div>
+<div class="actions">
+ <a class="ico close" onclick="hide_login_slider();" href=""><span>Close</span></a>
+</div>
+</div>
+	
+	
+		<div class="adwrap">
+			
+			<div id='div-gpt-ad-728x90_a'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-728x90_a');});</script></div>
+			<div id='div-gpt-ad-728x90_a-oops'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-728x90_a-oops');});</script></div>
+			<div id='div-gpt-ad-hubicon_200x90_a'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-hubicon_200x90_a');});</script></div>
+		</div>
+	
+	<a name="main-articles"></a><!-- body begin -->
+
+
+
+
+
+
+
+
+	<style type="text/css">
+menu, menu * {
+	text-decoration:none;
+}
+
+menu[type=context] {
+	display:none;
+	position:absolute;
+	z-index:10000;
+}
+
+menu[type=context]:not(.brief) {
+	background-color:#dfdfdf;
+	margin:0;
+	padding:2px 0.5em;
+	border-style:solid;
+	border-width:1px;
+	border-color:#eeeeee #aaaaaa #aaaaaa #eeeeee;
+	-moz-border-radius-topright:.7em;
+	-webkit-border-top-right-radius: 0.7em 0.7em;
+}
+
+menu.full[type=context] > a.slash-hover:first-child {
+	-moz-border-radius-topright:.6em;
+	-webkit-border-top-right-radius: 0.6em 0.6em;
+}
+
+
+
+menu.brief[type=context] > a {
+	-moz-border-radius:.6em;
+	-webkit-border-radius: 0.6em;
+	color:#ffffff;
+	background-color:#000000;
+}
+
+/*
+span.briefmenu a.tag:not(.datatype) {
+    padding-left:.5em;
+}
+*/
+
+
+
+
+/* #tag-menu a, #feedback-menu a  { */
+menu.tag-menu a {
+	display:list-item;
+	list-style:none;
+	text-align:left;
+	font-weight:bold;
+	color:black;
+	padding:0.1em 0.5em;
+	margin:-0.1em -0.5em;
+	cursor:pointer;
+}
+
+
+.tags .edit-bar { position:relative; }
+article aside .share .addthis_toolbox { display:block; width:60px; float:left; }
+article aside.view_mode .share { min-width:120px; padding-top:.5em; }
+#firehose.list article header h2 {padding-left: 20px; !important}
+.novote .vote { display:none; }
+.vote > a, .votedup > a, .voteddown > a {border-width:1px; border-style:solid; border-color:rgba(0,0,0,0.25); display:block; height:22px; width:22px; margin:-2px 3px 0 0; color:rgb(255,255,255); text-decoration:none; line-height:22px; text-align:center; font-weight:bold; font-size:14px; float:left; border-width:1px; border-style:solid; border-color:rgba(0,0,0,0.5); }
+.vote > a, .votedup > a, .voteddown > a {color:rgb(0,0,0);}
+article.fhitem-submission h2 .vote > a, article.fhitem-submission h2 .votedup > a, article.fhitem-submission h2 .voteddown > a { border-color:rgba(0,0,0,0.15); }
+.vote .up, .vote .down, .votedup .up, .votedup .down, .voteddown .up, .voteddown .down { border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; text-shadow:0 0 2px #000000; } 
+article:not(.fhitem-story) .vote .up,article:not(.fhitem-story) .vote .down,article:not(.fhitem-story) .votedup .up,article:not(.fhitem-story) .votedup .down,article:not(.fhitem-story) .voteddown .up,article:not(.fhitem-story) .voteddown .down { text-shadow:none !important; }
+.voteddown .down, .votedup .up { text-indent:2px; line-height:24px; }
+article:not(.fhitem-story) .votedup .up,article:not(.fhitem-story) .voteddown .down {background: rgb(174,174,174);background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(174,174,174)), to(rgb(193,193,193)));background-image: -moz-linear-gradient(100% 100% 90deg,rgb(193,193,193), rgb(174,174,174) 100%);color:rgb(0,0,0);}
+article.fhitem-story .votedup .up,article.fhitem-story .voteddown .down {background: rgb(0,66,66);background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(0,53,53)), to(rgb(0,102,102)));background-image: -moz-linear-gradient(100% 100% 90deg,rgb(0,102,102), rgb(0,53,53) 100%);}
+
+
+
+
+
+#tag-menu span.var-tag {
+font-weight:normal;
+color:#444444;
+}
+
+menu.reasons-menu a {
+padding:0 .25em 0 .25em;
+font-size:80%;
+-moz-border-radius:.5em;
+-webkit-border-radius:.5em;
+cursor:pointer;
+}
+
+menu.reasons-menu a:hover {
+background:rgb(153,153,153);
+background:-moz-linear-gradient(100% 100% 90deg, rgb(102,102,102), rgb(153,153,153) 70%) repeat scroll 0 0 rgb(102,102,102);
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(153,153,153)), to(rgb(102,102,102)));
+color:#fff;
+text-decoration:none;
+font-weignt:normal;
+}
+
+article.fhitem-story menu.reasons-menu a:hover {
+background:#002323 !important;
+background:-moz-linear-gradient(100% 100% 90deg, #002323, #005353 70%) repeat scroll 0 0 #002323 !important;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#005353), to(#002323)) !important;
+}
+
+
+menu.reasons-menu {
+	display:none;
+	margin:0;
+	padding:0;
+}
+
+div.fhitem h3 menu.reasons-menu {
+margin:0.25em 0 0;
+}
+
+div.fhitem h3 menu.reasons-menu a.tag {
+font-size:.8em;
+}
+
+#tag-menu a.slash-hover,
+#feedback-menu a.slash-hover,
+
+.tag-display span.tag:hover,
+.tag-display span.tag.trigger {
+	color:white;
+	background-color:rgb(0, 85, 85);
+}
+
+#tag-menu a.slash-hover span.var-tag {
+	color:#eee;
+}
+
+.tag-entry.default {
+        color:#ccc;
+}
+
+.brief .nix {
+	margin-top:-1.35em;
+	margin-left:0px;
+	margin-top:-1.15em;
+	text-decoration:none;
+	line-height:1.35em;
+	padding:0 2px;
+	-moz-border-radius:.6em 0 0 .6em;
+	-webkit-border-radius:.6em 0 0 .6em;
+	-o-border-radius:.6em 0 0 .6em;
+	border-radius:.6em 0 0 .6em;
+    color:#fff !important;
+    background:transparent !important;
+}
+
+.brief .nix:hover {
+    background:rgb(153,153,153) !important;
+    background:-moz-linear-gradient(100% 100% 90deg, rgb(102,102,102), rgb(153,153,153) 70%) repeat scroll 0 0 rgb(102,102,102) !important;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(153,153,153)), to(rgb(102,102,102))) !important;
+}
+
+</style>
+
+<menu id="nix-reasons" style="display:none">
+	<a class="tag">binspam</a><a class="tag">dupe</a><a class="tag">notthebest</a><a class="tag">offtopic</a><a class="tag">slownewsday</a><a class="tag">stale</a><a class="tag">stupid</a>
+</menu>
+<menu id="nod-reasons" style="display:none">
+	<a class="tag">fresh</a><a class="tag">funny</a><a class="tag">insightful</a><a class="tag">interesting</a><a class="tag">maybe</a>
+</menu>
+<menu id="comment-nix-reasons" style="display:none">
+	<a class="tag">offtopic</a><a class="tag">flamebait</a><a class="tag">troll</a><a class="tag">redundant</a><a class="tag">overrated</a>
+</menu>
+<menu id="comment-nod-reasons" style="display:none">
+	<a class="tag">insightful</a><a class="tag">interesting</a><a class="tag">informative</a><a class="tag">funny</a><a class="tag">underrated</a>
+</menu>
+
+<menu id="tag-nod-reasons" style="display:none">
+	<a class="tag">descriptive</a>
+</menu>
+<menu id="feedback-menu" class="tag-menu" type="context">
+	<a class="tag">typo</a><a class="tag">dupe</a><a class="tag">error</a>
+</menu>
+<menu id="tag-menu" class="tag-menu none" type="context">
+
+<!--	<a data-op="!" class="nix">!<span class="var-tag hide"></span></a>-->
+
+</menu>
+
+<script type="text/javascript">
+$(function(){
+var $CURRENT_MENU, $TAG_MENU=$('#tag-menu'), NOTNOT=/^!!/, IE7=/^7\.0/, TAG_PREFIX=/^\/tag\//;
+
+function get_tag_name( $tag ){
+	return ($tag.attr('href') || '').replace(TAG_PREFIX, '') || $tag.text().toLowerCase();
+}
+
+function trigger_menu( e, selector, $menu, menu_content ){
+	var $target=$(original_target(e, selector)), in_use=$target.is('.trigger');
+	if ( $CURRENT_MENU ) {
+		$CURRENT_MENU.menu('cancel', e);
+		$CURRENT_MENU = null;
+	}
+
+	if ( !in_use ) {
+		menu_content && $menu.stop(true, true).hide().html(menu_content);
+		($CURRENT_MENU=$menu).menu('context', e);
+	}
+	return !in_use;
+}
+
+function open_menu( trigger, $menu ){
+	var $trigger=$(trigger), $fhitem=$trigger.closest('.fhitem');
+	$fhitem.length && user_intent('interest', $fhitem[0]);
+
+	$menu.appendTo(document.body).css({ opacity:0 }).show();
+
+	var 	right	= $fhitem.offset().left + $fhitem.width(),
+		global	= $trigger.offset(),
+		local	= $menu.offsetParent().offset();
+
+	// Ugly IE position hack required:
+	$.browser.msie && IE7.test($.browser.version) && (local.top = 0);
+
+	// pin the menu (horizontally) on-screen
+	global.left = Math.min(global.left, right-$menu.width());
+
+	$trigger.addClass('trigger');
+	$menu.css({
+		position:	'absolute',
+		top:		global.top - local.top + $trigger.height(),
+		left:		global.left - local.left,
+		opacity:	1
+	});
+}
+
+function close_menu( trigger, $menu ){
+	$menu.hide();
+	$(trigger).removeClass('trigger');
+	($CURRENT_MENU===$menu) && ($CURRENT_MENU=false);
+}
+
+/* T2 tag context-menu */
+var $TAG_MENU=$('#tag-menu'), NOTNOT=/^!!/;
+
+
+    var user_is_admin = 0;
+
+	
+
+$('a[rel=tag]').live('mousedown',function(ea){
+    window.open(this.href);
+    return false;
+})
+
+$('.tag-bar .disagree').live('mousedown',function(ee){
+	var fhitem = $(original_target(ee)).closest('.fhitem')[0],
+		command = ('!' + $(original_target(ee)).attr("data-tag")).replace(NOTNOT, '');
+    try { Tags.submit(fhitem, command); } catch ( err ) {  }
+    return false;
+})
+
+
+
+$('a[rel=tag]').
+	live('mousedown', function( e ){
+        
+            return true;
+        
+
+	}).
+	live('click', function( e ){
+		if ( !logged_in ) {
+			var	target	= original_target(e),
+				tag	= $(target).text();
+			addfhfilter(tag);
+		}
+		e.preventDefault();
+		return false;
+	});
+
+$TAG_MENU.menu({
+	cssNamespace: 'slash',
+	liveTriggers: true,
+	clickDuration: 300,
+
+	start: function( e, ui ){
+		var	$tag	= $(ui.trigger),
+			tag	= get_tag_name($tag),
+			context	= firehose_settings && firehose_settings.viewtitle;
+
+		// Insert the tagname into the menu items where needed.
+		$TAG_MENU.find('span.var-tag').text(tag);
+		$TAG_MENU.find('a.nix').attr('title','not ' + tag);
+		
+
+			// non-admins may only delete their own tags
+		$TAG_MENU.find('a:[data-op="-"]').toggle($tag.is('.my'));
+	
+
+		// *tagname* in *viewtitle*
+		$TAG_MENU.find('a:[data-op="="]').toggle(!!context);
+		context && $TAG_MENU.find('span.var-view').text(context);
+
+		open_menu($tag, $TAG_MENU);
+	},
+
+	select: function( e, ui ){
+		var	$tag	= $(ui.trigger),
+			tag	= get_tag_name($tag),
+			op	= $(ui.select).attr('data-op'),
+			fhitem,
+			command;
+
+		// Global for positioning other things.
+		$related_trigger = $tag;
+
+		switch ( op ) {
+			case '=':
+				addfhfilter(tag);
+				break;
+
+			default:
+				fhitem = $tag.closest('.fhitem')[0];
+				command = (op + tag).replace(NOTNOT, '');
+				try { Tags.submit(fhitem, command); } catch ( err ) {  }
+				break;
+		}
+	},
+
+	stop: function( e, ui ){ close_menu(ui.trigger, $TAG_MENU); }
+});
+
+
+
+
+/* T2 feedback context-menu */
+
+
+
+/* T2 datatype context-menu (admin-only) */
+
+
+
+
+
+
+});
+</script>
+	
+
+
+
+<div class="container">
+	<div class="main-wrap  has-rail-right">
+		<div class="main-content">
+			<div id="firehose" class="nothumbs ">
+				<!-- WIT -->
+				<a name="articles"></a>
+
+				
+					
+				
+
+				<div id="firehoselist" class="fhroot row ">
+					
+					<article id="firehose-73270267" data-fhid="73270267" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73270267</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73270267">
+						<a href="//slashdot.org/index2.pl?fhfilter=technology" onclick="return addfhfilter('technology');">
+			
+				<img src="//a.fsdn.com/sd/topics/technology_64.png" width="64" height="64" alt="Technology" title="Technology">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73270267"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//tech.slashdot.org/story/15/05/30/0116202/stanford-researchers-make-photonic-components-faster-with-algorithmic-design">Stanford Researchers Make Photonic Components Faster, With Algorithmic Design</a></span>
+				
+				
+				<span class="comments commentcnt-73270267" >7</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73270267">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="http://www.monkey.org/~timothy/" rel="nofollow">timothy</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73270267" datetime="on Friday May 29, 2015 @09:19PM">on Friday May 29, 2015 @09:19PM</time>
+	
+	
+		<br>from the <span class="dept-text">algorithmic-method</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73270267">
+		
+
+		
+			
+
+					<div id="text-73270267" class="p">
+				
+	 
+		<a href="/~retroworks">retroworks</a> writes: <i>Integrated photonic devices are poised to play a key role in a wide variety of applications, ranging from optical interconnects and sensors to quantum computing. However, only a small library of semi-analytically designed devices is currently known.  In <a href="http://www.nature.com/nphoton/journal/v9/n6/full/nphoton.2015.69.html">an article in <em>Nature Photonics</em></a>,  researchers demonstrate the use of an <a href="http://motherboard.vice.com/read/scientists-just-automated-designing-light-based-computers?utm_source=mbfb">inverse design method</a> that explores the full design space of fabricable devices and allows them to design devices with previously unattainable functionality, higher performance and robustness, and smaller footprints than conventional devices. The designed a silicon wavelength demultiplexer splits 1,300nm and 1,550nm light from an input waveguide into two output waveguides, and the team has fabricated and characterized several devices. The devices display low insertion loss (2dB), low crosstalk (100nm). The device footprint is 2.8&#215;2.8m2, making this the smallest dielectric wavelength splitter.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//tech.slashdot.org/story/15/05/30/0116202/stanford-researchers-make-photonic-components-faster-with-algorithmic-design" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73270267">7</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73270267" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/nanotech" target="_blank">nanotech</a>
+<a  class="popular tag" rel="statictag" href="/tag/efficiency" target="_blank">efficiency</a>
+<a  class="popular tag" rel="statictag" href="/tag/technology" target="_blank">technology</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73269147" data-fhid="73269147" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73269147</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73269147">
+						<a href="//slashdot.org/index2.pl?fhfilter=technology" onclick="return addfhfilter('technology');">
+			
+				<img src="//a.fsdn.com/sd/topics/technology_64.png" width="64" height="64" alt="Technology" title="Technology">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73269147"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//tech.slashdot.org/story/15/05/29/2331202/first-ultraviolet-quantum-dots-shine-in-an-led">First Ultraviolet Quantum Dots Shine In an LED</a></span>
+				
+				
+				<span class="comments commentcnt-73269147" >25</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73269147">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="http://www.monkey.org/~timothy/" rel="nofollow">timothy</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73269147" datetime="on Friday May 29, 2015 @07:40PM">on Friday May 29, 2015 @07:40PM</time>
+	
+	
+		<br>from the <span class="dept-text">keep-shinin'-keep-shrinkin'</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73269147">
+		
+
+		
+			
+
+					<div id="text-73269147" class="p">
+				
+	 
+		<a href="/~ckwu">ckwu</a> with word that South Korean researchers have <a href="http://cenm.ag/mat89">created the first UV-emitting quantum dots</a>, and employed them in the creation of a flexible LED. Their achievement is notable because
+no one has previously succeeded in making  <a href="http://en.wikipedia.org/wiki/Quantum_dot">quantum dots</a> capable of emitting light at wavelengths shorter than 400 nm, which defines the upper range of the UV spectrum. Writes ckwu: <i>To get quantum dots that emit UV, the researchers figured out how make them with light-emitting cores smaller than 3 nm in diameter. They did it by coating a light-emitting cadmium zinc selenide nanoparticle with a zinc sulfide shell, which caused the core to <a href="http://dx.doi.org/10.1021/acs.nanolett.5b00392">shrink to 2.5 nm</a>. The quantum dots give off true UV light, at 377 nm. An LED made with the quantum dots could <a href="http://cenm.ag/mat89">illuminate the anticounterfeiting marks on a paper bill</a>.</i> The article names a few applications of the technology, besides, including water sterilization and industrial applications.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//tech.slashdot.org/story/15/05/29/2331202/first-ultraviolet-quantum-dots-shine-in-an-led" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73269147">25</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73269147" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/nanotech" target="_blank">nanotech</a>
+<a  class="popular tag" rel="statictag" href="/tag/technology" target="_blank">technology</a>
+<a  class="popular tag" rel="statictag" href="/tag/eduadong" target="_blank">eduadong</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73268259" data-fhid="73268259" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73268259</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73268259">
+						<a href="//slashdot.org/index2.pl?fhfilter=linuxbusiness" onclick="return addfhfilter('linuxbusiness');">
+			
+				<img src="//a.fsdn.com/sd/topics/linuxbusiness_64.png" width="64" height="64" alt="Linux Business" title="Linux Business">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73268259"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//linux.slashdot.org/story/15/05/29/2212234/mandriva-ceo-employee-lawsuits-put-us-out-of-business">Mandriva CEO: Employee Lawsuits Put Us Out of Business</a></span>
+				
+				
+				<span class="comments commentcnt-73268259" >142</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73268259">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="http://www.monkey.org/~timothy/" rel="nofollow">timothy</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73268259" datetime="on Friday May 29, 2015 @06:59PM">on Friday May 29, 2015 @06:59PM</time>
+	
+	
+		<br>from the <span class="dept-text">cost-of-doing-business</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73268259">
+		
+
+		
+			
+
+					<div id="text-73268259" class="p">
+				
+	 
+		<a href="/~Julie188">Julie188</a> writes: <i>As you probably heard by now, Linux company <a href="http://linux.slashdot.org/story/15/05/26/2157243/mandriva-goes-out-of-business"> Mandriva has finally, officially gone out of business.</a>
+The CEO has opened up, telling his side of the story. <a href="http://www.businessinsider.com/ceo-employee-lawsuits-killed-mandriva-2015-5">He blames employee lawsuits after a layoff in 2013</a>, the French labor laws and the courts. "Those court decisions forced the company to announce bankruptcy," he said.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//linux.slashdot.org/story/15/05/29/2212234/mandriva-ceo-employee-lawsuits-put-us-out-of-business" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73268259">142</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73268259" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/court" target="_blank">court</a>
+<a  class="popular tag" rel="statictag" href="/tag/linux" target="_blank">linux</a>
+<a  class="popular tag" rel="statictag" href="/tag/mandriva" target="_blank">mandriva</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73267681" data-fhid="73267681" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73267681</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73267681">
+						<a href="//slashdot.org/index2.pl?fhfilter=media" onclick="return addfhfilter('media');">
+			
+				<img src="//a.fsdn.com/sd/topics/media_64.png" width="64" height="64" alt="Media" title="Media">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73267681"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//news.slashdot.org/story/15/05/29/2136214/android-chromecast-to-get-hbo-now">Android, Chromecast To Get HBO Now</a></span>
+				
+				
+				<span class="comments commentcnt-73267681" >21</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73267681">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73267681" datetime="on Friday May 29, 2015 @06:18PM">on Friday May 29, 2015 @06:18PM</time>
+	
+	
+		<br>from the <span class="dept-text">bringing-balance-to-the-force</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73267681">
+		
+
+		
+			
+
+					<div id="text-73267681" class="p">
+				
+	 
+		An anonymous reader writes: <i>Google's I/O 2015 conference opened with a surprise announcement: that Chromecast, Android TV, and other <a href="http://www.digitaltrends.com/home-theater/google-announces-hbo-now-for-chromecast-google-io/index.html">Android devices will soon be able to offer HBO Now</a>.    "The announcement marks the end of a 7-week exclusive that Apple had on HBO's stand-alone streaming and on-demand video service," reports <em>Digital Trends</em>, and it also further weakens the exclusivity of cable TV packages.  "<a href="http://www.thespec.com/whatson-story/5651803-hbo-now-coming-to-android/index.html">Traditional TV subscriptions are slowly starting to slip</a>," one newspaper reports, "as more people watch online video."  Other online streaming sites are already confronting the popularity of HBO's "Game of Thrones" series, with Netflix already experiencing <a href="http://www.cnet.com/news/game-of-thrones-made-net-traffic-leap-for-hbo-and-dinged-netflix/index.html">a 33% dip in their online traffic</a> during the new season's online premiere and Amazon rushing to <a href="http://www.beyond-black-friday.com/2015/05/29/amazon-discounts-two-game-of-thrones-graphic-novels/index.html">discount their "Game of Thrones" graphic novels</a>, and the turmoil seems to be continuing in the online video space.  "Shortly after the premier of the new season, <a href="http://www.technewstoday.com/23995-netflix-suffers-while-hbo-enjoys-the-traffic-through-game-of-thrones/index.html">HBO Now seems to have taken the top spot</a> when it comes to internet traffic," reports one technology site, "causing a huge dent in Netflix's attempt to make it to the top."</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//news.slashdot.org/story/15/05/29/2136214/android-chromecast-to-get-hbo-now" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73267681">21</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73267681" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/android" target="_blank">android</a>
+<a  class="popular tag" rel="statictag" href="/tag/media" target="_blank">media</a>
+<a  class="popular tag" rel="statictag" href="/tag/mobile" target="_blank">mobile</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73266601" data-fhid="73266601" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73266601</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73266601">
+						<a href="//slashdot.org/index2.pl?fhfilter=biotech" onclick="return addfhfilter('biotech');">
+			
+				<img src="//a.fsdn.com/sd/topics/biotech_64.png" width="64" height="64" alt="Biotech" title="Biotech">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73266601"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//science.slashdot.org/story/15/05/29/2028238/hacking-your-body-through-a-nerve-in-your-neck">Hacking Your Body Through a Nerve In Your Neck</a></span>
+				
+				
+				<span class="comments commentcnt-73266601" >57</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73266601">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73266601" datetime="on Friday May 29, 2015 @05:37PM">on Friday May 29, 2015 @05:37PM</time>
+	
+	
+		<br>from the <span class="dept-text">what-could-possibly-go-wrong</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73266601">
+		
+
+		
+			
+
+					<div id="text-73266601" class="p">
+				
+	 
+		<a href="/~agent+elevator">agent elevator</a> writes: <i>IEEE Spectrum has a feature (part of its Hacking the Human OS issue) on <a href="http://spectrum.ieee.org/biomedical/devices/the-vagus-nerve-a-back-door-for-brain-hacking">the future of vagus nerve stimulation</a>, a device-based therapy with the potential to treat a ridiculously wide variety of ailments: epilepsy, depression, stroke, tinnitus, heart failure, migraines, asthma, <a href="http://tech.slashdot.org/story/15/01/19/0412237/fda-approves-implantable-vagus-nerve-disruptor-for-weight-loss">the list goes on</a>. One problem is that, because it required an implant (a bit like a pacemaker), it was never anybody's first-choice therapy. But now there's a non-invasive version, a device you just hold to your neck twice a day for a few minutes. It's being trialed first for migraines and cluster headaches (which <a href="http://en.wikipedia.org/wiki/Cluster_headache">sound horrible</a>). If it works, vagus nerve stimulation could compete directly with drug treatments on cost and convenience and it would let doctors find new ways to hack human physiology.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//science.slashdot.org/story/15/05/29/2028238/hacking-your-body-through-a-nerve-in-your-neck" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73266601">57</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73266601" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/health" target="_blank">health</a>
+<a  class="popular tag" rel="statictag" href="/tag/migraines" target="_blank">migraines</a>
+<a  class="popular tag" rel="statictag" href="/tag/bodyhacking" target="_blank">bodyhacking</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73266465" data-fhid="73266465" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73266465</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73266465">
+						<a href="//slashdot.org/index2.pl?fhfilter=court" onclick="return addfhfilter('court');">
+			
+				<img src="//a.fsdn.com/sd/topics/court_64.png" width="64" height="64" alt="The Courts" title="The Courts">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73266465"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//yro.slashdot.org/story/15/05/29/2023220/silk-road-founder-ross-ulbricht-sentenced-to-life-in-prison">Silk Road Founder Ross Ulbricht Sentenced To Life In Prison</a></span>
+				
+				
+				<span class="comments commentcnt-73266465" >214</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73266465">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73266465" datetime="on Friday May 29, 2015 @04:55PM">on Friday May 29, 2015 @04:55PM</time>
+	
+	
+		<br>from the <span class="dept-text">sorry-about-your-luck</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73266465">
+		
+
+		
+			
+
+					<div id="text-73266465" class="p">
+				
+	 
+		An anonymous reader sends an update on the trial of Ross Ulbricht, the man behind the Silk Road online black market. Sentencing is now complete, and <a href="http://bgr.com/2015/05/29/ross-ulbricht-sentencing-life-prison-silk-road/index.html">Ulbricht has been given life in prison</a>.  He had been facing a 20-year minimum because of the charge of being a "drug kingpin," and prosecutors were asking for a sentence substantially higher than the minimum. Prior to the sentence being handed down today, Ulbricht spoke before the court for 20 minutes, asking for leniency and for the judge to leave him a "light at the end of the tunnel." The judge was unswayed, <a href="http://www.wired.com/2015/05/silk-road-creator-ross-ulbricht-sentenced-life-prison/index.html">giving Ulbricht the most severe sentence possible</a>. She said, "The stated purpose [of the silk road] was to be beyond the law. ... Silk Road's birth and presence asserted that its creator was better than the laws of this country. This is deeply troubling, terribly misguided, and very dangerous." Ulbricht's family plans to appeal.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//yro.slashdot.org/story/15/05/29/2023220/silk-road-founder-ross-ulbricht-sentenced-to-life-in-prison" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73266465">214</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73266465" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/court" target="_blank">court</a>
+<a  class="popular tag" rel="statictag" href="/tag/crime" target="_blank">crime</a>
+<a  class="popular tag" rel="statictag" href="/tag/prison" target="_blank">prison</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73265391" data-fhid="73265391" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73265391</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73265391">
+						<a href="//slashdot.org/index2.pl?fhfilter=hardhack" onclick="return addfhfilter('hardhack');">
+			
+				<img src="//a.fsdn.com/sd/topics/hardhack_64.png" width="64" height="64" alt="Hardware Hacking" title="Hardware Hacking">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73265391"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//build.slashdot.org/story/15/05/29/1920235/more-about-dan-shapiro-and-the-glowforge-cnc-laser-cutter-video-2">More About Dan Shapiro and the Glowforge CNC Laser Cutter (Video #2)</a></span>
+				
+				
+				<span class="comments commentcnt-73265391" >21</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73265391">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="http://itknowledgeexchange.techtarget.com/cheap-computing/" rel="nofollow">Roblimo</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73265391" datetime="on Friday May 29, 2015 @04:13PM">on Friday May 29, 2015 @04:13PM</time>
+	
+	
+		<br>from the <span class="dept-text">tom-swift-and-his-cnc-laser-cutter-would-make-a-great-book-title</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73265391">
+		
+
+		
+			
+
+					<div id="text-73265391" class="p">
+				
+					<div class="video-thumb">
+
+						<a href="//build.slashdot.org/story/15/05/29/1920235/more-about-dan-shapiro-and-the-glowforge-cnc-laser-cutter-video-2?continuous_video=1">
+						<i class="video-thumb-overlay icon-play"></i>
+						
+					<img src="//a.fsdn.com/sd/articles/15/05/29/1920235-1.jpg">
+
+						</a>
+
+				
+			</div>
+		
+	 
+		<a href="http://build.slashdot.org/story/15/05/28/2023231/glowforge-is-a-cnc-laser-cutter-not-a-3d-printer-video">Yesterday</a> Glowforge Co-Founder and CEO Dan Shapiro told us that the <a href="http://glowforge.com/index.html">Glowforge</a> machine is a CNC laser cutter and engraver, not a 3-D Printer -- even though the first words on Glowforge's main page are, "The First 3D Laser Printer," a description Dan says is there for people not familiar with things like laser cutters and 3-D printers, who want to call the Glowforge a 3-D printer even though people who know about this stuff know what it is at first glance. He also talks about his previous startup, <a href="http://www.robotturtles.com/index.html">Robot Turtles;</a> what it is, how it came to be, and why kids like it so much. This interview is worth watching (or reading) for the Robot Turtles section alone, especially if you have children or are thinking about designing board games for kids.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//build.slashdot.org/story/15/05/29/1920235/more-about-dan-shapiro-and-the-glowforge-cnc-laser-cutter-video-2" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73265391">21</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73265391" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/boardgame" target="_blank">boardgame</a>
+<a  class="popular tag" rel="statictag" href="/tag/kickstarter" target="_blank">kickstarter</a>
+<a  class="popular tag" rel="statictag" href="/tag/robotturtles" target="_blank">robotturtles</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73265207" data-fhid="73265207" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73265207</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73265207">
+						<a href="//slashdot.org/index2.pl?fhfilter=transportation" onclick="return addfhfilter('transportation');">
+			
+				<img src="//a.fsdn.com/sd/topics/transportation_64.png" width="64" height="64" alt="Transportation" title="Transportation">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73265207"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//science.slashdot.org/story/15/05/29/1910243/land-art-park-significantly-reduces-jet-engine-noise-near-airport">Land Art Park Significantly Reduces Jet Engine Noise Near Airport</a></span>
+				
+				
+				<span class="comments commentcnt-73265207" >45</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73265207">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73265207" datetime="on Friday May 29, 2015 @03:23PM">on Friday May 29, 2015 @03:23PM</time>
+	
+	
+		<br>from the <span class="dept-text">art-that-serves-a-purpose</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73265207">
+		
+
+		
+			
+
+					<div id="text-73265207" class="p">
+				
+	 
+		<a href="/~ClockEndGooner">ClockEndGooner</a> writes: <i>A study conducted by the Netherlands Organization for Applied Scientific Research found that low frequency and long wavelength <a href="http://www.smithsonianmag.com/innovation/crazy-land-art-deflects-noise-from-amsterdams-airport-180955398/?no-ist">jet engine droning noise was significantly reduced in the fall after farmers plowed their fields</a> near Amsterdam's  <a href="http://en.wikipedia.org/wiki/Amsterdam_Airport_Schiphol">Schiphol Airport</a>. The remaining furrows "had multiple ridges to absorb the sound waves, deflected the sound and muted the noise." This led to the development of the <a href="http://www.hnsland.nl/images/stories/Nieuws/ct0728.jpg">Buitenschot Land Art Park</a>, a buffer park featuring "land art" that has significantly reduced aircraft noise without requiring cuts in the number of allowed flights in and out of the airport.  The land art park has also provided neighbors with additional recreational paths and sports fields in the same space.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//science.slashdot.org/story/15/05/29/1910243/land-art-park-significantly-reduces-jet-engine-noise-near-airport" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73265207">45</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73265207" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/design" target="_blank">design</a>
+<a  class="popular tag" rel="statictag" href="/tag/netherlands" target="_blank">netherlands</a>
+<a  class="popular tag" rel="statictag" href="/tag/noise" target="_blank">noise</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73263405" data-fhid="73263405" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73263405</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73263405">
+						<a href="//slashdot.org/index2.pl?fhfilter=communications" onclick="return addfhfilter('communications');">
+			
+				<img src="//a.fsdn.com/sd/topics/communications_64.png" width="64" height="64" alt="Communications" title="Communications">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73263405"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//tech.slashdot.org/story/15/05/29/1730225/professional-internet-troll-sues-her-former-employer">Professional Internet Troll Sues Her Former Employer</a></span>
+				
+				
+				<span class="comments commentcnt-73263405" >154</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73263405">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73263405" datetime="on Friday May 29, 2015 @02:40PM">on Friday May 29, 2015 @02:40PM</time>
+	
+	
+		<br>from the <span class="dept-text">guessing-there's-no-health-care-with-that-job</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73263405">
+		
+
+		
+			
+
+					<div id="text-73263405" class="p">
+				
+	 
+		<a href="/~baegucb">baegucb</a> sends a followup to the news <a href="http://tech.slashdot.org/story/15/03/27/1245202/how-professional-russian-trolls-operate">from March</a> that professional internet trolls were operating by the hundreds at factories in Russia. A woman hired to be one of these trolls, Lyudmila Savchuk, <a href="http://www.ctvnews.ca/sci-tech/russian-troll-factory-flooding-internet-with-propaganda-1.2396874">spoke to the media about her job, which led to her being fired</a>. She's now <a href="http://www.theguardian.com/world/2015/may/29/russia-troll-sues-former-employer">suing her former employer and providing further details about how they operate</a>. "The 'troll factory' operates based on very weird schemes, but all those firms are connected to each other, even though they are separate legal entities," she said. "I knew it was something bad, but of course I never suspected that it was this horrible and this large-scale." She describes how they flooded comment sections with pro-Putin responses, pushed out over 100 blog posts each shift, and doctored images to suit their employers' needs. Savchuk is now gathering activists to oppose this form of internet propaganda.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//tech.slashdot.org/story/15/05/29/1730225/professional-internet-troll-sues-her-former-employer" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73263405">154</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73263405" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/workplace" target="_blank">workplace</a>
+<a  class="popular tag" rel="statictag" href="/tag/internet" target="_blank">internet</a>
+<a  class="popular tag" rel="statictag" href="/tag/politics" target="_blank">politics</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73263097" data-fhid="73263097" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73263097</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73263097">
+						<a href="//slashdot.org/index2.pl?fhfilter=robot" onclick="return addfhfilter('robot');">
+			
+				<img src="//a.fsdn.com/sd/topics/robot_64.png" width="64" height="64" alt="Robotics" title="Robotics">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73263097"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//hardware.slashdot.org/story/15/05/29/1714212/florida-hospital-shows-normal-internet-lag-time-wont-affect-remote-robotic-surgeries">Florida Hospital Shows Normal Internet Lag Time Won't Affect Remote Robotic Surgeries</a></span>
+				
+				
+				<span class="comments commentcnt-73263097" >116</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73263097">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73263097" datetime="on Friday May 29, 2015 @01:58PM">on Friday May 29, 2015 @01:58PM</time>
+	
+	
+		<br>from the <span class="dept-text">no-complaining-about-your-ping</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73263097">
+		
+
+		
+			
+
+					<div id="text-73263097" class="p">
+				
+	 
+		<a href="/~Lucas123">Lucas123</a> writes: <i>Remote robotic surgery performed hundreds or even thousands of miles away from the physician at the controls is possible and safe, according to <a href="http://www.computerworld.com/article/2927471/healthcare-it/robot-performs-test-surgery-1200-miles-away-from-doctor.html">the Florida Hospital that recently tested Internet lag times for the technology</a>. Roger Smith, CTO at the Florida Hospital Nicholson Center in Celebration, Fla., said the hospital tested the lag time to a partner facility in Ft. Worth, Texas and found it ranged from 30 to 150 milliseconds, which surgeons could not detect as they moved remote robotic laparoscopic instruments. The tests, performed using a surgical simulator called a Mimic, will now be performed as if operating remotely in Denver and then Loma Linda, Calif.  The Mimic Simulator system enables virtual procedures performed by a da Vinci robotic surgical system, the most common equipment in use today; it's used for hundreds of thousands of surgeries every year around the world. With a da Vinci system, surgeons today can perform operations yards away from a patient, even in separate but adjoining rooms to the OR. By stretching that distance to tens, hundreds or thousands of miles, the technology could enable patients to receive operations from top surgeons that would otherwise not be possible, including wounded soldiers near a battlefield. The Mimic Simulator was able to first artificially dial up lag times, starting with 200 milliseconds all the way up to 600 milliseconds.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//hardware.slashdot.org/story/15/05/29/1714212/florida-hospital-shows-normal-internet-lag-time-wont-affect-remote-robotic-surgeries" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73263097">116</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73263097" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/robot" target="_blank">robot</a>
+<a  class="popular tag" rel="statictag" href="/tag/telemedicine" target="_blank">telemedicine</a>
+<a  class="popular tag" rel="statictag" href="/tag/pingofdeath" target="_blank">pingofdeath</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73263137" data-fhid="73263137" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73263137</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73263137">
+						<a href="//slashdot.org/index2.pl?fhfilter=emulation" onclick="return addfhfilter('emulation');">
+			
+				<img src="//a.fsdn.com/sd/topics/emulation_64.png" width="64" height="64" alt="Emulation (Games)" title="Emulation (Games)">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73263137"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//games.slashdot.org/story/15/05/29/1715234/emulator-now-runs-x86-apps-on-all-raspberry-pi-models">Emulator Now Runs x86 Apps On All Raspberry Pi Models</a></span>
+				
+				
+				<span class="comments commentcnt-73263137" >73</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73263137">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73263137" datetime="on Friday May 29, 2015 @01:17PM">on Friday May 29, 2015 @01:17PM</time>
+	
+	
+		<br>from the <span class="dept-text">onward-and-upward</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73263137">
+		
+
+		
+			
+
+					<div id="text-73263137" class="p">
+				
+	 
+		<a href="/~DeviceGuru">DeviceGuru</a> writes: <i>Russia-based Eltechs announced its ExaGear Desktop virtual machine <a href="http://linux.slashdot.org/story/14/08/23/0010241/virtual-machine-brings-x86-linux-apps-to-armv7-devices">last August</a>, enabling Linux/ARMv7 SBCs and mini-PCs to run x86 software. That meant that users of the quad-core, Cortex-A7-based Raspberry Pi 2 Model B, could use it as well, although the software was not yet optimized for it. Now Eltechs has extended <a href="http://linuxgizmos.com/emulator-now-runs-x86-apps-on-all-raspberry-pi-models/index.html">extended ExaGear to support earlier ARMv6 versions of the Raspberry Pi</a>. The company also optimized the emulator for the Pi 2 allowing, for example, Pi 2 users to use automatically forwarding startup scripts.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//games.slashdot.org/story/15/05/29/1715234/emulator-now-runs-x86-apps-on-all-raspberry-pi-models" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73263137">73</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73263137" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/emulation" target="_blank">emulation</a>
+<a  class="popular tag" rel="statictag" href="/tag/devices" target="_blank">devices</a>
+<a  class="popular tag" rel="statictag" href="/tag/rpi" target="_blank">rpi</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73260901" data-fhid="73260901" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73260901</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73260901">
+						<a href="//slashdot.org/index2.pl?fhfilter=robot" onclick="return addfhfilter('robot');">
+			
+				<img src="//a.fsdn.com/sd/topics/robot_64.png" width="64" height="64" alt="Robotics" title="Robotics">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73260901"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//hardware.slashdot.org/story/15/05/29/1524239/mit-trains-robots-to-jump">MIT Trains Robots To Jump</a></span>
+				
+				
+				<span class="comments commentcnt-73260901" >59</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73260901">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73260901" datetime="on Friday May 29, 2015 @12:30PM">on Friday May 29, 2015 @12:30PM</time>
+	
+	
+		<br>from the <span class="dept-text">just-don't-tell-them-how-important-necks-and-heads-are-to-humans</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73260901">
+		
+
+		
+			
+
+					<div id="text-73260901" class="p">
+				
+	 
+		<a href="/~Nerval's+Lobster">Nerval's Lobster</a> writes: <i>MIT just announced that its researchers <a href="http://newsoffice.mit.edu/2015/cheetah-robot-lands-running-jump-0529">have programmed a robotic cheetah that can leap over obstacles</a> without a prompt from a human controller. The machine's onboard sensors rely on reflected laser-light to judge obstacles' distance and height, and use that data to fuel the algorithm for a safe jump. The robot's controlling algorithm takes into account such factors as the speed needed to launch its mass over the obstacle, the best position for a jump, and the amount of energy required from the onboard electric motor. As of this writing, the robot can clear 90 percent of obstacles on an open track. "A running jump is a truly dynamic behavior," Sangbae Kim, an assistant professor of mechanical engineering at MIT, is quoted as saying in a university press release. "You have to manage balance and energy, and be able to handle impact after landing. Our robot is specifically designed for those highly dynamic behaviors." For years, some tech pundits have worried that robots and software <a href="http://insights.dice.com/2014/12/18/will-robots-and-automation-doom-some-it-jobs/index.html">will gradually replace human workers in key industries</a> such as manufacturing and IT administration. Now they have something else to fret over: Robots replacing the world's hurdlers.</i>
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//hardware.slashdot.org/story/15/05/29/1524239/mit-trains-robots-to-jump" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73260901">59</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73260901" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/mit" target="_blank">mit</a>
+<a  class="popular tag" rel="statictag" href="/tag/robot" target="_blank">robot</a>
+<a  class="popular tag" rel="statictag" href="/tag/predatorprey" target="_blank">predatorprey</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73260467" data-fhid="73260467" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73260467</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73260467">
+						<a href="//slashdot.org/index2.pl?fhfilter=privacy" onclick="return addfhfilter('privacy');">
+			
+				<img src="//a.fsdn.com/sd/topics/privacy_64.png" width="64" height="64" alt="Privacy" title="Privacy">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73260467"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//yro.slashdot.org/story/15/05/29/150253/uber-revises-privacy-policy-wants-more-data-from-users">Uber Revises Privacy Policy, Wants More Data From Users</a></span>
+				
+				
+				<span class="comments commentcnt-73260467" >128</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73260467">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73260467" datetime="on Friday May 29, 2015 @11:49AM">on Friday May 29, 2015 @11:49AM</time>
+	
+	
+		<br>from the <span class="dept-text">can-you-just-drive-me-places</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73260467">
+		
+
+		
+			
+
+					<div id="text-73260467" class="p">
+				
+	 
+		<a href="/~itwbennett">itwbennett</a> tips news that Uber has amended its <a href="https://www.uber.com/legal/privacy-proposed/users/en">privacy policy</a>, making it <a href="http://blog.uber.com/privacy-update-may-2015">much simpler to read and understand</a>. But the policy also includes changes to what data Uber collects about its riders. Beginning July 15th, the Uber phone app will <a href="http://www.itworld.com/article/2928515/security/uber-revises-privacy-policy-wants-more-data-from-users.html">keep track of a rider's location while it's running in the background</a>. Uber says riders will be able to opt out of this tracking. The policy changes also allow for advertising using the rider's contact list: "for example the ability to send special offers to riders' friends or family." The revision of Uber's privacy policy followed complaints <a href="http://yro.slashdot.org/story/14/12/16/1758203/uber-limits-god-view-to-improve-rider-privacy">at the end of last year</a> that the company was overstepping its bounds.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//yro.slashdot.org/story/15/05/29/150253/uber-revises-privacy-policy-wants-more-data-from-users" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73260467">128</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73260467" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/mobile" target="_blank">mobile</a>
+<a  class="popular tag" rel="statictag" href="/tag/privacy" target="_blank">privacy</a>
+<a  class="popular tag" rel="statictag" href="/tag/software" target="_blank">software</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73260301" data-fhid="73260301" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73260301</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73260301">
+						<a href="//slashdot.org/index2.pl?fhfilter=security" onclick="return addfhfilter('security');">
+			
+				<img src="//a.fsdn.com/sd/topics/security_64.png" width="64" height="64" alt="Security" title="Security">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73260301"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//it.slashdot.org/story/15/05/29/1450253/the-underground-hacking-economy">The Underground Hacking Economy</a></span>
+				
+				
+				<span class="comments commentcnt-73260301" >28</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73260301">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73260301" datetime="on Friday May 29, 2015 @11:05AM">on Friday May 29, 2015 @11:05AM</time>
+	
+	
+		<br>from the <span class="dept-text">sunlight-is-a-distraction</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73260301">
+		
+
+		
+			
+
+					<div id="text-73260301" class="p">
+				
+	 
+		Fast Company profiles the rise of sites like Hackers List and Hackers For Hire, which provide consolidated <a href="http://www.fastcompany.com/3043016/the-cybercrime-service-economy">markets for people to hire hackers to break passwords</a>, alter databases, learn to operate malware, and more. People with the skills to circumvent security are putting themselves out there as freelancers for specific tasks, and people in need of their services are posting notices asking for help. Law enforcement agencies are warning about this new type of behavior, saying it's often illegal, and facilitated by online anonymity and cryptocurrencies like Bitcoin. The number of deals <a href="http://webpolicy.org/2015/05/21/exploring-a-hacker-marketplace/index.html">currently being made through these sites remains small</a>, but it's growing &mdash; particularly among business seeking to gain an advantage over competitors in other countries.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//it.slashdot.org/story/15/05/29/1450253/the-underground-hacking-economy" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73260301">28</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73260301" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/security" target="_blank">security</a>
+<a  class="popular tag" rel="statictag" href="/tag/hacking" target="_blank">hacking</a>
+<a  class="popular tag" rel="statictag" href="/tag/moneyt" target="_blank">moneyt</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article><article id="firehose-73258389" data-fhid="73258389" data-fhtype="story" class="fhitem fhitem-story article usermode thumbs grid_24">
+	<span class="sd-info-block" style="display: none">
+		<span class="sd-key-firehose-id">73258389</span>
+		<span class="type">story</span>
+		
+	</span>
+
+
+		
+
+		
+
+		
+			
+			
+
+		<header>
+			
+				
+					<span class="topic" id="topic-73258389">
+						<a href="//slashdot.org/index2.pl?fhfilter=space" onclick="return addfhfilter('space');">
+			
+				<img src="//a.fsdn.com/sd/topics/space_64.png" width="64" height="64" alt="Space" title="Space">
+			
+		</a>
+					</span>
+				
+			
+			<h2 class="story">
+				
+
+				
+
+				
+				<span id="title-73258389"> <a onclick="return toggle_fh_body_wrap_return(this);"  href="//science.slashdot.org/story/15/05/29/130211/crowdfunded-solar-powered-spacecraft-goes-silent">Crowdfunded, Solar-powered Spacecraft Goes Silent</a></span>
+				
+				
+				<span class="comments commentcnt-73258389" >335</span>
+				
+
+				
+			</h2>
+			<div class="details" id="details-73258389">
+		
+		Posted
+		by 
+	
+	
+		
+			<a href="mailto:soulskill@slashdot.org" rel="nofollow">Soulskill</a>
+		
+	
+	
+
+	
+	
+	<time id="fhtime-73258389" datetime="on Friday May 29, 2015 @10:22AM">on Friday May 29, 2015 @10:22AM</time>
+	
+	
+		<br>from the <span class="dept-text">have-you-tried-turning-it-off-and-then-on-again</span> dept.
+	
+	</div>
+		</header>
+
+	<div class="body" id="fhbody-73258389">
+		
+
+		
+			
+
+					<div id="text-73258389" class="p">
+				
+	 
+		Last week saw the <a href="http://www.planetary.org/blogs/jason-davis/2015/20150520-lightsail-liftoff.html">successful launch</a> of the Planetary Society's <a href="http://sail.planetary.org/index.html">LightSail</a> spacecraft, the solar-powered satellite that runs Linux and was <a href="http://science.slashdot.org/story/15/05/16/0020227/planetary-society-wants-to-launch-a-crowd-funded-solar-sail">crowdfunded</a> on Kickstarter. The spacecraft worked flawlessly for two days, but then fell silent, and the engineering team has been working hard on a fix ever since. <a href="http://www.planetary.org/blogs/jason-davis/2015/20150526-software-glitch-pauses-ls-test.html">They've pinpointed the problem: a software glitch</a>. "Every 15 seconds, LightSail transmits a telemetry beacon packet. The software controlling the main system board writes corresponding information to a file called beacon.csv. If you're not familiar with CSV files, you can think of them as simplified spreadsheets&mdash;in fact, most can be opened with Microsoft Excel.  As more beacons are transmitted, the file grows in size. When it reaches 32 megabytes&mdash;roughly the size of ten compressed music files&mdash;it can crash the flight system." Unfortunately, the only way to clear that CSV file is to reboot LightSail. It can be done remotely, but as anyone who deals with crashing computers understands, remote commands don't always work. The command has been sent a few dozen times already, but LightSail remains silent. The best hope may now be that the system spontaneously reboots on its own.
+	 
+	</div>
+
+	
+
+	
+
+	
+	</div>
+	<aside class="novote">
+		
+	</aside>
+	
+		<footer class="clearfix meta article-foot">
+			<div class="grid_10 l">
+				
+                    
+					<a href="//science.slashdot.org/story/15/05/29/130211/crowdfunded-solar-powered-spacecraft-goes-silent" class="read-more" title=""><span>Read the </span><strong class="comments commentcnt-73258389">335</strong> <span>comments</span> </a>
+					
+				
+			</div>
+			
+				
+				<div class="grid_14 r">
+					<span class="tright tags"><menu type="toolbar" class="edit-bar">
+	<a class="edit-toggle" href="/my/login/" onclick="show_login_box();return false;"><span class="ui-icon button collapse"></span></a>
+	<input class="tag-entry default" type="text" size="10" style="display:none" value="apply tags">
+
+	<span id="tagbar-73258389" class="tag-bar none"><a  class="topic tag" rel="statictag" href="/tag/" target="_blank"></a>
+<a  class="popular tag" rel="statictag" href="/tag/space" target="_blank">space</a>
+<a  class="popular tag" rel="statictag" href="/tag/solar" target="_blank">solar</a>
+<a  class="popular tag" rel="statictag" href="/tag/lightsail" target="_blank">lightsail</a>
+</span>
+		
+
+</menu></span>
+				</div>
+				
+			
+		</footer>
+	
+	
+
+	</article>
+				</div>
+
+				<!-- LOWER PAGINATION -->
+				<div class="row">
+					<div class="paginate" id="fh-pag-div">
+<div class="menu2" id="fh-paginate">
+
+
+
+
+
+	 
+	 <a class="prevnextbutdis" href="#" onclick="return false;">&laquo; Newer</a>
+
+	
+		<a class="prevnextbutact" href="//slashdot.org/?page=1" >Older &raquo;</a>
+
+	<span class="inactive more">
+		
+	</span>
+
+
+
+
+
+</div>
+</div>
+				</div>
+
+				<!-- WIT -->
+				
+				<span id="itemsreturned" class="row">
+					
+				</span>
+				
+
+				<!-- index2_variant |A|-->
+				
+
+				<div class="row">
+				</div>
+
+				
+				<!-- SLASH-4560 NEW AD HERE (dhand) -->
+				<div id="bottomadspace">
+					<table id="bottomadtable">
+						<tr>
+							<td><div id='div-gpt-ad-728x90_b'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-728x90_b');});</script></div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		
+	<aside id="slashboxes" class="rail-right ">
+		
+		<div class="advertisement railad">
+<div id='div-gpt-ad-300x250_a'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-300x250_a');});</script></div>
+</div>
+			<script type="text/javascript">
+				$(function() {
+					// Poll/Pulse
+					(function(){
+						var sd_poll = $('#poll'),
+								pulsead = $('#div-gpt-ad-pulse_300x600_a');
+
+						sd_poll.hide();
+
+						function showSdPoll(){
+							if( pulsead.closest('.advertisement').height() < 250 ) {
+								sd_poll.fadeIn();
+								pulsead.closest('.advertisement').hide();
+							}
+						}
+						//this function will display the Slashdot Poll if the Pulse Ad is not delivered
+						setTimeout(function() { showSdPoll(); }, 2000);
+					})();
+				});
+			</script>
+			<div id='my_forgebox'>
+				 
+			</div>
+
+			
+
+					<article id="slashdot_deals" class="nosort">
+		<header id="slashdot_deals-title">
+			<h2><a href="">Slashdot Deals</a></h2>
+		</header>
+		<section class="b" id="slashdot_deals-content">
+			<div id='div-gpt-ad-videowidget_300x250'><script type='text/javascript'>
+googletag.cmd.push(function(){
+
+googletag.display('div-gpt-ad-videowidget_300x250');});</script></div>
+			
+		</section>
+	</article><div class="railad advertisement">
+<div id='div-gpt-ad-pulse_300x600_a'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-pulse_300x600_a');});</script></div>
+</div><div class="railad advertisement">
+<div id='div-gpt-ad-300x250_b'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-300x250_b');});</script></div>
+</div><article class="nosort">
+	<header id="bid-title">
+		<h2>Featured Videos</h2>
+	</header>
+	<section class="b" id="bid-content">
+		<div id="slider">
+	<input type="radio" id="button-1" name="controls" checked="checked"/>
+	<label for="button-1"></label>
+	<input type="radio" id="button-2" name="controls"/>
+	<label for="button-2"></label>
+	<input type="radio" id="button-3" name="controls"/>
+	<label for="button-3"></label>
+	<input type="radio" id="button-4" name="controls"/>
+	<label for="button-4"></label>
+	<label for="button-1" class="arrows" id="arrow-1"><i class="icon-right-open-2"></i></label>
+	<label for="button-2" class="arrows" id="arrow-2"><i class="icon-right-open-2"></i></label>
+	<label for="button-3" class="arrows" id="arrow-3"><i class="icon-right-open-2"></i></label>
+	<label for="button-4" class="arrows" id="arrow-4"><i class="icon-right-open-2"></i></label>
+  	<div id="slides">	
+		<ul id="video_rail_featured" class="video-card-list">
+				<script id="video_rail_featured_template" type="text/x-handlebars-template">
+					{{#each this}}
+					 <li id="slide1">						
+					  <a href="{{ url }}">
+							<div class="pull-left video-card-img">
+								
+									<span class="sd-video-icon"></span>
+														
+								<img src="{{ thumb_large }}">			
+								<span class="video-duration">{{ooyala_seconds}}</span>
+								<span class="hover-play icon-play-circled"></span>	
+							</div>
+						</a>
+						<div class="video-card-info">
+							<div class="ellipsis multiline featured-video-tile-heading">
+							<a href="{{ url }}">{{{ title }}}</a>
+							</div>
+						</div>
+					</li>
+					{{/each}}
+				</script>
+			</ul>
+		</div>	
+	</div>	
+
+
+<script type="text/javascript">
+
+   var feature_videos_to_disp = [ { ooyala_name: "The Wrap - Hacked airplane, POTUS on Twitter, WiFi by balloon", url: "//tech.slashdot.org/story/15/05/26/206238/the-wrap---hacked-airplane-potus-on-twitter-wifi-by-balloon?continuous_video=1", thumb_large: "//a.fsdn.com/sd/articles/15/05/26/206238-1-thumblg.jpg", ooyala_seconds: "2:47", title: "The Wrap - Hacked airplane, POTUS on Twitter, WiFi by balloon" }, { ooyala_name: "Inside Google's Loon and Wing", url: "//partnervideo.slashdot.org/story/15/05/26/206241/inside-googles-loon-and-wing?continuous_video=1", thumb_large: "//a.fsdn.com/sd/articles/15/05/26/206241-1-thumblg.jpg", ooyala_seconds: "2:41", title: "Inside Google's Loon and Wing" }, { ooyala_name: "Insights into the Apple Watch", url: "//apple.slashdot.org/story/15/05/26/206240/insights-into-the-apple-watch?continuous_video=1", thumb_large: "//a.fsdn.com/sd/articles/15/05/26/206240-1-thumblg.jpg", ooyala_seconds: "2:31", title: "Insights Into the Apple Watch" }, { ooyala_name: "Lily Camera, a drone that follows you", url: "//news.slashdot.org/story/15/05/26/206245/lily-camera-a-drone-that-follows-you?continuous_video=1", thumb_large: "//a.fsdn.com/sd/articles/15/05/26/206245-1-thumblg.jpg", ooyala_seconds: "2:03", title: "Lily Camera, a drone that follows you" } ];
+
+	$(function(){
+		// HANDLERBARS	
+		//Featured Videos in Right Rail
+		var source      = $('#video_rail_featured_template').html(),
+			destination = $('#video_rail_featured');
+
+		var template = Handlebars.compile('' + source);
+			destination.html(template(feature_videos_to_disp));
+
+    });    
+</script>
+	</section>
+</article><div class="railad advertisement">
+<div id='div-gpt-ad-300x250_c'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-300x250_c');});</script></div>
+</div><article id="dice_jobs" class="nosort">
+		<header id="dice_jobs-title">
+			<h2><a href="">Latest Tech Jobs</a></h2>
+		</header>
+		<section class="b" id="dice_jobs-content">
+			<form action="//slashdot.org/job_board.pl" method="post">               
+    <div id="jobBoardWidgetSearchForm">
+        <fieldset> 
+            <input type="text" name="job_text" value="" placeholder="Senior Java Developer" size="20" maxlength="80"/>
+            <input type="submit" name="job_search_submit" value="Search" class="button"/>
+        </fieldset>
+    </div>
+</form>
+<div id="jobBoardWidget">
+	<ul id="dice_widget">
+
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/kforcecx/ITDIA1432964?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/kforcecx/ITDIA1432964?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">Windows Server Admin (TS2)</span><br>Des Moines, IA</a>
+		</li>
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/10118911/5031231?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/10118911/5031231?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">Program Integrity Quality Assurance Analyst (Medicare)</span><br>Grove City, OH</a>
+		</li>
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/infowork/050749?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/infowork/050749?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">System Engineer (SE97)</span><br>Pensacola, FL</a>
+		</li>
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/matrixga/92454?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/matrixga/92454?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">Junior Software QA Engineer</span><br>Southlake, TX</a>
+		</li>
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/ebay/112684BR?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/ebay/112684BR?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">Assoc. Manager, Product analytics</span><br>San Francisco, CA</a>
+		</li>
+	
+
+        	<li>
+			<a onClick="trackLinkDiceJob(this, 'JobWidget', 'http://www.dice.com/job/result/10374960/053286?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing');return false;" href="http://www.dice.com/job/result/10374960/053286?src=19&CMPID=AF_SD_UP_JS_AV_OG_WG_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><span id="job_title">Big Data Engineer</span><br>Los Angeles, CA</a>
+		</li>
+	
+            	<li>
+                    <div id="all_jobs"><a href="//slashdot.org/job_board.pl" target="_blank">See All Jobs...</a></div>
+                    <div id="dice_logo_sm">
+                        Powered by <a href="http://www.dice.com?CMPID=AF_SD_UP_JS_AV_OG_BN_&utm_source=Slashdot&utm_medium=Affiliate&utm_content=&utm_campaign=Advocacy_Ongoing" target="_blank"><img src="//a.fsdn.com/sd/dice_logo.png"></a>
+                    </div>
+            </li>
+    </ul>
+</div>
+
+<!-- SLASH-3471  Post impression tracking pixel -->
+<script type="text/javascript">
+	var dfp_ord = Math.random()*10000000000000000;
+	$('#jobBoardWidget').append('<img src="http://stats.dice.com/b/ss/diceprod/1/display/' + dfp_ord + '?mtp=oslsc&mtss=2592000&ns=diceinc&v70=SDWDG&ce=UTF-8">');
+</script>
+			
+		</section>
+	</article><article class="nosort">
+	<header id="mostdiscussed-title">
+		<h2>Most Discussed</h2>
+	</header>
+	<section class="b" id="mostdiscussed-content">
+		<ul id="mostdiscussed">
+
+
+<li>
+<span class="cmntcnt"><span class="slant"></span><span >614<span class="hide"> comments</span></span></span>
+ <a href="//science.slashdot.org/story/15/05/28/2252259/ask-slashdot-what-happens-if-we-perfect-age-reversing?sbsrc=md">Ask Slashdot: What Happens If We Perfect Age Reversing?</a>
+</li>
+
+
+<li>
+<span class="cmntcnt"><span class="slant"></span><span >548<span class="hide"> comments</span></span></span>
+ <a href="//hardware.slashdot.org/story/15/05/28/1452218/how-tesla-batteries-will-force-home-wiring-to-go-low-voltage?sbsrc=md">How Tesla Batteries Will Force Home Wiring To Go Low Voltage</a>
+</li>
+
+
+<li>
+<span class="cmntcnt"><span class="slant"></span><span >349<span class="hide"> comments</span></span></span>
+ <a href="//tech.slashdot.org/story/15/05/28/2258245/fcc-proposes-to-extend-so-called-obamaphone-program-to-broadband?sbsrc=md">FCC Proposes To Extend So-Called "Obamaphone" Program To Broadband</a>
+</li>
+
+
+<li>
+<span class="cmntcnt"><span class="slant"></span><span >342<span class="hide"> comments</span></span></span>
+ <a href="//tech.slashdot.org/story/15/05/28/0320249/the-tricky-road-ahead-for-android-gets-even-trickier?sbsrc=md">The Tricky Road Ahead For Android Gets Even Trickier</a>
+</li>
+
+
+<li>
+<span class="cmntcnt"><span class="slant"></span><span >335<span class="hide"> comments</span></span></span>
+ <a href="//science.slashdot.org/story/15/05/29/130211/crowdfunded-solar-powered-spacecraft-goes-silent?sbsrc=md">Crowdfunded, Solar-powered Spacecraft Goes Silent</a>
+</li>
+
+</ul>
+	</section>
+</article><article class="nosort">
+	<header id="srandblock-title">
+		<h2><a href="//slashdot.org/recent/index.html">Firehose</a></h2>
+	</header>
+	<section class="b" id="srandblock-content">
+		<ul>
+<li>
+
+	
+	<a href="//slashdot.org/submission/4475755/proton-third-stage-design-problem-cause-most-recent-failure?utm_source=rss1.0&amp;utm_medium=feed&amp;sbsrc=firehose">
+		Proton third stage design problem cause most recent failure
+	</a>
+</li><li>
+
+	
+	<a href="//slashdot.org/submission/4475743/esa-and-airbus-safran-agree-on-deal-to-build-ariane-6?utm_source=rss1.0&amp;utm_medium=feed&amp;sbsrc=firehose">
+		ESA and Airbus Safran agree on deal to build Ariane 6
+	</a>
+</li><li>
+
+	
+	<a href="//slashdot.org/submission/4475693/the-case-for-a-muon-collider-succeeding-the-lhc-just-got-stronger?utm_source=rss1.0&amp;utm_medium=feed&amp;sbsrc=firehose">
+		The case for a muon collider succeeding the LHC just got stronger
+	</a>
+</li><li>
+
+	
+	<a href="//slashdot.org/firehose.pl?op=view&amp;amp;id=73269837&amp;utm_source=rss1.0&amp;utm_medium=feed&amp;sbsrc=firehose">
+		This is Android M&rsquo;s &ldquo;highly experimental&rdquo; multi-window mode for tablets
+	</a>
+</li><li>
+
+	
+	<a href="//slashdot.org/submission/4475671/scientists-just-automated-light-based-computers?utm_source=rss1.0&amp;utm_medium=feed&amp;sbsrc=firehose">
+		Scientists just automated light-based computers 
+	</a>
+</li>
+</ul>
+	</section>
+</article><article id="thisday" class="nosort">
+		<header id="thisday-title">
+			<h2><a href="">This Day on Slashdot</a></h2>
+		</header>
+		<section class="b" id="thisday-content">
+			<style type="text/css">
+.thisday-yr {
+     background: none repeat scroll 0% 0% #333333;
+     color: #FFFFFF;
+     font-size: 105%;
+     font-weight: bold;
+}
+
+.thisday-tb tr td {
+     background: none repeat scroll 0% 0% #E6E6E6;
+}
+
+.thisday-tb tr td.thisday-yr {
+     background: none repeat scroll 0% 0% #006666;
+}
+
+.thisday-tb {
+	background: #333333;
+}
+
+
+.thisday-tb tbody tr:first-child td, tbody tr:first-child th {
+  border-top: 0px solid #BEBEBE;
+}
+</style>
+
+<table bgcolor="333333" class="thisday-tb"><tbody>
+
+
+<tr>
+	<td class="thisday-yr">
+		2012
+	</td>
+	<td>
+		<a href="//science.slashdot.org/story/12/05/29/1447208/debate-over-evolution-will-soon-be-history-says-leakey?sbsrc=thisday">Debate Over Evolution Will Soon Be History, Says Leakey</a>
+	</td>
+	<td>
+	<span style="" class="cmntcnt"><span style="background:#333" class="slant"></span><span style="background: #333; color:#fff; font-weight:bold; font-size:.85em">1226<span class="hide"> comments</span></span></span>
+	</td>
+</tr>
+
+
+<tr>
+	<td class="thisday-yr">
+		2010
+	</td>
+	<td>
+		<a href="//science.slashdot.org/story/10/05/29/178208/what-scientists-really-think-about-religion?sbsrc=thisday">What Scientists Really Think About Religion</a>
+	</td>
+	<td>
+	<span style="" class="cmntcnt"><span style="background:#333" class="slant"></span><span style="background: #333; color:#fff; font-weight:bold; font-size:.85em">1123<span class="hide"> comments</span></span></span>
+	</td>
+</tr>
+
+
+<tr>
+	<td class="thisday-yr">
+		2008
+	</td>
+	<td>
+		<a href="//ask.slashdot.org/story/08/05/29/163253/what-makes-a-programming-language-successful?sbsrc=thisday">What Makes a Programming Language Successful?</a>
+	</td>
+	<td>
+	<span style="" class="cmntcnt"><span style="background:#333" class="slant"></span><span style="background: #333; color:#fff; font-weight:bold; font-size:.85em">1119<span class="hide"> comments</span></span></span>
+	</td>
+</tr>
+
+
+<tr>
+	<td class="thisday-yr">
+		2003
+	</td>
+	<td>
+		<a href="//ask.slashdot.org/story/03/05/29/003200/a-good-summer-read?sbsrc=thisday">A Good Summer Read?</a>
+	</td>
+	<td>
+	<span style="" class="cmntcnt"><span style="background:#333" class="slant"></span><span style="background: #333; color:#fff; font-weight:bold; font-size:.85em">1485<span class="hide"> comments</span></span></span>
+	</td>
+</tr>
+
+
+<tr>
+	<td class="thisday-yr">
+		2002
+	</td>
+	<td>
+		<a href="//ask.slashdot.org/story/02/05/29/1731232/subversive-gifts-for-new-college-students?sbsrc=thisday">Subversive Gifts for New College Students?</a>
+	</td>
+	<td>
+	<span style="" class="cmntcnt"><span style="background:#333" class="slant"></span><span style="background: #333; color:#fff; font-weight:bold; font-size:.85em">1191<span class="hide"> comments</span></span></span>
+	</td>
+</tr>
+
+</tbody></table>
+			
+		</section>
+	</article><article id="sourceforge2" class="nosort">
+		<header id="sourceforge2-title">
+			<h2><a href="">Sourceforge Top Downloads</a></h2>
+		</header>
+		<section class="b" id="sourceforge2-content">
+			<ul class="sf_widget">
+    <li>
+                <a onclick="trackLink(this, 'sfSlashboxDownloadLink', 'http://sourceforge.net/projects/vlc/?source=sd_slashbox');return false;" href="http://sourceforge.net/projects/vlc/?source=sd_slashbox">VLC Media Player<span class="sf-size">822M Downloads</span></a>
+</li>
+   <li>
+                <a onclick="trackLink(this, 'sfSlashboxDownloadLink', 'http://sourceforge.net/projects/emule/?source=sd_slashbox');return false;" href="http://sourceforge.net/projects/emule/?source=sd_slashbox">eMule<span class="sf-size">683M Downloads</span></a>
+   </li>
+       <li>
+                <a onclick="trackLink(this, 'sfSlashboxDownloadLink', 'http://sourceforge.net/projects/azureus/?source=sd_slashbox');return false;" href="http://sourceforge.net/projects/azureus/?source=sd_slashbox">Azureus/vuze<span class="sf-size">539M Downloads</span></a>
+       </li>
+        <li>
+                <a onclick="trackLink(this, 'sfSlashboxDownloadLink', 'http://sourceforge.net/projects/aresgalaxy/?source=sd_slashbox');return false;" href="http://sourceforge.net/projects/aresgalaxy/?source=sd_slashbox">Ares Galaxy<span class="sf-size">338M Downloads</span></a>
+   </li>
+       <li>
+                <a onclick="trackLink(this, 'sfSlashboxDownloadLink', 'href=" http:="" sourceforge.net="" projects="" corefonts="" ');return="" false;"="" href="http://sourceforge.net/projects/corefonts/?source=sd_slashbox">Microsoft core fonts<span class="sf-size">300M Downloads</span></a>
+     </li>
+</ul>
+<div id="sf-logo">
+       <p>Powered By</p>
+      <a onclick="trackLink(this, 'sfSlashboxHomeLink', 'http://sourceforge.net/?source=sd_slashbox');return false;" href="http://sourceforge.net/?source=sd_slashbox">sf</a>
+</div>
+			
+		</section>
+	</article>
+					<div class="advertisement railad">
+<div id='div-gpt-ad-300x250_d'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-300x250_d');});</script></div>
+</div>
+					
+						
+						
+					
+				
+			
+	</aside>
+</div>
+
+
+<script type="text/javascript">
+	firehose_exists = 1;
+	$(function(){
+	$('#firehose-filter').focus(function(event){ gFocusedText = this; })
+	.blur(function(event){
+		if ( gFocusedText === this ) {
+			gFocusedText = null;
+		}
+	});
+
+	
+	apply_updates_when(		'at-end', true);
+});
+
+			
+					firehose_settings.startdate = "";
+					firehose_settings.mode = "mixed";
+					firehose_settings.fhfilter = "";
+					firehose_settings.orderdir = "DESC";
+					firehose_settings.orderby = "createtime";
+					firehose_settings.duration = -1;
+					firehose_settings.color = "green";
+					firehose_settings.view = "stories";
+					firehose_settings.viewtitle = "";
+					firehose_settings.tab = "";
+					firehose_settings.base_filter = "";
+					firehose_settings.user_view_uid = "";
+					firehose_settings.sectionname = "Main";
+	
+	firehose_settings.issue = "";
+	firehose_settings.section = 13;
+	$('#searchquery').val(firehose_settings.fhfilter);
+
+	
+	firehose_sitename = "Slashdot";
+	firehose_slogan = "News for nerds, stuff that matters";
+	firehose_update_title_count();
+	firehose_smallscreen = 0;
+
+	
+
+	
+	
+		firehose_settings.index = 1;
+	
+
+	
+
+	var firehose_action_time = 0;
+	var firehose_user_class = 0;
+	
+    
+	
+	var fh_color = "green";
+	fh_colors = [ "red", "orange", "yellow", "green", "blue", "indigo", "violet", "black" ];
+	var fh_colors_hash = new Array(0);
+	for (var i=0; i< fh_colors.length; i++) {
+		fh_colors_hash[fh_colors[i]] = i;
+	}
+
+	var fh_view_mode = "mixed";
+	firehose_settings.page = 0;
+	
+	fh_is_admin = 0;
+	var updateIntervalType = 2;
+	var inactivity_timeout = 3600;
+	setFirehoseAction();
+	var update_time = "2015-05-30 03:59:48";
+
+	var maxtime = "2015-05-30 03:59:48";
+	var insert_new_at = "top";
+
+	
+
+fh_ticksize = 15;
+sitename = 'idle.slashdot.org';
+
+
+
+
+
+</script><!-- yui_footer -->
+
+</section>
+
+
+
+
+
+<footer id="fhft" class="grid_24 nf">
+	<div id="logo_nf" class="fleft">
+		<a href="//slashdot.org"><span>Slashdot</span></a>
+	</div>
+	<nav role="firehose footer">
+		
+
+		
+			<ul id="pagination-controls">
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150529">Today</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150528">Thursday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150527">Wednesday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150526">Tuesday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150525">Monday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150524">Sunday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150523">Saturday</a>
+					</li>
+				
+					
+					<li class="fleft">
+						<a href="//slashdot.org/?issue=20150522">Friday</a>
+					</li>
+				
+			</ul>
+			<script> /* fh_pag_update() */</script>
+		
+		<ul class="fright submitstory">
+				<li class="fright">
+					<a href="/submit">Submit<span class="opt"> Story</span></a>
+				</li>
+		</ul>
+	</nav>
+</footer>
+<section class="bq">
+	<blockquote class="msg grid_24" cite="http://slashdot.org">
+		<p>"It is better to have tried and failed than to have failed to try, but
+the result's the same."
+- Mike Dennison</p>
+		<span class="slant"></span>
+	</blockquote>
+</section>
+<footer id="ft" class="grid_24">
+	<nav class="grid_10" role="footer">
+		<ul>
+			<li><a href="//slashdot.org/faq">FAQ</a></li>
+			<li><a href="//slashdot.org/archive.pl">Story Archive</a></li>
+			<li><a href="//slashdot.org/hof.shtml">Hall of Fame</a></li>
+			<li><a href="http://slashdotmedia.com/advertising-and-marketing-services/index.html">Advertising</a></li>
+			<li><a href="http://slashdot.org/job_board.pl">Jobs</a></li>
+			<li><a href="http://slashdotmedia.com/terms-of-use/index.html">Terms</a></li>
+			<li><a href="http://slashdotmedia.com/privacy-statement/index.html">Privacy</a></li>
+			<li id="teconsent"></li>
+			<li><a href="http://slashdotmedia.com/opt-out-choices/index.html">Opt Out Choices</a></li>
+			<li><a href="//slashdot.org/faq/slashmeta.shtml">About</a></li>
+			<li><a href="mailto:feedback@slashdot.org">Feedback</a></li>
+			<li><a href="http://slashdot.jp">Slashdot Japan</a></li>
+			<li><a href="#" onclick="set_mobile_pref('mobile',1);return false;">Mobile View</a></li>
+			<li><a href="//slashdot.org/blog">Blog</a></li>
+		</ul>
+	</nav>
+	<br>
+	
+	<div class="grid_14 tright tm">Trademarks property of their respective owners. Comments owned by the poster. <span class="nobr">Copyright &copy; 2015 SlashdotMedia. All Rights Reserved.</span> <span class="nobr"><i class="footer-dhi icon-dhi"></i> Slashdot is a <a href="http://dhigroupinc.com" title="The Mother Ship" target="_blank">DHI service.</a></span></div>
+</footer>
+
+
+<div class="overlay"></div>
+<div class="modal-box">
+    <a href="#" id="close-modal">Close</a>
+    <article class="modal-content">
+    </article>
+    <footer>
+</div>
+
+
+
+
+<div id="modal_cover" class="hide" onclick="hide_modal_box(); return false;"></div>
+<div id="modal_box" class="hide">
+      <div id="modal_box_content"></div>
+      <header class="n">
+                  <span class="fadeout"></span>
+                  <span class="fadeoutfade"></span>
+		  <span class="pf"><a class="ico close" onclick="hide_modal_box(); return false;" href="#"><span>Close</span></a></span>
+		  <h3 class="pf"><div id="logo"><a href="//slashdot.org">Slashdot</a></div><span id="preference_title"></span></h3>
+      </header>
+</div>
+
+<script type="text/javascript">
+COMSCORE.beacon({
+  c1:2,
+  c2:6035546,
+  c3:"",
+  c4:"",
+  c5:"",
+  c6:"",
+  c15:""
+});
+</script>
+<noscript><img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6035546&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cj=1" alt="comScore2"></noscript>
+
+
+<!-- Google Remarketing tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1002083962;
+var google_conversion_label = "G_uGCOaBlAQQ-qzq3QM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1002083962/?value=0&amp;label=G_uGCOaBlAQQ-qzq3QM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script id="after-content" type="text/javascript">
+(function( $, fn, console ){
+	$ && fn && $(function(){ fn($, console); });
+})(window.jQuery, window.pageload_done, window.console);
+</script>
+
+<script type='text/javascript'>
+	if(!document.location.href.match(/source=autorefresh/)) {
+		document.write('<img src="//slashdot.org/images/js.gif?538">');
+	}
+</script>
+<noscript>
+	<img src="//slashdot.org/images/njs.gif?782">
+</noscript>
+<div class="busy genericspinner hide"><span>Working...</span></div>
+<script>
+	if(typeof(Storage)!=="undefined"){
+		window.scrollTo(0,sessionStorage.scrollPos);
+			$(window).scroll(function () {
+			//You've scrolled this much:
+			sessionStorage.scrollPos = $(window).scrollTop();
+		});
+	}
+	$(function(){
+		$('a').click(function(){
+			delete sessionStorage.scrollPos;
+		})
+	});
+	// window.onbeforeunload = function () {
+	// 	console.log('bakc button clicked');
+	// 	delete sessionStorage.scrollPos;
+	// }
+	window.onpopstate=function() {
+		delete sessionStorage.scrollPos;
+	}
+</script>
+
+
+
+	<!-- 1x1 home page -->
+	<div id='div-gpt-ad-1x1'><script type='text/javascript'>
+googletag.cmd.push(function(){
+googletag.display('div-gpt-ad-1x1');});</script></div>
+
+</body>
+</html>

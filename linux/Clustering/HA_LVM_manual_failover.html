@@ -1,0 +1,212 @@
+<h2>status of both nodes before failover</h2>
+
+<table border="1" bordercolor="#000000">
+<tr>
+
+<td>
+</code><pre>
+    [root@hostname2 ~]# clustat
+    Cluster Status for round-and-round @ Fri May 31 15:26:36 2013
+    Member Status: Quorate
+
+     Member Name                             ID   Status
+     ------ ----                             ---- ------
+     hostname1.domain.private                   1 Online, rgmanager
+     hostname2.domain.private                   2 Online, Local, rgmanager
+
+     Service Name                   Owner (Last)                   State
+     ------- ----                   ----- ------                   -----
+     service:ServiceName                  hostname1.domain.private      started
+
+
+    [root@hostname2 ~]# pvs
+      PV                  VG         Fmt  Attr PSize  PFree
+      /dev/mpath/mpshared shared_vg1 lvm2 a-   60.00G    0
+      /dev/mpath/mpsysp2  vgsys      lvm2 a-   49.88G 8.88G
+
+
+    [root@hostname2 ~]# vgs
+      VG         #PV #LV #SN Attr   VSize  VFree
+      shared_vg1   1   1   0 wz--n- 60.00G    0
+      vgsys        1   7   0 wz--n- 49.88G 8.88G
+
+
+    [root@hostname2 ~]# lvs
+      LV            VG         Attr   LSize  
+      shared_lv1    shared_vg1 -wi--- 60.00G
+      home          vgsys      -wi-ao  2.00G
+      root          vgsys      -wi-ao 16.00G
+      swap          vgsys      -wi-ao 10.00G
+      tmp           vgsys      -wi-ao  5.00G
+      var           vgsys      -wi-ao  5.00G
+      var_log       vgsys      -wi-ao  2.00G
+      var_log_audit vgsys      -wi-ao  1.00G
+</code></pre>
+</td>
+
+
+
+<td>
+</code><pre>
+    [root@hostname1 ~]# clustat
+    Cluster Status for round-and-round @ Fri May 31 15:26:39 2013
+    Member Status: Quorate
+
+     Member Name                             ID   Status
+     ------ ----                             ---- ------
+     hostname1.domain.private                   1 Online, Local, rgmanager
+     hostname2.domain.private                   2 Online, rgmanager
+
+     Service Name                   Owner (Last)                   State
+     ------- ----                   ----- ------                   -----
+     service:ServiceName                  hostname1.domain.private      started
+
+
+    [root@hostname1 ~]# pvs
+      PV                  VG         Fmt  Attr PSize  PFree
+      /dev/mpath/mpshared shared_vg1 lvm2 a-   60.00G     0
+      /dev/mpath/mpsysp2  vgsys      lvm2 a-   49.88G 10.25G
+
+
+    [root@hostname1 ~]# vgs
+      VG         #PV #LV #SN Attr   VSize  VFree
+      shared_vg1   1   1   0 wz--n- 60.00G     0
+      vgsys        1   7   0 wz--n- 49.88G 10.25G
+
+
+    [root@hostname1 ~]# lvs
+      LV            VG         Attr   LSize  
+      shared_lv1    shared_vg1 -wi-ao 60.00G
+      home          vgsys      -wi-ao  2.00G
+      root          vgsys      -wi-ao 14.62G
+      swap          vgsys      -wi-ao 10.00G
+      tmp           vgsys      -wi-ao  5.00G
+      var           vgsys      -wi-ao  5.00G
+      var_log       vgsys      -wi-ao  2.00G
+      var_log_audit vgsys      -wi-ao  1.00G
+</code></pre>
+</td>
+
+</tr>
+</table>
+
+<h2>syslog of both nodes during failover</h2>
+
+<p><strong>clusvcadm -r ServiceName</strong></p>
+
+<table border="1" bordercolor="#000000">
+<tr>
+<td>
+</code><pre>
+May 31 15:40:36 hostname2 root: seamus running clusvcadm -r ServiceName from hostname1
+May 31 15:43:25 hostname2 clurgmgrd[6214]: <notice> Starting stopped service service:ServiceName
+May 31 15:43:26 hostname2 clurgmgrd: [6214]: <notice> Activating shared_vg1/shared_lv1
+May 31 15:43:26 hostname2 clurgmgrd: [6214]: <notice> Making resilient : lvchange -ay shared_vg1/shared_lv1
+May 31 15:43:26 hostname2 clurgmgrd: [6214]: <notice> Resilient command: lvchange -ay shared_vg1/shared_lv1 
+{wrapped line} --config devices{filter=["a|/dev/mpath/mpshared|","a|/dev/mpath/mpsysp2|","r|.*|"]}
+May 31 15:43:26 hostname2 multipathd: dm-12: devmap not registered, can't remove
+May 31 15:43:26 hostname2 multipathd: dm-12: add map (uevent)
+May 31 15:43:26 hostname2 kernel: kjournald starting.  Commit interval 5 seconds
+May 31 15:43:26 hostname2 kernel: EXT3 FS on dm-12, internal journal
+May 31 15:43:26 hostname2 kernel: EXT3-fs: mounted filesystem with ordered data mode.
+May 31 15:43:28 hostname2 avahi-daemon[5577]: Registering new address record for 192.168.1.3 on eth0.
+May 31 15:44:57 hostname2 clurgmgrd[6214]: <notice> Service service:ServiceName started
+</code></pre>
+</td>
+
+
+
+
+<td>
+</code><pre>
+May 31 15:40:36 hostname1 root: seamus running clusvcadm -r ServiceName
+May 31 15:40:45 hostname1 clurgmgrd[6229]: <notice> Stopping service service:ServiceName
+May 31 15:43:14 hostname1 avahi-daemon[5564]: Withdrawing address record for 192.168.1.3 on eth0.
+May 31 15:43:24 hostname1 multipathd: dm-12: umount map (uevent)
+May 31 15:43:24 hostname1 clurgmgrd: [6229]: <notice> Deactivating shared_vg1/shared_lv1
+May 31 15:43:24 hostname1 clurgmgrd: [6229]: <notice> Making resilient : lvchange -an shared_vg1/shared_lv1
+May 31 15:43:24 hostname1 clurgmgrd: [6229]: <notice> Resilient command: lvchange -an shared_vg1/shared_lv1
+{wrapped line} --config devices{filter=["a|/dev/mpath/mpshared|","a|/dev/mpath/mpsysp2|","r|.*|"]}
+May 31 15:43:24 hostname1 multipathd: dm-12: remove map (uevent)
+May 31 15:43:25 hostname1 clurgmgrd: [6229]: <notice> Removing ownership tag (hostname1.domain.private) from shared_vg1/shared_lv1
+May 31 15:43:25 hostname1 clurgmgrd[6229]: <notice> Service service:ServiceName is stopped
+May 31 15:44:57 hostname1 clurgmgrd[6229]: <notice> Service service:ServiceName is now running on member 2
+</code></pre>
+</td>
+</tr>
+</table>
+
+<h2>status of both nodes after failover</h2>
+
+<table border="1" bordercolor="#000000">
+<tr>
+<td>
+</code><pre>
+    [root@hostname2 ~]# clustat
+    Cluster Status for round-and-round @ Fri May 31 15:47:29 2013
+    Member Status: Quorate
+
+     Member Name                                  ID   Status
+     ------ ----                                  ---- ------
+     hostname1.domain.private                        1 Online, rgmanager
+     hostname2.domain.private                        2 Online, Local, rgmanager
+
+     Service Name                        Owner (Last)                        State
+     ------- ----                        ----- ------                        -----
+     service:ServiceName                       hostname2.domain.private           started
+    [root@hostname2 ~]# pvs
+      PV                  VG         Fmt  Attr PSize  PFree
+      /dev/mpath/mpshared shared_vg1 lvm2 a-   60.00G    0
+      /dev/mpath/mpsysp2  vgsys      lvm2 a-   49.88G 8.88G
+    [root@hostname2 ~]# vgs
+      VG         #PV #LV #SN Attr   VSize  VFree
+      shared_vg1   1   1   0 wz--n- 60.00G    0
+      vgsys        1   7   0 wz--n- 49.88G 8.88G
+    [root@hostname2 ~]# lvs
+      LV            VG         Attr   LSize  Origin Snap%  Move Log Copy%  Convert
+      shared_lv1    shared_vg1 -wi-ao 60.00G
+      home          vgsys      -wi-ao  2.00G
+      root          vgsys      -wi-ao 16.00G
+      swap          vgsys      -wi-ao 10.00G
+      tmp           vgsys      -wi-ao  5.00G
+      var           vgsys      -wi-ao  5.00G
+      var_log       vgsys      -wi-ao  2.00G
+      var_log_audit vgsys      -wi-ao  1.00G
+</code></pre>
+</td>
+<td>
+</code><pre>  
+    [root@hostname1 ~]# clustat
+    Cluster Status for round-and-round @ Fri May 31 15:48:09 2013
+    Member Status: Quorate
+
+     Member Name                             ID   Status
+     ------ ----                             ---- ------
+     hostname1.domain.private                   1 Online, Local, rgmanager
+     hostname2.domain.private                   2 Online, rgmanager
+
+     Service Name                   Owner (Last)                   State
+     ------- ----                   ----- ------                   -----
+     service:ServiceName                  hostname2.domain.private      started
+    [root@hostname1 ~]# pvs
+      PV                  VG         Fmt  Attr PSize  PFree
+      /dev/mpath/mpshared shared_vg1 lvm2 a-   60.00G     0
+      /dev/mpath/mpsysp2  vgsys      lvm2 a-   49.88G 10.25G
+    [root@hostname1 ~]# vgs
+      VG         #PV #LV #SN Attr   VSize  VFree
+      shared_vg1   1   1   0 wz--n- 60.00G     0
+      vgsys        1   7   0 wz--n- 49.88G 10.25G
+    [root@hostname1 ~]# lvs
+      LV            VG         Attr   LSize  Origin Snap%  Move Log Copy%  Convert
+      shared_lv1    shared_vg1 -wi--- 60.00G
+      home          vgsys      -wi-ao  2.00G
+      root          vgsys      -wi-ao 14.62G
+      swap          vgsys      -wi-ao 10.00G
+      tmp           vgsys      -wi-ao  5.00G
+      var           vgsys      -wi-ao  5.00G
+      var_log       vgsys      -wi-ao  2.00G
+      var_log_audit vgsys      -wi-ao  1.00G
+</code></pre>
+</td>
+</tr>
+</table>

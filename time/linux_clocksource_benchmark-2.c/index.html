@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Linux clocksource benchmark 2.c - Seamus Murray's Notes about Linux and System Engineering</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux clocksource benchmark 2.c";
+        var mkdocs_page_input_path = "time/linux_clocksource_benchmark-2.c.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Seamus Murray's Notes about Linux and System Engineering
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../map/">Map</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/hot_add_memory_and_cpus/">Hot add memory and cpus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/linux_proccess_signaling/">Linux proccess signaling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../linux/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/cluster_website/">Cluster website</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/homemade_cluster/">Homemade cluster</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/email_on_linux/">change mail relay for postfix</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/hot_add_memory/">Hot add memory</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Core Utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/awk/">Awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/rename/">Rename</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/user_creation/">User creation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/watch_and_timeout/">Watch and timeout</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Disks and File Systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/rsync/">Rsync</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/shrink_lvm_filesystem/">Shrinking a Linux filesystem on LVM</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Firewalls and Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/iptables_notes/">My notes on IPtables</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Networking</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/check_dns_records/">Check dns records</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/linux_networking/">Linux networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/local_IP_address_survey/">local IP address survey</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RedHat</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/RedHat/kickstart/">Kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Satellite spacewalk</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Yum rpm</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Software Packaging</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Software_Packaging/apt_get/">Apt get</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">C programming</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Puppet</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../puppet/puppet_study_notes/">Puppet study notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Column_tally/">Column tally</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/DNS_validate_entries/">DNS validate entries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/IP_survey/">IP survey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_arguments/">Bash arguments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_array/">Bash array</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_case/">Bash case</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_trap/">Bash fail trap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_function/">Bash function</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_functions/">Bash functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_nested_if_else/">Bash nested if else</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_read_input/">Bash read input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_select/">Bash select</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_string_comparison/">Bash string comparison</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_tips/">Bash tips</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/diff/">Diff</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/expect/">Expect</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/map/">Map</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/script_to_markdown/">Script to markdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/simulate_site_failure/">Simulate site failure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Time</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Setting_time/">Setting time</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../System_timing_and_NTP/">System timing and NTP</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux clocksource benchmark 2.c</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Seamus Murray's Notes about Linux and System Engineering</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Time</li>
+      <li class="breadcrumb-item active">Linux clocksource benchmark 2.c</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>A short program written in C and in-line X86 assembler for experimenting the the various clocksources available on an Intel X86 system.</p>
+<p>Sample execution.. </p>
+<pre><code>Inital ClockSource setting is : tsc 
+Available ClockSources : tsc hpet acpi_pm
++--------------------------------------------------------------------------------------------------+
+|ClockSrc|Exec time | Start  | Finish  |RDSTC start |RDTSC finish| RDTSCP start   | RDTSCP finish  |
++--------+----------+--------+---------+------------+------------+----------------+----------------+
+|tsc     | 0.032044 | 1032   | 33076   | 1159606212 | 1269023424 | 1856585477990  | 1856694895364  |
+|hpet    | 0.596099 | 33218  | 629317  | 1269654044 | 3304412637 | 1856695525864  | 1858730284571  |
+|acpi_pm | 0.734672 | 629399 | 1364071 | 3304881771 | 1517682755 | 1858730753603  | 1861238521977  |
++--------------------------------------------------------------------------------------------------+
+</code></pre>
+<p>Source Code..</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdint.h&gt;
+
+
+
+unsigned long get_rdtscp(int *chip, int *core);
+static unsigned long long get_rdtsc();
+
+
+
+int main()
+
+{
+//array of strings for the clocksource names
+char clocksource[4][15];
+clocksource[0][0] = '\0';
+clocksource[1][0] = '\0';
+clocksource[2][0] = '\0';
+clocksource[3][0] = '\0';
+clocksource[4][0] = '\0';
+char initial_clocksource[15] = {'\0'};
+struct timeval mytime;
+struct timezone mytimezone;
+clock_t start, end;
+int x = 0;
+int y = 0;
+
+//special numbers to store the values retrieved from the TSC calls
+uint64_t starting_tsc = 0;
+uint64_t finishing_tsc = 0;
+uint64_t starting_tscp = 0;
+uint64_t finishing_tscp = 0;
+
+//cpu values to send the rdtscp command to the same cpu core
+int my_chip = 0;
+int my_core = 3;
+int * chip = &amp;my_chip;
+int * core = &amp;my_core;
+
+//saving the initial clocksource value so we can set it back when we are finished
+FILE *get_clocksource = fopen("/sys/devices/system/clocksource/clocksource0/current_clocksource", "r");
+fscanf(get_clocksource, "%s", initial_clocksource); //saving initial value 
+fclose(get_clocksource);
+printf("Initial ClockSource setting is : %s \n",initial_clocksource);
+
+//test if we have the permissions to change the current ClockSource
+      FILE *current_clocksource = fopen("/sys/devices/system/clocksource/clocksource0/current_clocksource", "w");
+      if (current_clocksource == NULL) {
+          perror("failed to open /sys/devices/system/clocksource/clocksource0/current_clocksource for writing"
+                 "\n are you running as root or via sudo ?\n");
+          exit(1);
+          }
+      fclose(current_clocksource);
+
+
+//reading in all the available clocksource options, this seems to vary between 2 and 4 values 
+FILE *available_clocksources  = fopen("/sys/devices/system/clocksource/clocksource0/available_clocksource", "r");
+
+      if (available_clocksources == NULL) {
+          perror("failed to open /sys/devices/system/clocksource/clocksource0/available_clocksource for reading"
+                 "\n are you running as root ?\n");
+          exit(1);
+          }
+       else {
+         fscanf(available_clocksources, "%s %s %s %s %s", clocksource[0], clocksource[1], clocksource[2], clocksource[3], clocksource[4]);
+         printf("Available ClockSources : %s %s %s %s %s\n",clocksource[0], clocksource[1], clocksource[2], clocksource[3], clocksource[4]);
+            }
+
+
+printf("+----------------------------------------------------------------------------------------------------------+\n");
+printf("|ClockSrc|Exec time | Start  | Finish  | RDSTC start    |  RDTSC finish  | RDTSCP start   | RDTSCP finish  |\n");
+printf("+--------+----------+--------+---------+----------------+----------------+----------------+----------------+\n");
+while ( (x &lt;= 4 ) &amp;&amp; (clocksource[x][0] != '\0') ){ //iterate through the available clocksource values and set them as the current value
+      FILE *current_clocksource = fopen("/sys/devices/system/clocksource/clocksource0/current_clocksource", "w");
+      if (current_clocksource == NULL) {
+          perror("failed to open /sys/devices/system/clocksource/clocksource0/current_clocksource for writing"
+                 "\n are you running as root ?\n");
+          exit(1);
+          }
+      else {
+         fprintf(current_clocksource,"%s", clocksource[x]);
+         fclose(current_clocksource);
+          }
+         y = 0 ;//execute the gettimeofday call 
+         starting_tscp = get_rdtscp(chip,core);
+         starting_tsc = get_rdtsc(); 
+         start = clock();
+         while ( y &lt; 1000000 ) {
+             gettimeofday(&amp;mytime, &amp;mytimezone);
+             y++;
+             }
+
+         end = clock();
+         finishing_tsc = get_rdtsc();
+         finishing_tscp = get_rdtscp(chip,core);
+         printf("|%-7s | %-7f | %-6ld | %-7ld | %ld | %ld | %ld | %ld |\n",clocksource[x],((double) (end - start)) / CLOCKS_PER_SEC,start,end,starting_tsc,finishing_tsc,starting_tscp,finishing_tscp);
+       x++;
+     }
+
+//setting the clocksource back to the initial value
+FILE *set_clocksource = fopen("/sys/devices/system/clocksource/clocksource0/current_clocksource", "w");
+if (set_clocksource == NULL) {
+          perror("failed to open /sys/devices/system/clocksource/clocksource0/current_clocksource for writing"
+                 "\n are you running as root ?\n");
+          exit(1);
+          }
+       else {
+              fprintf(set_clocksource,"%s", initial_clocksource); //setting clocksource back to  initial value
+              fclose(set_clocksource);
+            }
+
+printf("+----------------------------------------------------------------------------------------------------------+\n");
+return 0;
+
+}
+
+//2 functions to retrieve the counter values from the TSC
+
+
+//this function just calls which ever TSC that the kernel or cpu assigns, i.e it varies
+static __inline__ unsigned long long get_rdtsc(void)
+{
+    unsigned tsc_val_lo, tsc_val_hi;
+    __asm__ __volatile__ ("rdtsc" : "=a"(tsc_val_lo), "=d"(tsc_val_hi));
+    return ( (unsigned long long)tsc_val_lo)|( ((unsigned long long)tsc_val_hi)&lt;&lt;32 );
+}
+
+//with this function we can hard set the CPU and core
+unsigned long get_rdtscp(int *chip, int *core)
+{
+    unsigned a, d, c;
+    __asm__ volatile("rdtscp" : "=a" (a), "=d" (d), "=c" (c));
+
+    *chip = (c &amp; 0xFFF000)&gt;&gt;12;
+
+    *core = c &amp; 0xFFF;
+    return ((unsigned long)a) | (((unsigned long)d) &lt;&lt; 32);;
+
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../System_timing_and_NTP/" class="btn btn-neutral float-left" title="System timing and NTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../System_timing_and_NTP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
