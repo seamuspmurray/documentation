@@ -323,23 +323,65 @@
 <li><a href="#Sources"> Sources for this document</a></li>
 </ul>
 <hr />
-<hr />
 <h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
-<pre><code>+-------------------+-------------------------------------------------------------------------------------------------------------------+
-| Wall Clock Time   | Time displayed in a format understandable to humans, such as "12:00 am, Jan 1st, 1970."                           |
-| Real-Time Clock   | A hardware-based clock typically found on system motherboards, functions independent of a computer's power state. |
-| System Time       | A software-based clock or time line initialized during system boot from the real-time clock                       |
-| Reference Clock   | A highly precise and stable time source used to synchronize and calibrate other clocks.                           |
-| Clock Cycles      | A measure of the transitions in an electronic circuit, akin to the movement of a production line.                 |
-| Counter           | A device that increments based on specific events or time periods, operating independently of CPU-executed code.  |
-| Timer             | A device that tracks the number of increments occurring between two points in time, similar to a stopwatch.       |
-| Clock Source      | A device queried by CPU-executed code to obtain the current value of a counter.                                   |
-| Monotonic Counter | A counter that increments at regular intervals, such as once per second or minute, analogous to a metronome.      |
-| System            | A self-contained computing entity, such as a Linux server, Windows desktop, or Mac laptop.                        |
-| Time Line         | A graphical or numerical depiction of the passage of time.                                                        |
-| Time Scale        | A representation of time, either graphical or numerical, adjusted by a scaling factor to illustrate drift or skew |
-+-------------------+-------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wall Clock Time</td>
+<td>Time displayed in a format understandable to humans, <br>such as "12:00 am, Jan 1st, 1970."</td>
+</tr>
+<tr>
+<td>Real-Time Clock</td>
+<td>A hardware-based clock found on system motherboards, <br>functions independent of a computer's power state.</td>
+</tr>
+<tr>
+<td>System Time</td>
+<td>A software-based clock or time line initialized <br>during system boot from the real-time clock</td>
+</tr>
+<tr>
+<td>Reference Clock</td>
+<td>A highly precise and stable time source used to <br>synchronize and calibrate other clocks.</td>
+</tr>
+<tr>
+<td>Clock Cycles</td>
+<td>A measure of the transitions in an electronic circuit, <br>akin to the movement of a production line.</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>A device that increments based on specific events or <br>time periods, independent of CPU-executed code.</td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>A device that tracks the number of increments occurring <br>between two points in time.</td>
+</tr>
+<tr>
+<td>Clock Source</td>
+<td>A device queried by CPU-executed code to obtain the <br>current value of a counter.</td>
+</tr>
+<tr>
+<td>Monotonic Counter</td>
+<td>A counter that increments at regular intervals, such as <br>once per second, analogous to a metronome.</td>
+</tr>
+<tr>
+<td>System</td>
+<td>A self-contained computing entity, such as a Linux server, <br>Windows desktop, or Mac laptop.</td>
+</tr>
+<tr>
+<td>Time Line</td>
+<td>A graphical or numerical depiction of the passage of time.</td>
+</tr>
+<tr>
+<td>Time Scale</td>
+<td>A representation of time, either graphical or numerical, <br>adjusted to illustrate drift or skew</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="description-of-the-4-main-clock-sources-referred-to-in-this-document">Description of the 4 main clock sources referred to in this document<a name="Clock_Sources"></a></h3>
 <h4 id="rtc-real-time-clock">RTC (Real Time Clock)</h4>
@@ -897,27 +939,288 @@ You could make a phone call to the friend and ask what the time is.</p>
 <li>T3 the server timestamp on the departure of the reply packet</li>
 <li>T4 the client timestamp upon arrival</li>
 </ul>
-<PRE style="font-size: 75%">
+<PRE>
+<style>
+  #ascii-art {
+    font-family: monospace;
+    font-size: 16px;
+    white-space: pre;
+  }
+</style>
 
-  NTP CLIENT                                             NTP SERVER
- +---------------------+                                +----------------------+
- |                  T1 |                                | T2                   |
- |       +------+      |                                |      +-----+         |
- |       |T1    |      |                                |      |T1   |         |
- |       |      |  +----->------->------->------>------>---->  |T2   | +----+  |
- |       |      |      |                                |      |     |      |  |
- |       |      |      |                                |      |     |      |  |
- |       +------+      |                                |      +-----+      |  |
- |                     |                                |                   |  |
- |                     |                                |                   |  |
- |       +------+      |                                |      +-----+      |  |
- |       |T1    |      |                                |      |T1   |      |  |
- |       |T2    |  <----<------<-------<-------<-------<----+  |T2   | <----+  |
- |       |T3    |      |                                |      |T3   |         |
- |       |T4    |   T4 |                                | T3   |     |         |
- |       +------+      |                                |      +-----+         |
- |                     |                                |                      |
- +---------------------+                                +----------------------+
+<div id="ascii-art"></div>
+
+
+<script>
+const frames = [
+  `
+NTP CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     | T1 |    |                    |    | T1 |    | |
+|     | T2 | <--------------------------<-| T2 | <--+ |
+|     | T3 |    |                    |    | T3 |      |
+|     | T4 |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP_CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     |    |    |                    |    |    |      |
+|     |    | ---------------------------->|    | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <--+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP_CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    |    |      |
+|     |    | ---------------------------->|    | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <--+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    |    |      |
+|     |    | ->------>------->------>---->|    | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <--+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP_SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ->------>------->------>---->|    | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <--+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP_SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <--+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP_SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    |    |    | |
+|     |    | <----------------------------|    | <<-+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP_SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    | T1 |    | |
+|     |    | <----------------------------| T2 | <<-+ |
+|     |    |    |                    |    |    |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP_SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    | T1 |    | |
+|     |    | <----------------------------| T2 | <--+ |
+|     |    |    |                    |    | T3 |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     |    |    |                    |    | T1 |    | |
+|     |    | <------<------<------<-----<-| T2 | <--+ |
+|     |    |    |                    |    | T3 |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP_CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     | T1 |    |                    |    | T1 |    | |
+|     | T2 | <------<------<------<-----<-| T2 | <--+ |
+|     | T3 |    |                    |    | T3 |      |
+|     |    |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `,
+  `
+NTP_CLIENT                           NTP SERVER
++---------------+                    +----------------+
+|               |                    |                |
+|     +----+    |                    |    +----+      |
+|     | T1 |    |                    |    | T1 |      |
+|     |    | ---------------------------->| T2 | +--+ |
+|     |    |    |                    |    |    |    | |
+|     |    |    |                    |    |    |    | |
+|     +----+    |                    |    +----+    | |
+|               |                    |              | |
+|               |                    |              | |
+|     +----+    |                    |    +----+    | |
+|     | T1 |    |                    |    | T1 |    | |
+|     | T2 | <--------------------------<-| T2 | <--+ |
+|     | T3 |    |                    |    | T3 |      |
+|     | T4 |    |                    |    |    |      |
+|     +----+    |                    |    +----+      |
+|               |                    |                |
++---------------+                    +----------------+
+  `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElement = document.getElementById("ascii-art");
+
+function renderFrame() {
+  asciiArtElement.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 2000);
+</script>
 
 </PRE>
 
