@@ -309,18 +309,18 @@
 <p>Act as a repository for separate but related system timing information. </p>
 <h4 id="index">Index:</h4>
 <ul>
-<li><a href="#Definitions"> Definitions of the terms used in this document.</a></li>
-<li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document.</a></li>
-<li><a href="#Fixed_Frequency"> How Linux maintains System Time on a single core fixed frequency x86 system.</a></li>
-<li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC.</a></li>
-<li><a href="#CPU_Bug"> CPU Bugs and Clock Sources.</a></li>
-<li><a href="#Segals_Law"> TimeLines, OffSets and Segal's Law.</a></li>
-<li><a href="#Clock_drift"> Examples of Clock Drift.</a></li>
-<li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources.</a></li>
+<li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
+<li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document</a></li>
+<li><a href="#Fixed_Frequency"> How Linux maintains System Time on a single core fixed frequency x86 system</a></li>
+<li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC</a></li>
+<li><a href="#CPU_Bug"> CPU Bugs and Clock Sources</a></li>
+<li><a href="#Segals_Law"> TimeLines, OffSets and Clock Synchronization</a></li>
+<li><a href="#Clock_drift"> Examples of Clock Drift</a></li>
+<li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources</a></li>
 <li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
-<li><a href="#NTP_Precision"> NTP Precision and Accuracy.</a></li>
+<li><a href="#NTP_Precision"> NTP Precision and Accuracy</a></li>
 <li><a href="#C_Programs"> Example C programs to poll TSC, HPET and the ACPI_PM clock sources</a></li>
-<li><a href="#Sources"> Sources for this document. </a></li>
+<li><a href="#Sources"> Sources for this document</a></li>
 </ul>
 <hr />
 <hr />
@@ -341,7 +341,7 @@
 +-------------------+-------------------------------------------------------------------------------------------------------------------+
 </code></pre>
 <hr />
-<h3 id="description-of-the-4-main-clock-sources-referred-to-in-this-document">Description of the 4 main clock sources referred to in this document. <a name="Clock_Sources"></a></h3>
+<h3 id="description-of-the-4-main-clock-sources-referred-to-in-this-document">Description of the 4 main clock sources referred to in this document<a name="Clock_Sources"></a></h3>
 <h4 id="rtc-real-time-clock">RTC (Real Time Clock)</h4>
 <ul>
 <li>A hardware device used to keep track of time even when a system is powered off.</li>
@@ -377,12 +377,13 @@ Retrieving the TSC counter value in this this CPU register can be achieved by ca
 Interestingly; these two x86 instructions rdtsc/rdtscp can be called from any privilege level and they do not require a CPU ring transition.</p>
 <p>Over time, the reliability of the Time Stamp Counter (TSC) has been compromised on numerous occasions, necessitating the implementation of various hardware, firmware, and software solutions to ensure its dependability.
 Other clocksources with more advanced features have become available, but the TSC has remained as the ubiquitous clocksource.</p>
-<h4 id="reference-time-wall-clock-time-definition-needs-refinement">Reference time / Wall Clock time (definition needs refinement)</h4>
+<h4 id="reference-time-wall-clock-time">Reference time / Wall Clock time</h4>
 <p>A high precision Reference clock is used to keep track of the agreed-upon time standard (such as UTC)
 Used to synchronise and calibrate other clocks.
 Measured in the time units that us humans use Hours, Minutes seconds Micro seconds, etc...for example  12:00 am, Jan 1st, 1970</p>
-<h4 id="system-time-definition-needs-refinement">System Time (definition needs refinement)</h4>
-<p>A clock / Time Line maintained in software.
+<h4 id="system-time">System Time</h4>
+<p>The time displayed when you run the date command, or view the GUI desktop clock.
+A clock / Time Line maintained in software.
 System time is initialised and set during system boot up from the Real Time Clock.
 System time is often kept in sync with the WallClockTime /reference time by using an NTP client to poll a reference NTP time source.
 When a System is powered off, the OS is not running therefore there is no SystemTime.</p>
@@ -440,7 +441,7 @@ When a System is powered off, the OS is not running therefore there is no System
 <p>NTP goes a great way to mitigate problem [2] by comparing the apparent time drift between the multiple values returned by the local ClockSource with multiple values returned by the more accurate remote NTP time source.</p>
 <p>If it is determined that the local ClockSource is drifting from its stated speed of 10Hz, then the local NTP daemon calculates the drift offset and adjusts the system clock.</p>
 <hr />
-<h3 id="advancements-of-x86-cpus-and-the-effects-upon-the-monotonic-tsc">Advancements of x86 CPU's and the effects upon the MonoTonic TSC  <a name="CPU_Advancements"></a></h3>
+<h3 id="advancements-of-x86-cpus-and-the-effects-upon-the-monotonic-tsc">Advancements of x86 CPU's and the effects upon the MonoTonic TSC <a name="CPU_Advancements"></a></h3>
 <h4 id="brief-overview-of-the-advances-in-x86-system-architecture-that-affected-the-previously-used-method-of-using-a-simple-monotonic-counter-tsc-to-maintain-time">Brief overview of the advances in X86 system architecture that affected the previously used method of using a simple monotonic counter (TSC) to maintain time.</h4>
 <p>For most purposes, the methodology for maintaining system time described above (Intel Pentium I - III) worked fairly well.
 However times have changed and as x86 systems have evolved they have become far more complicated, as a result, the old method of determining the WallClock time needed to be changed to work on modern CPUs.</p>
@@ -504,7 +505,7 @@ However times have changed and as x86 systems have evolved they have become far 
 <li>tsc_reliable: TSC is known to be reliable</li>
 </ul>
 <hr />
-<h3 id="cpu-bugs-and-clock-sources">CPU Bugs and Clock Sources  <a name="CPU_Bug"></a></h3>
+<h3 id="cpu-bugs-and-clock-sources">CPU Bugs and Clock Sources<a name="CPU_Bug"></a></h3>
 <p>There have been a few different CPU, Firmware, and Operating System bugs related to CPU clock sources.</p>
 <p>One example is an issue with the Intel Xeon E5 v2 CPUs which results in the TSC not being cleared upon a CPU warm reset.</p>
 <p>This can result in the various TSC's on a system getting out of sync with each other.</p>
@@ -518,7 +519,7 @@ If this occurs, the Linux Operating system should then failover and utilise one 
 Unfortunately, certain kernel builds in certain Linux distributions do not successfully fail over to alternate clock sources.</p>
 <p>For example, kernel-2.6.32-504.30.3.el6.x86_64, continues to use the unstable TSC as a clock source, doesnt fail over to a stable source, and can result in timewarping of the Syste, Time so severere that it may drift too much to be corrected by NTP.</p>
 <hr />
-<h3 id="clock-synchronization-timelines-offsets-and">Clock Synchronization, TimeLines, OffSets and <a name="Segals_Law"></a></h3>
+<h3 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="Segals_Law"></a></h3>
 <blockquote>
 <p>"A man with a watch knows what time it is. A man with two watches is never sure."
                                                                            Segal's Law </p>
@@ -658,7 +659,7 @@ If they are different, we can approximate the time by averaging the times on bot
      Describe atomic visibility, you can only view one of the timelines in a single action,
      Therefore to view both time lines you need to perform 2 actions.</p>
 <hr />
-<h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift. <a name="Clock_drift"></a></h3>
+<h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift<a name="Clock_drift"></a></h3>
 <h4 id="watch-2-is-running-too-fast">Watch 2 is running too fast</h4>
 <p>Wrist Watch 2 FASTER than Wrist Watch 1</p>
 <PRE style="font-size: 75%">
@@ -716,11 +717,11 @@ Wrist Watch 2 in sync with Wrist Watch 1</p>
 <p>Problem 3 Solution (b+)...</p>
 <p>We can detect if the Wrist Watch 1 is wandering between too fast and too slow, by repeatedly comparing the Wrist Watch time to the accurate time source.</p>
 <hr />
-<h3 id="calculating-the-roundtrip-delay-and-clock-offset-between-2-remote-clock-sources">Calculating the RoundTrip Delay and Clock OffSet between 2 remote Clock Sources. <a name="RoundTrip_Delay"></a></h3>
+<h3 id="calculating-the-roundtrip-delay-and-clock-offset-between-2-remote-clock-sources">Calculating the RoundTrip Delay and Clock OffSet between 2 remote Clock Sources<a name="RoundTrip_Delay"></a></h3>
 <p>Definitions of terms..</p>
 <p>Reference Time (WallClockTime), is the term used to describe the universally agreed upon time.</p>
 <p>System Time (Linux Computer) same units in Wall Clock time, maintained in software, initialised during boot up from the Real Time Clock.</p>
-<h4 id="scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime.</h4>
+<h4 id="scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</h4>
 <p>Definition of SystemTime:</p>
 <ul>
 <li>Similar to Wall Clock time.</li>
@@ -743,10 +744,10 @@ SystemTime       = 15</p>
 <p>OffSet           = 05</p>
 <p>Problem 1,  Offset between the time taken to read the Wrist Watch Time and set the SystemTime.
 Problem 2,  No way to determine the accuracy of the Wrist Watch time, maybe the SystemTime was closer to the real time?</p>
-<h4 id="scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference.</h4>
+<h4 id="scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</h4>
 <p>Problem 1,  Offset between the time taken to read the Accurate clock Time and set the SystemTime.
 Problem 2,  Expensive, an accurate clock costs money.</p>
-<h4 id="scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference.</h4>
+<h4 id="scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</h4>
 <p>Problem 1,  Delay between the time taken to read the shared Accurate clock Time and set the SystemTime.</p>
 <h4 id="description-of-problem-1">Description of Problem 1...</h4>
 <p>Let's say that you have a friend working at a science laboratory who has access to a very accurate clock.
@@ -784,7 +785,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 </li>
 </ul>
 <hr />
-<h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server polling mechanism. <a name="NTP_Polling"></a></h3>
+<h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
         +--------------------------------------------+
@@ -888,7 +889,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 <p>Authenticator - Authentication information.</p>
 </li>
 </ul>
-<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server.</h4>
+<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</h4>
 <p>Various delays and offsets need to be taken into consideration when an NTP client is determining the correct time.</p>
 <ul>
 <li>T1 the client timestamp on the request packet</li>
@@ -920,7 +921,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 
 </PRE>
 
-<h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet.</h5>
+<h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h5>
 <PRE style="font-size:75%">
 
         NTP Client - NTP Server Round Trip Delay = (T4 - T1) - (T3 - T2)
@@ -996,7 +997,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 </PRE>
 
 <hr />
-<h3 id="networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy. <a name="NTP_precision"></a></h3>
+<h3 id="networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy<a name="NTP_precision"></a></h3>
 <p>The precision and accuracy of system time achievable and maintainable by an NTP (Network Time Protocol) client depend significantly on the network infrastructure between the NTP client and the NTP servers.
 *  In a Local Area Network (LAN), the accuracy of NTP synchronization can typically reach the order of 100 microseconds (us).</p>
 <ul>
@@ -1009,7 +1010,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 </ul>
 <p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
 <hr />
-<h3 id="example-c-programs-to-poll-tsc-hpet-and-the-acpi_pm-clock-sources">Example C programs to poll TSC, HPET and the ACPI_PM clock sources]<a name="C_Programs"></a></h3>
+<h3 id="example-c-programs-to-poll-tsc-hpet-and-the-acpi_pm-clock-sources">Example C programs to poll TSC, HPET and the ACPI_PM clock sources<a name="C_Programs"></a></h3>
 <h4 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
