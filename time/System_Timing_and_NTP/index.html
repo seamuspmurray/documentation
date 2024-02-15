@@ -311,7 +311,7 @@
 <ul>
 <li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
 <li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document</a></li>
-<li><a href="#Fixed_Frequency"> How Linux maintains System Time on a single core fixed frequency x86 system</a></li>
+<li><a href="#Fixed_Frequency"> Maintaining System Time on a single core fixed frequency x86 system</a></li>
 <li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC</a></li>
 <li><a href="#CPU_Bug"> CPU Bugs and Clock Sources</a></li>
 <li><a href="#Segals_Law"> TimeLines, OffSets and Clock Synchronization</a></li>
@@ -319,7 +319,7 @@
 <li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources</a></li>
 <li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
 <li><a href="#NTP_Precision"> NTP Precision and Accuracy</a></li>
-<li><a href="#C_Programs"> Example C programs to poll TSC, HPET and the ACPI_PM clock sources</a></li>
+<li><a href="#C_Programs"> Example C programs to poll the TSC, HPET,and ACPI_PM clock sources</a></li>
 <li><a href="#Sources"> Sources for this document</a></li>
 </ul>
 <hr />
@@ -388,8 +388,8 @@ System time is initialised and set during system boot up from the Real Time Cloc
 System time is often kept in sync with the WallClockTime /reference time by using an NTP client to poll a reference NTP time source.
 When a System is powered off, the OS is not running therefore there is no SystemTime.</p>
 <hr />
-<h3 id="simplified-scenario-of-how-linux-maintains-system-time-on-a-single-core-fixed-frequency-x86-system">Simplified scenario of how Linux maintains System Time on a single core fixed frequency x86 system  <a name="Fixed_Frequency"></a></h3>
-<h4 id="below-is-a-simplified-timeline-of-what-happens-when-an-intel-pentium-i-single-core-fixed-clock-frequency-x86-computer-is-powered-up-and-running-a-standard-linux-kernel-26">Below is a simplified timeline of what happens when an Intel Pentium I single-core fixed Clock Frequency x86 computer is powered up and running a standard Linux Kernel 2.6.</h4>
+<h3 id="maintaining-system-time-on-a-single-core-fixed-frequency-x86-system">Maintaining System Time on a single core fixed frequency x86 system  <a name="Fixed_Frequency"></a></h3>
+<p>Below is a simplified timeline of what happens when an Intel Pentium I single-core fixed Clock Frequency x86 computer is powered up and running a standard Linux Kernel 2.6.</p>
 <ol>
 <li>RTC continues working independently of the state of the computer. (Battery backed)</li>
 <li>CPU is powered on and initialised.</li>
@@ -1010,7 +1010,7 @@ You could make a phone call to the friend and ask what the time is.</p>
 </ul>
 <p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
 <hr />
-<h3 id="example-c-programs-to-poll-tsc-hpet-and-the-acpi_pm-clock-sources">Example C programs to poll TSC, HPET and the ACPI_PM clock sources<a name="C_Programs"></a></h3>
+<h3 id="example-c-programs-to-poll-the-tsc-hpetand-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET,and ACPI_PM clock sources<a name="C_Programs"></a></h3>
 <h4 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
