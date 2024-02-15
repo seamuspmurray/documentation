@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline Animation</title>
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="timelineCanvas" width="800" height="100"></canvas>
+<button onclick="compressTimeline()">Compress</button>
+<button onclick="expandTimeline()">Expand</button>
+
+<script>
+const canvas = document.getElementById('timelineCanvas');
+const ctx = canvas.getContext('2d');
+
+let timelineWidth = canvas.width;
+let timelineHeight = canvas.height;
+let timelineScale = 1;
+
+function drawTimeline() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw timeline
+  ctx.beginPath();
+  ctx.moveTo(0, timelineHeight / 2);
+  ctx.lineTo(timelineWidth, timelineHeight / 2);
+  ctx.stroke();
+
+  // Draw timeline markers and numbers
+  const markerSpacing = 50 / timelineScale; // Adjust the spacing based on scale
+  const markerIncrement = 5 * timelineScale;
+  for (let x = 0; x <= timelineWidth; x += markerSpacing) {
+    ctx.beginPath();
+    ctx.moveTo(x, timelineHeight / 2 - 10);
+    ctx.lineTo(x, timelineHeight / 2 + 10);
+    ctx.stroke();
+
+    // Draw numbers
+    if (x % (markerSpacing * 5) === 0) {
+      ctx.fillText(x / markerSpacing, x - 3, timelineHeight / 2 + 25);
+    }
+  }
+}
+
+function compressTimeline() {
+  timelineScale *= 1.5;
+  timelineWidth = canvas.width / timelineScale;
+  drawTimeline();
+}
+
+function expandTimeline() {
+  timelineScale /= 1.5;
+  timelineWidth = canvas.width / timelineScale;
+  drawTimeline();
+}
+
+// Initial draw
+drawTimeline();
+</script>
+
+</body>
+</html>
+

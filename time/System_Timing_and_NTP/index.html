@@ -746,6 +746,13 @@ Wrist Watch 2 in sync with Wrist Watch 1</p>
 
 </PRE>
 
+<p>0    5    10   15   20   25   30
+0     5   10   15   20   25   30
+0      5  10   15   20   25   30
+0       5 10   15   20   25   30
+0       5  10  15   20   25   30
+0       5   10  15  20   25   30
+0       5    10  15  20   25  30</p>
 <p>Problem (1) (2) and (3) Solution (b)...</p>
 <ul>
 <li>We can gain access to an accurate time source.</li>
@@ -795,18 +802,27 @@ Problem 2,  Expensive, an accurate clock costs money.</p>
 <p>Let's say that you have a friend working at a science laboratory who has access to a very accurate clock.
 You could make a phone call to the friend and ask what the time is.</p>
 <PRE style="font-size: 60%">
-                                        /+------------------------+/
-                  ,'"".                /                          /            ,'"".
-                  )  ,|    +~~~~~~~~~~/                          /             )  ,|
-                 /  /,'-. /          /|                         /|\           /  /,'-.
-                /  //  /.`.         /+------------------------+/ | \         /  //  /.`.
-              ,'  //  /  `.`.         |                          |  \      ,'  //  /  `.`.        ______
-    ____     (    )--.`.   //|        |                          |   \    (    )--.`.   //|      /  12  \
-   / 12 \    |`--'|   `.`.// |        |                          |    \__ |`--'|   `.`.// |     /        \
-  /      \    `--'      `./  /        |                          |         `--'      `./  /~~~~~|9  -->3 |
-  |9  -->3|~~~~~|         | /         |                          |           |         | /      \   |    /
-  \   \  /      |_________|/          |                          |           |_________|/        \___6__/
-   \__6_/
+
+
+   ____                                                                   ____
+  / 12 \                                                                 / 12 \
+ /      \                                                               /      \
+( 9  +->3)                  /+------------------------+/               ( 9  +->3)
+ \   \  /                  /                          /                 \   \  /
+  \__6_/          /~~~~~~~/                          /                   \__6_/
+                 /       /                          /+\
+      ,'"".     /       /++-----------------------+/ | \           ,'"".
+      )  ,+    /          |                          |  \          )  ,+
+     /  /,'+. /           |                          |   \        /  /,'+.
+    /  //  /.`.           |                          |    \      /  //  /.`.
+  ,'  //  /  `.`.         |                          |     \   ,'  //  /  `.`.
+ (    )++.`.   //+        |                          |      \ (    )++.`.   //+
+ +`++'+   `.`.// +        +                          +       \+`++'+   `.`.// +
+  `++'      `./  /                                             `++'      `./  /
+    |         + /                                                |         + /
+    +_________+/                                                 +_________+/
+
+
 
 
 </PRE>
@@ -830,35 +846,35 @@ You could make a phone call to the friend and ask what the time is.</p>
 <h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
-        +--------------------------------------------+
-        | LI | VN | Mode | Stratum | Poll |Precision |
-        +--------------------------------------------+
-        |                 Root Delay                 |
-        +--------------------------------------------+
-        |              Root Dispersion               |
-        +--------------------------------------------+
-        |            Reference Identifier            |
-        +--------------------------------------------+
-        |                                            |
-        |            Reference TimeStamp             |
-        |                                            |
-        +--------------------------------------------+
-        |                                            |
-        |             Origin TimeStamp               |
-        |                                            |
-        +--------------------------------------------+
-        |                                            |
-        |            Recieve TimeStamp               |
-        |                                            |
-        +--------------------------------------------+
-        |                                            |
-        |            Transmit TimeStamp              |
-        |                                            |
-        +--------------------------------------------+
-        |                                            |
-        |         Optional Fields / Digest           |
-        |                                            |
-        +--------------------------------------------+
++--------------------------------------------+
+| LI | VN | Mode | Stratum | Poll |Precision |
++--------------------------------------------+
+|                 Root Delay                 |
++--------------------------------------------+
+|              Root Dispersion               |
++--------------------------------------------+
+|            Reference Identifier            |
++--------------------------------------------+
+|                                            |
+|            Reference TimeStamp             |
+|                                            |
++--------------------------------------------+
+|                                            |
+|             Origin TimeStamp               |
+|                                            |
++--------------------------------------------+
+|                                            |
+|            Recieve TimeStamp               |
+|                                            |
++--------------------------------------------+
+|                                            |
+|            Transmit TimeStamp              |
+|                                            |
++--------------------------------------------+
+|                                            |
+|         Optional Fields / Digest           |
+|                                            |
++--------------------------------------------+
 </PRE>
 
 <ul>
@@ -943,8 +959,8 @@ You could make a phone call to the friend and ask what the time is.</p>
 <style>
   #ascii-art {
     font-family: monospace;
-    font-size: 16px;
     white-space: pre;
+    font-size: 60%;
   }
 </style>
 
@@ -1227,114 +1243,111 @@ setInterval(renderFrame, 2000);
 <h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h5>
 <PRE style="font-size:75%">
 
-        (NTP Client - NTP Server) Round Trip Delay = (T4 - T1) - (T3 - T2)
+    Round Trip Delay = (T4 - T1) - (T3 - T2)
 
-        (NTP Client - NTP Server) Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
+    Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
 
 </PRE>
-<h4 id="3-examples-of-running-through-the-calculations-for-rtd-and-offset">3 examples of running through the calculations for RTD and OffSet.</h4>
-<PRE style="font-size:75%">
 
-    Example 1 
+<h4 id="3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</h4>
+<PRE style="font-size:65%">
 
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 0  |                            ( 14 - 0  ) - ( 12 -  2 )
-    | T2  = 2  |                            (    14   ) - (    10   )
-    | T3  = 12 |                                        4
-    | T4  = 14 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  2 - 0  ) + ( 12 - 14 )] /2
-                                           [(    2    ) + (    -2   )] /2
-                                           [            0            ] /2
-                                                        0
+ Example 1
 
-
-
-
-    Example 2
-
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 0  |                            ( 10 - 0  ) - (  6 -  4 )
-    | T2  = 4  |                            (   10    ) - (    2    )
-    | T3  = 6  |                                        8
-    | T4  = 10 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  4 - 0  ) + (  6 - 10 )] /2
-                                           [(    4    ) + (    +4   )] /2
-                                           [            0            ] /2
-                                                        0
++--------------+     RTD  =  ( T4 + T1 ) + ( T3 + T2 )
+|  T1 0        |             ( 14 + 0  ) | ( 12 +  2 )
+|  T2 2        |             (    14   ) + (    10   )
+|  T3 12       |                         4
+|  T4 14       |
+|              |
+|              |   OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+|              |             [(  2 + 0  ) | ( 12 | 14 )] /2
+|              |             [(    2    ) + (    +2   )] /2
+|  RTD = 4     |             [            0            ] /2
+|  OffSet = 0  |                          0
++--------------+
 
 
 
-
-    Example 3
-
-    +----------+        Round Trip Delay =  ( T4 - T1 ) - ( T3 - T2 )
-    | T1  = 10 |                            ( 24 - 10 ) - ( 12 -  2 )
-    | T2  = 2  |                            (   14    ) - (   10    )
-    | T3  = 12 |                                        4
-    | T4  = 24 |
-    +----------+        Clock OffSet   =   [( T2 - T1 ) + ( T3 - T4 )] /2
-                                           [(  2 - 10 ) + ( 12 - 24 )] /2
-                                           [(    -8   ) + (    -12  )] /2
-                                           [            -20          ] /2
-                                                        -10
-
-
+Example 2
++--------------+    RTD  =   ( T4 + T1 ) + ( T3 + T2 )
+|              |             ( 10 + 0  ) | (  6 +  4 )
+|  T1 0        |             (   10    ) + (    2    )
+|  T2 4        |                         8
+|  T3 6        |
+|  T4 10       |
+|              |  OffSet =   [( T2 + T1 ) + ( T3 + T4 )] /2
+|              |             [(  4 + 0  ) | (  6 | 10 )] /2
+|              |             [(    4    ) + (    +4   )] /2
+|  RTD =  8    |             [            0            ] /2
+|  OffSet = 0  |                          0
++--------------+
 
 
 
-
-
-    Example 1            Example 2           Example 3
-    +---------------+    +--------------+    +---------------+
-    |               |    |              |    |               |
-    |   T1 0        |    |  T1 0        |    |  T1 10        |
-    |   T2 2        |    |  T2 4        |    |  T2 2         |
-    |   T3 12       |    |  T3 6        |    |  T3 12        |
-    |   T4 14       |    |  T4 10       |    |  T4 24        |
-    |               |    |              |    |               |
-    |   RTD = 4     |    |  RTD =       |    |  RTD = 4      |
-    |   OffSet = 0  |    |  OffSet = 0  |    |  OffSet = -10 |
-    +---------------+    +--------------+    +---------------+
-
-
+Example 3
++---------------+    RTD  =  ( T4 + T1 ) + ( T3 + T2 )
+|               |            ( 24 + 10 ) | ( 12 +  2 )
+|  T1 10        |            (   14    ) + (   10    )
+|  T2 2         |                        4
+|  T3 12        |
+|  T4 24        |
+|               |  OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+|               |            [(  2 | 10 ) | ( 12 | 24 )] /2
+|               |            [(    +8   ) | (    +12  )] /2
+|  RTD = 4      |            [            |20          ] /2
+|  OffSet = +10 |                         +10
++---------------+
 
 
 </PRE>
+
+<style>
+  .container {
+    float: left;
+    width: 50%;
+  }
+  .form-container {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .form-container h3 {
+    margin-top: 0;
+  }
+  input[type="text"] {
+    width: 100px;
+  }
+</style>
 
 <h3>Round Trip Delay and Offset Calculator</h3>
 
 <p>Enter the values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
+<div class="container">
+  <div class="form-container">
+    <h3>NTP Client</h3>
+    <form id="clientForm">
+      <label for="T1">T1:</label>
+      <input type="text" id="T1" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
 
-<table>
-  <tr>
-    <td>
-      <div class="form-container">
-        <h3>NTP Client</h3>
-        <form id="clientForm">
-          <label for="T1">T1:</label>
-          <input type="text" id="T1" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+      <label for="T4">T4:</label>
+      <input type="text" id="T4" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+    </form>
+  </div>
+</div>
 
-          <label for="T4">T4:</label>
-          <input type="text" id="T4" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
-        </form>
-      </div>
-    </td>
-    <td>
-      <div class="form-container">
-        <h3>NTP Server</h3>
-        <form id="serverForm">
-          <label for="T2">T2:</label>
-          <input type="text" id="T2" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+<div class="container">
+  <div class="form-container">
+    <h3>NTP Server</h3>
+    <form id="serverForm">
+      <label for="T2">T2:</label>
+      <input type="text" id="T2" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
 
-          <label for="T3">T3:</label>
-          <input type="text" id="T3" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
-        </form>
-      </div>
-    </td>
-  </tr>
-</table>
+      <label for="T3">T3:</label>
+      <input type="text" id="T3" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+    </form>
+  </div>
+</div>
 
 <p><button type="submit" onclick="calculate()">Calculate</button></p>
 <div id="results"></div>
