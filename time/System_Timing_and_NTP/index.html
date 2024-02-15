@@ -304,14 +304,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Last updated by Seamus Murray on 20240214</p>
+                <p>Last updated by Seamus Murray on 20240215</p>
 <h4 id="purpose-of-this-document">Purpose of this Document:</h4>
 <p>Act as a repository for separate but related system timing information. </p>
 <h4 id="index">Index:</h4>
 <ul>
 <li><a href="#Definitions"> Definitions of the terms used in this document.</a></li>
 <li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document.</a></li>
-<li><a href="#Fixed_Frequency"> Simplified scenario of how Linux maintains System Time on a single core fixed frequency x86 system.</a></li>
+<li><a href="#Fixed_Frequency"> How Linux maintains System Time on a single core fixed frequency x86 system.</a></li>
 <li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC.</a></li>
 <li><a href="#CPU_Bug"> CPU Bugs and Clock Sources.</a></li>
 <li><a href="#Segals_Law"> TimeLines, OffSets and Segal's Law.</a></li>
@@ -319,6 +319,7 @@
 <li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources.</a></li>
 <li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
 <li><a href="#NTP_Precision"> NTP Precision and Accuracy.</a></li>
+<li>[ Example C programs to poll TSC, HPET and the ACPI_PM clock sources] (#C_Programs)</li>
 <li><a href="#Sources"> Sources for this document. </a></li>
 </ul>
 <hr />
@@ -1008,7 +1009,8 @@ You could make a phone call to the friend and ask what the time is.</p>
 </ul>
 <p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
 <hr />
-<h3 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h3>
+<h3 id="example-c-programs-to-poll-tsc-hpet-and-the-acpi_pm-clock-sources">Example C programs to poll TSC, HPET and the ACPI_PM clock sources]<a name="C_Programs"></a></h3>
+<h4 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
 
@@ -1027,7 +1029,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="example-c-program-to-read-the-hpet">Example C program to read the HPET</h3>
+<h4 id="example-c-program-to-read-the-hpet">Example C program to read the HPET</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
 #include &lt;fcntl.h&gt;
@@ -1069,7 +1071,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<h3 id="example-c-program-to-read-the-acpi_pm">Example C program to read the ACPI_PM</h3>
+<h4 id="example-c-program-to-read-the-acpi_pm">Example C program to read the ACPI_PM</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
 #include &lt;fcntl.h&gt;
