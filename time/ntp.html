@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTP Calculations</title>
+<style>
+  .column {
+    float: left;
+    width: 50%;
+  }
+  .form-container {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .form-container h3 {
+    margin-top: 0;
+  }
+  input[type="text"] {
+    width: 100px; /* Adjust as needed */
+  }
+</style>
+</head>
+<body>
+
+<h2>NTP Calculations</h2>
+
+<p>Enter the values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
+
+<table>
+  <tr>
+    <td>
+      <div class="form-container">
+        <h3>ntp Client</h3>
+        <form id="clientForm">
+          <label for="T1">T1:</label>
+          <input type="text" id="T1" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+      
+          <label for="T4">T4:</label>
+          <input type="text" id="T4" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+        </form>
+      </div>
+    </td>
+    <td>
+      <div class="form-container">
+        <h3>ntp Server</h3>
+        <form id="serverForm">
+          <label for="T2">T2:</label>
+          <input type="text" id="T2" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+      
+          <label for="T3">T3:</label>
+          <input type="text" id="T3" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<button type="submit" onclick="calculate()">Calculate</button>
+
+<div id="results"></div>
+
+<script>
+function calculate() {
+  // Getting input values for ntp Client
+  var T1 = document.getElementById("T1").value;
+  var T4 = document.getElementById("T4").value;
+
+  // Getting input values for ntp Server
+  var T2 = document.getElementById("T2").value;
+  var T3 = document.getElementById("T3").value;
+
+  // Validation check for T3 being after T2
+  if (timeToSeconds(T3) <= timeToSeconds(T2)) {
+    alert("Time travel is not possible. Please ensure that T3 is after T2.");
+    return;
+  }
+
+  // Calculating NTP Server Round Trip Delay
+  var roundTripDelay = (timeToSeconds(T4) - timeToSeconds(T1)) - (timeToSeconds(T3) - timeToSeconds(T2));
+
+  // Calculating NTP Server Clock Offset
+  var clockOffset = ((timeToSeconds(T2) - timeToSeconds(T1)) + (timeToSeconds(T3) - timeToSeconds(T4))) / 2;
+
+  // Displaying results
+  var resultDiv = document.getElementById("results");
+
+  // Validation check for roundTripDelay
+  if (roundTripDelay <= 0) {
+    alert("The timestamp for the NTP packet receive time is earlier than the send time. The local clock is unstable.");
+    return;
+  }
+
+  resultDiv.innerHTML = "<h3>Results:</h3>" +
+                        "<p>NTP Server Round Trip Delay: " + roundTripDelay + " seconds</p>" +
+                        "<p>NTP Server Clock Offset: " + clockOffset + " seconds</p>";
+}
+
+function timeToSeconds(timeString) {
+  var parts = timeString.split(":");
+  return (+parts[0]) * 3600 + (+parts[1]) * 60 + (+parts[2]);
+}
+</script>
+
+</body>
+</html>
+
