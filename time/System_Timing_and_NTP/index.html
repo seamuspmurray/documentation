@@ -562,32 +562,32 @@ Unfortunately, certain kernel builds in certain Linux distributions do not succe
 <p>For example, kernel-2.6.32-504.30.3.el6.x86_64, continues to use the unstable TSC as a clock source, doesnt fail over to a stable source, and can result in timewarping of the Syste, Time so severere that it may drift too much to be corrected by NTP.</p>
 <hr />
 <h3 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="Segals_Law"></a></h3>
-<p>If we have a single Watch, we can be reasonably sure of what the time is.</p>
+<p>If we have a single Watch, can we can be reasonably sure of what the time is?</p>
 <PRE style="font-size: 75%">
-         __________ 
-        /          \
-        |          |
-        |          |
-        |          |
-       _|__________|
-     _/_____________\_
-    / ______________  \
-   | |  _     _  _  | |)
-   | | | | o  _|| | | |
-   | | |_| o |_ |_| | |
-   | |______________| |)
-    \_________________/
-      \______________/
-        |          |
-        |          |
-        |          |
-        |     0    |
-        |          |
-        \__________/
+                   __________ 
+                  /          \
+                  |          |
+                  |          |
+                  |          |
+                 _|__________|
+               _/_____________\_
+              / ______________  \
+             | |  _     _  _  | |)
+             | | | | o  _|| | | |
+             | | |_| o |_ |_| | |
+             | |______________| |)
+              \_________________/
+                \______________/
+                  |          |
+                  |          |
+                  |          |
+                  |     0    |
+                  |          |
+                  \__________/
 
 
-Watch         |----|----|----|----*----|----|
-Time Line     0    5    10   15   20   25   30
+  Watch    |----|----|----|----*----|----|
+Time Line  0    5    10   15   20   25   30
 
 </PRE>
 
@@ -633,7 +633,7 @@ Time Line     0    5    10   15   20   25   30
      +          +             +          +
      |          |             |          |
      |          |             |          |
-     |     0    |             |     0    |
+     |     A    |             |     B    |
      +          +             +          +
      \__________/             \__________/
 
