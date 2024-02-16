@@ -323,6 +323,8 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Div-Clock_Synchronization_and_NTP/">Div Clock Synchronization and NTP</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Setting_time/">Setting time</a>
@@ -569,7 +571,7 @@ Watch A      0    5    10   15   20   25   30
 Time Line    |----*----|----|----|----|----|
              .              .              .
              .              .              .
-             .              .              .          
+             .              .              .
 Watch B      |----*----|----|----|----|----|
 Time Line    0    5    10   15   20   25   30
   `,
@@ -578,7 +580,7 @@ Watch A      0    5    10   15   20   25   30
 Time Line    |----|*---|----|----|----|----|
              .              .              .
              .              .              .
-             .              .              .          
+             .              .              .
 Watch B      |----|*---|----|----|----|----|
 Time Line    0    5    10   15   20   25   30
   `,
@@ -677,7 +679,7 @@ Watch A      0    5    10   15   20   25   30
 Time Line    |----|----|----|-*--|----|----|
              .              .              .
              .              .              .
-             .              .              .                  
+             .              .              .
 Watch B      |----|----|----|-*--|----|----|
 Time Line    0    5    10   15   20   25   30
   `,
@@ -855,7 +857,7 @@ setInterval(renderFrame, 500);
 | |  _     _  _  | |)    | |  _     _  _  | |)
 | | | | o | || | | |     | | | | o | ||_  |
 | | |_| o |_||_| | |     | | |_| o |_| _| | |
-| |______________| |)    | |______________| |) 
+| |______________| |)    | |______________| |)
  \_________________/      \_________________/
    \______________/         \______________/
      +          +             +          +
@@ -1210,7 +1212,8 @@ setInterval(renderFrame, 500);
 <p>Side Note...
      Describe atomic visibility, you can only view one of the timelines in a single action,
      Therefore to view both time lines you need to perform 2 actions.</p>
-<hr />
+<hr>
+<blockquote></blockquote>
 <h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift<a name="Clock_drift"></a></h3>
 <h4 id="watch-b-is-running-too-fast">Watch B is running too fast</h4>
 <p>Watch B is running FASTER than Watch A</p>
@@ -2086,23 +2089,23 @@ You could make a phone call to the friend and ask what the time is.</p>
 <PRE style="font-size: 60%">
 
 
-   ____                                                        ____
-  / 12 \                                                      / 12 \
- /      \                                                    /      \
-( 9  +->3)                /+----------------+/              ( 9  +->3)
- \   \  /                /+----------------+/                \   \  /
-  \__6_/          /~~~~~/                  /                  \__6_/
-                 /     /+----------------+/+\
-      ,'"".     /     /++---------------+/ | \           ,'"".
-      )  ,+    /          |                |  \          )  ,+
-     /  /,'+. /           |                |   \        /  /,'+.
-    /  //  /.`.           |                |    \      /  //  /.`.
-  ,'  //  /  `.`.         |                |     \   ,'  //  /  `.`.
- (    )++.`.   //+        |                |      \ (    )++.`.   //+
- +`++'+   `.`.// +        +                +       \+`++'+   `.`.// +
-  `++'      `./  /                                   `++'      `./  /
-    |         + /                                      |         + /
-    +_________+/                                       +_________+/
+   ____                                                   ____
+  / 12 \                                                 / 12 \
+ /      \                                               /      \
+( 9  +->3)             /+----------------+/            ( 9  +->3)
+ \   \  /             /                  /              \   \  /
+  \__6_/          ~~~/                  /~~~\            \__6_/
+                 /  /|                 /|    \
+      ,'"".     /  /++---------------+/ |     \       ,'"".
+      )  ,+    /     |                  |      \      )  ,+
+     /  /,'+. /      |                  |       \    /  /,'+.
+    /  //  /.`.      |                  |        \   /  //  /.`.
+  ,'  //  /  `.`.    |                  |         ,'  //  /  `.`.
+ (    )++.`.   //|   |                  |        (    )++.`.   //|
+ +`++'+   `.`.// |   +                  +        +`++'+   `.`.// |
+  `++'      `./  /                                `++'      `./  /
+    |         | /                                   |         | /
+    |_________|/                                    |_________|/
 
 
 
@@ -2731,7 +2734,7 @@ function timeToSeconds(timeString) {
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../Clock_Sources_and_System_Time/" class="btn btn-neutral float-left" title="Clock Sources and System Time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../NTP_Authentication/" class="btn btn-neutral float-right" title="NTP Authentication">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Div-Clock_Synchronization_and_NTP/" class="btn btn-neutral float-right" title="Div Clock Synchronization and NTP">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -2757,7 +2760,7 @@ function timeToSeconds(timeString) {
       <span><a href="../Clock_Sources_and_System_Time/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../NTP_Authentication/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Div-Clock_Synchronization_and_NTP/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
