@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>System Timing and NTP - Seamus Murray's Notes about Linux and System Engineering</title>
+    <title>Clock Synchronization and NTP - Seamus Murray's Notes about Linux and System Engineering</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "System Timing and NTP";
-        var mkdocs_page_input_path = "time/System_Timing_and_NTP.md";
+        var mkdocs_page_name = "Clock Synchronization and NTP";
+        var mkdocs_page_input_path = "time/Clock_Synchronization_and_NTP.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -269,13 +269,63 @@
               </ul>
               <p class="caption"><span class="caption-text">Time</span></p>
               <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Clock_Sources_and_System_Time/">Clock Sources and System Time</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Clock Synchronization and NTP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#index">Index:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: </a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-too-fast">Watch B is running too fast</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-too-slow">Watch B is running too slow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-unstable-sometimes-running-too-fast-and-sometimes-running-too-slow">Watch B is unstable, sometimes running too fast and sometimes running too slow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#description-of-problem-1">Description of Problem 1...</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ntp-packet-format">NTP Packet Format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-for-this-document">Sources for this document: </a>
+    </li>
+    </ul>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Setting_time/">Setting time</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">System Timing and NTP</a>
-    <ul class="current">
-    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
                   </li>
@@ -295,7 +345,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Time</li>
-      <li class="breadcrumb-item active">System Timing and NTP</li>
+      <li class="breadcrumb-item active">Clock Synchronization and NTP</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -304,25 +354,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Last updated by Seamus Murray on 20240216</p>
-<h4 id="purpose-of-this-document">Purpose of this Document:</h4>
-<p>Act as a repository for separate but related system timing information. </p>
+                <h2 id="seamuss-notes-and-animations-related-clock-syncronization-and-ntp">Seamus's notes and animations related Clock Syncronization and NTP.</h2>
+<p>You also may wish to see my <a href="../Clock_Sources_and_System_Time/">Clock Sources and System Time</a> page.</p>
 <h4 id="index">Index:</h4>
 <ul>
 <li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
-<li><a href="#Clock_Sources"> Description of the 4 main clock sources referred to in this document</a></li>
-<li><a href="#Fixed_Frequency"> Maintaining System Time on a single core fixed frequency x86 system</a></li>
-<li><a href="#CPU_Advancements"> Advancements of x86 CPU's and the effects upon the MonoTonic TSC</a></li>
-<li><a href="#CPU_Bug"> CPU Bugs and Clock Sources</a></li>
-<li><a href="#Segals_Law"> TimeLines, OffSets and Clock Synchronization</a></li>
-<li><a href="#Clock_drift"> Examples of Clock Drift</a></li>
-<li><a href="#RoundTrip_Delay"> Calculating the RoundTrip Delay and Clock OffSet between 2 Clock Sources</a></li>
+<li><a href="#Segals_Law"> TimeLines, OffSets, and Clock Synchronization</a></li>
+<li><a href="#Clock_drift"> Clock Drift and Clock Skew</a></li>
+<li><a href="#Sync_Clock_Source"> Synchronizing from a remote Clock Source</a></li>
 <li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
 <li><a href="#NTP_Precision"> NTP Precision and Accuracy</a></li>
-<li><a href="#C_Programs"> Example C programs to poll the TSC, HPET,and ACPI_PM clock sources</a></li>
 <li><a href="#Sources"> Sources for this document</a></li>
 </ul>
-<hr />
 <h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
 <table>
 <thead>
@@ -382,185 +425,6 @@
 </tr>
 </tbody>
 </table>
-<hr />
-<h3 id="description-of-the-4-main-clock-sources-referred-to-in-this-document">Description of the 4 main clock sources referred to in this document<a name="Clock_Sources"></a></h3>
-<h4 id="rtc-real-time-clock">RTC (Real Time Clock)</h4>
-<ul>
-<li>A hardware device used to keep track of time even when a system is powered off.</li>
-<li>Similar to a battery-operated digital Wrist Watch.</li>
-<li>A quartz crystal is used as a stable oscillator (32Khz).</li>
-<li>When an x86 computer is powered off, the Real Time Clock on the x86 computer's motherboard is powered by a battery and is able to maintain an approximation of WallClock time.</li>
-<li>These RTCs tend to be fairly inaccurate, the amount by which they drift from the true WallClock time can depend on several factors such as the quality of the electronic components and temperature variations.</li>
-<li>When an x86 computer is powered off there is no System Time, Clock Cycles, Interrupts, Counters, or Timers.</li>
-</ul>
-<h5 id="problems-with-rtc">Problems with RTC</h5>
-<ul>
-<li>Subject to temperature changes.</li>
-<li>Subject to manufacturing tolerances.</li>
-<li>Modern CPU clock rates are much higher than the 32khz (clock) rate of RTC, therefor the resolution that they provide is not sufficiently high enough for modern CPUs.</li>
-<li>It is very computationally expensive and slow for the OS to poll the RTC.</li>
-</ul>
-<h4 id="tsc-time-stamp-counter">TSC (Time Stamp Counter)</h4>
-<p>The TSC was introduced by Intel with the original Pentium CPU in 1993.
-The original TSC was very simple to use, it provided a counter that could be read by code being executed on the CPU.</p>
-<ol>
-<li>Located within the CPU.</li>
-<li>When an Intel Pentium computer is powered up the TSC register is set to zero.</li>
-<li>The value in the TSC register was incremented by 1 for every CPU ClockCycle.<ul>
-<li>If the CPU ClockCycle was 60MHz then the TSC would also be incremented at a rate of 60MHz.</li>
-</ul>
-</li>
-<li>Any code running on the system could read this register to determine what the current value was.</li>
-<li>Because both the CPU frequency and the TSC frequency were fixed this type of counter was known as a Monotonic Counter.</li>
-</ol>
-<p>The TSC is often preferred over many of the modern alternative Clock Sources because it is the least computationally expensive to use.
-For a running process (application) to query the current value of the TSC, it only requires a single X86 instruction call.
-Retrieving the TSC counter value in this this CPU register can be achieved by calling either of the following nonprivileged x86 instructions rdtsc/rdtscp.
-Interestingly; these two x86 instructions rdtsc/rdtscp can be called from any privilege level and they do not require a CPU ring transition.</p>
-<p>Over time, the reliability of the Time Stamp Counter (TSC) has been compromised on numerous occasions, necessitating the implementation of various hardware, firmware, and software solutions to ensure its dependability.
-Other clocksources with more advanced features have become available, but the TSC has remained as the ubiquitous clocksource.</p>
-<h4 id="reference-time-wall-clock-time">Reference time / Wall Clock time</h4>
-<p>A high precision Reference clock is used to keep track of the agreed-upon time standard (such as UTC)
-Used to synchronise and calibrate other clocks.
-Measured in the time units that us humans use Hours, Minutes seconds Micro seconds, etc...for example  12:00 am, Jan 1st, 1970</p>
-<h4 id="system-time">System Time</h4>
-<p>The time displayed when you run the date command, or view the GUI desktop clock.
-A clock / Time Line maintained in software.
-System time is initialised and set during system boot up from the Real Time Clock.
-System time is often kept in sync with the WallClockTime /reference time by using an NTP client to poll a reference NTP time source.
-When a System is powered off, the OS is not running therefore there is no SystemTime.</p>
-<hr />
-<h3 id="maintaining-system-time-on-a-single-core-fixed-frequency-x86-system">Maintaining System Time on a single core fixed frequency x86 system  <a name="Fixed_Frequency"></a></h3>
-<p>Below is a simplified timeline of what happens when an Intel Pentium I single-core fixed Clock Frequency x86 computer is powered up and running a standard Linux Kernel 2.6.</p>
-<ol>
-<li>RTC continues working independently of the state of the computer. (Battery backed)</li>
-<li>CPU is powered on and initialised.</li>
-<li>The ClockSource Counters built into the CPU are initialized to Zero.</li>
-<li>The OS is booted.</li>
-<li>The OS System Time is set to the WallClock time based on the value in the RTC. (Generally, the RealTime clock is not read again until the next boot)</li>
-<li>The OS queries to see what ClockSources are available.</li>
-<li>The OS determines which ClockSource to use, based on manual configuration overrides and or the calculated stability of the available ClockSources.<ul>
-<li>For simplicity's sake let's say that the OS has decided to use the TSC (Time Stamp Counter) as the ClockSource.</li>
-</ul>
-</li>
-<li>The OS determines the ratio of the ClockSource frequency vs the frequency of the CPU Clock Cycles. ( on this computer is 1:1 )<ul>
-<li>For simplicity's sake let's assume that the CPU Clock Frequency is 10Hz and the ClockSource Counter frequency is also 10Hz.</li>
-</ul>
-</li>
-<li>The OS takes note of the value of the ClockSource counter and the System WallClock time.<ul>
-<li>The Computer has been powered on for 10 seconds, the ClouckSource counter = 10 (seconds) x 10hz = 100</li>
-<li>The SystemTime &amp; WallClock time is 12:00:10 Jan 1 2016</li>
-</ul>
-</li>
-<li>The OS runs the various process and applications.</li>
-<li>The OS-maintained SystemTime can now be kept in sync with the estimated WallClock time by moving it forward by an offset of the value maintained by the ClockSource Counter.<ul>
-<li>For simplicity's sake let's say that the OS has been busy running processes and applications and the SystemTime has not been updated for 10 seconds in WallClock time.</li>
-<li>The OS queries the ClockSource Counter (which continues independently of CPU load) and notices that the counter has increased from 100 to 200.</li>
-<li>The OS calculates the current SystemTime by...<ul>
-<li>TSC Counter difference (current) 200 - (previous) 100 = 100</li>
-<li>The OS knows that the TSC frequency is 10Hz</li>
-<li>100 / 10Hz = 10 seconds</li>
-<li>(previous) SystemTime + 10 seconds = 12:00:10 Jan 1 2016</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>There are 2 major problems with this method of maintaining system time.</p>
-<ol>
-<li>There is no way to determine the initial accuracy of the RTC's approximation of the True Wall Clock time..<ul>
-<li>You cannot determine what time zone it is set to.</li>
-<li>You cannot determine if it is even set to the correct year.</li>
-</ul>
-</li>
-<li>There is no way to validate the accuracy or the stability of the ClockSource..<ul>
-<li>Is it exactly 10hz or is it 10.01hz ?</li>
-<li>Is it varying between 9hz and 11hz ?</li>
-</ul>
-</li>
-</ol>
-<p>NTP solves problem [1] by polling a remote time source across the network to get an accurate reading for the True WallClock time in reference to the prime epoch.</p>
-<p>NTP goes a great way to mitigate problem [2] by comparing the apparent time drift between the multiple values returned by the local ClockSource with multiple values returned by the more accurate remote NTP time source.</p>
-<p>If it is determined that the local ClockSource is drifting from its stated speed of 10Hz, then the local NTP daemon calculates the drift offset and adjusts the system clock.</p>
-<hr />
-<h3 id="advancements-of-x86-cpus-and-the-effects-upon-the-monotonic-tsc">Advancements of x86 CPU's and the effects upon the MonoTonic TSC <a name="CPU_Advancements"></a></h3>
-<h4 id="brief-overview-of-the-advances-in-x86-system-architecture-that-affected-the-previously-used-method-of-using-a-simple-monotonic-counter-tsc-to-maintain-time">Brief overview of the advances in X86 system architecture that affected the previously used method of using a simple monotonic counter (TSC) to maintain time.</h4>
-<p>For most purposes, the methodology for maintaining system time described above (Intel Pentium I - III) worked fairly well.
-However times have changed and as x86 systems have evolved they have become far more complicated, as a result, the old method of determining the WallClock time needed to be changed to work on modern CPUs.</p>
-<p>The following 3 advances in X86 CPUs nullified the previously used method of using a simple monotonic counter (TSC) to maintain time.</p>
-<ul>
-<li>x86 systems evolved from having a single CPU core to multiple CPU cores.</li>
-<li>x86 CPUs could change Clock frequency whilst a system was running,  to both save power and turbo boost.</li>
-<li>x86 CPU cores could change power states whilst a system was running, Individual CPU cores could be turned off and then be turned back on.</li>
-</ul>
-<hr />
-<h4 id="a-more-detailed-overview-of-the-advances-in-x86-system-architecture-that-affected-the-previously-used-method-of-using-a-simple-monotonic-counter-tsc-to-maintain-time">A more detailed overview of the advances in X86 system architecture that affected the previously used method of using a simple monotonic counter (TSC) to maintain time.</h4>
-<p>Below I have detailed 5 points in the evolution of X86 CPUs that I believe had the most effect on system timekeeping.</p>
-<ol>
-<li>
-<p>Single CPU fixed clock frequency. (tsc)</p>
-<ul>
-<li>Historically back when x86 CPU frequencies were fixed, the TSC incremented in synchronization with the CPU cycles and everything was fine.</li>
-</ul>
-</li>
-<li>
-<p>SMP (symmetric multi-processing) fixed clock frequency. (tsc)</p>
-<ul>
-<li>When SMP (symmetric multi-processing) x86-based systems were released, each CPU had its own TSC and there was no mechanism to keep them in sync.</li>
-<li>Having separate TSC's on the same x86 system that could be out of sync with each other sometimes caused issues when applications/processes were moved between CPUs + TSC's, as the time could appear to jump either forwards or backward.</li>
-<li>As a fix for the out-of-sync TSCs on SMP systems, the TSCs were kept in sync by the BIOS/firmware during CPU resets and the situation was better again.</li>
-</ul>
-</li>
-<li>
-<p>SMP (symmetric multi-processing) variable clock frequency (SpeedStep). (constant_tsc)</p>
-<ul>
-<li>When x86 CPUs were released with new features such as variable clock speed once again the multiple TSC's within a single x86 system were out of sync.</li>
-<li>To solve this issue the variable clock/tick/rate/frequency of the CPU, the TSC frequency was Decoupled from the CPU clock frequencies. </li>
-<li>The TSCs would be incremented at a constant rate regardless of the variable CPU frequency. </li>
-<li>To communicate to the OS that the TSCs are in sync the CPU cpuid bit (flag) constant_tsc is presented to the OS.</li>
-</ul>
-</li>
-<li>
-<p>SMP (symmetric multi-processing), variable clock frequency, and Power States  (ACPI P-, C-. and T-states, etc..) (nonstop_tsc)</p>
-<ul>
-<li>Now individual CPU cores can change their clock frequency independently of the other cores and even the uncore can be shutdown.</li>
-<li>When the uncore is shutdown the associated TSC is frozen and is now out of sync with the other TSC's</li>
-<li>To solve the issue of the TSC being shutdown with the CPUs and then started again, Intel introduced the "nonstop_tsc"</li>
-</ul>
-</li>
-<li>
-<p>Sleep x86 (nonstop_tsc_s3)</p>
-<ul>
-<li>x86 systems can be put to sleep where all system context is lost except system memory.</li>
-</ul>
-</li>
-</ol>
-<h4 id="so-we-now-have-4-tsc-related-cpuid-flags-for-the-different-tsc-feature-sets">So we now have 4 TSC-related CPUID flags for the different TSC feature sets.</h4>
-<ul>
-<li>tsc : TSC is present</li>
-<li>constant_tsc: TSC ticks at a constant rate</li>
-<li>nonstop_tsc: TSC does not stop in C states</li>
-<li>nonstop_tsc_s3: TSC doesn't stop in S3 state</li>
-</ul>
-<p>Plus 1 more TSC CPUID flag that is only set if the kernel determines that the TSC is reliable.</p>
-<ul>
-<li>tsc_reliable: TSC is known to be reliable</li>
-</ul>
-<hr />
-<h3 id="cpu-bugs-and-clock-sources">CPU Bugs and Clock Sources<a name="CPU_Bug"></a></h3>
-<p>There have been a few different CPU, Firmware, and Operating System bugs related to CPU clock sources.</p>
-<p>One example is an issue with the Intel Xeon E5 v2 CPUs which results in the TSC not being cleared upon a CPU warm reset.</p>
-<p>This can result in the various TSC's on a system getting out of sync with each other.</p>
-<p>The bug is referenced in the following Intel Xeon E5 v2 spec update as "CA105 TSC is Not Affected by warm reset"</p>
-<p><a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf">http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf</a></p>
-<p>If a CPUs with this bug are warm reset or the uncores are powered down, the multiple TSC's within a system can get out of sync with each other.</p>
-<p>This problem can be mitigated by motherboard firmware/BIOS keeping the various TSC's in sync.</p>
-<p>If the firmware does not reset/sync the TSCs, then they may stay out of sync until a cold reset (power off/power on)is performed.</p>
-<p>The Linux Operating system running detect if the TSC's are out of sync and flag the TSC clocksource/s as being unstable.
-If this occurs, the Linux Operating system should then failover and utilise one of the alternative clock sources and continue functioning normally.
-Unfortunately, certain kernel builds in certain Linux distributions do not successfully fail over to alternate clock sources.</p>
-<p>For example, kernel-2.6.32-504.30.3.el6.x86_64, continues to use the unstable TSC as a clock source, doesnt fail over to a stable source, and can result in timewarping of the Syste, Time so severere that it may drift too much to be corrected by NTP.</p>
-<hr />
 <h3 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="Segals_Law"></a></h3>
 <p>If we have a single Watch, can we can be reasonably sure of what the time is?</p>
 <PRE style="font-size: 75%">
@@ -603,13 +467,12 @@ Time Line  0    5    10   15   20   25   30
 <p>Problem (1) Solution (a)...</p>
 <ul>
 <li>We can purchase a 2nd Watch.</li>
-<li>
-<p>We can now compare the time on Watch A and Watch B.</p>
-<p>*If they are different, we can approximate the time by averaging the times on both of the watches.</p>
-<p>*If the time between the 2 watches differs, there is no way to determine if there is a problem with either watch or both watches.</p>
+<li>We can now compare the time on Watch A and Watch B.<ul>
+<li>If they are different, we can approximate the time by averaging the times on both of the watches.</li>
+<li>If the time between the 2 watches differs, how can we determine if there is a problem with either watch or both watches?</li>
+</ul>
 </li>
 </ul>
-<p>If you have 2 Watches and they both display the same time, can you be even more sure of what the time is ?</p>
 <blockquote>
 <p>"A man with a watch knows what time it is. A man with two watches is never sure."
                                                                            Segal's Law </p>
@@ -1628,7 +1491,6 @@ setInterval(renderFrame, 500);
 
 <h4 id="watch-b-is-running-too-slow">Watch B is running too slow</h4>
 <p>Watch B is running SLOWER than Watch A</p>
-<div>
 <style>
   #ascii-art-timeline-B-Slower-than-A {
     font-family: monospace;
@@ -1638,7 +1500,6 @@ setInterval(renderFrame, 500);
 </style>
 
 <div id="ascii-art-timeline-B-Slower-than-A"></div>
-
 
 <script>
 
@@ -1963,9 +1824,6 @@ setInterval(renderFrame, 500);
 
 </script>
 
-
-</div>
-
 <h4 id="watch-b-is-unstable-sometimes-running-too-fast-and-sometimes-running-too-slow">Watch B is unstable, sometimes running too fast and sometimes running too slow</h4>
 <p>Watch B initially in sync with Watch A
 Watch B running SLOWER than Watch A (out of sync)
@@ -2168,7 +2026,6 @@ setInterval(renderFrame, 500);
 
 </script>
 
-</div>
 <p>Problem (1) (2) and (3) Solution (b)...</p>
 <ul>
 <li>We can gain access to an accurate time source.</li>
@@ -2186,8 +2043,9 @@ setInterval(renderFrame, 500);
 </ul>
 <p>Problem 3 Solution (b+)...</p>
 <p>We can detect if the Watch A is wandering between too fast and too slow, by repeatedly comparing the Watch time to the accurate time source.</p>
-<hr />
-<h3 id="calculating-the-roundtrip-delay-and-clock-offset-between-2-remote-clock-sources">Calculating the RoundTrip Delay and Clock OffSet between 2 remote Clock Sources<a name="RoundTrip_Delay"></a></h3>
+<hr>
+
+<h3 id="synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source<a name="Sync_Clock_Source"></a></h3>
 <p>Definitions of terms..</p>
 <p>WallClockTime: </p>
 <ul>
@@ -2268,6 +2126,30 @@ You could make a phone call to the friend and ask what the time is.</p>
 </ul>
 <hr />
 <h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
+<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</h4>
+<ol>
+<li>
+<p>An NTP client sends a request packet to an NTP server, requesting the current time. </p>
+<ul>
+<li>This request packet contains a timestamp (T1 NTP Clients Local Time) of the time at which the request was sent.</li>
+</ul>
+</li>
+<li>
+<p>The NTP server sends back a response packet which includes timestamps of both the local (NTP Server) recieve T2 and send T3 time.</p>
+</li>
+<li>
+<p>When the NTP recives the respoce from the server, it adds a timestamp of the local recieve T4 time</p>
+</li>
+<li>
+<p>The NTP Clinet then uses the 4 timestamsps to calculate the Round Trip Delay and the Clock OffSet</p>
+</li>
+<li>
+<p>T1 the client timestamp on the request packet</p>
+</li>
+<li>T2 the server timestamp upon arrival</li>
+<li>T3 the server timestamp on the departure of the reply packet</li>
+<li>T4 the client timestamp upon arrival</li>
+</ol>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
 +--------------------------------------------+
@@ -2302,84 +2184,32 @@ You could make a phone call to the friend and ask what the time is.</p>
 </PRE>
 
 <ul>
-<li>
-<p>LI (Leap Indicator) 2-bits</p>
-</li>
-<li>
-<p>VN (NTP Version Number) 3-bits</p>
-</li>
-<li>
-<p>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:</p>
-<ul>
-<li>
-<p>0 - reserved</p>
-</li>
-<li>
-<p>1 - symmetric active</p>
-</li>
-<li>
-<p>2 - symmetric passive</p>
-</li>
-<li>
-<p>3 - client</p>
-</li>
-<li>
-<p>4 - server</p>
-</li>
-<li>
-<p>5 - broadcast or multicast</p>
-</li>
-<li>
-<p>6 - NTP control message</p>
-</li>
-<li>
-<p>7 - reserved for private use.</p>
-</li>
+<li>LI (Leap Indicator) 2-bits</li>
+<li>VN (NTP Version Number) 3-bits</li>
+<li>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:<ul>
+<li>0 - reserved</li>
+<li>1 - symmetric active</li>
+<li>2 - symmetric passive</li>
+<li>3 - client</li>
+<li>4 - server</li>
+<li>5 - broadcast or multicast</li>
+<li>6 - NTP control message</li>
+<li>7 - reserved for private use.</li>
 </ul>
 </li>
-<li>
-<p>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</p>
-</li>
-<li>
-<p>Poll ( Poll Interval ) - 8-bits maximum interval between successive messages.</p>
-</li>
-<li>
-<p>Precision (precision of the local clock) - 8-bit signed integer.</p>
-</li>
-<li>
-<p>Root Delay - Roundtrip delay to the primary reference source.</p>
-</li>
-<li>
-<p>Root Dispersion - The maximum error of the local clock relative to the primary reference source.</p>
-</li>
-<li>
-<p>Reference Identifier - Identifier of the particular reference source.</p>
-</li>
-<li>
-<p>Reference Timestamp - Local time at which the local clock was last set or corrected.</p>
-</li>
-<li>
-<p>Originate Timestamp - Local time at which the request departed from the client for the service host.</p>
-</li>
-<li>
-<p>Receive Timestamp - Local time at which the request arrived at the service host.</p>
-</li>
-<li>
-<p>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</p>
-</li>
-<li>
-<p>Authenticator - Authentication information.</p>
-</li>
+<li>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</li>
+<li>Poll ( Poll Interval ) - 8-bits maximum interval between successive messages.</li>
+<li>Precision (precision of the local clock) - 8-bit signed integer.</li>
+<li>Root Delay - Roundtrip delay to the primary reference source.</li>
+<li>Root Dispersion - The maximum error of the local clock relative to the primary reference source.</li>
+<li>Reference Identifier - Identifier of the particular reference source.</li>
+<li>Reference Timestamp - Local time at which the local clock was last set or corrected.</li>
+<li>Originate Timestamp - Local time at which the request departed from the client for the service host.</li>
+<li>Receive Timestamp - Local time at which the request arrived at the service host.</li>
+<li>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</li>
+<li>Authenticator - Authentication information.</li>
 </ul>
-<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</h4>
-<p>Various delays and offsets need to be taken into consideration when an NTP client is determining the correct time.</p>
-<ul>
-<li>T1 the client timestamp on the request packet</li>
-<li>T2 the server timestamp upon arrival</li>
-<li>T3 the server timestamp on the departure of the reply packet</li>
-<li>T4 the client timestamp upon arrival</li>
-</ul>
-<PRE>
+<h4 id="annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</h4>
 <style>
   #ascii-art-packet {
     font-family: monospace;
@@ -2389,7 +2219,6 @@ You could make a phone call to the friend and ask what the time is.</p>
 </style>
 
 <div id="ascii-art-packet"></div>
-
 
 <script>
 const frames = [
@@ -2662,8 +2491,6 @@ renderFrame();
 setInterval(renderFrame, 1000);
 </script>
 
-</PRE>
-
 <h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h5>
 <PRE style="font-size:75%">
 
@@ -2848,107 +2675,6 @@ function timeToSeconds(timeString) {
 </ul>
 <p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
 <hr />
-<h3 id="example-c-programs-to-poll-the-tsc-hpetand-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET,and ACPI_PM clock sources<a name="C_Programs"></a></h3>
-<h4 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h4>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
-
-int main() {
-    unsigned int tsc_val_lo, tsc_val_hi;
-    uint64_t timestamp;
-
-    // Execute the rdtsc instruction
-    __asm__ __volatile__ ("rdtsc" : "=a"(tsc_val_lo), "=d"(tsc_val_hi));
-
-    // Combine the low and high parts to form the full 64bit timestamp
-    timestamp = ((uint64_t)tsc_val_lo) | (((uint64_t)tsc_val_hi) &lt;&lt; 32);
-
-    printf("TSC value: %lu\n", timestamp);
-
-    return 0;
-}
-</code></pre>
-<h4 id="example-c-program-to-read-the-hpet">Example C program to read the HPET</h4>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;sys/mman.h&gt;
-#include &lt;unistd.h&gt;
-
-#define HPET_BASE_ADDRESS 0xFED00000 // Base address of HPET on most x86 machine
-#define HPET_SIZE 0x400              // HPET size in bytes
-
-int main() {
-    int hpet_fd;
-    volatile void *hpet_base;
-    uint64_t hpet_counter;
-
-    // Open the /dev/mem device to access physical memory
-    hpet_fd = open("/dev/mem", O_RDONLY);
-    if (hpet_fd &lt; 0) {
-        perror("Error opening /dev/mem");
-        return 1;
-    }
-
-    // Memory-map the HPET region
-    hpet_base = mmap(NULL, HPET_SIZE, PROT_READ, MAP_SHARED, hpet_fd, HPET_BASE_ADDRESS);
-    if (hpet_base == MAP_FAILED) {
-        perror("Error mapping HPET region");
-        close(hpet_fd);
-        return 1;
-    }
-
-    // Read the HPET counter value
-    hpet_counter = *((volatile uint64_t *)(hpet_base + 0xFEE));
-
-    // Unmap the HPET region and close /dev/mem
-    munmap((void *)hpet_base, HPET_SIZE);
-    close(hpet_fd);
-
-    printf("HPET Counter: %lu\n", hpet_counter);
-
-    return 0;
-}
-</code></pre>
-<h4 id="example-c-program-to-read-the-acpi_pm">Example C program to read the ACPI_PM</h4>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;sys/io.h&gt;
-#include &lt;unistd.h&gt;
-
-#define PM_BASE_ADDRESS 0x40 // Base address of ACPI PM timer on most x86 machine
-
-int main() {
-    int pm_fd;
-    uint32_t pm_counter;
-
-    // Open /dev/port to access I/O ports
-    pm_fd = open("/dev/port", O_RDONLY);
-    if (pm_fd &lt; 0) {
-        perror("Error opening /dev/port");
-        return 1;
-    }
-
-    // Enable I/O port access
-    if (iopl(3) &lt; 0) {
-        perror("Error enabling I/O port access");
-        close(pm_fd);
-        return 1;
-    }
-
-    // Read the ACPI PM timer counter value
-    outl(PM_BASE_ADDRESS, 0x43); // Select counter 0 and latch its value
-    pm_counter = inl(PM_BASE_ADDRESS); // Read the latched value
-
-    // Close /dev/port
-    close(pm_fd);
-
-    printf("ACPI PM Timer Counter: %u\n", pm_counter);
-
-    return 0;
-}
-</code></pre>
 <h3 id="sources-for-this-document">Sources for this document: <a name="Sources"></a></h3>
 <p>Intel CPU specifications and developer guides</p>
 <ul>
@@ -2994,8 +2720,7 @@ int main() {
 </ul>
 <p>ASCII Art</p>
 <ul>
-<li><a href="http://www.ascii-code.com/ascii-art/electronics/clocks.php">http://www.ascii-code.com/ascii-art/electronics/clocks.php</a>
-  <a href="https://www.asciiart.eu/electronics/phones">https://www.asciiart.eu/electronics/phones</a></li>
+<li><a href="https://www.asciiart.eu/electronics/phones">https://www.asciiart.eu/electronics/phones</a></li>
 </ul>
 <p>Extra Info</p>
 <ul>
@@ -3005,8 +2730,8 @@ int main() {
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Setting_time/" class="btn btn-neutral float-left" title="Setting time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../linux_clocksource_benchmark-2.c/" class="btn btn-neutral float-right" title="Linux clocksource benchmark 2.c">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Clock_Sources_and_System_Time/" class="btn btn-neutral float-left" title="Clock Sources and System Time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../NTP_Authentication/" class="btn btn-neutral float-right" title="NTP Authentication">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -3029,10 +2754,10 @@ int main() {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Setting_time/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Clock_Sources_and_System_Time/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../linux_clocksource_benchmark-2.c/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../NTP_Authentication/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
