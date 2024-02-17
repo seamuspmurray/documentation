@@ -273,56 +273,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: </a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#single-source-of-time">Single Source of Time</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#multiple-sources-of-time">Multiple Sources of Time</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#watches-out-of-sync">Watches Out of Sync</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-faster-than-watch-a">Watch (B) is running FASTER than Watch (A)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-slower-than-watch-a">Watch (B) is running SLOWER than Watch (A)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#watch-bs-timekeeping-is-unstable">Watch (B)'s timekeeping is unstable</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#description-of-problem-1">Description of Problem 1...</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ntp-packet-format">NTP Packet Format</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sources-for-this-document">Sources for this document: </a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Linux_clocksource_benchmark/">Linux clocksource benchmark</a>
@@ -361,11 +311,16 @@
 <h4 id="index">Index:</h4>
 <ul>
 <li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
-<li><a href="#Segals_Law"> TimeLines, OffSets, and Clock Synchronization</a></li>
+<li><a href="#TimeLines"> TimeLines, OffSets, and Clock Synchronization</a><ul>
 <li><a href="#Clock_drift"> Clock Drift and Clock Skew</a></li>
 <li><a href="#Sync_Clock_Source"> Synchronizing from a remote Clock Source</a></li>
+</ul>
+</li>
+<li><a href="#NTP"> NTP - Netowk Time Protocol</a>  <ul>
 <li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
 <li><a href="#NTP_Precision"> NTP Precision and Accuracy</a></li>
+</ul>
+</li>
 <li><a href="#Sources"> Sources for this document</a></li>
 </ul>
 <h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
@@ -427,7 +382,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="Segals_Law"></a></h3>
+<h2 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="TimeLines"></a></h2>
 <h3 id="single-source-of-time">Single Source of Time</h3>
 <p>If we have a single watch, can we can be sure of what the time is?</p>
 <PRE style="font-size: 75%">
@@ -837,7 +792,7 @@ setInterval(renderFrame, 500);
 <p>If the 2nd watch (B) shows the same time as our 1st watch (A), then we might assume that both are correct. </p>
 <hr style="width:50%">
 
-<h3 id="watches-out-of-sync">Watches Out of Sync</h3>
+<h3 id="clock-skew-offset">Clock Skew / OffSet</h3>
 <p>If we got a 2nd watch (B) in addition to our 1st watch (A), it might display a different time.</p>
 <p>The time displayed on the 2nd watch (B) might be ahead of the 1st watch (A), or it might be behind.</p>
 <blockquote>
@@ -1216,10 +1171,9 @@ setInterval(renderFrame, 500);
 <p>With just 2 ordanary watches it is impossible to determine if the time is correct on either of the Watches.</p>
 <hr style="width:50%">
 
-<h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift<a name="Clock_drift"></a></h3>
+<h3 id="clock-drift">Clock Drift<a name="Clock_drift"></a></h3>
 <p>If we set the watches to display the same time, they may drift apart as time passes.</p>
-<h4 id="watch-b-is-running-faster-than-watch-a">Watch (B) is running FASTER than Watch (A)</h4>
-<div>
+<h5 id="watch-b-is-running-faster-than-watch-a">Watch (B) is Running FASTER than Watch (A)</h5>
 <style>
   #ascii-art-timeline-B-faster-than-A {
     font-family: monospace;
@@ -1229,7 +1183,6 @@ setInterval(renderFrame, 500);
 </style>
 
 <div id="ascii-art-timeline-B-faster-than-A"></div>
-
 
 <script>
 
@@ -1491,10 +1444,8 @@ setInterval(renderFrame, 500);
 
 </script>
 
-
-</div>
-
-<h4 id="watch-b-is-running-slower-than-watch-a">Watch (B) is running SLOWER than Watch (A)</h4>
+<p><br><br></p>
+<h5 id="watch-b-is-running-slower-than-watch-a">Watch (B) is Running SLOWER than Watch (A)</h5>
 <style>
   #ascii-art-timeline-B-Slower-than-A {
     font-family: monospace;
@@ -1828,13 +1779,26 @@ setInterval(renderFrame, 500);
 
 </script>
 
-<h4 id="watch-bs-timekeeping-is-unstable">Watch (B)'s timekeeping is unstable</h4>
-<p>Sometimes watch (B) is running too fast and sometimes running too slow.</p>
+<h4 id="correcting-clock-drift">Correcting Clock Drift</h4>
+<p>There are no perfect solutions, but we can take various actions to regularly syncronize 2 watches. </p>
+<p>One simple, but time consuming solution is to...</p>
+<p>Designate watch (A) to act as the reference time source and regularly adjust the time on watch (B) to bring it inline with watch (A)</p>
+<p>If Watch (B) consistently drifts at a fixed rate, such as being 5 seconds slow per day:</p>
+<ul>
+<li>This implies a steady deviation in its timekeeping accuracy.</li>
+<li>By recognizing this consistent drift pattern, we can adjust the time on Watch (B) periodically.</li>
+<li>These adjustments account for the observed drift, eliminating the need to consult Watch (A) for each correction.</li>
+</ul>
+<p><br><br></p>
+<h5 id="watch-bs-timekeeping-is-unstable">Watch (B)'s Timekeeping is Unstable</h5>
+<p>If Watch (B) is drifting at an inconsitant rate such as in the example below.</p>
 <p>For example, </p>
-<p>Watch (B) was initially in sync with Watch (A)
-Watch (B) started running SLOWER than Watch (A) (out of sync)
-Watch (B) running FASTER than Watch (A) (out of sync)
-Watch (B) is once again in sync with Watch (A)</p>
+<ol>
+<li>Watch (B) was initially in sync with Watch (A)</li>
+<li>Watch (B) started running SLOWER than Watch (A)</li>
+<li>Watch (B) started running FASTER than Watch (A) </li>
+<li>Watch (B) is once again in sync with Watch (A)</li>
+</ol>
 <div id="ascii-art-timeline-B-unstable"></div>
 
 <style>
@@ -1845,6 +1809,7 @@ Watch (B) is once again in sync with Watch (A)</p>
   }
 </style>
 
+<p>Watch (A) would need to be referenced for each adjustment of Watch (B).</p>
 <script>
 
  (function () { //Start of function wrapper to isolate from other ascii art
@@ -2032,131 +1997,33 @@ setInterval(renderFrame, 500);
 
 </script>
 
-<p>Problem (1) (2) and (3) Solution (b)...</p>
-<ul>
-<li>We can gain access to an accurate time source.</li>
-<li>We can synchronise the Watch A to the accurate time source.</li>
-<li>We can repeatedly compare the time displayed by the Watch A with the accurate time source.</li>
-<li>If the Watch A repeatedly shows the same time as the accurate time source,<ul>
-<li>then the accuracy and reliability of the Watch can be confirmed.</li>
-</ul>
-</li>
-<li>If the Watch A is seen to consistently drift either faster or slower than the accurate time source,<ul>
-<li>then we can compensate for the drift by regularly adjusting the time on the Watch A.</li>
-<li>e.g. every minute we could move the time on the Watch A second forward or 1 second backward.</li>
-</ul>
-</li>
-</ul>
-<p>Problem 3 Solution (b+)...</p>
-<p>We can detect if the Watch A is wandering between too fast and too slow, by repeatedly comparing the Watch time to the accurate time source.</p>
+<p><br><br></p>
 <hr>
 
-<h3 id="synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source<a name="Sync_Clock_Source"></a></h3>
-<p>Definitions of terms..</p>
-<p>WallClockTime: </p>
-<ul>
-<li>The term used to describe the universally agreed upon time.</li>
-</ul>
-<p>SystemTime:</p>
-<ul>
-<li>Similar to Wall Clock time.</li>
-<li>It is maintained in software.</li>
-<li>Initialised during boot up from the Real Time Clock.</li>
-<li>Often kept in sync with WallClockTime with the aid of NTP.</li>
-</ul>
-<h4 id="scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</h4>
-<p>Definition of </p>
-<p>Let's say that we manually set the Linux system time using a value read from our Watch's time.</p>
-<p>The steps would be:</p>
+<h3 id="synchronizing-watches-from-a-remote-clock-source">Synchronizing Watches from a Remote Clock Source<a name="Remote_Clock_Source"></a></h3>
+<p>In the preceding examples, we had 2 watches that we were manualy keeping in Sync with each other.</p>
+<p>How do we check if our 2 watches are in sync with the real world time?</p>
+<p>How do we correct our 2 watches if they are out of sync with the real world time?</p>
+<p>We could make a phone call to a person or service that has access to an accurate reference clock, such as an atomic clock.</p>
+<p>There are many issues with this solution including the following...</p>
 <ol>
-<li>Read time from Watch.</li>
-<li>Type the "date" command and the "Watch's time" on the command prompt, and press enter.</li>
-<li>Code is executed.</li>
-<li>System Time is set.</li>
+<li>The delay for the person or service to read the clock and to say the time.</li>
+<li>The delay for the electrical signal to travel through the telephone network.</li>
+<li>The delay between when you have heard the message and understood it.</li>
+<li>The delay for setting the time. (pressing buttons etc..)</li>
 </ol>
-<p>The problem, there is a delay between step 1 and step 4.
-Therefore both time lines (Watch's time and SystemTime will never be exactly in Sync.</p>
-<p>WristWatch time  = 10</p>
-<p>SystemTime       = 15</p>
-<p>OffSet           = 05</p>
-<p>Problem 1,  Offset between the time taken to read the Watch Time and set the SystemTime.
-Problem 2,  No way to determine the accuracy of the Watch time, maybe the SystemTime was closer to the real time?</p>
-<h4 id="scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</h4>
-<p>Problem 1,  Offset between the time taken to read the Accurate clock Time and set the SystemTime.
-Problem 2,  Expensive, an accurate clock costs money.</p>
-<h4 id="scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</h4>
-<p>Problem 1,  Delay between the time taken to read the shared Accurate clock Time and set the SystemTime.</p>
-<h4 id="description-of-problem-1">Description of Problem 1...</h4>
-<p>Let's say that you have a friend working at a science laboratory who has access to a very accurate clock.
-You could make a phone call to the friend and ask what the time is.</p>
-<PRE style="font-size: 60%">
-
-
-   ____                                                   ____
-  / 12 \                                                 / 12 \
- /      \                                               /      \
-( 9  +->3)             /+----------------+/            ( 9  +->3)
- \   \  /             /                  /              \   \  /
-  \__6_/          ~~~/                  /~~~\            \__6_/
-                 /  /|                 /|    \
-      ,'"".     /  /++---------------+/ |     \       ,'"".
-      )  ,+    /     |                  |      \      )  ,+
-     /  /,'+. /      |                  |       \    /  /,'+.
-    /  //  /.`.      |                  |        \   /  //  /.`.
-  ,'  //  /  `.`.    |                  |         ,'  //  /  `.`.
- (    )++.`.   //|   |                  |        (    )++.`.   //|
- +`++'+   `.`.// |   +                  +        +`++'+   `.`.// |
-  `++'      `./  /                                `++'      `./  /
-    |         | /                                   |         | /
-    |_________|/                                    |_________|/
-
-
-
-
-</PRE>
-
-<p>There are many problems with this solution including the following...</p>
-<ol>
-<li>The delay for the person on the other end to read the clock and to say the time.</li>
-<li>The delay for the electrical signal to travel through the long distance phone line.</li>
-<li>The delay between when you have heard the complete time and the time taken to set the time.</li>
-</ol>
-<p>Assuming that the current time is read out when we press a button on the phone.</p>
-<ul>
-<li>
-<p>How can we determine the Round Trip Delay between when we press the button on the phone and when we receive the voice recording of the time?</p>
-</li>
-<li>
-<p>How can we determine the delay between when the remote system receives our query and when it sends the response?</p>
-</li>
-</ul>
+<p>If we were just setting the time on some ordanary watches, we could account for these delays and they would not cause much of a problem. However, there are circumstances where more accuracy is needed. </p>
+<p><br><br></p>
 <hr>
 
+<h2 id="ntp-network-time-protocol">NTP - Network Time Protocol<a name="NTP"></a></h2>
+<p>NTP (Network Time Protocol), is a system to automatically and accurately synchronise the clocks in computers, routers, and numerous other devices from remote NTP servers.</p>
+<p>NTP was invented by Dr. David L. Mills in 1985 and is the most common networking protocol used for clock synchronization between computer systems.</p>
+<p>NTP operates on a hierarchical structure of timekeeping devices. </p>
+<p>The NTP devices with a stratum level of 1 provide the most accurate reference time.  </p>
+<p>The Time is propagated through various layers of NTP devices to end devices such as Desktop Computers, Laptops, home routers, etc...</p>
 <h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
-<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</h4>
-<ol>
-<li>
-<p>An NTP client sends a request packet to an NTP server, requesting the current time. </p>
-<ul>
-<li>This request packet contains a timestamp (T1 NTP Clients Local Time) of the time at which the request was sent.</li>
-</ul>
-</li>
-<li>
-<p>The NTP server sends back a response packet which includes timestamps of both the local (NTP Server) recieve T2 and send T3 time.</p>
-</li>
-<li>
-<p>When the NTP recives the respoce from the server, it adds a timestamp of the local recieve T4 time</p>
-</li>
-<li>
-<p>The NTP Clinet then uses the 4 timestamsps to calculate the Round Trip Delay and the Clock OffSet</p>
-</li>
-<li>
-<p>T1 the client timestamp on the request packet</p>
-</li>
-<li>T2 the server timestamp upon arrival</li>
-<li>T3 the server timestamp on the departure of the reply packet</li>
-<li>T4 the client timestamp upon arrival</li>
-</ol>
+<p>The NTP polling mechanism uses the UDP packet format descriped below and 4 different TimeStamps to calculate the Round Trip Deley and the Clock OffSet. </p>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
 +--------------------------------------------+
@@ -2216,7 +2083,14 @@ You could make a phone call to the friend and ask what the time is.</p>
 <li>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</li>
 <li>Authenticator - Authentication information.</li>
 </ul>
-<h4 id="annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</h4>
+<h4 id="ntp-request-flow">NTP Request Flow</h4>
+<p>As the NTP packet traverses from the client, across the netowk, theough the server, across the network, and back to the client. 4 different timestamps are added to the packet.</p>
+<ul>
+<li>T1 - the timestamp of when the packet was sent from the NTP Client</li>
+<li>T2 - the timestamp of when the packet was received on the NTP Server</li>
+<li>T3 - the timestamp of when the packet was sent from the NTP Server</li>
+<li>T4 - the timestamp of when the packet was received on the NTP Client</li>
+</ul>
 <style>
   #ascii-art-packet {
     font-family: monospace;
@@ -2498,7 +2372,7 @@ renderFrame();
 setInterval(renderFrame, 1000);
 </script>
 
-<h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h5>
+<h4 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h4>
 <PRE style="font-size:75%">
 
     Round Trip Delay = (T4 - T1) - (T3 - T2)
@@ -2576,6 +2450,7 @@ Example C
 
 </PRE>
 
+<h3 id="round-trip-delay-and-offset-calculator">Round Trip Delay and Offset Calculator</h3>
 <style>
   .container {
     float: left;
@@ -2586,17 +2461,12 @@ Example C
     padding: 20px;
     margin-bottom: 20px;
   }
-  .form-container h3 {
-    margin-top: 0;
-  }
   input[type="text"] {
-    width: 100px;
+    width: 75px;
   }
 </style>
 
-<h3>Round Trip Delay and Offset Calculator</h3>
-
-<p>Enter the values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
+<p>Enter sample values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
 <div class="container">
   <div class="form-container">
     <h3>NTP Client</h3>
@@ -2682,6 +2552,8 @@ function timeToSeconds(timeString) {
 </li>
 </ul>
 <p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
+<p>If you need a higher level of clock precision than NTP can provide, the PTP system may be better suited for your needs.</p>
+<p><a href="https://en.wikipedia.org/wiki/Precision_Time_Protocol">https://en.wikipedia.org/wiki/Precision_Time_Protocol</a></p>
 <hr>
 
 <h3 id="sources-for-this-document">Sources for this document: <a name="Sources"></a></h3>
@@ -2711,6 +2583,7 @@ function timeToSeconds(timeString) {
 </ul>
 <p>NTP (Official Documentation)</p>
 <ul>
+<li><a href="https://www.ntp.org/documentation/">https://www.ntp.org/documentation/</a></li>
 <li><a href="https://www.eecis.udel.edu/~mills/ntp/html/index.html">https://www.eecis.udel.edu/~mills/ntp/html/index.html</a></li>
 <li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/</a></li>
 <li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/</a></li>
