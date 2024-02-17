@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.seamusmurray.com/linux/Core_Utils/awk/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Awk - Seamus Murray's Notes about Linux and System Engineering</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Awk";
         var mkdocs_page_input_path = "linux/Core_Utils/awk.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/linux/Core_Utils/awk/";
       </script>
     
     <!--[if lt IE 9]>
@@ -45,10 +45,6 @@
               </ul>
               <p class="caption"><span class="caption-text">Linux</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../../hot_add_memory_and_cpus/">Hot add memory and cpus</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../linux_proccess_signaling/">Linux proccess signaling</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
@@ -84,6 +80,10 @@
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../bash_shortcuts/">Bash shortcuts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../diff_and_cut_to_compare_part_of-lines_in_log_files/">Diff and cut to compare part of lines in log files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../linux_proccess_signaling/">Linux proccess signaling</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../rename/">Rename</a>
                 </li>
@@ -184,34 +184,28 @@
     </ul>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Orchestration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/puppet_study_notes/">Puppet study notes</a>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="#">C programming</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">C Programming</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../programming/c_programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../programming/C_Programming/fork_and_maloc_demo/">Fork and maloc demo</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../programming/c_programming/fork_demo_menu/">Fork demo menu</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../programming/C_Programming/fork_demo_menu/">Fork demo menu</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../programming/c_programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../programming/C_Programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../programming/c_programming/programmable_keyboard/">Programmable keyboard</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../programming/C_Programming/programmable_keyboard/">Programmable keyboard</a>
                 </li>
     </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Puppet</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../puppet/puppet_study_notes/">Puppet study notes</a>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/Column_tally/">Column tally</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/Convert_kilobytes_to_MB_GB_TB_PB/">Convert kilobytes to MB GB TB PB</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/DNS_validate_entries/">DNS validate entries</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/IP_survey/">IP survey</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
@@ -227,6 +221,10 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_case/">Bash case</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_column_tally/">Bash column tally</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_convert_kilobytes_to_MB_GB_TB_PB/">bash convert kilobytes to MB GB TB PB</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
                   </li>
@@ -254,34 +252,30 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_use_a_file_to_control_script_operation/">Bash use a file to control script operation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_validate_DNS_entries/">bash validate DNS entries</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/diff/">Diff</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/expect/">Expect</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/map/">Map</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/script_to_markdown/">Script to markdown</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../scripting/simulate_site_failure/">Simulate site failure</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../scripting/use_a_file_to_control_bash_script_operation/">Use a file to control bash script operation</a>
-                  </li>
               </ul>
-              <p class="caption"><span class="caption-text">Time</span></p>
+              <p class="caption"><span class="caption-text">Timing</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/Clock_Sources_and_System_Time/">Clock Sources and System Time</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../timing/Clock_Sources_and_System_Time/">Clock Sources and System Time</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../timing/Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/Div-Clock_Synchronization_and_NTP/">Div Clock Synchronization and NTP</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../timing/Linux_clocksource_benchmark/">Linux clocksource benchmark</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/NTP_Authentication/">NTP Authentication</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../timing/NTP_Authentication/">NTP Authentication</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/Setting_time/">Setting time</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../time/linux_clocksource_benchmark-2.c/">Linux clocksource benchmark 2.c</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../timing/Setting_time_like_it_is_1989/">Setting time like it is 1989</a>
                   </li>
               </ul>
       </div>

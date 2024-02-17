@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.seamusmurray.com/timing/Clock_Synchronization_and_NTP/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Clock Synchronization and NTP - Seamus Murray's Notes about Linux and System Engineering</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Clock Synchronization and NTP";
+        var mkdocs_page_input_path = "timing/Clock_Synchronization_and_NTP.md";
+        var mkdocs_page_url = "/timing/Clock_Synchronization_and_NTP/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Seamus Murray's Notes about Linux and System Engineering
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Clustering</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover/">HA LVM automatic failover</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/">HA LVM automatic failover manual fence override</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build/">HA LVM cluster build</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_cluster_build_guide/">HA LVM cluster build guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/HA_LVM_manual_failover.txt/">HA LVM manual failover.txt</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/RHEL4_cluster_installation/">RHEL4 cluster installation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/homemade_cluster/">Homemade cluster</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Clustering/simple.cluster.conf/">Simple.cluster.conf</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Commands</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/email_on_linux/">change mail relay for postfix</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Commands/hot_add_memory/">Hot add memory</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Core Utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/awk/">Awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/bash_shortcuts/">Bash shortcuts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/diff_and_cut_to_compare_part_of-lines_in_log_files/">Diff and cut to compare part of lines in log files</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/linux_proccess_signaling/">Linux proccess signaling</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/rename/">Rename</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/">Spacecmd breaking up large groups of hosts with awk</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/user_creation/">User creation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/vim_sudo/">Vim sudo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Core_Utils/watch_and_timeout/">Watch and timeout</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Disks and File Systems</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Extend_lvm_filesystem/">Extend lvm filesystem</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/">Linux LVM Logical Volume Manager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/">Listing Oracle ASM disks</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/">Multipath and NetApp fixes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/Online_lun_resize/">Online lun resize</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/RHEL_floppy_kickstart/">RHEL floppy kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/boot_cdrom_dvdrom/">Boot cdrom dvdrom</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/">Disk filesystem partition imaging using squashfs and dd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/filesystem_shuffle/">Filesystem shuffle</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/rsync/">Rsync</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Disks_and_File_Systems/shrink_lvm_filesystem/">Shrinking a Linux filesystem on LVM</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Firewalls and Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/auditd_rules/">Auditd rules</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Firewalls_and_Security/iptables_notes/">My notes on IPtables</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Monitoring</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Monitoring/nagios_2.6_install/">Nagios 2.6 install</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Networking</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/check_dns_records/">Check dns records</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/determine_the_routes_a_packet_will_take/">Determine the routes a packet will take</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/linux_networking/">Linux networking</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Networking/local_IP_address_survey/">local IP address survey</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">RedHat</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/RedHat/kickstart/">Kickstart</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Satellite spacewalk</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/">Perl script to calulate uptime of satellite clients</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/">Replacing your satellite certificate</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/">Satellite certificate licence install</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/satellite_spacewalk/using_spacecmd/">Using spacecmd</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Yum rpm</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/">Create local repos from redhat install media</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/working_with_yum_and_rpm/">Working with yum and rpm</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../linux/RedHat/yum_rpm/yum_and_rpm/">Yum and rpm</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Software Packaging</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/Software_Packaging/apt_get/">Apt get</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Orchestration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../orchestration/puppet_study_notes/">Puppet study notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">C Programming</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/C_Programming/fork_and_maloc_demo/">Fork and maloc demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/C_Programming/fork_demo_menu/">Fork demo menu</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/C_Programming/linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../programming/C_Programming/programmable_keyboard/">Programmable keyboard</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/IP_survey/">IP survey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_and_grep_script_to_compare_2_lists/">Bash and grep script to compare 2 lists</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_until_loop/">Bash argument shift until loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_argument_shift_while_loop/">Bash argument shift while loop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_arguments/">Bash arguments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_array/">Bash array</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_capture_keyboard_entry/">Bash capture keyboard entry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_case/">Bash case</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_column_tally/">Bash column tally</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_convert_kilobytes_to_MB_GB_TB_PB/">bash convert kilobytes to MB GB TB PB</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_and_exit/">Bash fail and exit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_fail_trap/">Bash fail trap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_function/">Bash function</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_functions/">Bash functions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_local_vs_global_variables/">Bash local vs global variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_nested_if_else/">Bash nested if else</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_read_input/">Bash read input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_select/">Bash select</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_string_comparison/">Bash string comparison</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_test_to_only_run_as_root/">Bash test to only run as root</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_tips/">Bash tips</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_trap_user_ctrl-c/">Bash trap user ctrl c</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_use_a_file_to_control_script_operation/">Bash use a file to control script operation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_validate_DNS_entries/">bash validate DNS entries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/bash_wait_for_user_input/">Bash wait for user input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/expect/">Expect</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/script_to_markdown/">Script to markdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripting/simulate_site_failure/">Simulate site failure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Timing</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Clock_Sources_and_System_Time/">Clock Sources and System Time</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Clock Synchronization and NTP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#index">Index:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: </a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#single-source-of-time">Single Source of Time</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple-sources-of-time">Multiple Sources of Time</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#watches-out-of-sync">Watches Out of Sync</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-faster-than-watch-a">Watch (B) is running FASTER than Watch (A)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-b-is-running-slower-than-watch-a">Watch (B) is running SLOWER than Watch (A)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#watch-bs-timekeeping-is-unstable">Watch (B)'s timekeeping is unstable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#description-of-problem-1">Description of Problem 1...</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ntp-packet-format">NTP Packet Format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-for-this-document">Sources for this document: </a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Linux_clocksource_benchmark/">Linux clocksource benchmark</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Setting_time_like_it_is_1989/">Setting time like it is 1989</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Seamus Murray's Notes about Linux and System Engineering</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Timing</li>
+      <li class="breadcrumb-item active">Clock Synchronization and NTP</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="seamuss-notes-and-animations-related-clock-syncronization-and-ntp">Seamus's notes and animations related Clock Syncronization and NTP.</h2>
+<p>You also may wish to see my <a href="../Clock_Sources_and_System_Time/">Clock Sources and System Time</a> page.</p>
+<h4 id="index">Index:</h4>
+<ul>
+<li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
+<li><a href="#Segals_Law"> TimeLines, OffSets, and Clock Synchronization</a></li>
+<li><a href="#Clock_drift"> Clock Drift and Clock Skew</a></li>
+<li><a href="#Sync_Clock_Source"> Synchronizing from a remote Clock Source</a></li>
+<li><a href="#NTP_Polling"> NTP Client / NTP Server polling mechanism.</a></li>
+<li><a href="#NTP_Precision"> NTP Precision and Accuracy</a></li>
+<li><a href="#Sources"> Sources for this document</a></li>
+</ul>
+<h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wall Clock Time</td>
+<td>Time displayed in a format understandable to humans, <br>such as "12:00 am, Jan 1st, 1970."</td>
+</tr>
+<tr>
+<td>Real-Time Clock</td>
+<td>A hardware-based clock found on system motherboards, <br>functions independent of a computer's power state.</td>
+</tr>
+<tr>
+<td>System Time</td>
+<td>A software-based clock or time line initialized <br>during system boot from the real-time clock</td>
+</tr>
+<tr>
+<td>Reference Clock</td>
+<td>A highly precise and stable time source used to <br>synchronize and calibrate other clocks.</td>
+</tr>
+<tr>
+<td>Clock Cycles</td>
+<td>A measure of the transitions in an electronic circuit, <br>akin to the movement of a production line.</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>A device that increments based on specific events or <br>time periods, independent of CPU-executed code.</td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>A device that tracks the number of increments occurring <br>between two points in time.</td>
+</tr>
+<tr>
+<td>Clock Source</td>
+<td>A device queried by CPU-executed code to obtain the <br>current value of a counter.</td>
+</tr>
+<tr>
+<td>Monotonic Counter</td>
+<td>A counter that increments at regular intervals, such as <br>once per second, analogous to a metronome.</td>
+</tr>
+<tr>
+<td>System</td>
+<td>A self-contained computing entity, such as a Linux server, <br>Windows desktop, or Mac laptop.</td>
+</tr>
+<tr>
+<td>Time Line</td>
+<td>A graphical or numerical depiction of the passage of time.</td>
+</tr>
+<tr>
+<td>Time Scale</td>
+<td>A representation of time, either graphical or numerical, <br>adjusted to illustrate drift or skew</td>
+</tr>
+</tbody>
+</table>
+<h3 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="Segals_Law"></a></h3>
+<h3 id="single-source-of-time">Single Source of Time</h3>
+<p>If we have a single watch, can we can be sure of what the time is?</p>
+<PRE style="font-size: 75%">
+                   __________ 
+                  /          \
+                  |          |
+                  |          |
+                  |          |
+                 _|__________|
+               _/_____________\_
+              / ______________  \
+             | |  _     _  _  | |)
+             | | | | o  _|| | | |
+             | | |_| o |_ |_| | |
+             | |______________| |)
+              \_________________/
+                \______________/
+                  |          |
+                  |          |
+                  |          |
+                  |     0    |
+                  |          |
+                  \__________/
+
+
+  Watch    |----|----|----|----*----|----|
+Time Line  0    5    10   15   20   25   30
+
+</PRE>
+
+<p>There are number of problems with using a single watch to determine the time, such as...</p>
+<ol>
+<li>How can we can confirm that the watch is displaying the correct time. It could be...<ul>
+<li>correct</li>
+<li>behind the correct time</li>
+<li>ahead of the correct time</li>
+<li>running too fast</li>
+<li>running too slow</li>
+<li>drifting, <ul>
+<li>sometimes running too fast, and/or sometimes running too slow.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="multiple-sources-of-time">Multiple Sources of Time</h3>
+<p>If we got a 2nd watch (B) in addition to our 1st watch (A), could we be more sure of what the time is?</p>
+<p>Is having two watches better than having just one?</p>
+<PRE style="font-size: 75%">
+
+      __________               __________
+     /          \             /          \
+     +          +             +          +
+     |          |             |          |
+     |          |             |          |
+    _+__________+            _+__________+
+  _/_____________\_        _/_____________\_
+ / ______________  \      / ______________  \
+| |  _     _  _  | |)    | |  _     _  _  | |)
+| | | | o | || | | |     | | | | o | || | | |
+| | |_| o |_||_| | |     | | |_| o |_||_| | |
+| |______________| |)    | |______________| |) 
+ \_________________/      \_________________/
+   \______________/         \______________/
+     +          +             +          +
+     |          |             |          |
+     |          |             |          |
+     |     A    |             |     B    |
+     +          +             +          +
+     \__________/             \__________/
+
+</PRE>
+
+<style>
+  #ascii-art-timeline-B-insync-with-A{
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-timeline-B-insync-with-A"></div>
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .   
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      *----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |*---|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .  
+Watch B      |*---|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .     
+Watch B      |-*--|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |---*|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----*----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----*----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|*---|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|-*--|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .    
+Watch B      |----|-*--|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|--*-|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|--*-|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .                
+Watch B      |----|---*|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----*----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----*----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|*---|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|*---|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|-*--|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|--*-|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|--*-|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|---*|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|---*|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----*----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|*---|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|*---|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|-*--|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|-*--|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|--*-|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|---*|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|---*|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----*----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----*----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|*---|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|-*--|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|-*--|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|--*-|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|--*-|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----*----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|----|----*----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|*---|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|*---|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|-*--|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|----|----|-*--|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|--*-|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|--*-|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|---*|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----*
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----*
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-insync-with-A");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+<p>If the 2nd watch (B) shows the same time as our 1st watch (A), then we might assume that both are correct. </p>
+<hr style="width:50%">
+
+<h3 id="watches-out-of-sync">Watches Out of Sync</h3>
+<p>If we got a 2nd watch (B) in addition to our 1st watch (A), it might display a different time.</p>
+<p>The time displayed on the 2nd watch (B) might be ahead of the 1st watch (A), or it might be behind.</p>
+<blockquote>
+<p>"A man with a watch knows what time it is. A man with two watches is never sure."
+                                                                           Segal's Law </p>
+</blockquote>
+<p>In the example below the time on Watch (B) is 5 minutes ahead of Watch (A)...</p>
+<PRE style="font-size: 75%">
+
+      __________               __________
+     /          \             /          \
+     +          +             +          +
+     |          |             |          |
+     |          |             |          |
+    _+__________+            _+__________+
+  _/_____________\_        _/_____________\_
+ / ______________  \      / ______________  \
+| |  _     _  _  | |)    | |  _     _  _  | |)
+| | | | o | || | | |     | | | | o | ||_  |
+| | |_| o |_||_| | |     | | |_| o |_| _| | |
+| |______________| |)    | |______________| |)
+ \_________________/      \_________________/
+   \______________/         \______________/
+     +          +             +          +
+     |          |             |          |
+     |          |             |          |
+     |     A    |             |     B    |
+     +          +             +          +
+     \__________/             \__________/
+
+
+</PRE>
+
+<div>
+<style>
+  #ascii-art-timeline-B-infront-of-A{
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-timeline-B-infront-of-A"></div>
+
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         *----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----*----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |*---|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|*---|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |-*--|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .  
+Watch B      |----|-*--|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |---*|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|---*|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----*----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----*----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|*---|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .
+Watch B      |----|----|*---|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|-*--|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|-*--|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|--*-|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .   
+Watch B      |----|----|--*-|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|---*|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|---*|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----*----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----*----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|*---|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|*---|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|-*--|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|-*--|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|--*-|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|--*-|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|---*|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|---*|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----*----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----*----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|*---|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|*---|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|-*--|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|-*--|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|--*-|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|--*-|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|---*|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----*----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----*----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|*---|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|*---|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|-*--|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|-*--|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|--*-|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|--*-|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|---*|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|---*|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----*----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----*-
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|*---|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|*-
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|-*--|
+                  .              .              .
+                .              .              .
+             .              .              .        
+Watch B      |----|----|----|----|----|----|-*-
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|--*-|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|--*-
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|---*|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|---*
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----*
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|----*
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-infront-of-A");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+
+</div>
+
+<p>How should we set the correct time on the 2 watches?</p>
+<p>Should we set watch (A) to the time displayed on watch (B)?</p>
+<p>Should we set watch (B) to the time displayed on watch (A)?</p>
+<p>Should we (split the difference) by setting both watches to the average time displayed on both watches?</p>
+<p>With just 2 ordanary watches it is impossible to determine if the time is correct on either of the Watches.</p>
+<hr style="width:50%">
+
+<h3 id="examples-of-clock-skew-and-drift">Examples of Clock Skew and Drift<a name="Clock_drift"></a></h3>
+<p>If we set the watches to display the same time, they may drift apart as time passes.</p>
+<h4 id="watch-b-is-running-faster-than-watch-a">Watch (B) is running FASTER than Watch (A)</h4>
+<div>
+<style>
+  #ascii-art-timeline-B-faster-than-A {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-timeline-B-faster-than-A"></div>
+
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      *---|---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |*---|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |*--|---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |-*-|---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |--*-|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |--*|---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---*---|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----*----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|*--|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|-*-|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|-*--|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|--*|---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|--*-|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---*---|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|*--|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----*----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|-*-|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|*---|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|--*|---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---*---|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|--*-|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|*--|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|---*|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|-*-|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|--*|---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|*---|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---*---|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|-*--|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|*--|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|-*-|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|---*|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|--*|---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----*----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---*---|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---|*--|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|-*--|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---|-*-|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|--*-|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---|--*|
+Time Line    0   5   10  15  20  25  30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |---|---|---|---|---|---*
+Time Line    0   5   10  15  20  25  30
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-faster-than-A");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+
+</div>
+
+<h4 id="watch-b-is-running-slower-than-watch-a">Watch (B) is running SLOWER than Watch (A)</h4>
+<style>
+  #ascii-art-timeline-B-Slower-than-A {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-timeline-B-Slower-than-A"></div>
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      *------|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |*---|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |*-----|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |-*----|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |---*--|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----*----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |----*-|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |-----*|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|-*--|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------*------|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|--*-|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |------|*-----|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|-*----|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----*----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|--*---|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|*---|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|---*--|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|----*-|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|--*-|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|-----*|------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|---*|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------*------|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|*-----|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|*---|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|-*----|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|-*--|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|--*---|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|---*--|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|---*|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|----*-|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----*----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|-----*|------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------*------|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|-*--|----|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|*-----|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|--*-|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------|-*----|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------|--*---|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .            .             .
+             .           .           .  
+Watch B      |------|------|------|--*---|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----*----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------|---*--|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|*---|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|----*-|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|-*--|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|-----*|------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|--*-|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|------*------|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|---*|
+             .              .              .
+             .            .             .
+             .           .           . 
+Watch B      |------|------|------|------|*-----|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----*
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------|------|-*----|~
+Time Line    0      5      10     15     20     25
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .            .             .
+             .           .           .
+Watch B      |------|------|------|------|------|~
+Time Line    0      5      10     15     20     25
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-Slower-than-A");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+<h4 id="watch-bs-timekeeping-is-unstable">Watch (B)'s timekeeping is unstable</h4>
+<p>Sometimes watch (B) is running too fast and sometimes running too slow.</p>
+<p>For example, </p>
+<p>Watch (B) was initially in sync with Watch (A)
+Watch (B) started running SLOWER than Watch (A) (out of sync)
+Watch (B) running FASTER than Watch (A) (out of sync)
+Watch (B) is once again in sync with Watch (A)</p>
+<div id="ascii-art-timeline-B-unstable"></div>
+
+<style>
+  #ascii-art-timeline-B-unstable {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+1
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .         .         .         .
+             .         .         .         .
+             .         .         .         .
+ Watch B     |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+2
+ Watch A     0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+             .         .         .         .
+             .         .         .         .
+             .         .         .         .
+ Watch B     *----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+3
+ Watch A     0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+             .         .         .         .
+             .         .         .         .
+             .         .         .         .
+ Watch B     |-*---|---|----|----|----|----|
+Time Line    0     5   10   15   20   25   30
+  `,
+  `
+4
+ Watch A     0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+             .         .         .         .
+             .         .         .         .
+             .         .         .         .
+ Watch B     |---*--|--|----|----|----|----|
+Time Line    0      5  10   15   20   25   30
+  `,
+  `
+5
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+             .         .         .         .
+             .         .         .         .
+             .         .         .         .
+ Watch B     |-----*-|-|----|----|----|----|
+Time Line    0       5 10   15   20   25   30
+  `,
+  `
+6
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+             .         .         .         .
+             .          .        .         .
+             .          .        .         .
+ Watch B     |-------|*-|---|----|----|----|
+Time Line    0       5  10  15   20   25   30
+  `,
+  `
+7
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+             .         .         .         .
+             .          .        .         .
+             .           .       .         .
+ Watch B     |-------|---*---|---|----|----|
+Time Line    0       5   10  15  20   25   30
+  `,
+  `
+8
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+             .         .         .         .
+             .           .        .        .
+             .            .       .        .
+ Watch B     |-------|----|-*-|---|----|---|
+Time Line    0       5    10  15  20   25  30
+  `,
+  `
+9
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+             .         .         .         .
+             .           .        .        .
+             .            .       .        .
+ Watch B     |-------|----|---|*--|----|---|
+Time Line    0       5    10  15  20   25  30
+  `,
+  `
+10
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+             .         .         .         .
+             .           .         .       .
+             .    Slow     .       .       .
+ Watch B     |-------|-----|---|--*|---|---|
+Time Line    0       5     10  15  20  25  30
+  `,
+  `
+11
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .         .         .         .
+             .           .         .       .
+             .    Slow     .       .       .
+ Watch B     |-------|-----|---|---|-*-|---|
+Time Line    0       5     10  15  20  25  30
+  `,
+  `
+12
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|*---|
+             .         .         .         .
+             .           .  Same   .       .
+             .    Slow     . Rate    .     .
+ Watch B     |-------|-----|----|----|-*|--|
+Time Line    0       5     10   15   20 25 30
+  `,
+  `
+13
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|---*|
+             .         .         .         .
+             .           .   Same .       .
+             .    Slow     .  Rate    .Fast.
+ Watch B     |-------|-----|----|----|--|-*|
+Time Line    0       5     10   15   20 25 30
+  `,
+  `
+14
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----*
+             .         .         .         .
+             .           .   Same  .       .
+             .    Slow     .  Rate    .Fast.
+ Watch B     |-------|-----|----|----|--|--*
+Time Line    0       5     10   15   20 25 30
+  `,
+  `
+15
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .         .         .         .
+             .           .   Same  .       .
+             .    Slow     .  Rate    .Fast.
+ Watch B     |-------|-----|----|----|--|--|
+Time Line    0       5     10   15   20 25 30
+  `,
+  `
+16
+ Watch A     0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .         .         .         .
+             .           .   Same  .       .
+             .    Slow     .  Rate    .Fast.
+ Watch B     |-------|-----|----|----|--|--|
+Time Line    0       5     10   15   20 25 30
+  `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-unstable");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+
+</script>
+
+<p>Problem (1) (2) and (3) Solution (b)...</p>
+<ul>
+<li>We can gain access to an accurate time source.</li>
+<li>We can synchronise the Watch A to the accurate time source.</li>
+<li>We can repeatedly compare the time displayed by the Watch A with the accurate time source.</li>
+<li>If the Watch A repeatedly shows the same time as the accurate time source,<ul>
+<li>then the accuracy and reliability of the Watch can be confirmed.</li>
+</ul>
+</li>
+<li>If the Watch A is seen to consistently drift either faster or slower than the accurate time source,<ul>
+<li>then we can compensate for the drift by regularly adjusting the time on the Watch A.</li>
+<li>e.g. every minute we could move the time on the Watch A second forward or 1 second backward.</li>
+</ul>
+</li>
+</ul>
+<p>Problem 3 Solution (b+)...</p>
+<p>We can detect if the Watch A is wandering between too fast and too slow, by repeatedly comparing the Watch time to the accurate time source.</p>
+<hr>
+
+<h3 id="synchronizing-from-a-remote-clock-source">Synchronizing from a remote Clock Source<a name="Sync_Clock_Source"></a></h3>
+<p>Definitions of terms..</p>
+<p>WallClockTime: </p>
+<ul>
+<li>The term used to describe the universally agreed upon time.</li>
+</ul>
+<p>SystemTime:</p>
+<ul>
+<li>Similar to Wall Clock time.</li>
+<li>It is maintained in software.</li>
+<li>Initialised during boot up from the Real Time Clock.</li>
+<li>Often kept in sync with WallClockTime with the aid of NTP.</li>
+</ul>
+<h4 id="scenario-1-using-the-time-read-from-a-wristwatch-to-set-linux-systemtime">Scenario 1... Using the time read from a Wristwatch to set Linux SystemTime</h4>
+<p>Definition of </p>
+<p>Let's say that we manually set the Linux system time using a value read from our Watch's time.</p>
+<p>The steps would be:</p>
+<ol>
+<li>Read time from Watch.</li>
+<li>Type the "date" command and the "Watch's time" on the command prompt, and press enter.</li>
+<li>Code is executed.</li>
+<li>System Time is set.</li>
+</ol>
+<p>The problem, there is a delay between step 1 and step 4.
+Therefore both time lines (Watch's time and SystemTime will never be exactly in Sync.</p>
+<p>WristWatch time  = 10</p>
+<p>SystemTime       = 15</p>
+<p>OffSet           = 05</p>
+<p>Problem 1,  Offset between the time taken to read the Watch Time and set the SystemTime.
+Problem 2,  No way to determine the accuracy of the Watch time, maybe the SystemTime was closer to the real time?</p>
+<h4 id="scenario-2-purchase-an-accurate-clock-to-use-as-a-timeline-reference">Scenario 2... Purchase an Accurate clock to use as a TimeLine reference</h4>
+<p>Problem 1,  Offset between the time taken to read the Accurate clock Time and set the SystemTime.
+Problem 2,  Expensive, an accurate clock costs money.</p>
+<h4 id="scenario-3-use-a-shared-accurate-clock-as-a-timeline-reference">Scenario 3... Use a shared Accurate clock as a TimeLine reference</h4>
+<p>Problem 1,  Delay between the time taken to read the shared Accurate clock Time and set the SystemTime.</p>
+<h4 id="description-of-problem-1">Description of Problem 1...</h4>
+<p>Let's say that you have a friend working at a science laboratory who has access to a very accurate clock.
+You could make a phone call to the friend and ask what the time is.</p>
+<PRE style="font-size: 60%">
+
+
+   ____                                                   ____
+  / 12 \                                                 / 12 \
+ /      \                                               /      \
+( 9  +->3)             /+----------------+/            ( 9  +->3)
+ \   \  /             /                  /              \   \  /
+  \__6_/          ~~~/                  /~~~\            \__6_/
+                 /  /|                 /|    \
+      ,'"".     /  /++---------------+/ |     \       ,'"".
+      )  ,+    /     |                  |      \      )  ,+
+     /  /,'+. /      |                  |       \    /  /,'+.
+    /  //  /.`.      |                  |        \   /  //  /.`.
+  ,'  //  /  `.`.    |                  |         ,'  //  /  `.`.
+ (    )++.`.   //|   |                  |        (    )++.`.   //|
+ +`++'+   `.`.// |   +                  +        +`++'+   `.`.// |
+  `++'      `./  /                                `++'      `./  /
+    |         | /                                   |         | /
+    |_________|/                                    |_________|/
+
+
+
+
+</PRE>
+
+<p>There are many problems with this solution including the following...</p>
+<ol>
+<li>The delay for the person on the other end to read the clock and to say the time.</li>
+<li>The delay for the electrical signal to travel through the long distance phone line.</li>
+<li>The delay between when you have heard the complete time and the time taken to set the time.</li>
+</ol>
+<p>Assuming that the current time is read out when we press a button on the phone.</p>
+<ul>
+<li>
+<p>How can we determine the Round Trip Delay between when we press the button on the phone and when we receive the voice recording of the time?</p>
+</li>
+<li>
+<p>How can we determine the delay between when the remote system receives our query and when it sends the response?</p>
+</li>
+</ul>
+<hr>
+
+<h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
+<h4 id="how-an-ntp-client-synchronises-with-an-ntp-server">How an NTP Client synchronises with an NTP server</h4>
+<ol>
+<li>
+<p>An NTP client sends a request packet to an NTP server, requesting the current time. </p>
+<ul>
+<li>This request packet contains a timestamp (T1 NTP Clients Local Time) of the time at which the request was sent.</li>
+</ul>
+</li>
+<li>
+<p>The NTP server sends back a response packet which includes timestamps of both the local (NTP Server) recieve T2 and send T3 time.</p>
+</li>
+<li>
+<p>When the NTP recives the respoce from the server, it adds a timestamp of the local recieve T4 time</p>
+</li>
+<li>
+<p>The NTP Clinet then uses the 4 timestamsps to calculate the Round Trip Delay and the Clock OffSet</p>
+</li>
+<li>
+<p>T1 the client timestamp on the request packet</p>
+</li>
+<li>T2 the server timestamp upon arrival</li>
+<li>T3 the server timestamp on the departure of the reply packet</li>
+<li>T4 the client timestamp upon arrival</li>
+</ol>
+<h4 id="ntp-packet-format">NTP Packet Format</h4>
+<PRE style="font-size: 75%">
++--------------------------------------------+
+| LI | VN | Mode | Stratum | Poll |Precision |
++--------------------------------------------+
+|                 Root Delay                 |
++--------------------------------------------+
+|              Root Dispersion               |
++--------------------------------------------+
+|            Reference Identifier            |
++--------------------------------------------+
+|                                            |
+|            Reference TimeStamp             |
+|                                            |
++--------------------------------------------+
+|                                            |
+|             Origin TimeStamp               |
+|                                            |
++--------------------------------------------+
+|                                            |
+|            Recieve TimeStamp               |
+|                                            |
++--------------------------------------------+
+|                                            |
+|            Transmit TimeStamp              |
+|                                            |
++--------------------------------------------+
+|                                            |
+|         Optional Fields / Digest           |
+|                                            |
++--------------------------------------------+
+</PRE>
+
+<ul>
+<li>LI (Leap Indicator) 2-bits</li>
+<li>VN (NTP Version Number) 3-bits</li>
+<li>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:<ul>
+<li>0 - reserved</li>
+<li>1 - symmetric active</li>
+<li>2 - symmetric passive</li>
+<li>3 - client</li>
+<li>4 - server</li>
+<li>5 - broadcast or multicast</li>
+<li>6 - NTP control message</li>
+<li>7 - reserved for private use.</li>
+</ul>
+</li>
+<li>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</li>
+<li>Poll ( Poll Interval ) - 8-bits maximum interval between successive messages.</li>
+<li>Precision (precision of the local clock) - 8-bit signed integer.</li>
+<li>Root Delay - Roundtrip delay to the primary reference source.</li>
+<li>Root Dispersion - The maximum error of the local clock relative to the primary reference source.</li>
+<li>Reference Identifier - Identifier of the particular reference source.</li>
+<li>Reference Timestamp - Local time at which the local clock was last set or corrected.</li>
+<li>Originate Timestamp - Local time at which the request departed from the client for the service host.</li>
+<li>Receive Timestamp - Local time at which the request arrived at the service host.</li>
+<li>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</li>
+<li>Authenticator - Authentication information.</li>
+</ul>
+<h4 id="annimation-of-the-ntp-request-flow">Annimation of the NTP request flow</h4>
+<style>
+  #ascii-art-packet {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-packet"></div>
+
+<script>
+const frames = [
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    | T1 |   |            |   | T1 |    | |
+|    | T2 | <----------------<-| T2 | <--+ |
+|    | T3 |   |            |   | T3 |      |
+|    | T4 |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    |    |   |            |   |    |      |
+|    |    | ------------------>|    | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <--+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   |    |      |
+|    |    | ------------------>|    | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <--+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   |    |      |
+|    |    | ->----->------>--->|    | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <--+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ->----->------>--->|    | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <--+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <--+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   |    |    | |
+|    |    | <------------------|    | <<-+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   | T1 |    | |
+|    |    | <------------------| T2 | <<-+ |
+|    |    |   |            |   |    |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   | T1 |    | |
+|    |    | <------------------| T2 | <--+ |
+|    |    |   |            |   | T3 |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    |    |   |            |   | T1 |    | |
+|    |    | <-----<-----<----<-| T2 | <--+ |
+|    |    |   |            |   | T3 |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    | T1 |   |            |   | T1 |    | |
+|    | T2 | <-----<-----<----<-| T2 | <--+ |
+|    | T3 |   |            |   | T3 |      |
+|    |    |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+  `,
+  `
+ NTP CLIENT                 NTP SERVER
++-------------+            +---------------+
+|             |            |               |
+|    +----+   |            |   +----+      |
+|    | T1 |   |            |   | T1 |      |
+|    |    | ------------------>| T2 | +--+ |
+|    |    |   |            |   |    |    | |
+|    |    |   |            |   |    |    | |
+|    +----+   |            |   +----+    | |
+|             |            |             | |
+|             |            |             | |
+|    +----+   |            |   +----+    | |
+|    | T1 |   |            |   | T1 |    | |
+|    | T2 | <----------------<-| T2 | <--+ |
+|    | T3 |   |            |   | T3 |      |
+|    | T4 |   |            |   |    |      |
+|    +----+   |            |   +----+      |
+|             |            |               |
++-------------+            +---------------+
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElement = document.getElementById("ascii-art-packet");
+
+function renderFrame() {
+  asciiArtElement.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 1000);
+</script>
+
+<h5 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h5>
+<PRE style="font-size:75%">
+
+    Round Trip Delay = (T4 - T1) - (T3 - T2)
+
+    Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
+
+</PRE>
+
+<h4 id="3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</h4>
+<PRE style="font-size:65%">
+--------------------------------------------
+
+Example A
+ TimeStamps... T1=0, T2=2, T3=12, and T4=14
+
+
+    RTD  =  ( T4 + T1 ) + ( T3 + T2 )
+            ( 14 + 0  ) | ( 12 +  2 )
+            (    14   ) + (    10   )
+                     _______          
+                        4
+                     ~~~~~~~      
+
+ OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+           [(  2 + 0  ) | ( 12 | 14 )] /2
+           [(    2    ) + (    +2   )] /2
+           [            0            ] /2
+                     _______          
+                        0         
+                     ~~~~~~~            
+
+
+
+--------------------------------------------
+
+Example B
+ TimeStamps... T1=0, T2=4, T3=6, and T4=10
+
+   RTD  =   ( T4 + T1 ) + ( T3 + T2 )
+            ( 10 + 0  ) | (  6 +  4 )
+            (   10    ) + (    2    )
+                     _______          
+                        8
+                     ~~~~~~~
+
+ OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+           [(  4 + 0  ) | (  6 | 10 )] /2
+           [(    4    ) + (    +4   )] /2
+           [            0            ] /2
+                     _______          
+                        0
+                     ~~~~~~~
+
+--------------------------------------------
+
+Example C
+ TimeStamps... T1=10, T2=2, T3=12, and T4=24
+
+    RTD  =  ( T4 + T1 ) + ( T3 + T2 )
+            ( 24 + 10 ) | ( 12 +  2 )
+            (   14    ) + (   10    )
+                     _______           
+                        4
+                     ~~~~~~~
+
+ OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+           [(  2 | 10 ) | ( 12 | 24 )] /2
+           [(    +8   ) | (    +12  )] /2
+           [            20          ] /2
+                      _______           
+                        10
+                      ~~~~~~~ 
+
+--------------------------------------------  
+
+</PRE>
+
+<style>
+  .container {
+    float: left;
+    width: 50%;
+  }
+  .form-container {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .form-container h3 {
+    margin-top: 0;
+  }
+  input[type="text"] {
+    width: 100px;
+  }
+</style>
+
+<h3>Round Trip Delay and Offset Calculator</h3>
+
+<p>Enter the values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
+<div class="container">
+  <div class="form-container">
+    <h3>NTP Client</h3>
+    <form id="clientForm">
+      <label for="T1">T1:</label>
+      <input type="text" id="T1" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+
+      <label for="T4">T4:</label>
+      <input type="text" id="T4" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="form-container">
+    <h3>NTP Server</h3>
+    <form id="serverForm">
+      <label for="T2">T2:</label>
+      <input type="text" id="T2" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+
+      <label for="T3">T3:</label>
+      <input type="text" id="T3" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
+    </form>
+  </div>
+</div>
+
+<p><button type="submit" onclick="calculate()">Calculate</button></p>
+<div id="results"></div>
+
+<script>
+function calculate() {
+  // Getting input values for ntp Client
+  var T1 = document.getElementById("T1").value;
+  var T4 = document.getElementById("T4").value;
+
+  // Getting input values for ntp Server
+  var T2 = document.getElementById("T2").value;
+  var T3 = document.getElementById("T3").value;
+
+  // Validation check for T3 being after T2
+  if (timeToSeconds(T3) <= timeToSeconds(T2)) {
+    alert("Time travel is not possible. Please ensure that T3 is after T2.");
+    return;
+  }
+
+  // Calculating Round Trip Delay
+  var roundTripDelay = (timeToSeconds(T4) - timeToSeconds(T1)) - (timeToSeconds(T3) - timeToSeconds(T2));
+
+  // Calculating Clock Offset
+  var clockOffset = ((timeToSeconds(T2) - timeToSeconds(T1)) + (timeToSeconds(T3) - timeToSeconds(T4))) / 2;
+
+  // Displaying results
+  var resultDiv = document.getElementById("results");
+
+  // Validation check for roundTripDelay
+  if (roundTripDelay <= 0) {
+    alert("The timestamp for the NTP packet receive time is earlier than the send time. The local clock is unstable.");
+    return;
+  }
+
+  resultDiv.innerHTML = "<h3>Results:</h3>" +
+                        "<p>Round Trip Delay: " + roundTripDelay + " seconds</p>" +
+                        "<p>Clock Offset: " + clockOffset + " seconds</p>";
+}
+
+function timeToSeconds(timeString) {
+  var parts = timeString.split(":");
+  return (+parts[0]) * 3600 + (+parts[1]) * 60 + (+parts[2]);
+}
+</script>
+
+<hr>
+
+<h3 id="networks-and-ntp-precision-and-accuracy">Networks and NTP Precision and Accuracy<a name="NTP_precision"></a></h3>
+<p>The precision and accuracy of system time achievable and maintainable by an NTP (Network Time Protocol) client depend significantly on the network infrastructure between the NTP client and the NTP servers.
+*  In a Local Area Network (LAN), the accuracy of NTP synchronization can typically reach the order of 100 microseconds (us).</p>
+<ul>
+<li>
+<p>Within a Wide Area Network (WAN), the accuracy may decrease slightly, with synchronization achievable in the order of several tens of milliseconds.</p>
+</li>
+<li>
+<p>Over the Internet, the accuracy of NTP synchronization depends heavily on many different factors. Typically, selecting NTP servers closer to the client location rather than those farther away results in more precise time synchronization.</p>
+</li>
+</ul>
+<p>However, it's important to note that accuracy in all these scenarios is significantly influenced by factors such as jitter and asymmetric network paths.</p>
+<hr>
+
+<h3 id="sources-for-this-document">Sources for this document: <a name="Sources"></a></h3>
+<p>Intel CPU specifications and developer guides</p>
+<ul>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf">Intel 64-ia-32-architectures-software-developer-vol-2a-manual.pdf</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf">Intel 64-ia-32-architectures-software-developer-manual-325462.pdf</a></li>
+<li><a href="http://www.intel.com.au/content/www/au/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html">Intel 64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/timestamp-counter-scaling-virtualization-white-paper.pdf">Intel timestamp-counter-scaling-virtualization-white-paper.pdf</a></li>
+<li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf">Intel xeon-e5-v2-spec-update.pdf</a></li>
+</ul>
+<p>Linux Kernel and Linux Distribution documentation</p>
+<ul>
+<li><a href="https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt">https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt</a></li>
+<li><a href="h.ttps://access.redhat.com/solutions/18627">https://access.redhat.com/solutions/18627</a></li>
+<li><a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1006427">kb.vmware.com</a></li>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Virtualization/chap-Virtualization-KVM_guest_timing_management.html">RedHat - Virtualization-KVM_guest_timing_management</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=698842">https://bugzilla.redhat.com/show_bug.cgi?id=698842</a></li>
+<li><a href="http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html">http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html</a></li>
+<li><a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">http://www.cs.virginia.edu/~evans/cs216/guides/x86.html</a></li>
+<li><a href="http://man7.org/linux/man-pages/man2/prctl.2.html">http://man7.org/linux/man-pages/man2/prctl.2.html</a></li>
+<li><a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization">https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling">https://wiki.archlinux.org/index.php/CPU_frequency_scaling</a></li>
+<li><a href="http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/">http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/</a></li>
+<li><a href="https://lkml.org/lkml/2005/11/4/173">https://lkml.org/lkml/2005/11/4/173</a></li>
+<li>[Manual page clock_gettime]</li>
+</ul>
+<p>NTP (Official Documentation)</p>
+<ul>
+<li><a href="https://www.eecis.udel.edu/~mills/ntp/html/index.html">https://www.eecis.udel.edu/~mills/ntp/html/index.html</a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/</a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/</a></li>
+<li><a href="http://what-if.xkcd.com/26/">http://what-if.xkcd.com/26/ Leap second (XKCD always counts as official)</a></li>
+</ul>
+<p>Wikipedia links</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Segal%27s_law">Segals Law</a></li>
+<li><a href="https://en.wikipedia.org/wiki/List_of_Intel_microprocessors">List_of_Intel_microprocessors</a></li>
+<li><a href="https://en.wikipedia.org/wiki/P5_%28microarchitecture%29#P5">P5 microarchitecture</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SpeedStep">Intel SpeedStep</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Wall-clock_time">Wall-clock_time</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Time_Stamp_Counter">Time_Stamp_Counter</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux_kernel</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Allan_variance">Allan_variance</a></li>
+</ul>
+<p>ASCII Art</p>
+<ul>
+<li><a href="https://www.asciiart.eu/electronics/phones">https://www.asciiart.eu/electronics/phones</a></li>
+</ul>
+<p>Extra Info</p>
+<ul>
+<li><a href="http://cp.literature.agilent.com/litweb/pdf/5988-6254EN.pdf">Measuring Wander and Jitter</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Clock_Sources_and_System_Time/" class="btn btn-neutral float-left" title="Clock Sources and System Time"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Linux_clocksource_benchmark/" class="btn btn-neutral float-right" title="Linux clocksource benchmark">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Clock_Sources_and_System_Time/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Linux_clocksource_benchmark/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
