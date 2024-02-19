@@ -2,432 +2,432 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.seamusmurray.com/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/HA_LVM_automatic_failover/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/HA_LVM_automatic_failover_manual_fence_override/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/HA_LVM_cluster_build/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/HA_LVM_cluster_build_guide/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/HA_LVM_manual_failover.txt/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/RHEL4_cluster_installation/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/homemade_cluster/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Clustering/simple.cluster.conf/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Commands/email_on_linux/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Commands/hot_add_memory/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/awk/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/bash_shortcuts/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/diff_and_cut_to_compare_part_of-lines_in_log_files/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/linux_proccess_signaling/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/rename/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/spacecmd_breaking_up_large_groups_of_hosts_with_awk/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/user_creation/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/vim_sudo/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Core_Utils/watch_and_timeout/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/Extend_lvm_filesystem/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/Linux_LVM_Logical_Volume_Manager/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/Listing_Oracle_ASM_disks/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/Multipath_and_NetApp_fixes/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/Online_lun_resize/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/RHEL_floppy_kickstart/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/boot_cdrom_dvdrom/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/disk_filesystem_partition_imaging_using_squashfs_and_dd/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/filesystem_shuffle/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/rsync/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Disks_and_File_Systems/shrink_lvm_filesystem/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Firewalls_and_Security/auditd_rules/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Firewalls_and_Security/iptables_notes/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Monitoring/nagios_2.6_install/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Networking/check_dns_records/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Networking/determine_the_routes_a_packet_will_take/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Networking/linux_networking/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Networking/local_IP_address_survey/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/kickstart/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/satellite_spacewalk/perl_script_to_calulate_uptime_of_satellite_clients/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/satellite_spacewalk/replacing_your_satellite_certificate/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/satellite_spacewalk/satellite_certificate_licence_install/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/satellite_spacewalk/using_spacecmd/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/yum_rpm/create_local_repos_from_redhat_install_media/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/yum_rpm/working_with_yum_and_rpm/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/RedHat/yum_rpm/yum_and_rpm/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/linux/Software_Packaging/apt_get/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/orchestration/puppet_study_notes/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/programming/C_Programming/fork_and_maloc_demo/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/programming/C_Programming/fork_demo_menu/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/programming/C_Programming/linux_clocksource_benchmark/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/programming/C_Programming/programmable_keyboard/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/IP_survey/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_and_grep_script_to_compare_2_lists/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_argument_shift_until_loop/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_argument_shift_while_loop/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_arguments/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_array/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_capture_keyboard_entry/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_case/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_column_tally/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_convert_kilobytes_to_MB_GB_TB_PB/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_fail_and_exit/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_fail_trap/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_function/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_functions/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_local_vs_global_variables/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_nested_if_else/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_read_input/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_scripting/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_select/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_string_comparison/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_test_to_only_run_as_root/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_tips/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_trap_user_ctrl-c/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_use_a_file_to_control_script_operation/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_validate_DNS_entries/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/bash_wait_for_user_input/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/expect/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/script_to_markdown/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/scripting/simulate_site_failure/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/Clock_Sources_and_System_Time/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/Clock_Synchronization_and_NTP/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/Linux_clocksource_benchmark/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/NTP_Authentication/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/Setting_time_like_it_is_1989/</loc>
-         <lastmod>2024-02-17</lastmod>
+         <lastmod>2024-02-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

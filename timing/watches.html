@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Title of the document</title>
+</head>
+<style>
+.side-by-side-watch {
+	display: inline-block;
+
+	/* You can adjust the width as needed */
+	vertical-align: top;
+	/* Aligns the divs at the top */
+border: solid;
+border-color: pink;
+}
+
+.timeline-div {
+	/* Occupies full width */
+	clear: both;
+	/* Ensures it appears below the floated divs */
+border: solid;
+border-color: green;
+}
+
+.watch-and-timeline-container {
+	text-align: left;
+	/* Optionally, to center the divs horizontally */
+border: solid;
+border-color: red;
+}
+</style>
+
+<body>
+
+			<script>
+			const Digits = [`
+| |  _     _  _  | |)
+| | | | 0 | || | | |
+| | |_| 0 |_||_| | |
+`, `
+| |  _     _     | |)
+| | | | o | |  | | |
+| | |_| o |_|  | | |
+`, `
+| |  _     _  _  | |)
+| | | | o | | _| | |
+| | |_| o |_||_  | |
+`, `
+| |  _     _  _  | |)
+| | | | o | | _| | |
+| | |_| o |_| _| | |
+`, `
+| |  _     _     | |)
+| | | | o | ||_| | |
+| | |_| o |_|  | | |
+`, `
+| |  _     _  _  | |)
+| | | | o | ||_  | |
+| | |_| o |_| _| | |
+`, `
+| |  _     _  _  | |)
+| | | | o | ||_  | |
+| | |_| o |_||_| | |
+`, `
+| |  _     _  _  | |)
+| | | | o | |  | | |
+| | |_| o |_|  | | |
+`, `
+| |  _     _  _  | |)
+| | | | o | ||_| | |
+| | |_| o |_||_| | |
+`, `
+| |  _     _  _  | |)
+| | | | o | ||_| | |
+| | |_| o |_| _| | |
+`, `
+| |  _        _  | |)
+| | | | o   || | | |
+| | |_| o   ||_| | |
+`, `
+| |  _           | |)
+| | | | o   |  | | |
+| | |_| o   |  | | |
+`, `
+| |  _        _  | |)
+| | | | o   | _| | |
+| | |_| o   ||_  | |
+`, `
+| |  _        _  | |)
+| | | | o   | _| | |
+| | |_| o   | _| | |
+`, `
+| |  _           | |)
+| | | | o   ||_| | |
+| | |_| o   |  | | |
+`, `
+| |  _        _  | |)
+| | | | o   ||_  | |
+| | |_| o   | _| | |
+`, `
+| |  _        _  | |)
+| | | | o   ||_  | |
+| | |_| o   ||_| | |
+`, `
+| |  _        _  | |)
+| | | | o   |  | | |
+| | |_| o   |  | | |
+`, `
+| |  _        _  | |)
+| | | | o   ||_| | |
+| | |_| o   ||_| | |
+`, `
+| |  _        _  | |)
+| | | | o   ||_| | |
+| | |_| o   | _| | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _|| | | |
+| | |_| o |_ |_| | |
+`, `
+| |  _     _     | |)
+| | | | o  _|  | | |
+| | |_| o |_   | | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _| _| | |
+| | |_| o |_ |_  | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _| _| | |
+| | |_| o |_  _| | |
+`, `
+| |  _     _     | |)
+| | | | o  _||_| | |
+| | |_| o |_   | | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _||_  | |
+| | |_| o |_  _| | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _||_  | |
+| | |_| o |_ |_| | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _|  | | |
+| | |_| o |_   | | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _||_| | |
+| | |_| o |_ |_| | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _||_| | |
+| | |_| o |_  _| | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _|| | | |
+| | |_| o  _||_| | |
+`, `
+| |  _     _     | |)
+| | | | o  _|  | | |
+| | |_| o  _|  | | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _| _| | |
+| | |_| o  _||_  | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _| _| | |
+| | |_| o  _| _| | |
+`, `
+| |  _     _     | |)
+| | | | o  _||_| | |
+| | |_| o  _|  | | |
+`, `
+| |  _     _  _  | |)
+| | | | o  _||_  | |
+| | |_| o  _| _| | |`];
+			const Watch = [`
+      _________ 
+     /         \\
+     |         |
+     |         |
+     |         |
+    _|_________|_
+  _/_____________\\_
+ / ______________  \\`,`| |______________| |)
+ \\_________________/
+   \\_____________/
+     |         |
+     |    o    |
+     |         |
+     |    A    |
+     |         |
+     \\_________/
+`,`| |______________| |)
+ \\_________________/
+   \\_____________/
+     |         |
+     |    o    |
+     |         |
+     |    B    |
+     |         |
+     \\_________/
+`];
+			</script>
+
+
+
+
+<p>
+<hr>
+
+<div class="watch-and-timeline-container">
+   
+
+		<div class="side-by-side-watch">
+
+
+				<style>
+				#insync-ascii-art-single-watch-count-00-30 {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+				}
+				</style>
+				<div id="insync-ascii-art-single-watch-count-00-30"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-single-watch-count-00-30");
+					// Notes: You need to escape \ with \ eg.\\ = \
+					// Lines and spaces
+					// asciiArtElementTimeLine.textContent = Watch[0];
+					function renderFrame() {
+						let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+						asciiArtElementTimeLine.textContent = combinedContent;
+						currentFrameIndex = (currentFrameIndex + 1) % 30;
+					}
+
+					function renderWatch() {
+						asciiArtElementTimeLine.textContent = Watch[1];
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 1000);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+		</div>
+
+
+<div class="timeline-div">
+
+
+				<style>
+				#ascii-art-timeline {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+					clear: both;
+				}
+				</style>
+				<div id="ascii-art-timeline"></div>
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |*---|----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----*----|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|-*--|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|--*-|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----*----|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|*---|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|--*-|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|---*|----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|*---|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|-*--|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|---*|----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----*----|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|-*--|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|--*-|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----*----|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|*---|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|-*--|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|--*-|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|---*|
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----*
+
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+
+  `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+</div> 
+</div>
+
+
+<p>
+<hr>
+
+
+	<div class="watch-and-timeline-container">
+   
+
+		<div class="side-by-side-watch">
+				<style>
+				#offset-ascii-art-left-watch-count-00-30 {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+				}
+				</style>
+				<div id="offset-ascii-art-left-watch-count-00-30"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-left-watch-count-00-30");
+					// Notes: You need to escape \ with \ eg.\\ = \
+					// Lines and spaces
+					// asciiArtElementTimeLine.textContent = Watch[0];
+					function renderFrame() {
+						let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+						asciiArtElementTimeLine.textContent = combinedContent;
+						currentFrameIndex = (currentFrameIndex + 1) % 30;
+					}
+
+					function renderWatch() {
+						asciiArtElementTimeLine.textContent = Watch[1];
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 1000);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+		</div>
+
+&nbsp
+&nbsp
+
+		<div class="side-by-side-watch">
+				<style>
+				#offset-ascii-art-right-watch-count-05-35 {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+				}
+				</style>
+				<div id="offset-ascii-art-right-watch-count-05-35"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-right-watch-count-05-35");
+					// Notes: You need to escape \ with \ eg.\\ = \
+					// Lines and spaces
+					// asciiArtElementTimeLine.textContent = Watch[0];
+					function renderFrame() {
+						let combinedContent = Watch[0].concat(Digits[currentFrameIndex + 5]).concat(Watch[2]);
+						asciiArtElementTimeLine.textContent = combinedContent;
+						currentFrameIndex = (currentFrameIndex + 1) % 30;
+					}
+
+					function renderWatch() {
+						asciiArtElementTimeLine.textContent = Watch[1];
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 1000);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+
+        </div>
+
+
+		<div class="timeline-div">
+
+				<style>
+				#ascii-art-timeline-B-infront-of-A {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+					clear: both;
+				}
+				</style>
+				<div id="ascii-art-timeline-B-infront-of-A"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					const frames = [`
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         *----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----*----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |*---|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|*---|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |-*--|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .  
+Watch B      |----|-*--|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |---*|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|---*|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----*----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----*----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|*---|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .
+Watch B      |----|----|*---|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|-*--|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|-*--|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|--*-|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              .   
+Watch B      |----|----|--*-|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|---*|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|---*|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----*----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----*----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|*---|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|*---|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|-*--|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|-*--|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|--*-|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|--*-|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|---*|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|---*|----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----*----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----*----|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|*---|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|*---|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|-*--|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|-*--|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|--*-|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|--*-|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|---*|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----*----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----*----|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|*---|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|*---|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|-*--|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|-*--|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|--*-|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|--*-|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|---*|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|---*|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----*----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----*-
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|*---|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|*-
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|-*--|
+                  .              .              .
+                .              .              .
+             .              .              .        
+Watch B      |----|----|----|----|----|----|-*-
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|--*-|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|--*-
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|---*|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|---*
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----*
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|----*
+Time Line    0    5    10   15   20   25   30
+  `, `
+Watch A           0    5    10   15   20   25   30
+Time Line         |----|----|----|----|----|----|
+                  .              .              .
+                .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+ `];
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-infront-of-A");
+
+					function renderFrame() {
+						asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+						currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 500);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+</div><!-- <div class="watch-and-timeline container"> -->
+
+
+</div>
+
+
+
+<p><hr>
+
+	<div class="watch-and-timeline-container">
+
+   
+
+		<div class="side-by-side-watch">
+				<style>
+				#insync-ascii-art-left-watch-count-00-30 {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+				}
+				</style>
+				<div id="insync-ascii-art-left-watch-count-00-30"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-left-watch-count-00-30");
+					// Notes: You need to escape \ with \ eg.\\ = \
+					// Lines and spaces
+					// asciiArtElementTimeLine.textContent = Watch[0];
+					function renderFrame() {
+						let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+						asciiArtElementTimeLine.textContent = combinedContent;
+						currentFrameIndex = (currentFrameIndex + 1) % 30;
+					}
+
+					function renderWatch() {
+						asciiArtElementTimeLine.textContent = Watch[1];
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 1000);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+		</div>
+
+&nbsp
+&nbsp
+
+		<div class="side-by-side-watch">
+				<style>
+				#insync-ascii-art-right-watch-count-00-30 {
+					font-family: monospace;
+					white-space: pre;
+					font-size: 75%;
+				}
+				</style>
+				<div id="insync-ascii-art-right-watch-count-00-30"></div>
+				<script>
+				(function() { //Start of function wrapper to isolate from other ascii art
+					let currentFrameIndex = 0;
+					const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-right-watch-count-00-30");
+					// Notes: You need to escape \ with \ eg.\\ = \
+					// Lines and spaces
+					// asciiArtElementTimeLine.textContent = Watch[0];
+					function renderFrame() {
+						let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[2]);
+						asciiArtElementTimeLine.textContent = combinedContent;
+						currentFrameIndex = (currentFrameIndex + 1) % 30;
+					}
+
+					function renderWatch() {
+						asciiArtElementTimeLine.textContent = Watch[1];
+					}
+					// Initial render
+					renderFrame();
+					// Start animation at 2 frames per second (500ms delay)
+					setInterval(renderFrame, 1000);
+				}()); //End of function wrapper to isolate from other ascii art
+				</script>
+
+        </div>
+
+
+		<div class="timeline-div">
+
+
+<style>
+  #ascii-art-timeline-B-insync-with-A{
+    font-family: monospace;
+    white-space: pre;
+    font-size: 75%;
+  }
+</style>
+
+<div id="ascii-art-timeline-B-insync-with-A"></div>
+
+<script>
+
+ (function () { //Start of function wrapper to isolate from other ascii art
+const frames = [
+ 
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .   
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    *----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      *----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |*---|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .  
+Watch B      |*---|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |-*--|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .     
+Watch B      |-*--|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |---*|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |---*|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----*----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----*----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|*---|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|*---|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|-*--|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .    
+Watch B      |----|-*--|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|--*-|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|--*-|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|---*|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              .                
+Watch B      |----|---*|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----*----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----*----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|*---|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|*---|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|-*--|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|-*--|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|--*-|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|--*-|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|---*|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|---*|----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----*----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----*----|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|*---|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|*---|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|-*--|----|----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|-*--|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|--*-|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|--*-|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|---*|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|---*|----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----*----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----*----|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|*---|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|*---|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|-*--|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|-*--|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|--*-|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|--*-|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|---*|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|---*|----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----*----|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|----|----*----|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|*---|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|*---|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|-*--|
+             .              .              .
+             .              .              .
+             .              .              .
+Watch B      |----|----|----|----|----|-*--|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|--*-|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|--*-|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|---*|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|---*|
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----*
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----*
+Time Line    0    5    10   15   20   25   30
+  `,
+  `
+Watch A      0    5    10   15   20   25   30
+Time Line    |----|----|----|----|----|----|
+             .              .              .
+             .              .              .
+             .              .              . 
+Watch B      |----|----|----|----|----|----|
+Time Line    0    5    10   15   20   25   30
+ `
+];
+
+let currentFrameIndex = 0;
+const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-insync-with-A");
+
+function renderFrame() {
+  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+}
+
+// Initial render
+renderFrame();
+
+// Start animation at 2 frames per second (500ms delay)
+setInterval(renderFrame, 500);
+
+ }()); //End of function wrapper to isolate from other ascii art
+
+
+</script>
+
+</div>
+</div>
+</body>
+
+</html>
