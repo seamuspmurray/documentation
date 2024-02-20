@@ -2551,35 +2551,35 @@ setInterval(renderFrame, 500);
 <p>The NTP polling mechanism uses the UDP packet format descriped below and 4 different TimeStamps to calculate the Round Trip Deley and the Clock OffSet. </p>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
-+--------------------------------------------+
-| LI | VN | Mode | Stratum | Poll |Precision |
-+--------------------------------------------+
-|                 Root Delay                 |
-+--------------------------------------------+
-|              Root Dispersion               |
-+--------------------------------------------+
-|            Reference Identifier            |
-+--------------------------------------------+
-|                                            |
-|            Reference TimeStamp             |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|             Origin TimeStamp               |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|            Recieve TimeStamp               |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|            Transmit TimeStamp              |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|         Optional Fields / Digest           |
-|                                            |
-+--------------------------------------------+
++-------------------------------------------+
+| LI | VN | Mode | Stratum | Poll |Precision|
++-------------------------------------------+
+|                 Root Delay                |
++-------------------------------------------+
+|              Root Dispersion              |
++-------------------------------------------+
+|            Reference Identifier           |
++-------------------------------------------+
+|                                           |
+|            Reference TimeStamp            |
+|                                           |
++-------------------------------------------+
+|                                           |
+|             Origin TimeStamp              |
+|                                           |
++-------------------------------------------+
+|                                           |
+|            Recieve TimeStamp              |
+|                                           |
++-------------------------------------------+
+|                                           |
+|            Transmit TimeStamp             |
+|                                           |
++-------------------------------------------+
+|                                           |
+|         Optional Fields / Digest          |
+|                                           |
++-------------------------------------------+
 </PRE>
 
 <ul>
