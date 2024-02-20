@@ -311,7 +311,7 @@
 <h4 id="index">Index:</h4>
 <ul>
 <li><a href="#Definitions"> Definitions of the terms used in this document</a></li>
-<li><a href="#TimeLines"> TimeLines, OffSets, and Clock Synchronization</a><ul>
+<li><a href="#Timelines"> Timelines, Offsets, and Clock Synchronization</a><ul>
 <li><a href="#Clock_drift"> Clock Drift and Clock Skew</a></li>
 <li><a href="#Sync_Clock_Source"> Synchronizing from a remote Clock Source</a></li>
 </ul>
@@ -382,7 +382,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="TimeLines"></a></h2>
+<h2 id="timelines-offsets-and-clock-synchronization">Timelines, Offsets and Clock Synchronization<a name="Timelines"></a></h2>
 <h3 id="single-source-of-time">Single Source of Time</h3>
 <p>If we have a single watch, can we can be sure of what the time is?</p>
 <!-- Note the 3 divs 2 on top and 1 on bottom Style is shared for all the clock annimations-->
@@ -397,7 +397,7 @@
     border-color: pink;*/
 }
 
-.timeline-div {
+.Timeline-div {
     /* Occupies full width */
     clear: both;
     /* Ensures it appears below the floated divs 
@@ -406,7 +406,7 @@
 
 }
 
-.watch-and-timeline-container {
+.watch-and-Timeline-container {
     text-align: left;
     /*
     border: solid;
@@ -591,7 +591,7 @@ const Watch = [`
 
 </script>
 
-<div class="watch-and-timeline-container">
+<div class="watch-and-Timeline-container">
 
 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<!--Ugly, but it does work-->
@@ -611,17 +611,17 @@ const Watch = [`
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     let currentFrameIndex = 0;
-    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-single-watch-count-00-30");
+    const asciiArtElementTimeline = document.getElementById("insync-ascii-art-single-watch-count-00-30");
     // Notes: You need to escape \ with \ eg.\\ = \
     // Lines and spaces
-    // asciiArtElementTimeLine.textContent = Watch[0];
+    // asciiArtElementTimeline.textContent = Watch[0];
     function renderFrame() {
         let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-        asciiArtElementTimeLine.textContent = combinedContent;
+        asciiArtElementTimeline.textContent = combinedContent;
         currentFrameIndex = (currentFrameIndex + 1) % 30;
     }
     function renderWatch() {
-        asciiArtElementTimeLine.textContent = Watch[1];
+        asciiArtElementTimeline.textContent = Watch[1];
     }
     // Initial render
     renderFrame();
@@ -633,11 +633,11 @@ const Watch = [`
 </div>
 
 
-<div class="timeline-div">
+<div class="Timeline-div">
 
 
                 <style>
-                #ascii-art-timeline {
+                #ascii-art-Timeline {
                     font-family: monospace;
                     white-space: pre;
                     font-size: 75%;
@@ -645,7 +645,7 @@ const Watch = [`
                 }
                 </style>
 
-<div id="ascii-art-timeline"></div>
+<div id="ascii-art-Timeline"></div>
 
 <script>
 
@@ -820,10 +820,10 @@ Time Line    |----|----|----|----|----|----|
 ];
 
 let currentFrameIndex = 0;
-const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline");
+const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline");
 
 function renderFrame() {
-  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  asciiArtElementTimeline.textContent = frames[currentFrameIndex];
   currentFrameIndex = (currentFrameIndex + 1) % frames.length;
 }
 
@@ -860,7 +860,7 @@ setInterval(renderFrame, 500);
 <h3 id="multiple-sources-of-time">Multiple Sources of Time</h3>
 <p>If we got a 2nd watch (B) in addition to our 1st watch (A), could we be more sure of what the time is?</p>
 <p>Is having two watches better than having just one?</p>
-<div class="watch-and-timeline-container">
+<div class="watch-and-Timeline-container">
 
 
 <div class="side-by-side-watch">
@@ -878,17 +878,17 @@ setInterval(renderFrame, 500);
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     let currentFrameIndex = 0;
-    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-left-watch-count-00-30");
+    const asciiArtElementTimeline = document.getElementById("insync-ascii-art-left-watch-count-00-30");
     // Notes: You need to escape \ with \ eg.\\ = \
     // Lines and spaces
-    // asciiArtElementTimeLine.textContent = Watch[0];
+    // asciiArtElementTimeline.textContent = Watch[0];
     function renderFrame() {
         let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-        asciiArtElementTimeLine.textContent = combinedContent;
+        asciiArtElementTimeline.textContent = combinedContent;
         currentFrameIndex = (currentFrameIndex + 1) % 30;
     }
     function renderWatch() {
-        asciiArtElementTimeLine.textContent = Watch[1];
+        asciiArtElementTimeline.textContent = Watch[1];
     }
     // Initial render
     renderFrame();
@@ -916,17 +916,17 @@ setInterval(renderFrame, 500);
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     let currentFrameIndex = 0;
-    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-right-watch-count-00-30");
+    const asciiArtElementTimeline = document.getElementById("insync-ascii-art-right-watch-count-00-30");
     // Notes: You need to escape \ with \ eg.\\ = \
     // Lines and spaces
-    // asciiArtElementTimeLine.textContent = Watch[0];
+    // asciiArtElementTimeline.textContent = Watch[0];
     function renderFrame() {
         let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[2]);
-        asciiArtElementTimeLine.textContent = combinedContent;
+        asciiArtElementTimeline.textContent = combinedContent;
         currentFrameIndex = (currentFrameIndex + 1) % 30;
     }
     function renderWatch() {
-        asciiArtElementTimeLine.textContent = Watch[1];
+        asciiArtElementTimeline.textContent = Watch[1];
     }
     // Initial render
     renderFrame();
@@ -938,18 +938,18 @@ setInterval(renderFrame, 500);
 </div>
 
 
-<div class="timeline-div">
+<div class="Timeline-div">
 
 
 <style>
-  #ascii-art-timeline-B-insync-with-A{
+  #ascii-art-Timeline-B-insync-with-A{
     font-family: monospace;
     white-space: pre;
     font-size: 75%;
   }
 </style>
 
-<div id="ascii-art-timeline-B-insync-with-A"></div>
+<div id="ascii-art-Timeline-B-insync-with-A"></div>
 
 <script>
 
@@ -1256,10 +1256,10 @@ Time Line    0    5    10   15   20   25   30
 ];
 
 let currentFrameIndex = 0;
-const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-insync-with-A");
+const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline-B-insync-with-A");
 
 function renderFrame() {
-  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  asciiArtElementTimeline.textContent = frames[currentFrameIndex];
   currentFrameIndex = (currentFrameIndex + 1) % frames.length;
 }
 
@@ -1284,7 +1284,7 @@ setInterval(renderFrame, 500);
 <p>If the 2nd watch (B) shows the same time as our 1st watch (A), then we might assume that both are correct. </p>
 <hr style="width:50%">
 
-<h3 id="clock-skew-offset">Clock Skew / OffSet</h3>
+<h3 id="clock-skew-offset">Clock Skew / Offset</h3>
 <p>If we got a 2nd watch (B) in addition to our 1st watch (A), it might display a different time.</p>
 <p>The time displayed on the 2nd watch (B) might be ahead of the 1st watch (A), or it might be behind.</p>
 <blockquote>
@@ -1292,35 +1292,35 @@ setInterval(renderFrame, 500);
                                                                            Segal's Law </p>
 </blockquote>
 <p>In the example below the time on Watch (B) is 5 minutes ahead of Watch (A)...</p>
-<div class="watch-and-timeline-container">
+<div class="watch-and-Timeline-container">
 
 
 <div class="side-by-side-watch">
 
             <style>
-                #offset-ascii-art-left-watch-count-00-30 {
+                #Offset-ascii-art-left-watch-count-00-30 {
                     font-family: monospace;
                     white-space: pre;
                     font-size: 70%;
                 }
                 </style>
 
-<div id="offset-ascii-art-left-watch-count-00-30"></div>
+<div id="Offset-ascii-art-left-watch-count-00-30"></div>
 
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     let currentFrameIndex = 0;
-    const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-left-watch-count-00-30");
+    const asciiArtElementTimeline = document.getElementById("Offset-ascii-art-left-watch-count-00-30");
     // Notes: You need to escape \ with \ eg.\\ = \
     // Lines and spaces
-    // asciiArtElementTimeLine.textContent = Watch[0];
+    // asciiArtElementTimeline.textContent = Watch[0];
     function renderFrame() {
         let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-        asciiArtElementTimeLine.textContent = combinedContent;
+        asciiArtElementTimeline.textContent = combinedContent;
         currentFrameIndex = (currentFrameIndex + 1) % 30;
     }
     function renderWatch() {
-        asciiArtElementTimeLine.textContent = Watch[1];
+        asciiArtElementTimeline.textContent = Watch[1];
     }
     // Initial render
     renderFrame();
@@ -1336,30 +1336,30 @@ setInterval(renderFrame, 500);
 <div class="side-by-side-watch">
 
                 <style>
-                #offset-ascii-art-right-watch-count-05-35 {
+                #Offset-ascii-art-right-watch-count-05-35 {
                     font-family: monospace;
                     white-space: pre;
                     font-size: 70%;
                 }
                 </style>
 
-<div id="offset-ascii-art-right-watch-count-05-35"></div>
+<div id="Offset-ascii-art-right-watch-count-05-35"></div>
 
             <script>
                 (function() { //Start of function wrapper to isolate from other ascii art
                     let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-right-watch-count-05-35");
+                    const asciiArtElementTimeline = document.getElementById("Offset-ascii-art-right-watch-count-05-35");
                     // Notes: You need to escape \ with \ eg.\\ = \
                     // Lines and spaces
-                    // asciiArtElementTimeLine.textContent = Watch[0];
+                    // asciiArtElementTimeline.textContent = Watch[0];
                     function renderFrame() {
                         let combinedContent = Watch[0].concat(Digits[currentFrameIndex + 5]).concat(Watch[2]);
-                        asciiArtElementTimeLine.textContent = combinedContent;
+                        asciiArtElementTimeline.textContent = combinedContent;
                         currentFrameIndex = (currentFrameIndex + 1) % 30;
                     }
 
                     function renderWatch() {
-                        asciiArtElementTimeLine.textContent = Watch[1];
+                        asciiArtElementTimeline.textContent = Watch[1];
                     }
                     // Initial render
                     renderFrame();
@@ -1371,10 +1371,10 @@ setInterval(renderFrame, 500);
 </div>
 
 
-<div class="timeline-div">
+<div class="Timeline-div">
 
                 <style>
-                #ascii-art-timeline-B-infront-of-A {
+                #ascii-art-Timeline-B-infront-of-A {
                     font-family: monospace;
                     white-space: pre;
                     font-size: 75%;
@@ -1382,7 +1382,7 @@ setInterval(renderFrame, 500);
                 }
                 </style>
 
-<div id="ascii-art-timeline-B-infront-of-A"></div>
+<div id="ascii-art-Timeline-B-infront-of-A"></div>
 
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
@@ -1652,9 +1652,9 @@ Watch B      |----|----|----|----|----|----|----|
 Time Line    0    5    10   15   20   25   30
  `];
     let currentFrameIndex = 0;
-    const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-infront-of-A");
+    const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline-B-infront-of-A");
     function renderFrame() {
-        asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+        asciiArtElementTimeline.textContent = frames[currentFrameIndex];
         currentFrameIndex = (currentFrameIndex + 1) % frames.length;
     }
     // Initial render
@@ -1680,14 +1680,14 @@ Time Line    0    5    10   15   20   25   30
 <p>If we set the watches to display the same time, they may drift apart as time passes.</p>
 <h5 id="watch-b-is-running-faster-than-watch-a">Watch (B) is Running FASTER than Watch (A)</h5>
 <style>
-  #ascii-art-timeline-B-faster-than-A {
+  #ascii-art-Timeline-B-faster-than-A {
     font-family: monospace;
     white-space: pre;
     font-size: 75%;
   }
 </style>
 
-<div id="ascii-art-timeline-B-faster-than-A"></div>
+<div id="ascii-art-Timeline-B-faster-than-A"></div>
 
 <script>
 
@@ -1931,10 +1931,10 @@ Time Line    0   5   10  15  20  25  30
 ];
 
 let currentFrameIndex = 0;
-const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-faster-than-A");
+const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline-B-faster-than-A");
 
 function renderFrame() {
-  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  asciiArtElementTimeline.textContent = frames[currentFrameIndex];
   currentFrameIndex = (currentFrameIndex + 1) % frames.length;
 }
 
@@ -1952,14 +1952,14 @@ setInterval(renderFrame, 500);
 <p><br><br></p>
 <h5 id="watch-b-is-running-slower-than-watch-a">Watch (B) is Running SLOWER than Watch (A)</h5>
 <style>
-  #ascii-art-timeline-B-Slower-than-A {
+  #ascii-art-Timeline-B-Slower-than-A {
     font-family: monospace;
     white-space: pre;
     font-size: 75%;
   }
 </style>
 
-<div id="ascii-art-timeline-B-Slower-than-A"></div>
+<div id="ascii-art-Timeline-B-Slower-than-A"></div>
 
 <script>
 
@@ -2266,10 +2266,10 @@ Time Line    0      5      10     15     20     25
 ];
 
 let currentFrameIndex = 0;
-const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-Slower-than-A");
+const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline-B-Slower-than-A");
 
 function renderFrame() {
-  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  asciiArtElementTimeline.textContent = frames[currentFrameIndex];
   currentFrameIndex = (currentFrameIndex + 1) % frames.length;
 }
 
@@ -2304,10 +2304,10 @@ setInterval(renderFrame, 500);
 <li>Watch (B) started running FASTER than Watch (A) </li>
 <li>Watch (B) is once again in sync with Watch (A)</li>
 </ol>
-<div id="ascii-art-timeline-B-unstable"></div>
+<div id="ascii-art-Timeline-B-unstable"></div>
 
 <style>
-  #ascii-art-timeline-B-unstable {
+  #ascii-art-Timeline-B-unstable {
     font-family: monospace;
     white-space: pre;
     font-size: 75%;
@@ -2485,10 +2485,10 @@ Time Line    0       5     10   15   20 25 30
 ];
 
 let currentFrameIndex = 0;
-const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-unstable");
+const asciiArtElementTimeline = document.getElementById("ascii-art-Timeline-B-unstable");
 
 function renderFrame() {
-  asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+  asciiArtElementTimeline.textContent = frames[currentFrameIndex];
   currentFrameIndex = (currentFrameIndex + 1) % frames.length;
 }
 
@@ -2530,7 +2530,7 @@ setInterval(renderFrame, 500);
 <p>The NTP devices with a stratum level of 1 provide the most accurate reference time.  </p>
 <p>The Time is propagated through various layers of NTP devices to end devices such as Desktop Computers, Laptops, home routers, etc...</p>
 <h3 id="ntp-client-to-ntp-server-polling-mechanism">NTP Client to NTP Server Polling Mechanism<a name="NTP_Polling"></a></h3>
-<p>The NTP polling mechanism uses the UDP packet format descriped below and 4 different TimeStamps to calculate the Round Trip Deley and the Clock OffSet. </p>
+<p>The NTP polling mechanism uses the UDP packet format descriped below and 4 different TimeStamps to calculate the Round Trip Deley and the Clock Offset. </p>
 <h4 id="ntp-packet-format">NTP Packet Format</h4>
 <PRE style="font-size: 75%">
 +-------------------------------------------+
@@ -2940,7 +2940,7 @@ const frames = [
 |   |   |                   | |    |   |
 |   +---| Client Calculates | +--|-+   |
 |       | Round Trip Delay  |    |     |
-|       | and Clock OffSet  |    V     |
+|       | and Clock Offset  |    V     |
 |   +---|                   | +----+   |
 |   | T1|___________________| | T1 |   |
 |   | T2 |   |            |   | T2 |   |
@@ -2961,7 +2961,7 @@ const frames = [
 |   |   |                   | |    |   |
 |   +---| Client Calculates | +--|-+   |
 |       | Round Trip Delay  |    |     |
-|       | and Clock OffSet  |    V     |
+|       | and Clock Offset  |    V     |
 |   +---|                   | +----+   |
 |   | T1|___________________| | T1 |   |
 |   | T2 |   |            |   | T2 |   |
@@ -2990,16 +2990,16 @@ renderFrame();
 setInterval(renderFrame, 1000);
 </script>
 
-<h4 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and OffSet</h4>
+<h4 id="formulas-for-calculating-the-rtd-and-offset">Formulas for calculating the RTD and Offset</h4>
 <PRE style="font-size:75%">
 
     Round Trip Delay = (T4 - T1) - (T3 - T2)
 
-    Clock OffSet = [(T2 - T1) + (T3 - T4)] / 2
+    Clock Offset = [(T2 - T1) + (T3 - T4)] / 2
 
 </PRE>
 
-<h4 id="3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and OffSet.</h4>
+<h4 id="3-example-calculations-for-rtd-and-offset">3 example calculations for RTD and Offset.</h4>
 <PRE style="font-size:75%">
 -----------------------------------------
 
@@ -3015,7 +3015,7 @@ TimeStamps  T1=0, T2=2, T3=12, and T4=14
                         4
                      ~~~~~~~      
 
- OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+ Offset =  [( T2 + T1 ) + ( T3 + T4 )] /2
            [(  2 + 0  ) | ( 12 | 14 )] /2
            [(    2    ) + (    +2   )] /2
            [            0            ] /2
@@ -3036,7 +3036,7 @@ TimeStamps  T1=0, T2=4, T3=6, and T4=10
                         8
                      ~~~~~~~
 
- OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+ Offset =  [( T2 + T1 ) + ( T3 + T4 )] /2
            [(  4 + 0  ) | (  6 | 10 )] /2
            [(    4    ) + (    +4   )] /2
            [            0            ] /2
@@ -3057,7 +3057,7 @@ TimeStamps  T1=10, T2=2, T3=12, and T4=24
                         4
                      ~~~~~~~
 
- OffSet =  [( T2 + T1 ) + ( T3 + T4 )] /2
+ Offset =  [( T2 + T1 ) + ( T3 + T4 )] /2
            [(  2 | 10 ) | ( 12 | 24 )] /2
            [(    +8   ) | (    +12  )] /2
            [            20          ] /2
