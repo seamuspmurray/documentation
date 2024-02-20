@@ -303,7 +303,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#cpu-bugs-and-clock-sources">CPU Bugs and Clock Sources</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-c-programs-to-poll-the-tsc-hpetand-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET,and ACPI_PM clock sources</a>
+    <li class="toctree-l2"><a class="reference internal" href="#example-c-programs-to-poll-the-tsc-hpet-and-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET, and ACPI_PM clock sources</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#example-c-program-to-read-the-tsc">Example C Program to read the TSC</a>
     </li>
@@ -359,7 +359,7 @@
 <li><a href="#Fixed_Frequency"> Maintaining System Time on a single core fixed frequency x86 system</a></li>
 <li><a href="#CPU_Advancements"> Modern x86 CPU's and problems with MonoTonic Clock Sources</a></li>
 <li><a href="#CPU_Bug"> CPU and Clock Source Bugs</a></li>
-<li><a href="#C_Programs"> Example C programs to poll the TSC, HPET,and ACPI_PM clock sources</a></li>
+<li><a href="#C_Programs"> Example C programs to poll the TSC, HPET, and ACPI_PM clock sources</a></li>
 <li><a href="#Sources"> Sources for this document</a></li>
 </ul>
 <h3 id="definitions-of-the-terms-used-in-this-document">Definitions of the terms used in this document: <a name="Definitions"></a></h3>
@@ -654,7 +654,7 @@ If this occurs, the Linux Operating system should then failover and utilise one 
 Unfortunately, certain kernel builds in certain Linux distributions do not successfully fail over to alternate clock sources.</p>
 <p>For example, kernel-2.6.32-504.30.3.el6.x86_64, continues to use the unstable TSC as a clock source
 This can result in timewarping of the System Time so severe that it may drift too much to be corrected by NTP.</p>
-<h3 id="example-c-programs-to-poll-the-tsc-hpetand-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET,and ACPI_PM clock sources<a name="C_Programs"></a></h3>
+<h3 id="example-c-programs-to-poll-the-tsc-hpet-and-acpi_pm-clock-sources">Example C programs to poll the TSC, HPET, and ACPI_PM clock sources<a name="C_Programs"></a></h3>
 <h4 id="example-c-program-to-read-the-tsc">Example C Program to read the TSC</h4>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
@@ -793,32 +793,33 @@ int main() {
 <ul>
 <li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf">Intel 64-ia-32-architectures-software-developer-vol-2a-manual.pdf</a></li>
 <li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-manual-325462.pdf">Intel 64-ia-32-architectures-software-developer-manual-325462.pdf</a></li>
-<li><a href="http://www.intel.com.au/content/www/au/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html">Intel 64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html</a></li>
+<li><a href="http://www.intel.com.au/content/www/au/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3b-part-2-manual.html">Intel 64-ia-32-architectures-software-developer-vol-3b-part-2-manual</a></li>
 <li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/timestamp-counter-scaling-virtualization-white-paper.pdf">Intel timestamp-counter-scaling-virtualization-white-paper.pdf</a></li>
 <li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/xeon-e5-v2-spec-update.pdf">Intel xeon-e5-v2-spec-update.pdf</a></li>
 </ul>
 <p>Linux Kernel and Linux Distribution documentation</p>
 <ul>
-<li><a href="https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt">https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt</a></li>
-<li><a href="h.ttps://access.redhat.com/solutions/18627">https://access.redhat.com/solutions/18627</a></li>
+<li><a href="https://www.kernel.org/doc/Documentation/virtual/kvm/timekeeping.txt">Linux kernel Documentation kvm timekeeping</a></li>
+<li><a href="h.ttps://access.redhat.com/solutions/18627">access.redhat.com/solutions/18627</a></li>
 <li><a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1006427">kb.vmware.com</a></li>
 <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Virtualization/chap-Virtualization-KVM_guest_timing_management.html">RedHat - Virtualization-KVM_guest_timing_management</a></li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=698842">https://bugzilla.redhat.com/show_bug.cgi?id=698842</a></li>
-<li><a href="http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html">http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html</a></li>
-<li><a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">http://www.cs.virginia.edu/~evans/cs216/guides/x86.html</a></li>
-<li><a href="http://man7.org/linux/man-pages/man2/prctl.2.html">http://man7.org/linux/man-pages/man2/prctl.2.html</a></li>
-<li><a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization">https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling">https://wiki.archlinux.org/index.php/CPU_frequency_scaling</a></li>
-<li><a href="http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/">http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/</a></li>
-<li><a href="https://lkml.org/lkml/2005/11/4/173">https://lkml.org/lkml/2005/11/4/173</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=698842">bugzilla.redhat.com/show_bug.cgi?id=698842</a></li>
+<li><a href="http://blog.cr0.org/2009/05/time-stamp-counter-disabling-oddities.html">blog.cr0.org time-stamp-counter-disabling-oddities.html</a></li>
+<li><a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">www.cs.virginia.edu/~evans/cs216/guides/x86.html</a></li>
+<li><a href="http://man7.org/linux/man-pages/man2/prctl.2.html">man7.org/linux/man-pages/man2/prctl.2.html</a></li>
+<li><a href="https://www.chromium.org/chromium-os/how-tos-and-troubleshooting/tsc-resynchronization">chromium-os/how-tos-and-troubleshooting/tsc-resynchronization</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/CPU_frequency_scaling">wiki.archlinux.org CPU_frequency_scaling</a></li>
+<li><a href="http://btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/">btorpey.github.io/blog/2014/02/18/clock-sources-in-linux/</a></li>
+<li><a href="https://lkml.org/lkml/2005/11/4/173">lkml.org/lkml/2005/11/4/173</a></li>
 <li>[Manual page clock_gettime]</li>
 </ul>
 <p>NTP (Official Documentation)</p>
 <ul>
-<li><a href="https://www.eecis.udel.edu/~mills/ntp/html/index.html">https://www.eecis.udel.edu/~mills/ntp/html/index.html</a></li>
-<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/</a></li>
-<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/">https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/</a></li>
-<li><a href="http://what-if.xkcd.com/26/">http://what-if.xkcd.com/26/ Leap second (XKCD always counts as official)</a></li>
+<li><a href="https://www.ntp.org/documentation/">www.ntp.org/documentation/</a></li>
+<li><a href="https://www.eecis.udel.edu/~mills/ntp/html/index.html">www.eecis.udel.edu/~mills/ntp/html/index.html</a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/0849358051/">Computer-Network-Time-Synchronization-Protocol By David L Mills </a></li>
+<li><a href="https://www.amazon.com/Computer-Network-Time-Synchronization-Protocol/dp/1439814635/">Computer-Network-Time-Synchronization-Protocol 2nd By David L Mills</a></li>
+<li><a href="http://what-if.xkcd.com/26/">Leap second (XKCD always counts as official ;)</a></li>
 </ul>
 <p>Wikipedia links</p>
 <ul>
@@ -830,11 +831,6 @@ int main() {
 <li><a href="https://en.wikipedia.org/wiki/Time_Stamp_Counter">Time_Stamp_Counter</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux_kernel</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Allan_variance">Allan_variance</a></li>
-</ul>
-<p>ASCII Art</p>
-<ul>
-<li><a href="http://www.ascii-code.com/ascii-art/electronics/clocks.php">http://www.ascii-code.com/ascii-art/electronics/clocks.php</a>
-  <a href="https://www.asciiart.eu/electronics/phones">https://www.asciiart.eu/electronics/phones</a></li>
 </ul>
 <p>Extra Info</p>
 <ul>
