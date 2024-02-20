@@ -385,37 +385,6 @@
 <h2 id="timelines-offsets-and-clock-synchronization">TimeLines, OffSets and Clock Synchronization<a name="TimeLines"></a></h2>
 <h3 id="single-source-of-time">Single Source of Time</h3>
 <p>If we have a single watch, can we can be sure of what the time is?</p>
-<!--
-<PRE style="font-size: 75%">
-                   __________ 
-                  /          \
-                  |          |
-                  |          |
-                  |          |
-                 _|__________|
-               _/_____________\_
-              / ______________  \
-             | |  _     _  _  | |)
-             | | | | o  _|| | | |
-             | | |_| o |_ |_| | |
-             | |______________| |)
-              \_________________/
-                \______________/
-                  |          |
-                  |          |
-                  |          |
-                  |     0    |
-                  |          |
-                  \__________/
-
-
-  Watch    |----|----|----|----*----|----|
-Time Line  0    5    10   15   20   25   30
-
-</PRE>
-
--->
-
 <!-- Note the 3 divs 2 on top and 1 on bottom Style is shared for all the clock annimations-->
 
 <style> 
@@ -446,7 +415,7 @@ Time Line  0    5    10   15   20   25   30
 }
 </style>
 
-<!-- Note the constants in Script is shared for all the watch annimations-->
+<!-- Note the constants in Script is shared for all the watch animations-->
 <script>
 const Digits = [`
 | |  _     _  _  | |)
@@ -628,37 +597,39 @@ const Watch = [`
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<!--Ugly, but it does work-->
 
 <div class="side-by-side-watch">
-                <style>
-                #insync-ascii-art-single-watch-count-00-30 {
-                    font-family: monospace;
-                    white-space: pre;
-                    font-size: 70%;
-                }
-                </style>
+
+<style>
+#insync-ascii-art-single-watch-count-00-30 {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 70%;
+}
+</style>
+
 <div id="insync-ascii-art-single-watch-count-00-30"></div>
 
-                <script>
-                (function() { //Start of function wrapper to isolate from other ascii art
-                    let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-single-watch-count-00-30");
-                    // Notes: You need to escape \ with \ eg.\\ = \
-                    // Lines and spaces
-                    // asciiArtElementTimeLine.textContent = Watch[0];
-                    function renderFrame() {
-                        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-                        asciiArtElementTimeLine.textContent = combinedContent;
-                        currentFrameIndex = (currentFrameIndex + 1) % 30;
-                    }
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+    let currentFrameIndex = 0;
+    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-single-watch-count-00-30");
+    // Notes: You need to escape \ with \ eg.\\ = \
+    // Lines and spaces
+    // asciiArtElementTimeLine.textContent = Watch[0];
+    function renderFrame() {
+        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+        asciiArtElementTimeLine.textContent = combinedContent;
+        currentFrameIndex = (currentFrameIndex + 1) % 30;
+    }
+    function renderWatch() {
+        asciiArtElementTimeLine.textContent = Watch[1];
+    }
+    // Initial render
+    renderFrame();
+    // Start animation at 2 frames per second (500ms delay)
+    setInterval(renderFrame, 1000);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
 
-                    function renderWatch() {
-                        asciiArtElementTimeLine.textContent = Watch[1];
-                    }
-                    // Initial render
-                    renderFrame();
-                    // Start animation at 2 frames per second (500ms delay)
-                    setInterval(renderFrame, 1000);
-                }()); //End of function wrapper to isolate from other ascii art
-                </script>
 </div>
 
 
@@ -673,6 +644,7 @@ const Watch = [`
                     clear: both;
                 }
                 </style>
+
 <div id="ascii-art-timeline"></div>
 
 <script>
@@ -870,7 +842,6 @@ setInterval(renderFrame, 500);
 
 </div>
 
-<h1 id="test-heading">test heading</h1>
 <p>There are number of problems with using a single watch to determine the time, such as...</p>
 <ol>
 <li>How can we can confirm that the watch is displaying the correct time. It could be...<ul>
@@ -892,77 +863,77 @@ setInterval(renderFrame, 500);
 <div class="watch-and-timeline-container">
 
 
-
 <div class="side-by-side-watch">
 
-                <style>
-                #insync-ascii-art-left-watch-count-00-30 {
-                    font-family: monospace;
-                    white-space: pre;
-                    font-size: 70%;
-                }
-                </style>
+<style>
+#insync-ascii-art-left-watch-count-00-30 {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 70%;
+}
+</style>
 
 <div id="insync-ascii-art-left-watch-count-00-30"></div>
 
-                <script>
-                (function() { //Start of function wrapper to isolate from other ascii art
-                    let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-left-watch-count-00-30");
-                    // Notes: You need to escape \ with \ eg.\\ = \
-                    // Lines and spaces
-                    // asciiArtElementTimeLine.textContent = Watch[0];
-                    function renderFrame() {
-                        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-                        asciiArtElementTimeLine.textContent = combinedContent;
-                        currentFrameIndex = (currentFrameIndex + 1) % 30;
-                    }
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+    let currentFrameIndex = 0;
+    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-left-watch-count-00-30");
+    // Notes: You need to escape \ with \ eg.\\ = \
+    // Lines and spaces
+    // asciiArtElementTimeLine.textContent = Watch[0];
+    function renderFrame() {
+        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+        asciiArtElementTimeLine.textContent = combinedContent;
+        currentFrameIndex = (currentFrameIndex + 1) % 30;
+    }
+    function renderWatch() {
+        asciiArtElementTimeLine.textContent = Watch[1];
+    }
+    // Initial render
+    renderFrame();
+    // Start animation at 2 frames per second (500ms delay)
+    setInterval(renderFrame, 1000);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
 
-                    function renderWatch() {
-                        asciiArtElementTimeLine.textContent = Watch[1];
-                    }
-                    // Initial render
-                    renderFrame();
-                    // Start animation at 2 frames per second (500ms delay)
-                    setInterval(renderFrame, 1000);
-                }()); //End of function wrapper to isolate from other ascii art
-                </script>
 </div>
 
 &nbsp
 
 <div class="side-by-side-watch">
-                <style>
-                #insync-ascii-art-right-watch-count-00-30 {
-                    font-family: monospace;
-                    white-space: pre;
-                    font-size: 70%;
-                }
-                </style>
+
+<style>
+#insync-ascii-art-right-watch-count-00-30 {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 70%;
+}
+</style>
+
 <div id="insync-ascii-art-right-watch-count-00-30"></div>
 
-                <script>
-                (function() { //Start of function wrapper to isolate from other ascii art
-                    let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-right-watch-count-00-30");
-                    // Notes: You need to escape \ with \ eg.\\ = \
-                    // Lines and spaces
-                    // asciiArtElementTimeLine.textContent = Watch[0];
-                    function renderFrame() {
-                        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[2]);
-                        asciiArtElementTimeLine.textContent = combinedContent;
-                        currentFrameIndex = (currentFrameIndex + 1) % 30;
-                    }
-
-                    function renderWatch() {
-                        asciiArtElementTimeLine.textContent = Watch[1];
-                    }
-                    // Initial render
-                    renderFrame();
-                    // Start animation at 2 frames per second (500ms delay)
-                    setInterval(renderFrame, 1000);
-                }()); //End of function wrapper to isolate from other ascii art
-                </script>
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+    let currentFrameIndex = 0;
+    const asciiArtElementTimeLine = document.getElementById("insync-ascii-art-right-watch-count-00-30");
+    // Notes: You need to escape \ with \ eg.\\ = \
+    // Lines and spaces
+    // asciiArtElementTimeLine.textContent = Watch[0];
+    function renderFrame() {
+        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[2]);
+        asciiArtElementTimeLine.textContent = combinedContent;
+        currentFrameIndex = (currentFrameIndex + 1) % 30;
+    }
+    function renderWatch() {
+        asciiArtElementTimeLine.textContent = Watch[1];
+    }
+    // Initial render
+    renderFrame();
+    // Start animation at 2 frames per second (500ms delay)
+    setInterval(renderFrame, 1000);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
 
 </div>
 
@@ -1304,8 +1275,12 @@ setInterval(renderFrame, 500);
 </script>
 
 </div>
+
 </div>
 
+<ul>
+<li>list 3</li>
+</ul>
 <p>If the 2nd watch (B) shows the same time as our 1st watch (A), then we might assume that both are correct. </p>
 <hr style="width:50%">
 
@@ -1320,42 +1295,46 @@ setInterval(renderFrame, 500);
 <div class="watch-and-timeline-container">
 
 
-        <div class="side-by-side-watch">
-                <style>
+<div class="side-by-side-watch">
+
+            <style>
                 #offset-ascii-art-left-watch-count-00-30 {
                     font-family: monospace;
                     white-space: pre;
                     font-size: 70%;
                 }
                 </style>
-                <div id="offset-ascii-art-left-watch-count-00-30"></div>
-                <script>
-                (function() { //Start of function wrapper to isolate from other ascii art
-                    let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-left-watch-count-00-30");
-                    // Notes: You need to escape \ with \ eg.\\ = \
-                    // Lines and spaces
-                    // asciiArtElementTimeLine.textContent = Watch[0];
-                    function renderFrame() {
-                        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
-                        asciiArtElementTimeLine.textContent = combinedContent;
-                        currentFrameIndex = (currentFrameIndex + 1) % 30;
-                    }
 
-                    function renderWatch() {
-                        asciiArtElementTimeLine.textContent = Watch[1];
-                    }
-                    // Initial render
-                    renderFrame();
-                    // Start animation at 2 frames per second (500ms delay)
-                    setInterval(renderFrame, 1000);
-                }()); //End of function wrapper to isolate from other ascii art
-                </script>
-        </div>
+<div id="offset-ascii-art-left-watch-count-00-30"></div>
+
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+    let currentFrameIndex = 0;
+    const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-left-watch-count-00-30");
+    // Notes: You need to escape \ with \ eg.\\ = \
+    // Lines and spaces
+    // asciiArtElementTimeLine.textContent = Watch[0];
+    function renderFrame() {
+        let combinedContent = Watch[0].concat(Digits[currentFrameIndex]).concat(Watch[1]);
+        asciiArtElementTimeLine.textContent = combinedContent;
+        currentFrameIndex = (currentFrameIndex + 1) % 30;
+    }
+    function renderWatch() {
+        asciiArtElementTimeLine.textContent = Watch[1];
+    }
+    // Initial render
+    renderFrame();
+    // Start animation at 2 frames per second (500ms delay)
+    setInterval(renderFrame, 1000);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
+
+</div>
 
 &nbsp
 
-        <div class="side-by-side-watch">
+<div class="side-by-side-watch">
+
                 <style>
                 #offset-ascii-art-right-watch-count-05-35 {
                     font-family: monospace;
@@ -1363,8 +1342,10 @@ setInterval(renderFrame, 500);
                     font-size: 70%;
                 }
                 </style>
-                <div id="offset-ascii-art-right-watch-count-05-35"></div>
-                <script>
+
+<div id="offset-ascii-art-right-watch-count-05-35"></div>
+
+            <script>
                 (function() { //Start of function wrapper to isolate from other ascii art
                     let currentFrameIndex = 0;
                     const asciiArtElementTimeLine = document.getElementById("offset-ascii-art-right-watch-count-05-35");
@@ -1387,7 +1368,7 @@ setInterval(renderFrame, 500);
                 }()); //End of function wrapper to isolate from other ascii art
                 </script>
 
-        </div>
+</div>
 
 
 <div class="timeline-div">
@@ -1400,10 +1381,12 @@ setInterval(renderFrame, 500);
                     clear: both;
                 }
                 </style>
-                <div id="ascii-art-timeline-B-infront-of-A"></div>
-                <script>
-                (function() { //Start of function wrapper to isolate from other ascii art
-                    const frames = [`
+
+<div id="ascii-art-timeline-B-infront-of-A"></div>
+
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+    const frames = [`
 Watch A           0    5    10   15   20   25   30
 Time Line         |----|----|----|----|----|----|
                   .              .              .
@@ -1668,25 +1651,24 @@ Time Line         |----|----|----|----|----|----|
 Watch B      |----|----|----|----|----|----|----|
 Time Line    0    5    10   15   20   25   30
  `];
-                    let currentFrameIndex = 0;
-                    const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-infront-of-A");
-
-                    function renderFrame() {
-                        asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
-                        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
-                    }
-                    // Initial render
-                    renderFrame();
-                    // Start animation at 2 frames per second (500ms delay)
-                    setInterval(renderFrame, 500);
-                }()); //End of function wrapper to isolate from other ascii art
-                </script>
-</div><!-- <div class="watch-and-timeline container"> -->
+    let currentFrameIndex = 0;
+    const asciiArtElementTimeLine = document.getElementById("ascii-art-timeline-B-infront-of-A");
+    function renderFrame() {
+        asciiArtElementTimeLine.textContent = frames[currentFrameIndex];
+        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+    }
+    // Initial render
+    renderFrame();
+    // Start animation at 2 frames per second (500ms delay)
+    setInterval(renderFrame, 500);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
 
 
 </div>
 
 </div>
+
 <p>How should we set the correct time on the 2 watches?</p>
 <p>Should we set watch (A) to the time displayed on watch (B)?</p>
 <p>Should we set watch (B) to the time displayed on watch (A)?</p>
@@ -2582,10 +2564,11 @@ setInterval(renderFrame, 500);
 +-------------------------------------------+
 </PRE>
 
+<h4 id="ntp-packet-fields">NTP Packet Fields</h4>
 <ul>
-<li>LI (Leap Indicator) 2-bits</li>
-<li>VN (NTP Version Number) 3-bits</li>
-<li>Mode (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:<ul>
+<li><strong>LI</strong> (Leap Indicator) 2-bits</li>
+<li><strong>VN</strong> (NTP Version Number) 3-bits</li>
+<li><strong>Mode</strong> (Work Mode) 3-bits code that indicates the work mode, can be set to either of these values:<ul>
 <li>0 - reserved</li>
 <li>1 - symmetric active</li>
 <li>2 - symmetric passive</li>
@@ -2596,17 +2579,20 @@ setInterval(renderFrame, 500);
 <li>7 - reserved for private use.</li>
 </ul>
 </li>
-<li>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. (Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</li>
-<li>Poll ( Poll Interval ) - 8-bits maximum interval between successive messages.</li>
-<li>Precision (precision of the local clock) - 8-bit signed integer.</li>
-<li>Root Delay - Roundtrip delay to the primary reference source.</li>
-<li>Root Dispersion - The maximum error of the local clock relative to the primary reference source.</li>
-<li>Reference Identifier - Identifier of the particular reference source.</li>
-<li>Reference Timestamp - Local time at which the local clock was last set or corrected.</li>
-<li>Originate Timestamp - Local time at which the request departed from the client for the service host.</li>
-<li>Receive Timestamp - Local time at which the request arrived at the service host.</li>
-<li>Transmit Timestamp - Local time at which the reply departed from the service host for the client.</li>
-<li>Authenticator - Authentication information.</li>
+<li>Stratum (Statum Level) 8-bits. An integer ranging from 1 to 16. <ul>
+<li>Note: Stratum 1 clock has the highest precision, and a stratum 16 clock is not synchronized and cannot be used as a reference clock.</li>
+</ul>
+</li>
+<li><strong>Poll</strong> ( Poll Interval ) - 8-bits maximum interval between successive messages.</li>
+<li><strong>Precision</strong> (precision of the local clock) - 8-bit signed integer.</li>
+<li><strong>Root Delay</strong> - Roundtrip delay to the primary reference source.</li>
+<li><strong>Root Dispersion</strong> - The maximum error of the local clock relative to the primary reference source.</li>
+<li><strong>Reference Identifier</strong> - Identifier of the particular reference source.</li>
+<li><strong>Reference Timestamp</strong> - Local time at which the local clock was last set or corrected.</li>
+<li><strong>Originate Timestamp</strong> - Local time at which the request departed from the client for the service host.</li>
+<li><strong>Receive Timestamp</strong> - Local time at which the request arrived at the service host.</li>
+<li><strong>Transmit Timestamp</strong> - Local time at which the reply departed from the service host for the client.</li>
+<li><strong>Authenticator</strong> - Authentication information.</li>
 </ul>
 <h4 id="ntp-request-flow">NTP Request Flow</h4>
 <p>As the NTP packet traverses from the client, across the netowk, theough the server, across the network, and back to the client. 4 different timestamps are added to the packet.</p>
@@ -3101,7 +3087,8 @@ TimeStamps  T1=10, T2=2, T3=12, and T4=24
 
 <p>Enter sample values for T1, T2, T3, and T4 (in the format hh:mm:ss):</p>
 <div class="container">
-  <div class="form-container">
+
+<div class="form-container">
     <h3>NTP Client</h3>
     <form id="clientForm">
       <label for="T1">T1:</label>
@@ -3110,11 +3097,14 @@ TimeStamps  T1=10, T2=2, T3=12, and T4=24
       <label for="T4">T4:</label>
       <input type="text" id="T4" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
     </form>
-  </div>
+
+</div>
+
 </div>
 
 <div class="container">
-  <div class="form-container">
+
+ <div class="form-container">
     <h3>NTP Server</h3>
     <form id="serverForm">
       <label for="T2">T2:</label>
@@ -3123,7 +3113,9 @@ TimeStamps  T1=10, T2=2, T3=12, and T4=24
       <label for="T3">T3:</label>
       <input type="text" id="T3" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" placeholder="hh:mm:ss"><br><br>
     </form>
+
   </div>
+
 </div>
 
 <p><button type="submit" onclick="calculate()">Calculate</button></p>
