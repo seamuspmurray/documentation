@@ -313,13 +313,19 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#example-c-program-to-read-the-acpi_pm">Example C program to read the ACPI_PM</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-c-program-to-read-the-tsc-on-each-of-4-cpu-cores">Example C program to Read the TSC on each of 4 CPU cores</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sources-for-this-document">Sources for this document: </a>
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Clock_Sources_and_Virtulalization/">Clock Sources and Virtulalization</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../GetTimeOfDay/">GetTimeOfDay</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Latency_and_Jitter/">Latency and Jitter</a>
                   </li>
@@ -790,6 +796,67 @@ int main() {
     return 0;
 }
 </code></pre>
+<h4 id="example-c-program-to-read-the-tsc-on-each-of-4-cpu-cores">Example C program to Read the TSC on each of 4 CPU cores</h4>
+<p>This program reads the TSC on each of 4 CPU cores, it then checks that the values retrieved from the TSC are in ascending order.
+If the values returned are not in ascending order, it could be an indication that the TSCs are not being kept in SYNC. </p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sched.h&gt;
+#include &lt;stdbool.h&gt;
+
+#define NUM_CORES 4 // Adjust this according to the number of CPU cores
+
+// Function to read the Time Stamp Counter (TSC)
+unsigned long long read_tsc(void);
+
+int main() {
+    int core;
+    unsigned long long tsc_values[NUM_CORES]; // Array to store TSC values for each core
+    bool in_order = true; // Flag to indicate if TSC values are in ascending order
+
+    // Loop through each CPU core
+    for (core = 0; core &lt; NUM_CORES; core++) {
+        // Set CPU affinity to a specific core
+        cpu_set_t set;
+        CPU_ZERO(&amp;set); // Initialize CPU set to empty
+        CPU_SET(core, &amp;set); // Add current core to the CPU set
+        if (sched_setaffinity(0, sizeof(cpu_set_t), &amp;set) == -1) { // Set CPU affinity
+            perror("sched_setaffinity");
+            exit(EXIT_FAILURE);
+        }
+
+        // Read the TSC value for the current core and store it in the array
+        tsc_values[core] = read_tsc();
+
+        // Check if the TSC value is higher than the previous core's TSC value
+        if (core &gt; 0 &amp;&amp; tsc_values[core] &lt;= tsc_values[core - 1]) {
+            in_order = false; // If not, set the flag to false
+        }
+    }
+
+    // Print core and TSC values
+    for (core = 0; core &lt; NUM_CORES; core++) {
+        printf("Core %d: %llu\n", core, tsc_values[core]);
+    }
+
+    // Print whether the TSC values are in ascending order or not
+    if (in_order) {
+        printf("TSC values are in ascending order.\n");
+    } else {
+        printf("TSC values are not in ascending order.\n");
+    }
+
+    return 0;
+}
+
+// Function to read the Time Stamp Counter (TSC)
+unsigned long long read_tsc(void) {
+    unsigned int low, high;
+    __asm__ __volatile__("rdtsc" : "=a" (low), "=d" (high));
+    return ((unsigned long long)high &lt;&lt; 32) | low;
+}
+</code></pre>
 <h3 id="sources-for-this-document">Sources for this document: <a name="Sources"></a></h3>
 <p>Intel CPU specifications and developer guides</p>
 <ul>
@@ -843,7 +910,7 @@ int main() {
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../scripting/simulate_site_failure/" class="btn btn-neutral float-left" title="Simulate site failure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Clock_Synchronization_and_NTP/" class="btn btn-neutral float-right" title="Clock Synchronization and NTP">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Clock_Sources_and_Virtulalization/" class="btn btn-neutral float-right" title="Clock Sources and Virtulalization">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -869,7 +936,7 @@ int main() {
       <span><a href="../../scripting/simulate_site_failure/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Clock_Synchronization_and_NTP/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Clock_Sources_and_Virtulalization/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

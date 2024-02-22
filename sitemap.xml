@@ -411,7 +411,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.seamusmurray.com/timing/Clock_Sources_and_Virtulalization/</loc>
+         <lastmod>2024-02-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.seamusmurray.com/timing/Clock_Synchronization_and_NTP/</loc>
+         <lastmod>2024-02-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.seamusmurray.com/timing/GetTimeOfDay/</loc>
          <lastmod>2024-02-22</lastmod>
          <changefreq>daily</changefreq>
     </url>

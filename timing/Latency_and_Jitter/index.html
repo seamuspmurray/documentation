@@ -267,7 +267,11 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../Clock_Sources_and_System_Time/">Clock Sources and System Time</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Clock_Sources_and_Virtulalization/">Clock Sources and Virtulalization</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../GetTimeOfDay/">GetTimeOfDay</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Latency and Jitter</a>
     <ul class="current">
@@ -312,9 +316,10 @@
 <h3 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h3>
 <p>Chart AG, shows a consistent level of 8ms latency between the matching events a &lt;-&gt; A  ,  j &lt;-&gt; J etc....</p>
 <PRE>
-    (High Latency and Zero Jitter)
-
 Chart AG
+
+     High Latency and Zero Jitter 
+
 
 _    |                            
  |  8| A   B   C   D   E   F   G  
@@ -336,9 +341,10 @@ _|  0|-a---b---c---d---e---f---g--
 <h3 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h3>
 <p>Chart HN, shows a consistent level of 4ms latency between the matching events a h &lt;-&gt; H , n &lt;-&gt; N, etc..</p>
 <PRE>
-   (Medium Latency and Zero Jitter)
 
 Chart HN
+
+    Medium Latency and Zero Jitter 
 
 _    |                            
  |  8|                            
@@ -359,21 +365,22 @@ _|  0|--h---i---j---k---l---m---n-
 <p>The consistent level of latency displayed on the charts AG and HN, are not likely to occur in a real world situation. There almost always will be some level of variance (Jitter) between the timing of events. </p>
 <hr>
 <h3 id="low-latency-and-high-jitter">Low Latency and High Jitter</h3>
-<p>Chart OT,  shows that events O, P Q, and S have a lower latency (1ms) than the (4ms) displayed in chart HN. However, events R and T show a much higher level of latency  (9ms) than was shown in chart AG (8ms).</p>
+<p>Chart OT,  shows that events O, P Q, and S have a lower latency (1ms) than the (4ms) displayed in chart HN. However, events R and T show a much higher level of latency (9ms).</p>
 <PRE>
-     (Low Latency and High Jitter)
-
 Chart OT
 
-_    |               R       T <-+
- |  8|                           |
-L|   |                           |
-a|  6|                           |
-t|   |                           |
-e|  4|                           |
-n|   |                           |
-c|  2|                           |
-y|   |   O   P   Q       S     <-+
+Very Low Latency & Very High Jitter
+
+
+_    |->             R       T 
+ |  8|                           
+L|   |                           
+a|  6|                           
+t|   |                           
+e|  4|                           
+n|   |                           
+c|  2|                           
+y|   |-> O   P   Q       S       
 _|  0|---o---p---q---r---s---t----
           _______________         
          |  Event Pairs  |        
@@ -384,18 +391,19 @@ _|  0|---o---p---q---r---s---t----
 <h3 id="low-medium-latency-and-low-jitter">Low-Medium Latency and Low Jitter</h3>
 <p>Chart UZ, shows that half of the events have a latency of 2ms and half show a latency of 4ms. </p>
 <PRE>
-(Low-Medium Latency and Low Jitter)
-
 Chart UZ
+
+ Low-Medium Latency and Low Jitter 
+
 
 _    |                            
  |  8|                            
 L|   |                            
 a|  6|                            
-t|   |. . . . . . . . . . . . . . 
-e|  4|        V       X       Z <-+
-n|   |                            |
-c|  2|    U       W       Y     <-+
+t|   |                            
+e|  4|->       V       X       Z  
+n|   |                            
+c|  2|->  U       W       Y       
 y|   |                            
 _|  0|----u---v---w---x---y---z---
           _______________         
@@ -421,9 +429,10 @@ _|  0|----u---v---w---x---y---z---
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     const frames = [`
-     (Low Latency and High Jitter)
-
 Chart OT
+
+      Jitter         Latency
+       High      VeryLow-VeryHigh
 
 _    |->             R       T 
  |  8|                           
@@ -439,9 +448,10 @@ _|  0|---o---p---q---r---s---t----
           _______________         
          |  Event Pairs  |        
   `, `
- (Low-Medium Latency and Low Jitter)
-
 Chart UZ
+
+      Jitter         Latency
+       Low           Low-Med
 
 _    |                            
  |  8|                            
@@ -478,7 +488,7 @@ _|  0|----u---v---w---x---y---z---
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Clock_Synchronization_and_NTP/" class="btn btn-neutral float-left" title="Clock Synchronization and NTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GetTimeOfDay/" class="btn btn-neutral float-left" title="GetTimeOfDay"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../Linux_clocksource_benchmark/" class="btn btn-neutral float-right" title="Linux clocksource benchmark">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -502,7 +512,7 @@ _|  0|----u---v---w---x---y---z---
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Clock_Synchronization_and_NTP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../GetTimeOfDay/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../Linux_clocksource_benchmark/" style="color: #fcfcfc">Next &raquo;</a></span>
