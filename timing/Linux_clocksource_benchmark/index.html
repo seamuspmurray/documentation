@@ -272,8 +272,6 @@
                   <li class="toctree-l1"><a class="reference internal" href="../Latency_and_Jitter/">Latency and Jitter</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux clocksource benchmark</a>
-    <ul class="current">
-    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../NTP_Authentication/">NTP Authentication</a>
                   </li>
@@ -304,8 +302,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>A short program written in C and in-line X86 assembler for experimenting the the various clocksources available on an Intel X86 system.</p>
-<p>Sample execution.. </p>
+                <p>A short program written in C and little bit of inline X86 assembler for experimenting with the various clock sources available on an Intel X86 system. 
+The program detects the available clock sources on a Linux system, cycles through the various clock sources, and runs the 'gettimeofday' system call 1 million times for each clocksource.
+The program uses the TSC to keep track of how long it takes for each set of the the million system calls to execute.</p>
+<p>Sample execution output.. </p>
 <pre><code>Inital ClockSource setting is : tsc 
 Available ClockSources : tsc hpet acpi_pm
 +--------------------------------------------------------------------------------------------------+
@@ -317,22 +317,25 @@ Available ClockSources : tsc hpet acpi_pm
 +--------------------------------------------------------------------------------------------------+
 </code></pre>
 <p>Source Code..</p>
-<h1 id="include">include <stdio.h></h1>
-<h1 id="include_1">include <sys/time.h></h1>
-<h1 id="include_2">include <time.h></h1>
-<h1 id="include_3">include <stdlib.h></h1>
-<h1 id="include_4">include <stdint.h></h1>
-<p>unsigned long get_rdtscp(int <em>chip, int </em>core);
-static unsigned long long get_rdtsc();</p>
-<p>int main() {
-    char clocksource[4][15] = {"\0"};
-    char initial_clocksource[15] = "\0";
-    struct timeval mytime;
-    struct timezone mytimezone;
-    clock_t start, end;
-    int x = 0;
-    int y = 0;</p>
-<pre><code>uint64_t starting_tsc = 0;
+<pre><code>#jinclude &lt;stdio.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdint.h&gt;
+
+unsigned long get_rdtscp(int *chip, int *core);
+static unsigned long long get_rdtsc();
+
+int main() {
+char clocksource[4][15] = {"\0"};
+char initial_clocksource[15] = "\0";
+struct timeval mytime;
+struct timezone mytimezone;
+clock_t start, end;
+int x = 0;
+int y = 0;
+
+uint64_t starting_tsc = 0;
 uint64_t finishing_tsc = 0;
 uint64_t starting_tscp = 0;
 uint64_t finishing_tscp = 0;
@@ -405,20 +408,22 @@ fclose(set_clocksource);
 
 printf("+----------------------------------------------------------------------------------------------------------+\n");
 return 0;
+}
+
+static __inline__ unsigned long long get_rdtsc(void) {
+unsigned tsc_val_lo, tsc_val_hi;
+__asm__ __volatile__ ("rdtsc" : "=a"(tsc_val_lo), "=d"(tsc_val_hi));
+return ((unsigned long long) tsc_val_lo) | (((unsigned long long) tsc_val_hi) &lt;&lt; 32);
+}
+
+unsigned long get_rdtscp(int *chip, int *core) {
+unsigned a, d, c;
+__asm__ volatile("rdtscp" : "=a" (a), "=d" (d), "=c" (c));
+*chip = (c &amp; 0xFFF000) &gt;&gt; 12;
+*core = c &amp; 0xFFF;
+return ((unsigned long) a) | (((unsigned long) d) &lt;&lt; 32);
+}
 </code></pre>
-<p>}</p>
-<p>static <strong>inline</strong> unsigned long long get_rdtsc(void) {
-    unsigned tsc_val_lo, tsc_val_hi;
-    <strong>asm</strong> <strong>volatile</strong> ("rdtsc" : "=a"(tsc_val_lo), "=d"(tsc_val_hi));
-    return ((unsigned long long) tsc_val_lo) | (((unsigned long long) tsc_val_hi) &lt;&lt; 32);
-}</p>
-<p>unsigned long get_rdtscp(int <em>chip, int </em>core) {
-    unsigned a, d, c;
-    <strong>asm</strong> volatile("rdtscp" : "=a" (a), "=d" (d), "=c" (c));
-    <em>chip = (c &amp; 0xFFF000) &gt;&gt; 12;
-    </em>core = c &amp; 0xFFF;
-    return ((unsigned long) a) | (((unsigned long) d) &lt;&lt; 32);
-}</p>
               
             </div>
           </div><footer>
