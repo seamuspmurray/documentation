@@ -307,7 +307,8 @@
                 <h3 id="latency-and-jitter">Latency and Jitter</h3>
 <p>Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. </p>
 <p>In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.</p>
-<p>Note: Humans are very adapt at noticing Variance, Jitter, Outliers etc...</p>
+<p>Outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames, pauses, etc..</p>
+<p>Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. </p>
 <h3 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h3>
 <p>Chart AG, shows a consistent level of 8ms latency between the matching events a &lt;-&gt; A  ,  j &lt;-&gt; J etc....</p>
 <PRE>
