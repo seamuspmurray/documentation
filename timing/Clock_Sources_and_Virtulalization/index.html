@@ -269,8 +269,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Clock Sources and Virtulalization</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#hardware-host">Hardware host</a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
@@ -310,7 +308,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="checking-which-tsc-features-my-cpu-supports">Checking which TSC features my CPU supports</h3>
+                <h3 id="the-topic-of-x86-virtualization-and-system-timing-is-exceedingly-complex">The topic of x86 virtualization and system timing is exceedingly complex.</h3>
+<p>In the early 2000s, I distinctly recall encountering numerous issues in maintaining accurate timing on x86 virtualization guests. Over the past two decades, many of the main timing issues have been resolved across most use cases and virtualization platforms. While the current situation is not perfect, it has progressed significantly since the earlier days.</p>
+<p>When conducting research on system timing and virtualization, it's crucial to recognize that there are numerous layers, each with its own configurations, and these have evolved and changed over the years.</p>
+<p>It's almost certain that in any request for information relevant to a particular situation, there will be a need to sift through a lot of information that may not directly apply. Here is a list of the key things that I take into consideration. </p>
+<ul>
+<li>CPU and features</li>
+<li>Kernel version and configuration</li>
+<li>Motherboard features and configuration</li>
+<li>Firmware versions, features, and configuration</li>
+<li>Virtualization platform type, such as KVM, HyperV, VMware, Xen, etc.</li>
+<li>Virtualization platform configuration</li>
+<li>Paravirtualization types and configuration</li>
+<li>Timing requirements</li>
+</ul>
+<p>Before deciding to implement any changes based on configuration guides, forum posts, knowledge base articles, etc., ask yourself if the information is relevant to your particular configuration.</p>
+<p><a href="../Is_the_information_relevant_for_your_particular_configuration.png"></a></p>
+<h3 id="checking-which-tsc-features-my-cpu-supports">Checking which TSC features my CPU supports</h3>
 <h4 id="hardware-host">Hardware host</h4>
 <p>$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
 tsc
