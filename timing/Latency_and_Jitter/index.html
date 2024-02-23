@@ -311,109 +311,156 @@
                 <h3 id="latency-and-jitter">Latency and Jitter</h3>
 <p>Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. </p>
 <p>In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.</p>
-<p>Outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames, pauses, etc..</p>
+<p>Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..</p>
 <p>Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. </p>
 <h3 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h3>
-<p>Chart AG, shows a consistent level of 8ms latency between the matching events a &lt;-&gt; A  ,  j &lt;-&gt; J etc....</p>
+<p>Chart A1, shows a consistent level of 8ms latency for each of the events a ~ h.</p>
 <PRE>
-Chart AG
+Chart A1
 
      High Latency and Zero Jitter 
 
 
-_    |                            
- |  8| A   B   C   D   E   F   G  
-L|   |                            
-a|  6|                            
-t|   |                            
-e|  4|                            
-n|   |                            
-c|  2|                            
-y|   |                            
-_|  0|-a---b---c---d---e---f---g--
-          _______________         
-         |  Event Pairs  |        
+ |   |                          
+L|  8|  *  *  *  *  *  *  *  *  
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+
 
 </PRE>
 
 <hr>
 
 <h3 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h3>
-<p>Chart HN, shows a consistent level of 4ms latency between the matching events a h &lt;-&gt; H , n &lt;-&gt; N, etc..</p>
+<p>Chart A1, shows a consistent level of 4ms latency for each of the events a ~ h.</p>
 <PRE>
 
-Chart HN
+Chart A2
 
     Medium Latency and Zero Jitter 
 
-_    |                            
- |  8|                            
-L|   |                            
-a|  6|                            
-t|   |                            
-e|  4|  H   I   J   K   L   M   N 
-n|   |                            
-c|  2|                            
-y|   |                            
-_|  0|--h---i---j---k---l---m---n-
-          _______________         
-         |  Event Pairs  |        
+_ 
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|  *  *  *  *  *  *  *  *  
+c|   |                          
+y|  2|                          
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+
+
+<hr>
+
+### Medium Latency and Zero Jitter
+
+Chart A3, shows a consistent level of 1ms latency for each of the events a ~ h.
+
+
+<PRE>
+
+Chart A3
+
+    Very Low Latency and Zero Jitter 
+
+_ 
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |  *  *  *  *  *  *  *  *  
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+
+
 
 </PRE>
 
-<p>In most circumstances, a consistent-and-lower level of latency is preferable to a consistent-and-higher level of latency.</p>
-<p>The consistent level of latency displayed on the charts AG and HN, are not likely to occur in a real world situation. There almost always will be some level of variance (Jitter) between the timing of events. </p>
+Typically, a consistent and lower level of latency is preferred over a consistent and higher level of latency.
+
+The charts A1, A2, and A3 depict a consistent level of latency (zero jitter), which is unlikely to occur in real-world scenarios unless utilizing a monotonic timer/scheduler or similar method. In most cases, some degree of variance (jitter) between event timings is expected. 
+
+
 <hr>
-<h3 id="low-latency-and-high-jitter">Low Latency and High Jitter</h3>
-<p>Chart OT,  shows that events O, P Q, and S have a lower latency (1ms) than the (4ms) displayed in chart HN. However, events R and T show a much higher level of latency (9ms).</p>
+### Low Latency and High Jitter
+
+Chart B1, shows that events a~f, and g, have a very low latency of 1ms. However, events f and g have a very high latency of 8ms.
+
 <PRE>
-Chart OT
+Chart B1
 
 Very Low Latency & Very High Jitter
 
-
-_    |->             R       T 
- |  8|                           
-L|   |                           
-a|  6|                           
-t|   |                           
-e|  4|                           
-n|   |                           
-c|  2|                           
-y|   |-> O   P   Q       S       
-_|  0|---o---p---q---r---s---t----
-          _______________         
-         |  Event Pairs  |        
+ |   |                          
+L|  8|                 *     *  
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |  *  *  *  *  *     *     
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
 </PRE>
 
 <hr>
 
-<h3 id="low-medium-latency-and-low-jitter">Low-Medium Latency and Low Jitter</h3>
-<p>Chart UZ, shows that half of the events have a latency of 2ms and half show a latency of 4ms. </p>
+### Low-Medium Latency and Low Jitter
+
+Chart B2, shows that half of the events have a latency of 2ms and half show a latency of 3ms. 
+
+
+
 <PRE>
-Chart UZ
+Chart B2
 
  Low-Medium Latency and Low Jitter 
 
 
-_    |                            
- |  8|                            
-L|   |                            
-a|  6|                            
-t|   |                            
-e|  4|->       V       X       Z  
-n|   |                            
-c|  2|->  U       W       Y       
-y|   |                            
-_|  0|----u---v---w---x---y---z---
-          _______________         
-         |  Event Pairs  |        
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |  *      *     *     *    
+y|  2|     *     *     *     *  
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+
 </PRE>
 
-<p>In many situations, optimizing for a performance profile as demonstrated in chart UZ is preferable than the performance profile demonstrated in chart OT.</p>
+
+In many situations, optimizing for a performance profile as demonstrated in chart B2 is preferable than the performance profile demonstrated in chart B1.
+
+
+
 <hr>
 
-<p>The animation below, alternates between the two charts OT and UZ.</p>
+The animation below, alternates between the two charts B1 and B2.
+
+
 <div class="Timeline-div">
 
                 <style>
@@ -429,40 +476,40 @@ _|  0|----u---v---w---x---y---z---
 <script>
 (function() { //Start of function wrapper to isolate from other ascii art
     const frames = [`
-Chart OT
+Chart B1
 
       Jitter         Latency
        High      VeryLow-VeryHigh
 
-_    |->             R       T 
- |  8|                           
-L|   |                           
-a|  6|                           
-t|   | 
-e|  4|                           
-n|   |                           
-c|  2|                           
-y|   |-> O   P   Q       S     
-_|  0|---o---p---q---r---s---t----
+ |   |                          
+L|  8|->               *     *  
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |->*  *  *  *  *     *     
+    0|--a--b--c--d--e--f--g--h-- 
 
           _______________         
          |  Event Pairs  |        
   `, `
-Chart UZ
+Chart B2
 
       Jitter         Latency
        Low           Low-Med
 
-_    |                            
- |  8|                            
-L|   |                            
-a|  6|                            
-t|   |
-e|  4|->       V       X       Z 
-n|   |                           
-c|  2|->  U       W       Y     
-y|   |                            
-_|  0|----u---v---w---x---y---z---
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |->*      *     *     *    
+y|  2|->   *     *     *     *  
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
 
           _______________         
          |  Event Pairs  |        
