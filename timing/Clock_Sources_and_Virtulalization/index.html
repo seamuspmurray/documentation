@@ -269,6 +269,28 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Clock Sources and Virtulalization</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#some-things-to-check-on-the-hardware-host">Some things to check on the Hardware host</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#check-cputsc-support">Check CPU/TSC support:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-kernel-version">Check Kernel Version:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-bios">Check Bios:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-kvm-version">Check KVM version</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#checking-the-current-value-in-the-tsc">Checking the current value in the TSC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-the-system-time-and-keep-track-of-any-drift">Check the system time and keep track of any drift</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#some-things-to-check-on-the-vm-guests">Some things to check on the VM Guests</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kvm-guest-1">KVM Guest 1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kvm-guest-2">KVM Guest 2</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Clock_Synchronization_and_NTP/">Clock Synchronization and NTP</a>
@@ -324,53 +346,109 @@
 </ul>
 <p>Before deciding to implement any changes based on configuration guides, forum posts, knowledge base articles, etc., ask yourself if the information is relevant to your particular configuration.</p>
 <p><img alt="information relevancy matrix" src="../Is_the_information_relevant_for_your_particular_configuration.png" /></p>
-<h3 id="checking-which-tsc-features-my-cpu-supports">Checking which TSC features my CPU supports</h3>
-<h4 id="hardware-host">Hardware host</h4>
-<p>$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
-tsc
-rdtscp
-constant_tsc
-nonstop_tsc
-tsc_deadline_timer</p>
-<p>$&gt; uname -a
-Linux hostname 5.4.0-171-generic #189-Ubuntu SMP Fri Jan 5 14:23:02 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</p>
-<h2 id="show-which-kvm-version">Show which KVM version</h2>
-<p>$&gt;  /usr/bin/qemu-system-x86_64 --version
-QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.28)</p>
-<p>$&gt; ./rdtsc.o 
-TSC value: 56659346945284</p>
+<h4 id="some-things-to-check-on-the-hardware-host">Some things to check on the Hardware host</h4>
+<h6 id="check-cputsc-support">Check CPU/TSC support:</h6>
+<pre><code class="language-text">$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
+
+   tsc
+   rdtscp
+   constant_tsc
+   nonstop_tsc
+   tsc_deadline_timer
+</code></pre>
+<h6 id="check-kernel-version">Check Kernel Version:</h6>
+<pre><code class="language-text">$&gt; uname -a
+
+   Linux hostname 5.4.0-171-generic #189-Ubuntu SMP Fri Jan 5 14:23:02 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+<h6 id="check-bios">Check Bios:</h6>
+<pre><code class="language-text">$&gt; dmidecode -s bios-vedor
+
+   Buggy-Never-Updated-Bios-Co
+
+
+$&gt; dmidecode -s bios-version
+
+   0.0.0.01 Beta
+
+
+$&gt; dmidecode -s bios-release-date
+
+   01/01/300 BC
+</code></pre>
+<h6 id="check-kvm-version">Check KVM version</h6>
+<pre><code class="language-text">$&gt;  /usr/bin/qemu-system-x86_64 --version
+
+    QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.28)
+
+</code></pre>
+<h6 id="checking-the-current-value-in-the-tsc">Checking the current value in the TSC</h6>
+<pre><code>$&gt; ./rdtsc.o 
+
+    TSC value: 56659346945284
+</code></pre>
+<h5 id="check-the-system-time-and-keep-track-of-any-drift">Check the system time and keep track of any drift</h5>
+<p>There are many different tools and methods to check and keep track of the time. For example..</p>
+<pre><code class="language-text">
+$&gt; date
+
+$&gt; chronyd -Q &quot;server ntp.ubunutu.com iburst&quot;
+
+$&gt; sntp -K /dev/null ntp.ubuntu.com
+
+</code></pre>
+<hr>
+
+<h4 id="some-things-to-check-on-the-vm-guests">Some things to check on the VM Guests</h4>
 <h4 id="kvm-guest-1">KVM Guest 1</h4>
-<p>$&gt; uname -a
-Linux kvm-guest-1 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</p>
-<p>$&gt; cat /sys/devices/system/clocksource/clocksource0/available_clocksource
-kvm-clock tsc acpi_pm </p>
-<p>$&gt; cat /sys/devices/system/clocksource/clocksource0/current_clocksource 
-kvm-clock</p>
-<p>$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
-tsc
-rdtscp
-constant_tsc
-tsc_known_freq
-tsc_deadline_timer
-tsc_adjust</p>
-<p>$&gt;  ./rdtsc.o 
-TSC value: 3170121449948</p>
+<pre><code class="language-text">$&gt; uname -a
+   Linux kvm-guest-1 4.15.0-142-generic #146~16.04.1-Ubuntu SMP Tue Apr 13 09:27:15 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+
+$&gt; cat /sys/devices/system/clocksource/clocksource0/- available_clocksource
+   kvm-clock tsc acpi_pm 
+
+
+
+$&gt; cat /sys/devices/system/clocksource/clocksource0/current_clocksource 
+   kvm-clock
+
+
+$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
+   tsc
+   rdtscp
+   constant_tsc
+   tsc_known_freq
+   tsc_deadline_timer
+   tsc_adjust
+
+$&gt; ./rdtsc.o 
+   TSC value: 3170121449948
+
+</code></pre>
 <h4 id="kvm-guest-2">KVM Guest 2</h4>
-<p>$&gt; uname -a
-Linux kvm-guest-2 6.5.0-10-generic #10-Ubuntu SMP PREEMPT_DYNAMIC Fri Oct 13 13:49:38 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</p>
-<p>$&gt; cat /sys/devices/system/clocksource/clocksource0/available_clocksource
-kvm-clock tsc acpi_pm </p>
-<p>$&gt;  cat /sys/devices/system/clocksource/clocksource0/current_clocksource 
-kvm-clock</p>
-<p>$&gt;  lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
-tsc
-rdtscp
-constant_tsc
-tsc_known_freq
-tsc_deadline_timer
-tsc_adjust</p>
-<p>$&gt;  ./rdtsc.o 
-TSC value: 25459753247756</p>
+<pre><code class="language-text">$&gt; uname -a
+   Linux kvm-guest-2 6.5.0-10-generic #10-Ubuntu SMP PREEMPT_DYNAMIC Fri Oct 13 13:49:38 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+
+$&gt; cat /sys/devices/system/clocksource/clocksource0/available_clocksource
+   kvm-clock tsc acpi_pm 
+
+$&gt; cat /sys/devices/system/clocksource/clocksource0/current_clocksource 
+   kvm-clock
+
+$&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
+   tsc
+   rdtscp
+   constant_tsc
+   tsc_known_freq
+   tsc_deadline_timer
+   tsc_adjust
+
+
+$&gt; ./rdtsc.o 
+   TSC value: 25459753247756
+</code></pre>
               
             </div>
           </div><footer>
