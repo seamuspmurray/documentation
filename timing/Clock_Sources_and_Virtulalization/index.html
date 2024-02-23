@@ -279,7 +279,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#check-kvm-version">Check KVM version</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#checking-the-current-value-in-the-tsc">Checking the current value in the TSC</a>
+    <li class="toctree-l3"><a class="reference internal" href="#checking-the-current-value-in-the-tsc-usually-not-necessary">Checking the current value in the TSC (usually not necessary)</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#check-the-system-time-and-keep-track-of-any-drift">Check the system time and keep track of any drift</a>
     </li>
@@ -382,7 +382,7 @@ $&gt; dmidecode -s bios-release-date
     QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.28)
 
 </code></pre>
-<h6 id="checking-the-current-value-in-the-tsc">Checking the current value in the TSC</h6>
+<h6 id="checking-the-current-value-in-the-tsc-usually-not-necessary">Checking the current value in the TSC (usually not necessary)</h6>
 <pre><code>$&gt; ./rdtsc.o 
 
     TSC value: 56659346945284
@@ -422,6 +422,8 @@ $&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
    tsc_deadline_timer
    tsc_adjust
 
+
+(Checking the TSC is usually not necessary)
 $&gt; ./rdtsc.o 
    TSC value: 3170121449948
 
@@ -445,7 +447,7 @@ $&gt; lscpu | grep -i flags | tr ' ' '\n' | egrep tsc
    tsc_deadline_timer
    tsc_adjust
 
-
+(Checking the TSC is usually not necessary)
 $&gt; ./rdtsc.o 
    TSC value: 25459753247756
 </code></pre>
