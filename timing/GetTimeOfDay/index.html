@@ -306,8 +306,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><strong>gettimeofday</strong> provides a reasonable resolution and is suitable for many general-purpose timing tasks. However, there are scenarios where its granularity is insufficient for precise measurement and timestamping.</p>
-<p>The sample C program below demonstrates that the resolution of the gettimeofday function may not always be sufficient to distinguish between consecutive time measurements, especially when called rapidly. If you are trying to measure the performance of a code snippet, debug a race condition, or address numerous other scenarios, you may be better off using a different method of measuring time.</p>
+                <p><strong>gettimeofday</strong> is suitable for many general-purpose timing tasks. However, there are scenarios where its granularity is insufficient for precise measurement and timestamping.</p>
+<p>The sample C program below demonstrates that the resolution of the gettimeofday function may not always be sufficient to distinguish between consecutive time measurements. </p>
+<p>For example, If you are trying to measure the performance of a code snippet, debug a race condition, or address numerous other scenarios, you may be better off using a different method of measuring time.</p>
 <ul>
 <li>The program initializes the random number generator with the current time.</li>
 <li>It enters a loop for a specified number of iterations (10 change if needed).</li>
