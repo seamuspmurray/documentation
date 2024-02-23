@@ -411,11 +411,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.seamusmurray.com/timing/Clock_Sources_and_Virtulalization/</loc>
-         <lastmod>2024-02-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.seamusmurray.com/timing/Clock_Synchronization_and_NTP/</loc>
          <lastmod>2024-02-23</lastmod>
          <changefreq>daily</changefreq>
@@ -442,6 +437,11 @@
     </url>
     <url>
          <loc>https://docs.seamusmurray.com/timing/Setting_time_like_it_is_1989/</loc>
+         <lastmod>2024-02-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.seamusmurray.com/timing/System_Timing_and_Virtulalization/</loc>
          <lastmod>2024-02-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
