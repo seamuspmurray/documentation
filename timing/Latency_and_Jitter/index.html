@@ -344,18 +344,34 @@
 <p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
 <PRE>
 
-                  4ms                     
-            ┌─────────────┐              
+                  4ms                  
+            ┌─────────────┐            
 ┌────────┐  │   Route A   │  ┌────────┐
 │        ├─►┘             └►─┤        │
 │ Host W │                   │ Host E │
 │        ├─►┐             ┌►─┤        │
 └────────┘  │             │  └────────┘
-            │   Route B   │              
-            └─────────────┘              
-                 8ms                      
+            │   Route B   │            
+            └─────────────┘            
+                  8ms                  
+
 </PRE>
 
+<PRE>
+
+                  4ms                  
+            ┌─────────────┐            
+┌────────┐  │   Route A   │  ┌────────┐
+│        ├─►┘             └─►│        │
+│ Host W │                   │ Host E │
+│        ├─►┐             ┌─►│        │
+└────────┘  │             │  └────────┘
+            │   Route B   │            
+            └─────────────┘            
+                  8ms                              
+</PRE>
+
+<p><img alt="Diagram" src="../diagram.png" />                                          </p>
 <h4 id="latency-charts">Latency charts</h4>
 <p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
 <h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
