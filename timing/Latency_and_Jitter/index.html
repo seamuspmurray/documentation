@@ -275,6 +275,10 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#latency">Latency</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#latency-diagram">Latency diagram</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#latency-charts">Latency charts</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#high-latency-and-zero-jitter">High Latency and Zero Jitter</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</a>
@@ -327,10 +331,35 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="latency-and-jitter">Latency and Jitter</h2>
-<p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
 <h3 id="latency">Latency</h3>
 <p>In the context of system engineering, the term latency is used to describe the amount of time something takes to complete. </p>
-<p>For example, if a network packet takes 2 seconds to travel down network path A, but it take 4 seconds to travel down path B, then path be is deemed to have a higher latency than path A. </p>
+<ul>
+<li>Time to transmit a packet across a network </li>
+<li>Time to complete an IO operation</li>
+<li>time to complete a database transaction </li>
+</ul>
+<h4 id="latency-diagram">Latency diagram</h4>
+<p>The diagram below illustrates two alternative network paths between two endpoints, Host W and Host E.</p>
+<p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network path A, and 8 milliseconds to transmit across network path B, then we conclude that path A has lower latency than path B.</p>
+<p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
+<PRE>
+
+                     4ms                     
+              ┌───────────────┐              
+┌──────────┐  │    Route A    │  ┌──────────┐
+│          ├─►┘               └►─┤          │
+│  Host W  │                     │  Host E  │
+│          ├─►┐               ┌►─┤          │
+└──────────┘  │               │  └──────────┘
+              │    Route B    │              
+              └───────────────┘              
+                     8ms                      
+</PRE>
+
+<pre><code>
+</code></pre>
+<h4 id="latency-charts">Latency charts</h4>
+<p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
 <h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
 <p>Chart A1, shows a consistent level of 8ms latency for each of the events a ~ h.</p>
 <PRE>
@@ -532,32 +561,24 @@ _|   |
 
 
 
-Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. 
-
-In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.
-
-Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..
-
-Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. 
-
-The example animations below are identical except the animation on the right has 1 dropped frame.
-
-
-![No Jitter](No-dropped-frame.gif)
-![Jitter](Dropped-frame.gif)
-
-A1 A2 A3 B1 B2
-
-![A1](A1.gif)
-![A2](A2.gif)
-![A3](A3.gif)
-![B1](B1.gif)
-![B2](B2.gif)
 
 
 </div>
 
 </div>
+<p>Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. </p>
+<p>In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.</p>
+<p>Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..</p>
+<p>Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. </p>
+<p>The example animations below are identical except the animation on the right has 1 dropped frame.</p>
+<p><img alt="No Jitter" src="../No-dropped-frame.gif" />
+<img alt="Jitter" src="../Dropped-frame.gif" /></p>
+<p>A1 A2 A3 B1 B2</p>
+<p><img alt="A1" src="../A1.gif" />
+<img alt="A2" src="../A2.gif" />
+<img alt="A3" src="../A3.gif" />
+<img alt="B1" src="../B1.gif" />
+<img alt="B2" src="../B2.gif" /></p>
               
             </div>
           </div><footer>
