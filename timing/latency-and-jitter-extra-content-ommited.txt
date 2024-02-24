@@ -1,0 +1,176 @@
+
+### Very Low Latency and Zero Jitter
+
+Chart A3, shows a consistent level of 1ms latency for each of the events a ~ h.
+
+
+<PRE>
+
+Chart A3
+
+    Very Low Latency and Zero Jitter 
+
+_ 
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |  *  *  *  *  *  *  *  *  
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+
+</PRE>
+
+Typically, a consistent and lower level of latency is preferred over a consistent and higher level of latency.
+
+The charts A1, A2, and A3 depict a consistent level of latency (zero jitter), which is unlikely to occur in real-world scenarios unless utilizing a monotonic timer/scheduler or similar method. In most cases, some degree of variance (jitter) between event timings is expected. 
+
+
+<hr>
+<pr>
+<hr>
+
+
+
+#### Low-Medium Latency and Low Jitter
+
+Chart B2, shows that half of the events have a latency of 2ms and half show a latency of 3ms. 
+
+
+
+<PRE>
+Chart B2
+
+ Low-Medium Latency and Low Jitter 
+
+_
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |  *      *     *     *    
+y|  2|     *     *     *     *  
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
+              __________              
+             |  Event   |        
+     
+</PRE>
+
+
+In many situations, optimizing for a performance profile as demonstrated in chart B2 is preferable than the performance profile demonstrated in chart B1.
+
+
+
+<hr>
+
+The animation below, alternates between the two charts B1 and B2.
+
+
+<div class="Timeline-div">
+
+				<style>
+				#ascii-art-Chart-OT-UZ {
+					font-family: monospace;
+					white-space: pre;
+					clear: both;
+				}
+				</style>
+
+<div id="ascii-art-Chart-OT-UZ"></div>
+	
+<script>
+(function() { //Start of function wrapper to isolate from other ascii art
+	const frames = [`
+Chart B1
+
+      Jitter         Latency
+       High      VeryLow-VeryHigh
+_                              
+ |   |                          
+L|  8|->               *     *  
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |                          
+y|  2|                          
+_|   |->*  *  *  *  *     *     
+    0|--a--b--c--d--e--f--g--h-- 
+
+              __________              
+             |  Event   |        
+  `, `
+Chart B2
+
+      Jitter         Latency
+       Low           Low-Med
+_
+ |   |                          
+L|  8|                          
+a|   |                          
+t|  6|                          
+e|   |                          
+n|  4|                          
+c|   |->*      *     *     *    
+y|  2|->   *     *     *     *  
+_|   |                          
+    0|--a--b--c--d--e--f--g--h-- 
+
+              __________              
+             |  Event   |        
+  `];
+	let currentFrameIndex = 0;
+	const asciiArtElementTimeline = document.getElementById("ascii-art-Chart-OT-UZ");
+	function renderFrame() {
+		asciiArtElementTimeline.textContent = frames[currentFrameIndex];
+		currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+	}
+	// Initial render
+	renderFrame();
+	// Start animation at 2 frames per second (500ms delay)
+	setInterval(renderFrame, 1000);
+}()); //End of function wrapper to isolate from other ascii art
+</script>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. 
+
+In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.
+
+Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..
+ 
+Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. 
+
+The example animations below are identical except the animation on the right has 1 dropped frame.
+
+
+![No Jitter](No-dropped-frame.gif)
+![Jitter](Dropped-frame.gif)
+
+A1 A2 A3 B1 B2
+
+![A1](A1.gif)
+![A2](A2.gif)
+![A3](A3.gif)
+![B1](B1.gif)
+![B2](B2.gif)
+
+

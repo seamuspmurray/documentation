@@ -285,13 +285,9 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#medium-latency-and-zero-jitter_1">Medium Latency and Zero Jitter</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#jitter">Jitter</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#low-latency-and-high-jitter">Low Latency and High Jitter</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#low-medium-latency-and-low-jitter">Low-Medium Latency and Low Jitter</a>
     </li>
         </ul>
     </li>
@@ -339,12 +335,12 @@
 <li>the time to complete a database transaction </li>
 </ul>
 <h4 id="latency-diagram">Latency diagram</h4>
-<p>The diagram below illustrates two alternative network paths between two endpoints, Host W and Host E.</p>
-<p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network path A, and 8 milliseconds to transmit across network path B, then we conclude that path A has lower latency than path B.</p>
+<p>The diagram below illustrates two alternative network routes between two endpoints, Host W and Host E.</p>
+<p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network Route A, and 8 milliseconds to transmit across network Route B, then we conclude that Route A has lower latency than Route B.</p>
 <p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
 <p><img alt="Diagram" src="../diagram.png" /></p>
 <h4 id="latency-charts">Latency charts</h4>
-<p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
+<p>The 3 charts A1, and A2 illustrate 2 different levels of consistent latency. </p>
 <h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
 <p>Chart A1, shows a consistent level of 8ms latency for each of the events a ~ h.</p>
 <PRE>
@@ -364,14 +360,14 @@ y|  2|
 _|   |                          
     0|--a--b--c--d--e--f--g--h-- 
               __________              
-             |  Event   |        
+             |  Packet  |         
 
 
 </PRE>
 <hr>
 
 <h4 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h4>
-<p>Chart A1, shows a consistent level of 4ms latency for each of the events a ~ h.</p>
+<p>Chart A2, shows a consistent level of 4ms latency for each of the events a ~ h.</p>
 <PRE>
 
 Chart A2
@@ -390,180 +386,35 @@ y|  2|
 _|   |                          
     0|--a--b--c--d--e--f--g--h-- 
               __________              
-             |  Event   |        
+             |  Packet  |         
 
 </PRE>
-<hr>
-
-<h3 id="medium-latency-and-zero-jitter_1">Medium Latency and Zero Jitter</h3>
-<p>Chart A3, shows a consistent level of 1ms latency for each of the events a ~ h.</p>
-<PRE>
-
-Chart A3
-
-    Very Low Latency and Zero Jitter 
-
-_ 
- |   |                          
-L|  8|                          
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |                          
-y|  2|                          
-_|   |  *  *  *  *  *  *  *  *  
-    0|--a--b--c--d--e--f--g--h-- 
-              __________              
-             |  Event   |        
-
-</PRE>
-
-<p>Typically, a consistent and lower level of latency is preferred over a consistent and higher level of latency.</p>
-<p>The charts A1, A2, and A3 depict a consistent level of latency (zero jitter), which is unlikely to occur in real-world scenarios unless utilizing a monotonic timer/scheduler or similar method. In most cases, some degree of variance (jitter) between event timings is expected. </p>
-<hr>
-<p><pr></p>
 <hr>
 
 <h3 id="jitter">Jitter</h3>
-<p>The 3 charts B1 B2, illustrate 2 different levels of jitter.</p>
-<p>In the context of latency, the term jitter is used to describe the variance of the the latency. </p>
+<p>In the context of latency, the term jitter is used to describe the variance of the latency. </p>
 <h4 id="low-latency-and-high-jitter">Low Latency and High Jitter</h4>
-<p>Chart B1, shows that events a~f, and g, have a very low latency of 1ms. However, events f and g have a very high latency of 8ms.</p>
+<p>Chart B1, illustrates the latency levels experienced when packets sent from Host W to Host E alternate between Route A and Route B. </p>
 <PRE>
 Chart B1
 
-Very Low Latency & Very High Jitter
+              Jitter
 
      |                          
-L   8|                 *     *  
+L   8|     *     *     *     *  
 a    |                          
 t   6|                          
 e    |                          
-n   4|                          
+n   4|  *     *     *     *     
 c    |                          
 y   2|                          
-     |  *  *  *  *  *     *     
+     |                          
     0|--a--b--c--d--e--f--g--h-- 
               __________              
-             |  Event   |        
+             |  Packet  |        
 </PRE>
 
 <hr>
-
-<h4 id="low-medium-latency-and-low-jitter">Low-Medium Latency and Low Jitter</h4>
-<p>Chart B2, shows that half of the events have a latency of 2ms and half show a latency of 3ms. </p>
-<PRE>
-Chart B2
-
- Low-Medium Latency and Low Jitter 
-
-_
- |   |                          
-L|  8|                          
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |  *      *     *     *    
-y|  2|     *     *     *     *  
-_|   |                          
-    0|--a--b--c--d--e--f--g--h-- 
-              __________              
-             |  Event   |        
-
-</PRE>
-
-<p>In many situations, optimizing for a performance profile as demonstrated in chart B2 is preferable than the performance profile demonstrated in chart B1.</p>
-<hr>
-
-<p>The animation below, alternates between the two charts B1 and B2.</p>
-<div class="Timeline-div">
-
-                <style>
-                #ascii-art-Chart-OT-UZ {
-                    font-family: monospace;
-                    white-space: pre;
-                    clear: both;
-                }
-                </style>
-
-<div id="ascii-art-Chart-OT-UZ"></div>
-
-<script>
-(function() { //Start of function wrapper to isolate from other ascii art
-    const frames = [`
-Chart B1
-
-      Jitter         Latency
-       High      VeryLow-VeryHigh
-_                              
- |   |                          
-L|  8|->               *     *  
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |                          
-y|  2|                          
-_|   |->*  *  *  *  *     *     
-    0|--a--b--c--d--e--f--g--h-- 
-
-              __________              
-             |  Event   |        
-  `, `
-Chart B2
-
-      Jitter         Latency
-       Low           Low-Med
-_
- |   |                          
-L|  8|                          
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |->*      *     *     *    
-y|  2|->   *     *     *     *  
-_|   |                          
-    0|--a--b--c--d--e--f--g--h-- 
-
-              __________              
-             |  Event   |        
-  `];
-    let currentFrameIndex = 0;
-    const asciiArtElementTimeline = document.getElementById("ascii-art-Chart-OT-UZ");
-    function renderFrame() {
-        asciiArtElementTimeline.textContent = frames[currentFrameIndex];
-        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
-    }
-    // Initial render
-    renderFrame();
-    // Start animation at 2 frames per second (500ms delay)
-    setInterval(renderFrame, 1000);
-}()); //End of function wrapper to isolate from other ascii art
-</script>
-
-
-
-
-
-</div>
-
-</div>
-<p>Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. </p>
-<p>In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.</p>
-<p>Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..</p>
-<p>Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. </p>
-<p>The example animations below are identical except the animation on the right has 1 dropped frame.</p>
-<p><img alt="No Jitter" src="../No-dropped-frame.gif" />
-<img alt="Jitter" src="../Dropped-frame.gif" /></p>
-<p>A1 A2 A3 B1 B2</p>
-<p><img alt="A1" src="../A1.gif" />
-<img alt="A2" src="../A2.gif" />
-<img alt="A3" src="../A3.gif" />
-<img alt="B1" src="../B1.gif" />
-<img alt="B2" src="../B2.gif" /></p>
               
             </div>
           </div><footer>
