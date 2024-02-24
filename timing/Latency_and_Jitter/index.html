@@ -273,6 +273,22 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Latency and Jitter</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#latency">Latency</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#high-latency-and-zero-jitter">High Latency and Zero Jitter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#medium-latency-and-zero-jitter_1">Medium Latency and Zero Jitter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jitter">Jitter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#low-latency-and-high-jitter">Low Latency and High Jitter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#low-medium-latency-and-low-jitter">Low-Medium Latency and Low Jitter</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Linux_clocksource_benchmark/">Linux clocksource benchmark</a>
@@ -308,21 +324,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="latency-and-jitter">Latency and Jitter</h3>
-<p>Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. </p>
-<p>In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.</p>
-<p>Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..</p>
-<p>Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. </p>
-<p>The example animations below are identical except the animation on the right has 1 dropped frame.</p>
-<p><img alt="No Jitter" src="../No-dropped-frame.gif" />
-<img alt="Jitter" src="../Dropped-frame.gif" /></p>
-<p>A1 A2 A3 B1 B2</p>
-<p><img alt="A1" src="../A1.gif" />
-<img alt="A2" src="../A2.gif" />
-<img alt="A3" src="../A3.gif" />
-<img alt="B1" src="../B1.gif" />
-<img alt="B2" src="../B2.gif" /></p>
-<h3 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h3>
+                <h2 id="latency-and-jitter">Latency and Jitter</h2>
+<p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
+<h3 id="latency">Latency</h3>
+<h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
 <p>Chart A1, shows a consistent level of 8ms latency for each of the events a ~ h.</p>
 <PRE>
 Chart A1
@@ -345,10 +350,9 @@ _|   |
 
 
 </PRE>
-
 <hr>
 
-<h3 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h3>
+<h4 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h4>
 <p>Chart A1, shows a consistent level of 4ms latency for each of the events a ~ h.</p>
 <PRE>
 
@@ -400,6 +404,10 @@ _|   |  *  *  *  *  *  *  *  *
 <p>Typically, a consistent and lower level of latency is preferred over a consistent and higher level of latency.</p>
 <p>The charts A1, A2, and A3 depict a consistent level of latency (zero jitter), which is unlikely to occur in real-world scenarios unless utilizing a monotonic timer/scheduler or similar method. In most cases, some degree of variance (jitter) between event timings is expected. </p>
 <hr>
+
+<h3 id="jitter">Jitter</h3>
+<p>The 3 charts B1 B2, illustrate 2 different levels of jitter.</p>
+<p>In the context of latency, the term jitter is used to describe the variance of the the latency. </p>
 <h3 id="low-latency-and-high-jitter">Low Latency and High Jitter</h3>
 <p>Chart B1, shows that events a~f, and g, have a very low latency of 1ms. However, events f and g have a very high latency of 8ms.</p>
 <PRE>
@@ -515,6 +523,30 @@ _|   |
     setInterval(renderFrame, 1000);
 }()); //End of function wrapper to isolate from other ascii art
 </script>
+
+
+
+Architecting and optimizing for the maximum reduction in latency does not always result in the best overall outcome. 
+
+In certain situations, prioritizing a minimal level of jitter (variance in latency) is more crucial than further reducing the latency.
+
+Latency outliers can cause re-transmits, buffer/cache flushes, session re-connects, dropped frames video, pauses in audio, etc..
+
+Humans are very adapt at noticing Variance, Jitter,and Outliers. Therefore, sometimes it is better to optimize for a lower level of variance at the expense of slightly higher latency. 
+
+The example animations below are identical except the animation on the right has 1 dropped frame.
+
+
+![No Jitter](No-dropped-frame.gif)
+![Jitter](Dropped-frame.gif)
+
+A1 A2 A3 B1 B2
+
+![A1](A1.gif)
+![A2](A2.gif)
+![A3](A3.gif)
+![B1](B1.gif)
+![B2](B2.gif)
 
 
 </div>
