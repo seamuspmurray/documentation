@@ -342,7 +342,7 @@
 <p>The diagram below illustrates two alternative network paths between two endpoints, Host W and Host E.</p>
 <p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network path A, and 8 milliseconds to transmit across network path B, then we conclude that path A has lower latency than path B.</p>
 <p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
-<p><img alt="Diagram" src="../diagram.png" />                                          </p>
+<p><img alt="Diagram" src="../diagram.png" /></p>
 <h4 id="latency-charts">Latency charts</h4>
 <p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
 <h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
@@ -352,7 +352,7 @@ Chart A1
 
      High Latency and Zero Jitter 
 
-
+_
  |   |                          
 L|  8|  *  *  *  *  *  *  *  *  
 a|   |                          
@@ -435,15 +435,15 @@ Chart B1
 
 Very Low Latency & Very High Jitter
 
- |   |                          
-L|  8|                 *     *  
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |                          
-y|  2|                          
-_|   |  *  *  *  *  *     *     
+     |                          
+L   8|                 *     *  
+a    |                          
+t   6|                          
+e    |                          
+n   4|                          
+c    |                          
+y   2|                          
+     |  *  *  *  *  *     *     
     0|--a--b--c--d--e--f--g--h-- 
               __________              
              |  Event   |        
@@ -458,7 +458,7 @@ Chart B2
 
  Low-Medium Latency and Low Jitter 
 
-
+_
  |   |                          
 L|  8|                          
 a|   |                          
@@ -497,7 +497,7 @@ Chart B1
 
       Jitter         Latency
        High      VeryLow-VeryHigh
-
+_                              
  |   |                          
 L|  8|->               *     *  
 a|   |                          
@@ -509,14 +509,14 @@ y|  2|
 _|   |->*  *  *  *  *     *     
     0|--a--b--c--d--e--f--g--h-- 
 
-          _______________         
-         |  Event Pairs  |        
+              __________              
+             |  Event   |        
   `, `
 Chart B2
 
       Jitter         Latency
        Low           Low-Med
-
+_
  |   |                          
 L|  8|                          
 a|   |                          
@@ -528,8 +528,8 @@ y|  2|->   *     *     *     *
 _|   |                          
     0|--a--b--c--d--e--f--g--h-- 
 
-          _______________         
-         |  Event Pairs  |        
+              __________              
+             |  Event   |        
   `];
     let currentFrameIndex = 0;
     const asciiArtElementTimeline = document.getElementById("ascii-art-Chart-OT-UZ");
