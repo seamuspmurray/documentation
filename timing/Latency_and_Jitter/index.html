@@ -342,35 +342,6 @@
 <p>The diagram below illustrates two alternative network paths between two endpoints, Host W and Host E.</p>
 <p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network path A, and 8 milliseconds to transmit across network path B, then we conclude that path A has lower latency than path B.</p>
 <p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
-<PRE>
-
-                  4ms                  
-            ┌─────────────┐            
-┌────────┐  │   Route A   │  ┌────────┐
-│        ├─►┘             └►─┤        │
-│ Host W │                   │ Host E │
-│        ├─►┐             ┌►─┤        │
-└────────┘  │             │  └────────┘
-            │   Route B   │            
-            └─────────────┘            
-                  8ms                  
-
-</PRE>
-
-<PRE>
-
-                  4ms                  
-            ┌─────────────┐            
-┌────────┐  │   Route A   │  ┌────────┐
-│        ├─►┘             └─►│        │
-│ Host W │                   │ Host E │
-│        ├─►┐             ┌─►│        │
-└────────┘  │             │  └────────┘
-            │   Route B   │            
-            └─────────────┘            
-                  8ms                              
-</PRE>
-
 <p><img alt="Diagram" src="../diagram.png" />                                          </p>
 <h4 id="latency-charts">Latency charts</h4>
 <p>The 3 charts A1, A2, and A3 illustrate 3 different levels of consistent latency. </p>
