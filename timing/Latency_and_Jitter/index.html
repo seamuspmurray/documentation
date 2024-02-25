@@ -287,7 +287,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#jitter">Jitter</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#low-latency-and-high-jitter">Low Latency and High Jitter</a>
+    <li class="toctree-l3"><a class="reference internal" href="#low-high-latency-and-high-jitter">Low-High Latency and High Jitter</a>
     </li>
         </ul>
     </li>
@@ -393,8 +393,14 @@ _|  |
 
 <h3 id="jitter">Jitter</h3>
 <p>In the context of latency, the term jitter is used to describe the variance of the latency. </p>
-<h4 id="low-latency-and-high-jitter">Low Latency and High Jitter</h4>
-<p>Chart B1, illustrates the latency levels experienced when packets sent from Host W to Host E alternate between Route A and Route B. </p>
+<h4 id="low-high-latency-and-high-jitter">Low-High Latency and High Jitter</h4>
+<p>Chart B1, illustrates the latency levels experienced for each packet sent from Host W to Host E while alternating between Route A and Route B for each packet.</p>
+<ul>
+<li>The first packet (a) was sent via Route A,</li>
+<li>the second packet (b) was sent via Route B, </li>
+<li>the third packet (c) was sent via Route A, </li>
+<li>the fourth packet (d) was sent via Route B, etc.... </li>
+</ul>
 <PRE>
 Chart B1
 
