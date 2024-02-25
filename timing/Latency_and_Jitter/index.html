@@ -336,57 +336,57 @@
 </ul>
 <h4 id="latency-diagram">Latency diagram</h4>
 <p>The diagram below illustrates two alternative network routes between two endpoints, Host W and Host E.</p>
-<p>If network packets being sent between Host W and Host E take 4 milliseconds to transmit across network Route A, and 8 milliseconds to transmit across network Route B, then we conclude that Route A has lower latency than Route B.</p>
+<p>If network packets being sent between Host W and Host E take 2 milliseconds to transmit across network Route A, and 8 milliseconds to transmit across network Route B, then we conclude that Route A has lower latency than Route B.</p>
 <p>In this context, latency refers to the time delay experienced when transmitting data between two points on a network. A higher latency indicates a longer delay in data transmission, while a lower latency indicates a shorter delay."</p>
-<p><img alt="Diagram" src="../diagram.png" /></p>
+<p><img alt="Diagram" src="../latency-and-jitter-diagram-2-hosts-2-routes-2ms-8ms.png" /></p>
 <h4 id="latency-charts">Latency charts</h4>
 <p>The 3 charts A1, and A2 illustrate 2 different levels of consistent latency. </p>
 <h4 id="high-latency-and-zero-jitter">High Latency and Zero Jitter</h4>
-<p>Chart A1, shows a consistent level of 8ms latency for each of the events a ~ h.</p>
+<p>Chart A1, shows a consistent level of 8ms latency for each of the packets a ~ l.</p>
 <PRE>
 Chart A1
 
      High Latency and Zero Jitter 
 
-_
- |   |                          
-L|  8|  *  *  *  *  *  *  *  *  
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|                          
-c|   |                          
-y|  2|                          
-_|   |                          
-    0|--a--b--c--d--e--f--g--h-- 
-              __________              
-             |  Packet  |         
+_                             
+ |  |                         
+L| 8| * * * * * * * * * * * * 
+a|  |                         
+t| 6|                         
+e|  |                         
+n| 4|                         
+c|  |                         
+y| 2|                         
+_|  |                         
+   0|-------------------------
+      a b c d e f g h i j k l 
+             __________        
+            |  Packet  |       
 
 
 </PRE>
 <hr>
 
 <h4 id="medium-latency-and-zero-jitter">Medium Latency and Zero Jitter</h4>
-<p>Chart A2, shows a consistent level of 4ms latency for each of the events a ~ h.</p>
+<p>Chart A2, shows a consistent level of 2ms latency for each of the packets a ~ l.</p>
 <PRE>
 
 Chart A2
 
-    Medium Latency and Zero Jitter 
+   Low Latency and Zero Jitter 
 
-_ 
- |   |                          
-L|  8|                          
-a|   |                          
-t|  6|                          
-e|   |                          
-n|  4|  *  *  *  *  *  *  *  *  
-c|   |                          
-y|  2|                          
-_|   |                          
-    0|--a--b--c--d--e--f--g--h-- 
-              __________              
-             |  Packet  |         
+_                             
+ |  |                         
+L| 8|                         
+a|  |                         
+t| 6|                         
+e|  |                         
+n| 4|                         
+c|  |                         
+y| 2| * * * * * * * * * * * * 
+_|  |                         
+   0|-------------------------
+       a  b  c  d  e  f  g  h 
 
 </PRE>
 <hr>
@@ -400,18 +400,21 @@ Chart B1
 
               Jitter
 
-     |                          
-L   8|     *     *     *     *  
-a    |                          
-t   6|                          
-e    |                          
-n   4|  *     *     *     *     
-c    |                          
-y   2|                          
-     |                          
-    0|--a--b--c--d--e--f--g--h-- 
-              __________              
-             |  Packet  |        
+_                             
+ |  |                         
+L| 8|   *   *   *   *   *   * 
+a|  |                         
+t| 6|                         
+e|  |                         
+n| 4|                         
+c|  |                         
+y| 2| *   *   *   *   *   *   
+_|  |                         
+   0|-------------------------
+      a b c d e f g h i j k l 
+             __________      
+            |  Packet  |      
+
 </PRE>
 
 <hr>
